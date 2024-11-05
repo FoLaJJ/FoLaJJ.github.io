@@ -1,6 +1,13 @@
+<!-- 背景 -->
+
+<!--![](favicon_logosc/bg.jpg)-->
+
+<!-- 背景颜色 -->
+
+<!-- ![color](#deded) -->
 
 
-![logo](_media/icon.jpg)
+![logo](favicon_logosc/icon.jpg)
 
 # FoLaJJ
 

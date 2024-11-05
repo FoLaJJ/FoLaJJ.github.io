@@ -1,9 +1,9 @@
-
 <p align="center">
     <a href="https://www.github.com/FoLaJJ" target="_blank">
-    <img src="_media/icon.jpg" width=""/>
+    <img src="favicon_logosc/icon.jpg" width=""/>
     </a>
 </p>
+
 
 <p align="center">
   <a href="https://github.com/FoLaJJ" target="_blank"><img src="https://img.shields.io/badge/Github-FoLaJJ-red.svg"></a>
@@ -17,8 +17,9 @@
 ---
 
 > [!TIP]
+>  - [ ] 学习
+>  - [x] 摸鱼
 >  
->
 > 方便自己也方便组里同学。网站内容会保持**持续更新**，欢迎收藏品鉴！
 
 
@@ -57,7 +58,6 @@
 ---
 ## ctf学习路线
 
-> - [从0到1学CTF](路线/从0到1学CTF)
 
 ---
 

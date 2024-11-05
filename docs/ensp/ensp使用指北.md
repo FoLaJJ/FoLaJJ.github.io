@@ -18,7 +18,7 @@
 
 当你安装完软件，点进去可以看到，然后点击左上角的新建拓扑，即可看到此页面
 
-[![pAtdfoV.png](D:/docsify/docs/_media/pAtdfoV.png)](https://imgse.com/i/pAtdfoV)
+[![pAtdfoV.png](../_media/pAtdfoV.png)](https://imgse.com/i/pAtdfoV)
 
 观察左边有一系列的设备，可以挨个点击，可以看到各个设备的具体描述，如CON、USB、Console等资源，现在我们来逐个了解一下，仅仅是了解。
 
@@ -32,9 +32,9 @@
 
 ​	这就是设备介绍中所说的，1个CON/AUX接口，固定8FE接口，1个WAN侧uplink接口，1个USB接口
 
-[<img src="D:/docsify/docs/_media/pAtdzWD.png" alt="pAtdzWD.png" style="zoom: 67%;" />](https://imgse.com/i/pAtdzWD)
+[<img src="../_media/pAtdzWD.png" alt="pAtdzWD.png" style="zoom: 67%;" />](https://imgse.com/i/pAtdzWD)
 
-[![pAtwpSe.png](D:/docsify/docs/_media/pAtwpSe.png)](https://imgse.com/i/pAtwpSe)
+[![pAtwpSe.png](../_media/pAtwpSe.png)](https://imgse.com/i/pAtwpSe)
 
 
 
@@ -68,23 +68,23 @@
 
 添加模块还是路由器右击，点击设置，视图界面可以看到eNSP支持的接口卡，我们逐个点击，一般是在后面的，可以看到接口卡描述。找到相应的接口卡之后，拖拽至黄色区域，就可以添加！
 
-[![pAtwhnA.png](D:/docsify/docs/_media/pAtwhnA.png)](https://imgse.com/i/pAtwhnA)
+[![pAtwhnA.png](../_media/pAtwhnA.png)](https://imgse.com/i/pAtwhnA)
 
 
 
 初步接线图如下：
 
-[![pAtwTtf.png](D:/docsify/docs/_media/pAtwTtf.png)](https://imgse.com/i/pAtwTtf)
+[![pAtwTtf.png](../_media/pAtwTtf.png)](https://imgse.com/i/pAtwTtf)
 
 这里可以选择先配置PC1的IP地址、子网掩码和网关。
 
-[![pAtR4FH.png](D:/docsify/docs/_media/pAtR4FH.png)](https://imgse.com/i/pAtR4FH)
+[![pAtR4FH.png](../_media/pAtR4FH.png)](https://imgse.com/i/pAtR4FH)
 
 
 
 同理，设置PC2的IP地址、子网掩码、网关：
 
-[![pAtRIfA.png](D:/docsify/docs/_media/pAtRIfA.png)](https://imgse.com/i/pAtRIfA)
+[![pAtRIfA.png](../_media/pAtRIfA.png)](https://imgse.com/i/pAtRIfA)
 
 ### 3.1 配置路由器名称和接口地址
 
@@ -181,7 +181,7 @@ Ctrl+Z			# 返回系统视图
 
 此时可以看到Seria12/0/0 的PHY为up，即是设置成功：
 
-[![pAt0NUP.png](D:/docsify/docs/_media/pAt0NUP.png)](https://imgse.com/i/pAt0NUP)
+[![pAt0NUP.png](../_media/pAt0NUP.png)](https://imgse.com/i/pAt0NUP)
 
 
 
@@ -317,7 +317,7 @@ Ctrl+Z			# 返回系统视图
 
 应该默认Vlan都为1，所以不用配置就可以了，两台PC机要在同一网段下
 
-![image-20241101195115622](D:/docsify/docs/_media/image-20241101195115622.png)
+![image-20241101195115622](../_media/image-20241101195115622.png)
 
 另一台配置为
 
@@ -327,7 +327,7 @@ Ctrl+Z			# 返回系统视图
 
 
 
-![image-20241101195225557](D:/docsify/docs/_media/image-20241101195225557.png)
+![image-20241101195225557](../_media/image-20241101195225557.png)
 
 
 
