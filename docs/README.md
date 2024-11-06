@@ -131,6 +131,15 @@
 ## 刷题向
 
 > - [算法刷题](刷题/算法刷题)
+> - [链表学习路线](刷题/链表学习路线(1w6长文))
+
+
+## PDF
+
+> - <a href="pdf/mysql-injection.pdf">SQLlabs全解.pdf</a>
+> - <a href="pdf/2024高校运维挑战赛writeup.pdf">2024高校运维挑战赛writeup.pdf</a>
+> - <a href="pdf/凸优化.pdf">凸优化.pdf</a>
+> - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
 
 ## 作业
 

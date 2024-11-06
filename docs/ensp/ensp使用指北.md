@@ -54,9 +54,174 @@
 
 ​	设备连线使用Auto即可
 
+​	Copper自行选择
 
+​	Serial串行口
+
+​	POS 光纤
+
+​	CTL console口
 
 ​	其余同理，询问GPT。不再赘述。
+
+
+
+## 3.vrp系统指令
+
+==备注==
+
+```
+?			# 查看用户视图下所有可以执行的命令
+```
+
+
+
+需要注意的是当左边的名称打印的是<>，意味着你在用户视图，如果是[]，则是系统视图
+
+如：
+
+```
+<Huawei>		# 用户视图
+<Huawei>system-view		#进入系统视图的指令
+
+[Huawei]interface Serial 2/0/0   # 进入接口视图
+[Huawei-Serial2/0/0]			# 接口视图
+
+[Huawei]ospf 1					# 进入协议视图
+[Huawei-ospf-1]					# 协议视图
+
+[Huawei]aaa						# 进入AAA视图
+[Huawei-aaa]					# AAA视图
+
+[Huawei]acl 2000				# 进入ACL视图
+[Huawei-acl-basic-2000]			# ACL视图
+
+[Huawei]ip pool office1			# 进入地址池视图
+[Huawei-ip-pool-office1]		# 地址池视图
+
+...
+```
+
+并且在任何视图里面都可以进行如下操作：
+
+```
+quit			# 返回上一级视图
+return			# 返回用户视图
+Ctrl+Z			# 返回系统视图
+```
+
+只需要记住两个就可以了
+
+```
+return返回最上级
+Ctrl+Z返回第二级
+```
+
+
+
+### 用户视图
+
+用户视图查看当前配置：
+
+```
+dis
+Tab
+display cu
+Tab
+display current-configuration
+```
+
+关闭设备之前要进行保存
+
+```
+return
+save
+```
+
+
+
+### 系统视图
+
+```
+sys
+tab
+```
+
+
+
+```
+sy AP1
+直接重命名
+```
+
+
+
+```
+[Huawei]
+```
+
+
+
+### 协议视图
+
+配置ip地址
+
+```
+int
+tab
+interface e0/0/0
+```
+
+
+
+删除命令
+
+```
+vlan 10
+
+undo vlan 10
+```
+
+
+
+
+
+### PC机配置ip地址
+
+直接双击打开设置就即可
+
+
+
+### 路由器配置ip地址
+
+路由器要进入接口里面进行配置
+
+```
+[R1]int g0/0/0
+[R1]ip add
+tab
+[R1]ip address 192.168.1.254 24
+```
+
+
+
+### 交换机配置ip地址
+
+三层交换机，要用vlan进行封装
+
+```
+[Huawei]vlan 10
+[Huawei]int vlan 10
+[Huawei-vlanif10]ip address 192.168.2.254 24
+[Huawei-vlanif10]Ctrl+Z
+[Huawei]int g0/0/1
+[Huawei-GigabitEthernet0/0/1]port link-type access
+[Huawei-GigabitEthernet0/0/1]port default
+```
+
+
+
+
 
 
 
@@ -115,52 +280,10 @@
 
 
 ```
-?			# 查看用户视图下所有可以执行的命令
-```
-
-----------------------------------------------------------
-
-==备注==
-
-​	需要注意的是当左边的名称打印的是<>，意味着你在用户视图，如果是[]，则是系统视图
-
-如：
 
 ```
-<Huawei>		# 用户视图
-<Huawei>system-view		#进入系统视图的指令
-
-[Huawei]interface Serial 2/0/0   # 进入接口视图
-[Huawei-Serial2/0/0]			# 接口视图
-
-[Huawei]ospf 1					# 进入协议视图
-[Huawei-ospf-1]					# 协议视图
-
-[Huawei]aaa						# 进入AAA视图
-[Huawei-aaa]					# AAA视图
-
-[Huawei]acl 2000				# 进入ACL视图
-[Huawei-acl-basic-2000]			# ACL视图
-
-[Huawei]ip pool office1			# 进入地址池视图
-[Huawei-ip-pool-office1]		# 地址池视图
-
-...
-```
-
-并且在任何视图里面都可以进行如下操作：
-
-```
-quit			# 返回上一级视图
-return			# 返回用户视图
-Ctrl+Z			# 返回系统视图
-```
 
 
-
----------------------------------------
-
-### 
 
 然后：
 
@@ -309,6 +432,246 @@ Ctrl+Z			# 返回系统视图
 
 ## 4. 案例大全
 
+
+
+### IP和网关
+
+
+
+```
+PC1
+
+IP地址：192.168.1.1
+子网掩码：255.255.255.0
+网关：192.168.1.254
+```
+
+
+
+```
+PC2
+
+IP地址：192.168.2.1
+子网掩码：255.255.255.0
+网关：192.168.2.254
+```
+
+
+
+```
+AR1
+
+<Huawei>sys
+[Huawei]int g0/0/1
+[Huawei-GigabitEthernet0/0/1]ip address 192.168.1.254 24
+```
+
+
+
+```
+LSW1
+<Huawei>sys
+[Huawei]vlan 10
+[Huawei-vlan10]q
+[Huawei]in vlan 10
+[Huawei-Vlanif10]ip address 192.168.2.254 24
+
+[Huawei]int g0/0/1
+[Huawei-GigabitEthernet0/0/1]port link-type access
+[Huawei-GigabitEthernet0/0/1]port default vlan 10
+```
+
+
+
+实现功能仅仅是主机与连线上的网关进行通信：
+
+![image-20241105151506151](../_media/image-20241105151506151.png)
+
+
+
+### 静态路由
+
+静态路由关键命令
+
+```
+ip route 目标网段 子网掩码 下一跳
+```
+
+
+
+```
+PC1
+ip地址：192.168.1.1
+子网掩码：255.255.255.0
+网关：192.168.1.254
+```
+
+
+
+```
+PC2
+ip地址：192.168.2.1
+子网掩码：255.255.255.0
+网关：192.168.2.254
+```
+
+
+
+记得选用AR1220
+
+```
+AR1
+
+<Huawei>undo ter mon   # 关闭泛洪信息
+<Huawei>sys
+[Huawei]int g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.1.254 24   # 和PC1相连的接口
+[Huawei-GigabitEthernet0/0/0]int g0/0/1   # 进入和AR2相连的接口
+[Huawei-GigabitEthernet0/0/1]ip address 10.0.0.1 24
+### 配置静态路由
+[Huawei]q
+[Huawei]ip route-static 192.168.2.0 255.255.255.0 10.0.0.2    # 就是告诉路由器要找那个ip就去10.0.0.2那边找
+
+
+```
+
+
+
+```
+AR2
+<Huawei>undo ter mon   # 关闭泛洪信息
+<Huawei>sys
+[Huawei]int g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.2.254 24   # 和PC1相连的接口
+[Huawei-GigabitEthernet0/0/0]int g0/0/1   # 进入和AR2相连的接口
+[Huawei-GigabitEthernet0/0/1]ip address 10.0.0.2 24
+### 配置静态路由
+[Huawei]ip route-static 192.168.1.0 255.255.255.0 10.0.0.1    # 就是告诉路由器要找那个ip就去10.0.0.1那边找
+[Huawei]q
+```
+
+![image-20241105160303750](../_media/image-20241105160303750.png)
+
+
+
+### 动态路由
+
+rip
+
+ospf
+
+isis
+
+
+
+RIP
+
+
+
+两台AR都要进行配置
+
+```
+[R1]rip
+[R1-rip-1]network 10.0.0.0     # 加上直连的
+
+
+假设直连的有PC1的ip地址网段和另一台AR2的ip地址网段，注意注意是网段，不是ip地址
+进到rip要重复宣告两次
+[R1-rip-1]network 192.168.1.0
+[R1-rip-1]network 10.0.0.0
+
+```
+
+
+
+### 单臂路由
+
+
+
+
+
+
+
+### vlan子网划分
+
+二层交换机上面进行实验
+
+同一网段下的通信阻隔
+
+
+
+假设有4台主机，分别连到两台交换机上去
+
+分别设置为
+
+```
+PC1
+
+ip地址：192.168.1.1
+子网掩码：255.255.255.0
+网关：192.168.1.254
+
+PC2、PC3、PC4的ip地址递增
+```
+
+
+
+想要设置
+
+PC1和PC3 为vlan10
+
+PC2和PC4 为vlan20
+
+
+
+LSW1
+
+```
+<Huawei> sys
+[Huawei] sy LSW1
+[LSW1]un in en   # 关闭提示信息
+[LSW1]vlan 10      # 创建vlan10
+[LSW1-vlan10]vlan 20      # 创建vlan20
+[LSW1-vlan10]q
+[LSW1]int eth0/0/1
+[LSW1-Ethernet0/0/1]port link-type access   # 配置接口类型为access
+[LSW1-Ethernet0/0/1]port default vlan 10   # 0/0/1接口配置为vlan10默认
+[LSW1-Ethernet0/0/1]int eth0/0/2 
+[LSW1-Ethernet0/0/2]prot link-type access # 配置接口类型为access
+[LSW1-Ethernet0/0/2]port default vlan 20   # 0/0/2接口配置为vlan20默认
+[LSW1-Ethernet0/0/2]int eth0/0/3			# 进入和另一台交换机连接的接口
+[LSW1-Ethernet0/0/3]port link-type trunk    # 配置接口类型
+[LSW1-Ethernet0/0/3]port trunk allow-pass vlan 10 20   # 允许vlan10，20通过
+```
+
+
+
+LSW2
+
+```
+<Huawei> sys
+[Huawei] sy LSW2
+[LSW2]un in en   # 关闭提示信息
+[LSW2]vlan 10      # 创建vlan10
+[LSW2-vlan10]vlan 20      # 创建vlan20 
+[LSW2-vlan10]q
+[LSW2]int eth0/0/1
+[LSW2-Ethernet0/0/1]port link-type access   # 配置接口类型为access
+[LSW2-Ethernet0/0/1]port default vlan 10   # 0/0/1接口配置为vlan10默认
+[LSW2-Ethernet0/0/1]int eth0/0/2 
+[LSW2-Ethernet0/0/2]prot link-type access # 配置接口类型为access
+[LSW2-Ethernet0/0/2]port default vlan 20   # 0/0/2接口配置为vlan20默认
+[LSW2-Ethernet0/0/2]int eth0/0/3			# 进入和另一台交换机连接的接口
+[LSW2-Ethernet0/0/3]port link-type trunk    # 配置接口类型为trunk
+[LSW2-Ethernet0/0/3]port trunk allow-pass vlan 10 20   # 允许vlan10，20通过
+```
+
+
+
+![image-20241105165005851](../_media/image-20241105165005851.png)
+
+
+
 [华为eNSP入门实验，Vlan配置，路由配置，用户模式，链路聚合-CSDN博客](https://blog.csdn.net/m0_46085118/article/details/131224141)
 
 ### 同一交换机下的PC通信
@@ -374,4 +737,38 @@ quit
 ## 6. 网络知识
 
 [计算机网络基础知识总结 | 菜鸟教程](https://www.runoob.com/w3cnote/summary-of-network.html)
+
+
+
+
+
+### 子网划分
+
+
+
+假设一台公司有530台计算机要连接到局域网：
+
+- 确定适合的子网掩码：
+  - 530台计算机需要主机数量至少为530
+  - 计算2^m > 530
+- 确定子网掩码
+  - 2^9=512 不够
+  - 2^10=1024 足够
+  - 因此，m=10，子网掩码的主机部分为10个0
+  - 子网掩码的二进制表示 `1111 1111.1111 1111.1111 1100.0000 0000` 即`255.255.252.0`
+
+
+
+
+
+子网掩码计算：
+
+- 子网掩码 `255.255.255.0`：
+  - 二进制表示：`11111111.11111111.11111111.00000000`
+  - 后面8个0.即m=8
+  - 最大容纳：2^8-2=256-2=254      要减去广播地址和网络地址
+
+
+
+子网划分习题：[软考网络工程师1：IP子网划分_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1uu4m1P7gV/?spm_id_from=333.337.search-card.all.click&vd_source=f264368eefdba6c9e52d63931d176453)
 
