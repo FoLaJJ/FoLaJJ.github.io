@@ -718,6 +718,22 @@ quit
 
 
 
+### 同一交换机不同网段的通信
+
+直接三层交换机配置
+
+```
+LSW2
+<Huawei>sys
+[Huawei]int vlan1
+[Huawei-Vlanif1]ip address 192.168.1.254 24
+[Huawei-Vlanif1]ip address 192.168.2.254 24 sub              # 配置从ip
+```
+
+就配完了
+
+![image-20241107160824868](../_media/image-20241107160824868.png)
+
 
 
 ### 静态路由通信
@@ -726,7 +742,74 @@ quit
 
 
 
+### 链路聚合
 
+手动配置
+
+```
+LSW1
+<Huawei>un in en
+<Huawei>sys
+[Huawei]int Eth-Trunk 1
+[Huawei-Eth-Trunk1]mode manual load-balance
+[Huawei-Eth-Trunk1]q
+[Huawei]int g0/0/1
+[Huawei-GigabitEthernet0/0/1]eth-trunk 1
+[Huawei-GigabitEthernet0/0/1]int g0/0/2
+[Huawei-GigabitEthernet0/0/2]eth-trunk 1
+```
+
+
+
+```
+LSW2
+<Huawei>un in en
+<Huawei>sys
+[Huawei]int Eth-Trunk 1
+[Huawei-Eth-Trunk1]mode manual load-balance
+[Huawei-Eth-Trunk1]q
+[Huawei]int g0/0/1
+[Huawei-GigabitEthernet0/0/1]eth-trunk 1
+[Huawei-GigabitEthernet0/0/1]int g0/0/2
+[Huawei-GigabitEthernet0/0/2]eth-trunk 1
+```
+
+
+
+就是在逻辑上把两根线变成一根线，提高带宽
+
+![image-20241107145222763](../_media/image-20241107145222763.png)
+
+
+
+### 密码模式
+
+进入串口模式
+
+啥都不设置，选择串口连接，就可以连上去
+
+可以直接在电脑端进行设置
+
+```
+<Huawei>sys
+[Huawei]user-interface console 0
+[Huawei-ui-console0]authentication-mode password
+[Huawei-ui-console0]set authentication password cipher    # 看机子，有些不用这一句
+123
+[Huawei-ui-console0]user privilege level 3
+[Huawei-ui-console0]q
+<Huawei>q
+
+
+restart
+
+输入password：
+就可以连接上了
+```
+
+
+
+![image-20241107150557369](../_media/image-20241107150557369.png)
 
 ## 5. 命令备忘录
 

