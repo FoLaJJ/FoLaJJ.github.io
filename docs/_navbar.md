@@ -18,7 +18,12 @@
   - [**b站**](https://www.bilibili.com/)
   - [**低端影视**](https://ddys.pro//)
   - [**图寻**](https://tuxun.fun/)
+  - [**摸鱼小游戏**](https://haiyong.site/moyu/)
   - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
-- 快速查询手册
-  - [**系统调用号查询**](https://syscalls.w3challs.com/)
-  - [**和1一样但画面更好**](https://syscall.sh/)
+- 工具链
+  - [**系统调用号查询**](https://syscall.sh/)
+  - [**随波逐流**](http://1o1o.xyz/)
+  - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
+
+- 比赛
+  - [**N1CTF**](https://ctf2024.nu1l.com/#/index)
