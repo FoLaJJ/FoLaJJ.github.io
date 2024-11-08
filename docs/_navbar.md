@@ -23,7 +23,12 @@
 - 工具链
   - [**系统调用号查询**](https://syscall.sh/)
   - [**随波逐流**](http://1o1o.xyz/)
+  - [**FOFA**]( https://fofa.info/)
+  - [**Shodan**](https://www.shodan.io)
+  - [**Zoomeye**](https://www.zoomeye.org/)
+  - [**Hunter**](https://hunter.qianxin.com/)
+  - [**360Quake**](https://quake.360.net)
   - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
-
+  
 - 比赛
   - [**N1CTF**](https://ctf2024.nu1l.com/#/index)

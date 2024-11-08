@@ -811,6 +811,128 @@ restart
 
 ![image-20241107150557369](../_media/image-20241107150557369.png)
 
+
+
+### 三层交换机实现VLAN间路由
+
+根据图来配PC机
+
+
+
+```
+LSW2
+
+<Huawei> sys
+[Huawei] sy LSW2
+[LSW2]un in en   # 关闭提示信息
+[LSW2]vlan 10      # 创建vlan10
+[LSW2-vlan10]q
+[LSW2]int g0/0/1
+[LSW2-GigabitEthernet0/0/1]port link-type trunk    # 配置接口类型
+[LSW2-GigabitEthernet0/0/1]port trunk allow-pass vlan 10   # 允许vlan10通过
+[LSW2-GigabitEthernet0/0/1]int g0/0/2
+[LSW2-GigabitEthernet0/0/2]port link-type access    # 配置接口类型
+[LSW2-GigabitEthernet0/0/2]port default vlan 10   # 绑定vlan10
+```
+
+
+
+```
+LSW4
+
+<Huawei> sys
+[Huawei] sy LSW4
+[LSW4]un in en   # 关闭提示信息
+[LSW4]vlan 10      # 创建vlan20
+[LSW4-vlan10]vlan 20
+[LSW4-vlan20]q
+
+[LSW4]int g0/0/1
+[LSW4-GigabitEthernet0/0/1]port link-type trunk    # 配置接口类型
+[LSW4-GigabitEthernet0/0/1]port trunk allow-pass vlan 10 20   # 允许vlan10，20通过
+[LSW4-GigabitEthernet0/0/1]int g0/0/2
+
+[LSW4-GigabitEthernet0/0/2]port link-type access    # 配置接口类型
+[LSW4-GigabitEthernet0/0/2]port default vlan 10   # 绑定vlan10
+[LSW4-GigabitEthernet0/0/2]int g0/0/3
+
+[LSW4-GigabitEthernet0/0/3]port link-type access    # 配置接口类型
+[LSW4-GigabitEthernet0/0/3]port default vlan 20   # 绑定vlan10
+[LSW4-GigabitEthernet0/0/3]q
+```
+
+
+
+```
+LSW3
+
+<Huawei> sys
+[Huawei] sy LSW3
+[LSW3]un in en   # 关闭提示信息
+[LSW3]vlan 20      # 创建vlan20
+[LSW3-vlan20]q
+[LSW3]int g0/0/1
+[LSW3-GigabitEthernet0/0/1]port link-type trunk    # 配置接口类型
+[LSW3-GigabitEthernet0/0/1]port trunk allow-pass vlan 20   # 允许vlan10通过
+[LSW3-GigabitEthernet0/0/1]int g0/0/2
+[LSW3-GigabitEthernet0/0/2]port link-type access    # 配置接口类型
+[LSW3-GigabitEthernet0/0/2]port default vlan 20   # 绑定vlan20
+```
+
+
+
+```
+LSW1
+<Huawei> sys
+[Huawei] sy LSW1
+[LSW1]un in en   # 关闭提示信息
+[LSW1]vlan batch 10 20 30    # 连接vlan 10 20 30
+
+[LSW1]int eth0/0/1
+[LSW1-Ethernet0/0/1]port link-type trunk   # 配置接口类型为access
+[LSW1-Ethernet0/0/1]port trunk allow-pass vlan 10    # 允许vlan10通过
+[LSW1-Ethernet0/0/1]int eth0/0/2 
+[LSW1-Ethernet0/0/2]prot link-type trunk # 配置接口类型为access
+[LSW1-Ethernet0/0/2]port trunk allow-pass vlan 20    # 允许vlan20通过
+[LSW1-Ethernet0/0/2]int eth0/0/3			# 进入和另一台交换机连接的接口
+[LSW1-Ethernet0/0/3]port link-type trunk    # 配置接口类型
+[LSW1-Ethernet0/0/3]port trunk allow-pass vlan 10 20   # 允许vlan10，20通过
+
+
+[LSW1]int vlanif 10
+[LSW1-Vlanif10]ip address 192.168.1.254 24
+[LSW1-Vlanif10]q
+[LSW1]int vlanif 20
+[LSW1-Vlanif20]ip address 192.168.2.254 24
+[LSW1-Vlanif20]q
+[LSW1]int vlanif 30
+[LSW1-Vlanif30]ip address 192.168.3.254 24
+[LSW1-Vlanif30]q
+[LSW1]ip route-static 0.0.0.0 24 192.168.3.1
+
+```
+
+
+
+```
+AR1
+<Huawei>undo ter mon   # 关闭泛洪信息
+<Huawei>sys
+[Huawei]int g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.3.1 24   # 和PC1相连的接口
+### 配置静态路由
+[Huawei]ip route-static 192.168.1.0 24 192.168.3.254
+[Huawei]ip route-static 192.168.2.0 24 192.168.3.254
+```
+
+
+
+
+
+![image-20241108171253862](../_media/image-20241108171253862.png)
+
+
+
 ## 5. 命令备忘录
 
 
