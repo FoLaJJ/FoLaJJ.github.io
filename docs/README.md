@@ -78,8 +78,10 @@
 
 ### pwn
 
->- [ctfshowpwn](pwn/ctfshowpwn)
+>- [CTFShow-pwn](pwn/ctfshowpwn)
 >-  [pwn入门](pwn/pwn入门)
+>-  [BUUCTF-pwn](pwn/BUUCTF)
+>-  [快查手册](pwn/快查手册)
 
 
 
