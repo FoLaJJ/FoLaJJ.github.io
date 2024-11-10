@@ -10,7 +10,7 @@
 
 [你想有多PWN(不再更新)_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mr4y1Y7fW/?spm_id_from=333.337.search-card.all.click&vd_source=f264368eefdba6c9e52d63931d176453)
 
-
+[[Pwn之路\] 欢迎来到堆攻击的世界——简单堆溢出原理和例题 - FreeBuf网络安全行业门户](https://www.freebuf.com/articles/endpoint/371095.html)
 
 [第二章_第13节_ret2syscall_x1.5_整合_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mr4y1Y7fW?spm_id_from=333.788.videopod.episodes&vd_source=f264368eefdba6c9e52d63931d176453&p=23)
 
@@ -373,6 +373,18 @@ p64(0x00400596).decode('unicode_escape')
 
 
 
+
+
+
+## 堆
+
+栈、堆、内核
+
+堆溢出（Heap Overflow）是指在程序执行过程中，向堆（Heap）区域写入超出其分配内存边界的数据，从而覆盖了相邻的内存空间。这可能导致程序崩溃、执行意外行为或者被攻击者利用。
+
+
+
+而UAF是指释放后引用（Use-After-Free）漏洞，它是一种常见的内存安全问题。当程序释放了一个堆上的内存块，但后续仍然继续使用该已释放的内存块，就会产生UAF漏洞。攻击者可以利用UAF漏洞来执行恶意代码，读取敏感数据，控制程序的执行流程等。
 
 
 
