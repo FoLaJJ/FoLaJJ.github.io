@@ -13,7 +13,7 @@
   - [**攻防战争**](https://ctfwar.org.cn/)
   - [**HelloCTF** ](https://hello-ctf.com/)
   - [**免费靶场**](https://www.bachang.org/)
-  - [**CTF-Wiki**]([简介 - CTF Wiki](https://ctf-wiki.org/))
+  - [**CTF-Wiki**](https://ctf-wiki.org/)
 - 划水必备
   - [**A站**](https://www.acfun.cn/)
   - [**b站**](https://www.bilibili.com/)
@@ -29,6 +29,9 @@
   - [**Zoomeye**](https://www.zoomeye.org/)
   - [**Hunter**](https://hunter.qianxin.com/)
   - [**360Quake**](https://quake.360.net)
+  - [**intelligence**](https://intelx.io/)
+  - [**Hunter**](https://hunter.io/)
+  - [**Hacker Dork Generator**](https://iamunixtz.github.io/LazyDork/)
   - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
   
 - 比赛

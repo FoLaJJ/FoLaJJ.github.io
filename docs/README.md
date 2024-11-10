@@ -72,7 +72,8 @@
 > - [XSS跨站脚本攻击](web/XSS跨站脚本攻击)
 > - [XXE外部实体注入](web/XXE外部实体注入)
 > - [文件上传](web/文件上传)
-> - [信息泄露](web/信息泄露)
+> - [信息泄露](web/信息泄露)、
+> - [攻防世界Web入门](web/攻防世界Web入门)
 ---
 
 
@@ -80,6 +81,7 @@
 
 >- [pwn入门](pwn/pwn入门)
 >- [堆入门](pwn/堆入门)
+>- [整数溢出](pwn/整数溢出)
 >- [CTFShow-Pwn(0-110)](pwn/CTFShow-Pwn(0-110))
 >- [CTFShow-Pwn(111-144)](pwn/CTFShow-Pwn(111-144))
 >-  [BUUCTF-pwn](pwn/BUUCTF)
@@ -114,6 +116,7 @@
 
 > - [hvv蓝队](hvv/hvv蓝队)
 > - [hvv红队](hvv/hvv红队)
+> - [edu信息收集](hvv/edu信息收集)
 > - [蜜罐专区](hvv/蜜罐专区)
 
 ---
