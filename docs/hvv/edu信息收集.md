@@ -6,6 +6,8 @@
 
 [edusrc挖掘技巧汇总+信息收集各种姿势 - 先知社区](https://xz.aliyun.com/t/15285?time__1311=GqjxnD0D2DuQGQD%2FirPBKISOYqKxY5i3Px)
 
+[SRC-edu 信息泄露快速刷分上分拓扑思路_src edu-CSDN博客](https://blog.csdn.net/qq_29437513/article/details/124328269)
+
 
 
 ## 域名信息泄露
@@ -97,6 +99,35 @@ https://github.com/obheda12/GitDorker
 7.site:域名 intext:"身份证号码"
 
 8.site:域名 intext:"手机号"
+
+9.site:edu.cn   "无犯罪记录证明" "SFZH" filetype:pdf
+
+10.site:edu.cn   "情况属实,特此证明" "身份证号" filetype:pdf
+
+11.site:edu.cn   "特发此证" "身份证号" filetype:pdf
+
+12.site:edu.cn   "法定代表人" filetype:pdf
+
+13.site:edu.cn  "年月.*" "聘任时间" "SFZH"  filetype:pdf  -学号 -准考证
+
+14.site:edu.cn  "破格*" "SFZH"  filetype:pdf   -学号 -准考证 
+
+15.site:edu.cn  "汉*"  "SFZH" filetype:pdf   -学号 -准考证
+
+16.site:edu.cn   "同意推荐其参评*"  filetype:pdf +SFZH -学号 -准考证 
+
+17.site:edu.cn   "*出版合同"  filetype:pdf +SFZH -学号 -准考证 
+
+18.site:edu.cn   "甲方代表*"   filetype:pdf +SFZH -学号 -准考证
+
+19.site:edu.cn   "甲方代表人"   filetype:pdf +SFZH -学号 -准考证 
+
+20.site:edu.cn "甲方聘请乙方" filetype:pdf +SFZH -学号 -准考证
+
+21.site:edu.cn "甲方的权利和义务" filetype:pdf +SFZH -学号 -准考证 
+
+22.site:edu.cn inurl:"xxx/xxxx" filetype:pdf +SFZH -学号 -准考证
+
 ```
 
 
@@ -156,13 +187,7 @@ https://src.sjtu.edu.cn/    重点关注教育漏洞报告平台
 
 
 
-
-
-
-
 弱口令
-
-
 
 登录验证绕过
 
