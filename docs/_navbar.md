@@ -5,6 +5,7 @@
   - [**安全客**](https://www.anquanke.com/)
   - [**安全419**](http://www.anquan419.com/)
   - [**补天**](https://www.butian.net/)
+  - [**FreeBuf**](https://www.freebuf.com/)
   - [**BUUCTF**](https://buuoj.cn/challenges)
   - [**ctfshow**](https://ctf.show/)
   - [**CTFHub**](https://www.ctfhub.com/#/index)
@@ -33,6 +34,8 @@
   - [**Hunter**](https://hunter.io/)
   - [**Hacker Dork Generator**](https://iamunixtz.github.io/LazyDork/)
   - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
-  
-- 比赛
-  - [**N1CTF**](https://ctf2024.nu1l.com/#/index)
+- 漏洞库
+  - [**国家信息安全漏洞库**](https://www.cnnvd.org.cn/home/childHome)
+  - [**CVE库**](https://www.cve.org/)
+  - [**阿里云漏洞库**](https://avd.aliyun.com/)
+  - [**CVE官网库**](https://github.com/CVEProject/cvelistV5)
