@@ -128,7 +128,6 @@
 
 > - [flask专区](专区/flask专区)
 > - [java](专区/java)
-> - [kali问题大全](专区/kali问题大全)
 > - [PHP语法专区](专区/PHP语法专区)
 > - [python脚本编写能力](专区/python脚本编写能力)
 > - [Python专区](专区/Python专区)
@@ -159,6 +158,7 @@
 > - [网络防火墙](Linux/网络防火墙)
 > - [网络命令](Linux/网络命令)
 > - [CTF-Linux](Linux/CTF-Linux)
+> - [kali问题大全](Linux/kali问题大全)
 
 
 
