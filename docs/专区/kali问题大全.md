@@ -155,6 +155,12 @@ sudo dpkg -i xxxxx.deb
 
 
 
+## python下载临时换源
+
+```
+pip3 install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple 
+```
+
 
 
 
@@ -198,6 +204,56 @@ http://web.archive.org/web/*/
 http://webcache.googleusercontent.com/search?q=cache:xxx.com
 
 一系列的快照网站都可以
+
+
+
+
+
+## theHarvester
+
+遇到：
+
+```
+ Executing “theHarvester -h”
+Traceback (most recent call last):
+  File "/usr/bin/theHarvester", line 7, in <module>
+    from theHarvester import __main__
+  File "/usr/lib/python3/dist-packages/theHarvester/__main__.py", line 4, in <module>
+    from theHarvester.discovery import dnssearch, takeover, shodansearch
+  File "/usr/lib/python3/dist-packages/theHarvester/discovery/takeover.py", line 1, in <module>
+    from theHarvester.lib.core import *
+  File "/usr/lib/python3/dist-packages/theHarvester/lib/core.py", line 6, in <module>
+    import aiohttp
+  File "/usr/lib/python3/dist-packages/aiohttp/__init__.py", line 6, in <module>
+    from .client import (
+  File "/usr/lib/python3/dist-packages/aiohttp/client.py", line 35, in <module>
+    from . import hdrs, http, payload
+  File "/usr/lib/python3/dist-packages/aiohttp/http.py", line 7, in <module>
+    from .http_parser import (
+  File "/usr/lib/python3/dist-packages/aiohttp/http_parser.py", line 15, in <module>
+    from .helpers import NO_EXTENSIONS, BaseTimerContext
+  File "/usr/lib/python3/dist-packages/aiohttp/helpers.py", line 667, in <module>
+    class CeilTimeout(async_timeout.timeout):
+TypeError: function() argument 'code' must be code, not str
+```
+
+
+
+解决方法：
+
+```
+sudo apt-get update
+```
+
+```
+pip3 install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple 
+```
+
+```
+sudo apt-get install --reinstall python3-apt
+```
+
+
 
 
 

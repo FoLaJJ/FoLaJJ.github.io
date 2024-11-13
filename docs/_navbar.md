@@ -28,14 +28,15 @@
   - [**FOFA**]( https://fofa.info/)
   - [**Shodan**](https://www.shodan.io)
   - [**Zoomeye**](https://www.zoomeye.org/)
-  - [**Hunter**](https://hunter.qianxin.com/)
-  - [**360Quake**](https://quake.360.net)
   - [**intelligence**](https://intelx.io/)
   - [**Hunter**](https://hunter.io/)
   - [**Hacker Dork Generator**](https://iamunixtz.github.io/LazyDork/)
+  - [**全能啥都有**](http://exploit-db.com)
+  - [**DNSDumpster.com巨好用**](https://dnsdumpster.com/)
   - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
 - 漏洞库
   - [**国家信息安全漏洞库**](https://www.cnnvd.org.cn/home/childHome)
   - [**CVE库**](https://www.cve.org/)
   - [**阿里云漏洞库**](https://avd.aliyun.com/)
   - [**CVE官网库**](https://github.com/CVEProject/cvelistV5)
+  - [**全能啥都有**](https://www.exploit-db.com/)

@@ -10,21 +10,66 @@
 
 
 
+## 术语
+
+- 足迹分析：系统收集广泛被动信息
+- 枚举：主动收集详细数据
+
+
+
 ## 域名信息泄露
 
-直接上工具：
+合法行为，只是查找数据库而已。
+
+第三方网站直接收集：
 
 - [**FOFA**]( https://fofa.info/)
+
 - [**Shodan**](https://www.shodan.io)
+
 - [**Zoomeye**](https://www.zoomeye.org/)
+
 - [**Hunter**](https://hunter.qianxin.com/)
+
 - [**360Quake**](https://quake.360.net)
 
 - [**intelligence**](https://intelx.io/)
 
+- [**DNSDumpster.com巨好用**](https://dnsdumpster.com/)
+
+  
+
 都是挺好用的，避免使用自己的ip进行第一波攻击
 
 
+
+建议直接用这个就可以了：[**DNSDumpster.com巨好用**](https://dnsdumpster.com/)
+
+
+
+### kali-theHarvervester
+
+Kali-Linux里面可以使用`theHarvester`进行收集，这个工具就是一个集成的，调用这几个存储库进行查询
+
+案例：
+
+```
+theHarvester -d "megacorpone.com" -b dnsdumpster,subdomainfinderc99,subdomaincenter -r
+```
+
+
+
+### DNS记录类型
+
+
+
+- NS：名称服务器记录
+- A：IPv4地址记录
+- AAAA：IPv6地址记录
+- MX：邮件交换记录
+- PTR反向查找记录
+- CNAME：规范名称记录
+- TXT：文本记录
 
 
 
@@ -171,6 +216,20 @@ python ENScan.py -k keyword.txt
 
 
 
+
+
+## 密码泄露
+
+查询数据库
+
+https://dehashed.com/
+
+跟踪密码泄露，显示明文密码
+
+
+
+
+
 ## edusrc
 
 关注一下这个学校的网站是什么公司开发的，然后看这个公司有没有爆出最新的day和漏洞，然后趁它没有更新的时候进行打
@@ -178,6 +237,34 @@ python ENScan.py -k keyword.txt
 
 
 https://src.sjtu.edu.cn/    重点关注教育漏洞报告平台
+
+
+
+
+
+http://zone-h.com/?zh=1
+
+https://haveibeenpwned.com
+
+http://testfire.net/
+
+[全能啥都有](http://exploit-db.com)
+
+
+
+## whois
+
+```
+whois megacorpone.com
+```
+
+主动查域名
+
+- 提供域名的注册信息，用于后续的主动信息收集
+
+- 注册商信息，揭示管理域的服务，可以用于社会工程攻击
+
+
 
 
 
@@ -196,3 +283,92 @@ https://src.sjtu.edu.cn/    重点关注教育漏洞报告平台
 明文存储密码
 
 忘记密码重置密码绕过
+
+
+
+
+
+
+
+# 手动探查
+
+
+
+探查重点：
+
+- 以普通用户身份浏览网站，收集员工姓名、电子邮件、网站支持的技术
+- 社交媒体链接，隐私泄露
+- 网站技术栈
+- 泄露凭证、API密钥
+- 电子邮件列表
+- 子域名链接
+
+
+
+
+
+## DNS枚举
+
+手动解析，解析域名为ip地址
+
+```
+host 域名
+```
+
+
+
+自动化枚举：
+
+```
+dnsrecon -d 域名 -D dns.txt -t brt
+
+/dns.txt  在 /usr/share/dnsenum/dns.txt
+```
+
+DNS爆破取决于字典的质量
+
+
+
+
+
+
+
+## Nmap端口扫描
+
+主机发现：
+
+扫描端口范围
+
+```
+sudo nmap -sn 192.168.50.150-155
+```
+
+
+
+扫描原理，SYN扫描，发送SYN包，如果返回SYN-ACK包，则端口开放。传统上SYN被认为是隐身，因为一些设备不记录半开连接
+
+具体命令去查看nmap区
+
+
+
+
+
+## SpiderFoot自动化扫描
+
+SpiderFoot开源自动化信息收集工具，kali自带，开启之后就是网页图形化界面给你用了，但注意用的还是你的ip
+
+```
+spiderfoot -l 127.0.0.1:8000
+
+然后访问
+http://127.0.0.1:8000
+```
+
+
+
+建议方式不要选All，直接选被动搜集比较好
+
+![image-20241113170722909](../_media/image-20241113170722909.png)
+
+
+
