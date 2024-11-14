@@ -39,6 +39,33 @@ ssh -T git@github.com
 
 
 
+## 代理设置
+
+清除代理
+
+```
+git config --global --unset http.proxy 
+git config --global --unset https.proxy 
+```
+
+
+
+配置代理
+
+```
+git config --global http.proxy http://127.0.0.1:7890
+```
+
+
+
+查看配置
+
+```
+git config --global -l
+```
+
+
+
 ## **安装（ubuntu环境下）**
 
 ```shell
