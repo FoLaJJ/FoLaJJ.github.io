@@ -17,6 +17,7 @@
   - [**HelloCTF** ](https://hello-ctf.com/)
   - [**免费靶场**](https://www.bachang.org/)
   - [**CTF-Wiki**](https://ctf-wiki.org/)
+  - [**私人用OJ**](http://117.27.231.170:10086/)
 - 划水必备
   - [**A站**](https://www.acfun.cn/)
   - [**b站**](https://www.bilibili.com/)

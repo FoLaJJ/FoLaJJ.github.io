@@ -206,6 +206,95 @@ w
 
 
 
+## 创建一个SSH远程连接用户
+
+在root用户下
+
+
+
+1.创建用户jiangxiao
+
+```
+adduser jiangxiao
+```
+
+密码
+
+```
+2GHPKR:.4<iPj1x?iv<_
+```
+
+
+
+2.修改新用户密码
+
+```
+passwd work
+```
+
+
+
+3.添加新的组SSHD_USER
+
+```
+groupadd SSHD_USER
+```
+
+
+
+4.将新用户添加到组内
+
+```
+usermod -G SSHD_USER jiangxiao
+```
+
+
+
+5.修改SSHD配置文件
+
+```
+vim /etc/ssh/sshd_config
+```
+
+
+
+6.在sshd_config文件末尾增加配置
+
+```
+# 允许登录的组: SSHD_USER ec2-user
+AllowGroups SSHD_USER root ec2-user
+ 
+# 仅允许 SSHD_USER 组使用密码登录
+Match Group SSHD_USER
+    PasswordAuthentication yes
+```
+
+
+
+7.重启SSHD服务
+
+```
+systemctl restart sshd
+```
+
+
+
+8.检查SSHD服务状态
+
+```
+systemctl status sshd
+```
+
+
+
+9.测试
+
+```
+$ ssh jiangxiao@000.000.020.123
+```
+
+
+
 ## **文件权限**
 
 <img src="../_media/640.png" alt="图片" style="zoom: 67%;" />
