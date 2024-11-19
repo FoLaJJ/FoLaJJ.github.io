@@ -80,11 +80,13 @@
 
 ### pwn
 
->- [pwn入门](pwn/pwn入门)
->- [堆入门](pwn/堆入门)
+>- [pwntools入门](pwn/pwntools入门)
+>- [pwn栈入门](pwn/pwn栈入门)
+>- [pwn堆入门](pwn/pwn堆入门)
+>- [pwn汇编](pwn/pwn汇编)
+>- [ELF文件](pwn/ELF文件)
 >- [整数溢出](pwn/整数溢出)
 >- [格式化字符串溢出](pwn/格式化字符串溢出)
->- [ELF文件](pwn/ELF文件)
 >- [CTFShow-Pwn(0-110)](pwn/CTFShow-Pwn(0-110))
 >- [CTFShow-Pwn(111-144)](pwn/CTFShow-Pwn(111-144))
 >-  [BUUCTF-pwn](pwn/BUUCTF)
@@ -184,10 +186,11 @@
 
 > - <a href="pdf/mysql-injection.pdf">SQLlabs全解.pdf</a>
 > - <a href="pdf/2024高校运维挑战赛writeup.pdf">2024高校运维挑战赛writeup.pdf</a>
-> - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
-> - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
 > - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
 > - <a href="pdf/《深度学习入门：基于Python的理论与实现》高清中文版.pdf">《深度学习入门：基于Python的理论与实现》高清中文版.pdf</a>
+> - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
+> - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
+> - <a href="pdf/PWN.pptx">PWN.pptx(点了就直接下载了)</a>
 
 
 
