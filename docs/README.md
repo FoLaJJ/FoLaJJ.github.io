@@ -124,6 +124,13 @@
 
 
 
+## 电子取证
+
+> - [电子取证入门](电子取证/电子取证入门)
+> - [Nirsoft工具箱快查](电子取证/Nirsoft工具箱快查)
+
+
+
 ## 专区
 
 > - [flask专区](专区/flask专区)
@@ -177,7 +184,8 @@
 
 > - <a href="pdf/mysql-injection.pdf">SQLlabs全解.pdf</a>
 > - <a href="pdf/2024高校运维挑战赛writeup.pdf">2024高校运维挑战赛writeup.pdf</a>
-> - <a href="pdf/凸优化.pdf">凸优化.pdf</a>
+> - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
+> - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
 > - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
 > - <a href="pdf/《深度学习入门：基于Python的理论与实现》高清中文版.pdf">《深度学习入门：基于Python的理论与实现》高清中文版.pdf</a>
 
