@@ -17,7 +17,7 @@
 
 这对我来说很重要
 
-本人只会`Ctrl+C`
+本人只会 `Ctrl+C` && `Ctrl+V`
 
 [**FoLaJJ**](https://github.com/FoLaJJ)[**开启阅读**](README.md)
 

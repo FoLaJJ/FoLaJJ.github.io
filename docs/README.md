@@ -162,8 +162,13 @@
 > - [主机网络防火墙](Linux/主机网络防火墙)
 > - [网络命令](Linux/网络命令)
 > - [CTF-Linux](Linux/CTF-Linux)
-> - [kali问题大全](Linux/kali问题大全)
 > - [Linux基础命令](Linux/Linux基础命令)
+> - [虚拟机密码](Linux/虚拟机密码)
+> - **kali**：
+>   - [kali问题大全](Linux/kali/kali问题大全)
+>   - [hydra](Linux/kali/hydra)
+>   - [netdiscover](Linux/kali/netdiscover)
+>   - [MSF](Linux/kali/Metasploit_Framework)
 
 
 
@@ -204,11 +209,13 @@
 
 
 
-## 信息安全工程作业
+## 作业
 
-> - [访问控制](信息安全工程作业/访问控制)
-> - [挖矿算法模拟](信息安全工程作业/挖矿算法模拟)
-> - [模拟PGP协议收发数据](信息安全工程作业/模拟PGP协议收发数据)
+> - [访问控制](作业/访问控制)
+> - [挖矿算法模拟](作业/挖矿算法模拟)
+> - [模拟PGP协议收发数据](作业/模拟PGP协议收发数据)
+> - [大学生心理健康SPOC](作业/大学生心理健康SPOC)
+> - [学术道德规范SPOC](作业/学术道德规范SPOC)
 
 
 
