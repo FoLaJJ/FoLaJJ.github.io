@@ -2,9 +2,7 @@
 
 
 
-
-
-
+[TOC]
 
 ## 0. 实验描述
 
@@ -36,6 +34,10 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes
 ```
+
+
+
+
 
 
 
@@ -288,6 +290,8 @@ main()
 
 ### 2.9 运行结果
 
+生成发送者的公钥、接收者的私钥、还有密文：
+
 ```
 sender_public_key: b'-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3BcuNs2w8tbk6WppWOgV\n53r3erFWBlANT7wseHHLxMtAR6M+XgQMHntQ6wYjyRqkm1j/iL47VSorNogiTASH\n35IpccYuJ9ag5i/LOc97P480OJ1Jf3Waa2XrxkU5nqIFSj+IWhoLNitIiAYgQSIa\nYIiizjeKQorg9fyQLgJTjHIYgUTCeAYt3WgBAft+trG+zf3nsN/pUeDLf7dWyw9E\nIRrD33MBbfOwbHybUCp3Q+pS9GjIZJA95W0gtwKMVLcvzsF+QzkQpPWS+915m7sq\nD8ddcKapp9jeDlrtC74IeUFUT6PpFsPd2RXpJuXhKAFwA7UtTVpBSYBqjNILEO0u\nzQIDAQAB\n-----END PUBLIC KEY-----'
 
@@ -383,6 +387,8 @@ def pgp_decrypt(encrypted_data, receiver_private_key, sender_public_key):
 
 ### 3.5 解密完整脚本
 
+利用接收者的私钥和发送者的公钥进行解密：
+
 ```python
 import base64
 import hashlib
@@ -453,6 +459,14 @@ main()
 ```
 
 
+
+
+
+## 4.实验总结
+
+- 对于实现层面而言，难度并不大，只需要一步步分解，一步步实现，然后将每一步连起来就可以得到相应的加密和解密模块。
+- 学会了Python中的加密库的使用，尤其是RSA和IDEA等，PGP运用了多种加密手段进行协同。
+- 可以从框图流程中得知：PGP 通过加密和数字签名这两个关键技术，有效地防止了中间人攻击和数据篡改，并且网上资料显示，在电子通信中，使用PGP协议，即使在传输过程中杯攻击者截获，但是攻击者没有私钥，也无法解读邮件内容，然后也无法伪造发送方的数字签名。
 
 <br>
 

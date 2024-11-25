@@ -38,11 +38,19 @@ LEAVE
 
 就是将ebp和esp拉到相同的位置
 
-
-
 - MOV esp ebp
 - pop ebp
 - 此时ebp在若是恶意地址，那就实现栈迁移
+
+
+
+
+
+本质：rbp/rsp 迁移到其他地方的一种手段
+
+使用指令：leave，pop rbpv
+
+实际做法就是在缓冲区写危险函数，然后最后控制范围函数到`leave ret`
 
 
 
