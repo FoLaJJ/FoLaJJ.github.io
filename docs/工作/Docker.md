@@ -306,3 +306,55 @@ docker compose down --volumes
 
 
 ## Docker和Kubernetes
+
+
+
+
+
+
+
+
+
+
+
+## 云服务器搭建Docker-Docsify
+
+
+
+官网做法：
+
+
+
+可能构筑的时候npm下载失败，此时需要去修改Dockerfile中的源了！
+
+Dockerfile：
+
+```
+  FROM node:latest
+  LABEL description="A demo Dockerfile for build Docsify."
+  WORKDIR /docs
+  RUN npm install -g docsify-cli@latest
+  EXPOSE 3000/tcp
+  ENTRYPOINT docsify serve .
+```
+
+
+
+
+
+Build docker image：
+
+```
+docker build -f Dockerfile -t docsify/demo .
+```
+
+
+
+Run docker image：
+
+```
+docker run -itp 80:3000 --name=docsify -v $(pwd):/docs docsify/demo
+# -p 冒号前面的 3000 可以改成宿主机需要暴露的端口号 
+# -v 冒号前面的 /home/docsify 可以改成宿主机文件存放地址
+```
+

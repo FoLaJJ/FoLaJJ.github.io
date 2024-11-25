@@ -301,3 +301,44 @@ git pull <远程主机名> <远程分支名>:<本地分支名>
 汉化版的话就是要去下载一个文件，是`zh_cn.msg`，放在下面文件目录下，没有msgs的话就自己创建一个吧
 
 `D:\gitbash\gitbash\Git\mingw64\share\git-gui\lib\msgs`
+
+
+
+
+
+
+
+
+
+## 上传出问题
+
+一般就是开梯子导致的：
+
+```
+完美解决 fatal: unable to access ‘https://github.com/.../.git‘: Could not resolve host: github.com
+```
+
+
+
+
+
+直接在gitbash中：
+
+```
+git config --global --unset http.proxy 
+git config --global --unset https.proxy
+```
+
+
+
+
+
+然后cmd执行：
+
+```
+ipconfig/flushdns
+```
+
+
+
+重新push即可。

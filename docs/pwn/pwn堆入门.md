@@ -6,7 +6,33 @@
 
 [「Pwn教学」有趣的Pwn博主的Unlink堆攻击教学_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1kP4y1k7RD/?spm_id_from=333.337.search-card.all.click&vd_source=f264368eefdba6c9e52d63931d176453)
 
+https://github.com/shellphish/how2heap
+
+https://www.slideshare.net/AngelBoy1?utm_campaign=profiletracking&utm_medium=sssite&utm_source=ssslideview
+
+https://www.yuque.com/hxfqg9/bin
+
 入门还是以glibc为主
+
+
+
+
+
+## 堆管理器
+
+- dlmalloc - General purpose allocator
+- ptmalloc2 - glibc 
+- jemalloc - FreeBSD and Firefox
+- tcmalloc - Google
+- libumem - Solaris
+
+
+
+`GCC : GNU C Compiler`
+
+CTF主要研究`glibc`
+
+
 
 
 
@@ -28,6 +54,79 @@
 
 CTF比赛中有关堆的PWN题大多是基于Linux的ptmalloc2-glibc堆块管理机制的。
 
+
+
+<img src="../_media/image-20241124174434752.png" alt="image-20241124174434752" style="zoom: 67%;" />
+
+
+
+## 申请内存的系统调用
+
+- brk
+- mmap
+
+
+
+![image-20241124174506394](../_media/image-20241124174506394.png)
+
+
+
+内存分配去，可以理解为堆管理器所持有的内存池
+
+
+
+### arena
+
+```
+操作系统 --> 堆管理器 --> 用户
+物理内存 --> arena --> 可用内存
+```
+
+堆管理器与用户的内存交易发生于`arena` 中
+
+可以理解为堆管理器向操作系统批发来的有冗余的内存库存
+
+
+
+### chunk
+
+用户申请内存的单位，也是堆管理器管理内存的基本单位
+
+malloc()返回的指针指向一个chunk的数据区域
+
+
+
+chunk的使用情况代表了分类
+
+
+
+```c
+struct malloc_chunk {
+	INTERNAL_SIZE_T      prev_size;  /* Size of previous chunk (if free).  */
+	INTERNAL_SIZE_T      size;       /* Size in bytes, including overhead. */
+	
+	struct malloc_chunk* fd;         /* double links -- used only if free. */
+	struct malloc_chunk* bk;
+	
+	/* Only used for large blocks: pointer to next larger size.  */
+	struct malloc_chunk* fd_nextsize; /* double links -- used only if free. */
+	struct malloc_chunk* bk_nextsize;
+};
+
+```
+
+
+
+
+
+## 线程堆
+
+![image-20241125153633758](../_media/image-20241125153633758.png)
+
+
+
+
+
 ## glibc里的堆操作
 
 
@@ -36,7 +135,7 @@ CTF比赛中有关堆的PWN题大多是基于Linux的ptmalloc2-glibc堆块管理
 
 
 
-malloc
+`malloc`
 
 **函数原型：**
 
