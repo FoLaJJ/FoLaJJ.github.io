@@ -38,6 +38,7 @@
   - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
 - 工具链
   - [**系统调用号查询**](https://syscall.sh/)
+  - [**libc版本查询**](https://libc.rip/)
   - [**ShellCode大全**](http://shell-storm.org/shellcode/index.html)
   - [**随波逐流**](http://1o1o.xyz/)
   - [**Hacker Dork Generator**](https://iamunixtz.github.io/LazyDork/)

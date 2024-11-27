@@ -164,10 +164,11 @@ p32(0xfaceb00c) => '\x0c\xb0\xce\xfa'
 u32(str) 
 u32('\x0c\xb0\xce\xfa') => 0xfaceb00c
 **************************************************
-
 ```
 
 
+
+直接flat代替即可
 
 
 
@@ -175,7 +176,6 @@ u32('\x0c\xb0\xce\xfa') => 0xfaceb00c
 
 ```
 io=process("./pwn")
-
 ```
 
 
@@ -186,6 +186,19 @@ io=process("./pwn")
 p.interactive()
 接受信息并且在终端操作，程序拿到shell
 ```
+
+
+
+elf产生对象
+
+```
+elf.symbols['a_function']  找到 a_function 的地址
+elf.got['a_function']  找到 a_function的 got
+elf.plt['a_function']  找到 a_function 的 plt
+elf.next(e.search("some_characters"))  找到包含 some_characters 可以是字符串，汇编代码或者某个数值的地址
+```
+
+
 
 
 
@@ -284,12 +297,6 @@ p64(0x00400596).decode('unicode_escape')
 
 
 
-
-
-
-# 重点基础知识
-
-1. 
 
 
 

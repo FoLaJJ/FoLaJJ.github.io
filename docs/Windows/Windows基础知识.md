@@ -222,3 +222,223 @@ C:\Usersllearner> reg /?
 
 
 
+## PowerShell基础
+
+
+
+`PowerShell`面向对象
+
+基于`.NET`框架，系统集成版本成为`PowerShell Classic`，开源跨平台版本成为`PowerShell Core`
+
+`PowerShell `运行系统命令，运行的返回结果都是`.NET` 对象
+
+cmd运行结果返回字符串
+
+
+
+```
+update-help
+更新本机帮助文档
+
+
+Get-help
+查看帮助信息
+
+Get-help ls
+
+-Examples
+-Detailed
+查看更加详细的帮助
+```
+
+
+
+
+
+```
+Get-Alias
+获取命令别名
+```
+
+
+
+
+
+### 表达式
+
+```
+$ 变量名
+= 赋值
+
+$abc = 100
+```
+
+
+
+变量名字符限制：中横线-  还有空格，禁止出现在变量名中
+
+消除变量赋值
+
+```
+clear-variable abc
+```
+
+
+
+数学计算都是
+
+```
++
+++
+-
+--
+%
+/
+```
+
+
+
+调用就是
+
+```
+$num1 + $num2
+```
+
+
+
+字符串
+
+```
+$mystring = "ABSAIDO1"
+
+$mystring.gettype()
+```
+
+
+
+强制类型转换
+
+```
+$mystring = "123"
+$justint = [int]$mystring
+$justint = [int64]$mystring
+```
+
+
+
+属性方法写入
+
+```
+$mystring="chinaaaa"
+$mystring.length			# 打印长度
+$mystring.contains("ina")   # 查询是否包含，返回布尔值
+```
+
+
+
+查询对象的属性和方法
+
+```
+get-member -inputObject $mystring
+```
+
+
+
+
+
+
+
+比较运算
+
+还有很多
+
+![image-20241126162628719](../_media/image-20241126162628719.png)
+
+
+
+```
+-eq
+判断是否等于
+
+$num1=1
+$num1 -eq 1    # 返回布尔值
+```
+
+
+
+
+
+
+
+### 语句
+
+循环
+
+```
+for ($myvar=0;$myvar -lt 5;$myvar++)
+{
+	Write-output $myvar;
+}
+```
+
+
+
+```
+foreach($myLetter in $mystring)
+{
+	$myLetter
+}
+```
+
+
+
+```
+while($count -lt 5)
+{
+
+}
+```
+
+
+
+while(1)循环
+
+```
+while($true)
+{
+	
+}
+```
+
+
+
+`break`和`continue`都是可以正常用的
+
+
+
+函数也一样
+
+```
+function xxxxxxx{
+
+}
+```
+
+
+
+
+
+### 执行
+
+
+
+可以写微模块文件，后缀为`.ps1`
+
+
+
+将函数写成微模块文件，下次调用
+
+```
+import-module .\xxxx.ps1
+```
+

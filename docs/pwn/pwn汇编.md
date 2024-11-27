@@ -69,6 +69,17 @@ LEAVE
 
 
 
+LEAVE
+
+```
+返回上级函数时，恢复原本栈空间
+相当于
+MOV esp,ebp
+pop ebp
+```
+
+
+
 
 
 RET
@@ -149,3 +160,18 @@ h->8(%esp) g->(%esp)
 call H
 
 也就是说传入参数要去寻找对应的寄存器，多少个参数就找多少个寄存器
+
+
+
+
+
+## 编译选项
+
+```
+gcc -m32 -fno-stack-protector -z execstack -o level1 level1.c
+# 32位编译   关闭站保护   关闭DEP
+
+
+echo 0 > /proc/sys/kernel/randomize_va_space  # 关闭ASLR
+```
+
