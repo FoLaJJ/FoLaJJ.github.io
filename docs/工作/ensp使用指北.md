@@ -736,10 +736,6 @@ LSW2
 
 
 
-### 静态路由通信
-
-
-
 
 
 ### 链路聚合
@@ -930,6 +926,101 @@ AR1
 
 
 ![image-20241108171253862](../_media/image-20241108171253862.png)
+
+
+
+
+
+### 考核
+
+四台主机，三个子网，两台三层交换机，一个路由配置
+
+#### 网络设计：
+
+- **PC1**：192.168.1.1/24，网关：192.168.1.254
+- **PC2**：192.168.3.1/24，网关：192.168.3.254
+- **PC3**：192.168.2.1/24，网关：192.168.2.254
+- **PC4**：192.168.3.2/24，网关：192.168.3.254
+- **VLAN设计**：
+  - VLAN 10：PC2 和 PC4
+  - VLAN 20：PC1
+  - VLAN 30：PC3
+
+​	现在有ensp仿真实验，有两个三层交换机和四台主机，要求如下： PC1的ip为192.168.1.1/24，网关为192.168.1.254，vlan20； PC2的ip为192.168.3.1/24，网关为192.168.3.254，vlan10； PC3的ip为192.168.2.1/24，网关为192.168.2.254，vlan30； PC4的ip为192.168.3.2/24，网关为192.168.3.254，vlan10； 现在有两台三层交换机。其中PC1连在LSW1的g0/0/1，PC2连在LSW1的g0/0/2，PC3连在LSW2的g0/0/1，PC4连在LSW2的g0/0/2，其中LSW1的g0/0/3和LSW2的g0/0/3相连，并且LSW1的g0/0/3的ip要配置为10.0.0.1/24，LSW2的g0/0/3的ip要配置为10.0.0.2/24
+
+​	现在要求如下： PC1和PC3要通过静态路由的方式进行联通，PC2和PC4要通过子网的方式进行联通，除此之外其他任意两台主机不能相互ping通，如PC1和PC2无法ping通，PC1和PC4无法ping通，PC2和PC3无法ping通，PC3和PC4无法ping通。请给出两台LSW的配置。注意配置环境为ensp华为模拟器
+
+### 总程序
+
+接线图：
+
+![image-20241128210502866](../_media/image-20241128210502866.png)
+
+LSW1:
+
+
+
+```
+sys
+sys LSW1
+un in en
+vlan batch 10 20 30 40
+
+int vlan20
+ip address 192.168.1.254 24
+
+int vlan40
+ip address  10.0.0.1 24
+
+int g0/0/1
+port link-type access
+port default vlan 20
+
+int g0/0/2
+port link-type access
+port default vlan 10
+
+int g0/0/3
+port link-type trunk
+port trunk allow-pass vlan all
+
+q
+ip route-static 192.168.2.0 24 10.0.0.2
+```
+
+
+
+
+
+LSW2:
+
+```
+sys
+sys LSW2
+un in en
+vlan batch 10 20 30 40
+
+int vlan30
+ip address 192.168.2.254 24
+
+int vlan40
+ip address 10.0.0.2 24
+
+int g0/0/1
+port link-type access
+port default vlan 30
+
+int g0/0/2
+port link-type access
+port default vlan 10
+
+int g0/0/3
+port link-type trunk
+port trunk allow-pass vlan all
+
+q
+ip route-static 192.168.1.0 24 10.0.0.1
+```
 
 
 
