@@ -15,6 +15,7 @@
   - [**ctfshow**](https://ctf.show/)
   - [**CTFHub**](https://www.ctfhub.com/#/index)
   - [**BugKu**](https://ctf.bugku.com/)
+  - [**电子数据取证练习平台**](https://forensics.didctf.com/)
   - [**攻防世界**](https://adworld.xctf.org.cn/home/index)
   - [**攻防战争**](https://ctfwar.org.cn/)
   - [**HelloCTF** ](https://hello-ctf.com/)

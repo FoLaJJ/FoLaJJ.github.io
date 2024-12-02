@@ -53,35 +53,43 @@
 ---
 
 
----
-## ctf学习路线
----
+## CTF专项
 
----
-
-### CTF-WP
-
-
-### 渗透
-
-> - [信息泄露](web/信息泄露)
-> - [File_include文件包含](web/File_include文件包含)
-> - [PHP反序列化](web/PHP反序列化)
-> - [SQL注入](web/SQL注入)
-> - [SSRF服务器端请求伪造](web/SSRF服务器端请求伪造)
-> - [SSTI服务器端模板注入](web/SSTI服务器端模板注入)
-> - [XSS跨站脚本攻击](web/XSS跨站脚本攻击)
-> - [XXE外部实体注入](web/XXE外部实体注入)
-> - [文件上传](web/文件上传)
-> - [信息泄露](web/信息泄露)、
-> - [攻防世界Web入门](web/攻防世界Web入门)
+> - 渗透
+>   - [信息泄露](web/信息泄露)
+>   - [File_include文件包含](web/File_include文件包含)
+>   - [PHP反序列化](web/PHP反序列化)
+>   - [SQL注入](web/SQL注入)
+>   - [SSRF服务器端请求伪造](web/SSRF服务器端请求伪造)
+>   - [SSTI服务器端模板注入](web/SSTI服务器端模板注入)
+>   - [XSS跨站脚本攻击](web/XSS跨站脚本攻击)
+>   - [XXE外部实体注入](web/XXE外部实体注入)
+>   - [文件上传](web/文件上传)
+>   - [信息泄露](web/信息泄露)
+>   - [攻防世界Web入门](web/攻防世界Web入门)
+> - Crypto
+>   - [Crypto](Crypto/Crypto)
+> - Reverse
+>   - [reverse](reverse/reverse)
+> - misc
+>   - [misc](misc/misc)
+>   - [流量分析](misc/流量分析)
+> - 电子取证
+>   - [电子取证入门](电子取证/电子取证入门)
+>   - [Nirsoft工具箱快查](电子取证/Nirsoft工具箱快查)
+> - IoT安全
+>   - [I2C](物联网/I2C)
+>   - [MQTT](物联网/MQTT)
+>   - [SPI](物联网/SPI)
+>   - [UART](物联网/UART)
+>   - [Wi-Fi安全](物联网/Wi-Fi安全)
 ---
 
 
 
 ==因为知识浅薄，pwn区的有些地方出现严重的原理理解层面上的错误，后续会慢慢修改，望周知。==
 
-### pwn
+## PWN专区
 
 >- [pwntools入门](pwn/pwntools入门)
 >- [pwn栈入门](pwn/pwn栈入门)
@@ -92,68 +100,23 @@
 >- [格式化字符串溢出](pwn/格式化字符串溢出)
 >- [CTFShow-Pwn(0-110)](pwn/CTFShow-Pwn(0-110))
 >- [CTFShow-Pwn(111-144)](pwn/CTFShow-Pwn(111-144))
->-  [BUUCTF-pwn](pwn/BUUCTF)
->-  [快查手册](pwn/快查手册)
+>- [BUUCTF-pwn](pwn/BUUCTF)
+>- [快查手册](pwn/快查手册)
+> 
 
 
 
-### Crypto
+## hvv专区
 
-> - [Crypto](Crypto/Crypto)
-
-
-
-### reverse
-
-> - [reverse](reverse/reverse)
-
-
-
-### misc
-
-> - [misc](misc/misc)
-> - [流量分析](misc/流量分析)
-
-
-
-
-### hvv
-
-> - [hvv蓝队](hvv/hvv蓝队)
-> - [hvv红队](hvv/hvv红队)
-> - [edu信息收集](hvv/edu信息收集)
-> - [蜜罐专区](hvv/蜜罐专区)
-> - [社会工程学与钓鱼](hvv/社会工程学与钓鱼)
-
----
-
-
-
-## 电子取证
-
-> - [电子取证入门](电子取证/电子取证入门)
-> - [Nirsoft工具箱快查](电子取证/Nirsoft工具箱快查)
-
-
-
-## 专区
-
-> - [flask专区](专区/flask专区)
-> - [java](专区/java)
-> - [PHP语法专区](专区/PHP语法专区)
-> - [python脚本编写能力](专区/python脚本编写能力)
-> - [Python专区](专区/Python专区)
-> - [ThinkPHP专区](专区/ThinkPHP专区)
-> - [网络协议](专区/网络协议)
-> - [正则表达式](专区/正则表达式)
-
-
-
-
+>- [hvv蓝队](hvv/hvv蓝队)
+>- [hvv红队](hvv/hvv红队)
+>- [edu信息收集](hvv/edu信息收集)
+>- [蜜罐专区](hvv/蜜罐专区)
+>- [社会工程学与钓鱼](hvv/社会工程学与钓鱼)
 
 ## Windows
 
-> - [Windows-Clash](Windows/Windows-Clash)
+> - [Windows-Clash漏洞](Windows/Windows-Clash)
 > - [Windows基础知识](Windows/Windows基础知识)
 > - [记一次Edge恶意弹窗事件](Windows/记一次Edge恶意弹窗事件)
 
@@ -190,53 +153,66 @@
 
 
 
+## 尚未分类专区
 
-
-## PDF
-
-> - <a href="pdf/mysql-injection.pdf">SQLlabs全解.pdf</a>
-> - <a href="pdf/2024高校运维挑战赛writeup.pdf">2024高校运维挑战赛writeup.pdf</a>
-> - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
-> - <a href="pdf/《深度学习入门：基于Python的理论与实现》高清中文版.pdf">《深度学习入门：基于Python的理论与实现》高清中文版.pdf</a>
-> - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
-> - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
-> - <a href="pdf/PWN.pptx">PWN.pptx(点了就直接下载了)</a>
-
-
-
-## 物联网
-
-> - [I2C](物联网/I2C)
-> - [MQTT](物联网/MQTT)
-> - [SPI](物联网/SPI)
-> - [UART](物联网/UART)
-> - [Wi-Fi安全](物联网/Wi-Fi安全)
-
-
-
-## 作业
-
-> - [访问控制](作业/访问控制)
-> - [挖矿算法模拟](作业/挖矿算法模拟)
-> - [模拟PGP协议收发数据](作业/模拟PGP协议收发数据)
-> - [大学生心理健康SPOC](作业/大学生心理健康SPOC)
-> - [学术道德规范SPOC](作业/学术道德规范SPOC)
+> - [flask专区](专区/flask专区)
+> - [java](专区/java)
+> - [PHP语法专区](专区/PHP语法专区)
+> - [python脚本编写能力](专区/python脚本编写能力)
+> - [Python专区](专区/Python专区)
+> - [ThinkPHP专区](专区/ThinkPHP专区)
+> - [网络协议](专区/网络协议)
+> - [正则表达式](专区/正则表达式)
 
 
 
 
 
-# 秘密
+## 课程学习
+
+> - 信息安全工程
+>   - [访问控制](作业/访问控制)
+>   - [挖矿算法模拟](作业/挖矿算法模拟)
+>   - [模拟PGP协议收发数据](作业/模拟PGP协议收发数据)
+>
+> - MOOC
+>   - [大学生心理健康SPOC](作业/大学生心理健康SPOC)
+>   - [学术道德规范SPOC](作业/学术道德规范SPOC)
+
+
+
+
+
+## 文件下载
+
+> - WP
+>   - <a href="pdf/mysql-injection.pdf">SQLlabs全解.pdf</a>
+>   - <a href="pdf/2024高校运维挑战赛writeup.pdf">2024高校运维挑战赛writeup.pdf</a>
+> - 系统学习
+>   - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
+>   - <a href="pdf/《深度学习入门：基于Python的理论与实现》高清中文版.pdf">《深度学习入门：基于Python的理论与实现》高清中文版.pdf</a>
+> - 课程
+>   - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
+>   - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
+>   - <a href="pdf/数字信号处理课后习题答案.pdf">数字信号处理课后习题答案.pdf</a>
+> - 网安
+>   - <a href="pdf/PWN.pptx">PWN.pptx(点了就直接下载了)</a>
+
+
+
+# 旅游攻略
+
+> - [chengdu](404)
+> - [西安](游记/西安)
+> - [云南](游记/云南)
+
+
+
+
+
+# 杂项中的杂项
 
 > - <a href="ming/happy.html">快速祝她/他生日快乐</a>
-
-
-
-# 游记
-
-> - [yunnan](游记/yunnan)
-> - [xian](游记/xian)
-
 
 
 
