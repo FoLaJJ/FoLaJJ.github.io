@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你小子别想偷看！</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background 1s ease; /* 添加渐变过渡效果 */
+            background: linear-gradient(to right, #FF6F61, #6A82FB); /* 默认渐变背景 */
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #protected-content {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #protected-content h2 {
+            color: #4CAF50;
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        /* Animation for spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>密码是什么玩意？</h1>
+        <input type="password" id="password" placeholder="Enter password">
+        <button id="unlock-button" onclick="checkPassword()">解锁！</button>
+
+        <div class="loading" id="loading-spinner"></div>
+
+        <div id="protected-content">
+            <h2>This is the protected content.</h2>
+            <p>Only visible after entering the correct password.</p>
+        </div>
+    </div>
+
+    <script>
+    let alertShown = false;  // 标记是否已经弹出过错误提示
+
+    function checkPassword() {
+        const password = document.getElementById("password").value;
+        const unlockButton = document.getElementById("unlock-button");
+        const loadingSpinner = document.getElementById("loading-spinner");
+        
+        // 禁用按钮并显示加载动画
+        unlockButton.disabled = true;
+        loadingSpinner.style.display = 'block';
+
+        // 设置超时为5秒（5000毫秒）
+        const timeoutDuration = 5000; 
+        const timeoutMessage = "网络出错，请稍后再试。";
+        
+        const timeout = setTimeout(() => {
+            if (!alertShown) {
+                alert(timeoutMessage);
+                alertShown = true; // 防止重复弹出错误提示
+            }
+            // 请求超时后恢复按钮和隐藏加载动画
+            unlockButton.disabled = false;
+            loadingSpinner.style.display = 'none';
+        }, timeoutDuration);
+
+        fetch('http://117.27.231.170：45678/unlock', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            clearTimeout(timeout); // 请求成功后取消超时提示
+            unlockButton.disabled = false; // 恢复按钮
+            loadingSpinner.style.display = 'none'; // 隐藏加载动画
+            if (data.content) {
+                document.getElementById("protected-content").innerHTML = data.content;
+                document.getElementById("protected-content").style.display = "block";
+            } else {
+                alert("求求你，别再爆破了！");
+            }
+        })
+        .catch(error => {
+            clearTimeout(timeout); // 请求失败后取消超时提示
+            console.error('Error:', error);
+            if (!alertShown) {
+                alert("网络出错，请稍后再试。");
+                alertShown = true; // 确保只弹出一次错误提示
+            }
+            unlockButton.disabled = false; // 恢复按钮
+            loadingSpinner.style.display = 'none'; // 隐藏加载动画
+        });
+    }
+    </script>
+
+</body>
+</html>

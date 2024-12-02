@@ -76,6 +76,7 @@
 >   - [流量分析](misc/流量分析)
 > - 电子取证
 >   - [电子取证入门](电子取证/电子取证入门)
+>   - [DIDCTF](电子取证/DIDCTF)
 >   - [Nirsoft工具箱快查](电子取证/Nirsoft工具箱快查)
 > - IoT安全
 >   - [I2C](物联网/I2C)
@@ -113,6 +114,8 @@
 >- [edu信息收集](hvv/edu信息收集)
 >- [蜜罐专区](hvv/蜜罐专区)
 >- [社会工程学与钓鱼](hvv/社会工程学与钓鱼)
+
+
 
 ## Windows
 
@@ -200,7 +203,7 @@
 
 
 
-# 旅游攻略
+# 游记
 
 > - [chengdu](404)
 > - [西安](游记/西安)
@@ -212,7 +215,11 @@
 
 # 杂项中的杂项
 
+> - <a href="ming/computer-if.html">“造”了一台电脑实例动画</a>
 > - <a href="ming/happy.html">快速祝她/他生日快乐</a>
+> - <a href="ming/saolei.html">简单扫雷网页版</a>
+> - <a href="ming/sloarsystem.html">太阳系星辰动画</a>
+> - <a href="ming/protected.html">保护页面</a>
 
 
 
@@ -224,7 +231,11 @@
 
 > [网站更新日志](/更新日志)
 
+<br>
+
 网站内容会持续保持更新，欢迎收藏品鉴！
+
+`nohup python app.py &`
 
 
 --------

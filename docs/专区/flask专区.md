@@ -516,3 +516,17 @@ RSA非对称加密算法用两个密钥
 
 
 
+
+
+
+
+
+
+## flaskvenv
+
+```
+python3 -m venv myenv
+source myenv/bin/activate
+pip install flask
+```
+
