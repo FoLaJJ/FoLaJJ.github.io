@@ -13,6 +13,10 @@
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css"> -->
+
+  <!-- 暗黑模式，和字数统计冲突 -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/> -->
+
   <style>
     nav a {
       display: inline-block; /* a 标签变为块级元素 */
@@ -33,8 +37,8 @@
   window.$docsify = {
 
     // 左上角名字，可以使用css元素
-    name: "<span style='font-weight:bold;color:#00AA00;'>FoLaJJ</span>",
-
+    // name: "<span style='font-weight:bold;color:#00AA00;'>FoLaJJ</span>",
+    name: "<span style='font-weight:bold;color:#42b983;'>FoLaJJ</span>",
 
     // 右上角小链接
     repo: 'https://github.com/FoLaJJ',
@@ -53,8 +57,11 @@
     loadNavbar: true,
     // loadNavbar: '_navbar.md',
 
-    loadFooter: true,
+    // 小屏设备下合并导航栏到侧边栏
+    // mergeNavbar: true,
+
     // loadFooter: '_footer.md',
+    loadFooter: true, 
 
     // 开启封面页，设置不一闪而过，就是能够固定在封面页
     coverpage: true,
@@ -69,11 +76,47 @@
 
 
     // 字数统计
-    // count:{ 
-    //   countable:true, 
-    //   fontsize:'0.9em', 
-    //   color:'rgb(90,90,90)', 
-    //   language:'chinese' 
+    count:{ 
+      countable:true, 
+      fontsize:'0.9em', 
+      color:'rgb(90,90,90)', 
+      language:'English'  // 可以选择chinese 
+    },
+
+
+    // 分享插件
+    share: {
+      reddit: true,
+      linkedin: true,
+      facebook: true,
+      twitter: true,
+      whatsapp: true,
+      telegram: true,
+      options: {
+        color: '#42b983'
+      },
+    },
+
+    // 公式渲染
+    latex: {
+      inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
+      displayMath  : [['$$', '$$']],               // default
+    },
+
+
+    //暗黑模式,和字数统计冲突
+    // themeColor: "#42b983",
+    // darkMode: {
+    //   dark: {
+    //     background: "#1c2022",
+    //     toggleBtnBg: "#34495e",
+    //     textColor: "#b4b4b4"
+    //   },
+    //   light: {
+    //     background: "white",
+    //     toggleBtnBg: "var(--theme-color)",
+    //     textColor: "var(--theme-color)"
+    //   }
     // },
 
     //    YYYY-年 yy-短年 MM-月 DD-日 HH-时 mm-分 ss-秒 fff-微秒
@@ -120,6 +163,10 @@
 
 </script>
 
+
+<!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
  <!-- 评论 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script> -->
 
@@ -142,7 +189,8 @@
 
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script> -->
 
-<!-- 字数统计 -->
+<!-- 字数统计选一个启用，显示在右上角 -->
+ <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
 <!-- <script src="//unpkg.com/docsify-count/dist/countable.js"></script> -->
 
 <!-- 外链脚本 -->
@@ -151,8 +199,10 @@
 <!-- 页脚 -->
 <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
 
+<!-- share分享插件 -->
+<script src="//unpkg.com/docsify-share/build/index.min.js"></script>
 
-<!-- 复制到剪贴板 -->
+<!-- 代码复制到剪贴板 -->
 <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 
 <!-- 嵌入pdf文件，这里渲染可能会变慢，所以直接用a标签进行写了 -->
@@ -169,10 +219,13 @@
 <!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script> -->
 <!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script> -->
 
+<!-- 暗黑模式，和字数统计冲突 -->
+<!-- <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script> -->
 
-  <!-- Docsify v4 -->
-<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 
+<!-- 公式渲染 -->
+<script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
 
 </body>
 <!-- 恭喜你找到了一个flag: flag{0aaa0804-9b30-11ef-92aa-ff9a7e0e02df} -->
