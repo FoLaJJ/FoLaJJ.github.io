@@ -182,11 +182,13 @@
 >   - [挖矿算法模拟](作业/挖矿算法模拟)
 >   - [模拟PGP协议收发数据](作业/模拟PGP协议收发数据)
 >   - [生物特征识别(人脸识别)](作业/生物特征识别)
+>   - [大作业（待更新）](作业/大作业)
 > - MOOC
 >   - [大学生心理健康SPOC](作业/大学生心理健康SPOC)
 >   - [学术道德规范SPOC](作业/学术道德规范SPOC)
 > - 期末复习
->   - [矩阵论期末复习](作业/矩阵论期末复习)
+>   - [凸优化期末复习友情链接](https://www.cnblogs.com/nickchen121/p/14900036.html)
+>   - [凸优化总体知识点快过](https://www.cnblogs.com/yangxiangdong/category/2264817.html)
 >   - <a href="ming/test.html">测试</a>
 
 
@@ -212,9 +214,9 @@
 
 # 游记
 
-> - [chengdu](404)
-> - [西安](游记/西安)
-> - [云南](游记/云南)
+> - [chengdu（未更新）](404)
+> - [西安(Ⅰ)](游记/西安)
+> - [云南(Ⅰ)](游记/云南)
 
 
 
@@ -224,9 +226,8 @@
 
 > - <a href="ming/computer-if.html">“造”了一台电脑实例动画</a>
 > - <a href="ming/happy.html">快速祝她/他生日快乐</a>
-> - <a href="ming/saolei.html">简单扫雷网页版</a>
-> - <a href="ming/sloarsystem.html">太阳系星辰动画</a>
-> - <a href="ming/protected.html">保护页面</a>
+> - <a href="ming/MerryChristmas.html">Merry Christmas！</a>
+> - <a href="ming/protected.html">加密页面请输入密码</a>
 
 
 
