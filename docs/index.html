@@ -9,10 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
   <!-- 下面四个选择主题，但是还是感觉vue的好看一点 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"> -->
+  <link rel="stylesheet" href="plugin/css/themes-vue.css">
 
   <!-- 暗黑模式，和字数统计冲突 -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/> -->
@@ -28,6 +26,10 @@
       display: block;        /* strong 标签变为块级元素 */
       text-align: center;    /* strong 标签内文本居中 */
     }
+    .markmap {
+    width: 100%;
+    height: 300px;
+  }
 
   </style>
 </head>
@@ -165,7 +167,8 @@
 
 
 <!-- Docsify v4 -->
-<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/docsify@4"></script> -->
+<script src="plugin/docsify@4.js"></script>
 
  <!-- 评论 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script> -->
@@ -174,12 +177,14 @@
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script> -->
 
 <!--  文档内容目录 -->
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script> -->
+<script src="plugin/docsify.min.js"></script>
 
 <!-- 翻页插件 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script> -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/docsify/4.11.2/docsify.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/docsify/4.11.2/docsify.min.js"></script> -->
+<script src="plugin/docsify-4-11-2-docsify.min.js"></script>
 
 <!-- <script src="//unpkg.com/docsify/lib/docsify.min.js"></script> -->
 
@@ -190,47 +195,69 @@
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script> -->
 
 <!-- 字数统计选一个启用，显示在右上角 -->
- <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
-<!-- <script src="//unpkg.com/docsify-count/dist/countable.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script> -->
+<script src="plugin/countable.min.js"></script>
 
 <!-- 外链脚本 -->
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script> -->
+<script src="plugin/external-script.min.js"></script>
 
 <!-- 页脚 -->
-<script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script> -->
+<script src="plugin/docsify-footer.min.js"></script>
 
 <!-- share分享插件 -->
-<script src="//unpkg.com/docsify-share/build/index.min.js"></script>
+<!-- <script src="//unpkg.com/docsify-share/build/index.min.js"></script> -->
+<script src="plugin/docsify-share-build-index.min.js"></script>
 
 <!-- 代码复制到剪贴板 -->
-<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script> -->
+<script src="plugin/docsify-copy-code.js"></script>
 
 <!-- 嵌入pdf文件，这里渲染可能会变慢，所以直接用a标签进行写了 -->
 <!-- <script src="//unpkg.com/docsify-pdf-embed-plugin/src/docsify-pdf-embed.js"></script> -->
 
 <!-- 代码高亮，需要什么语言就上什么语言 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.js"></script> -->
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script> -->
+<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-shell-session.min.js"></script> -->
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script> -->
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script> -->
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-shell-session.min.js"></script> -->
+
+<script src="plugin/components/prism-bash.min.js"></script>
+<script src="plugin/components/prism-python.min.js"></script>
+<script src="plugin/components/prism-cpp.min.js"></script>
+<script src="plugin/components/prism-c.min.js"></script>
+<script src="plugin/components/prism-json.min.js"></script>
+<script src="plugin/components/prism-java.min.js"></script>
+<script src="plugin/components/prism-http.min.js"></script>
+<script src="plugin/components/prism-shell-session.min.js"></script>
+
+
+
+
 
 <!-- 暗黑模式，和字数统计冲突 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script> -->
 
 <!-- mouse click，鼠标点击样式-->
-<script src="https://notebook.js.org/plugin/click_heart.js"></script>
+<!-- <script src="https://notebook.js.org/plugin/click_heart.js"></script> -->
+<script src="plugin/click_heart.js"></script>
 
+<!-- 站点地图 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>-->
+<script src="plugin/markmap-autoloader@0.15.2.js"></script>
+<script src="plugin/docsify-markmap.min.js"></script>
 
-
-<!-- 公式渲染 -->
+<!-- 公式渲染，本地样式不太好看-->
 <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
-
+<!-- <script src="plugin/tex-mml-chtml.js"></script>
+<script src="plugin/docsify-latex@0.js"></script> -->
 
   <!-- 添加网站运行时间统计 -->
   <!-- 仿照https://notebook.js.org/#/ -->
