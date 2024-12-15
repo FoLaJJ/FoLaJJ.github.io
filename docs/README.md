@@ -200,15 +200,13 @@
 >     - [挖矿算法模拟](课程/信息安全工程/挖矿算法模拟)
 >     - [模拟PGP协议收发数据](课程/信息安全工程/模拟PGP协议收发数据)
 >     - [生物特征识别(人脸识别)](课程/信息安全工程/生物特征识别)
->   - 期末
->     - [大作业（待更新）](课程/信息安全工程/大作业)
 > - 光纤通信系统与网络
 >   - [随堂习题](课程/光纤通信系统与网络/随堂习题1)
 >   - [HomeWork1](课程/光纤通信系统与网络/HomeWork1)
 >   - [HomeWork2](课程/光纤通信系统与网络/HomeWork2)
 >   - [HomeWork3（待更新）](课程/光纤通信系统与网络/HomeWork3)
 > - 数字信号处理Ⅱ
->   - [数字信号处理Ⅱ期末复习](课程/数字信号处理期末复习)
+>   - [数字信号处理Ⅱ期末复习](课程//数字信号处理期末复习)
 > - MOOC
 >   - 大学生心理健康教育
 >     - [大学生心理健康SPOC章节测验](课程/MOOC/大学生心理健康SPOC章节测验)
@@ -258,7 +256,7 @@
 
 > - <a href="ming/computer-if.html">“造”了一台电脑实例动画</a>
 > - <a href="ming/happy.html">快速祝她/他生日快乐</a>
-> - <a href="ming/MerryChristmas.html">Merry Christmas！</a>
+> - <a href="ming/MerryChristmas2.html">Merry Christmas！</a>
 > - <a href="ming/protected.html">加密页面请输入密码</a>
 
 

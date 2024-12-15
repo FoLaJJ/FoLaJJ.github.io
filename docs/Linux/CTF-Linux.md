@@ -446,6 +446,14 @@ grep -r -o -E "flag\{[^}]*\}" .
 
 
 
+反向匹配
+
+匹配tmp目录下的文件中没有"flag is not here"的文件
+
+```
+grep -r -L "flag is not here" tmp
+```
+
 
 
 

@@ -86,6 +86,35 @@ sudo apt upgrade
 
 
 
+
+
+如果版本很老，没有库的话，ubuntu
+
+```
+deb http://old-releases.ubuntu.com/ubuntu groovy main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu groovy-updates main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu groovy-security main restricted universe multiverse
+deb http://old-releases.ubuntu.com/ubuntu groovy-backports main restricted universe multiverse
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 源更新失败（签名出错）
 
 W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository <devel@kali.org>
@@ -98,6 +127,23 @@ wget archive.kali.org/archive-key.asc   //下载签名
  
 sudo apt-key add archive-key.asc   //安装签名
 ```
+
+ubuntu
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654
+sudo apt-get update
+```
+
+
+
+可以的话，安装签名先删除之前的`archive-key.asc`
+
+```
+sudo apt-key del archive-key.asc   //删除签名
+```
+
+
 
 
 
