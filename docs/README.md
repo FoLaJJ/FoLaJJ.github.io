@@ -199,14 +199,14 @@
 >     - [RAM访问控制](课程/信息安全工程/RAM访问控制)
 >     - [挖矿算法模拟](课程/信息安全工程/挖矿算法模拟)
 >     - [模拟PGP协议收发数据](课程/信息安全工程/模拟PGP协议收发数据)
->     - [生物特征识别(人脸识别)](课程/信息安全工程/生物特征识别)
+>     - ~~生物特征识别(人脸识别)（不展示）~~
 > - 光纤通信系统与网络
 >   - [随堂习题](课程/光纤通信系统与网络/随堂习题1)
 >   - [HomeWork1](课程/光纤通信系统与网络/HomeWork1)
 >   - [HomeWork2](课程/光纤通信系统与网络/HomeWork2)
 >   - [HomeWork3（待更新）](课程/光纤通信系统与网络/HomeWork3)
 > - 数字信号处理Ⅱ
->   - [数字信号处理Ⅱ期末复习](课程/数字信号处理期末复习)
+>   - [数字信号处理Ⅱ期末复习](课程/数字信号处理/期末复习)
 > - MOOC
 >   - 大学生心理健康教育
 >     - [大学生心理健康SPOC章节测验](课程/MOOC/大学生心理健康SPOC章节测验)
@@ -219,7 +219,6 @@
 > - 期末复习
 >   - [凸优化期末复习友情链接](https://www.cnblogs.com/nickchen121/p/14900036.html)
 >   - [凸优化总体知识点快过](https://www.cnblogs.com/yangxiangdong/category/2264817.html)
->   - <a href="ming/test.html">测试</a>
 
 
 
@@ -252,12 +251,21 @@
 
 
 
-# 杂项中的杂项
+# 杂项
 
-> - <a href="ming/computer-if.html">“造”了一台电脑实例动画</a>
-> - <a href="ming/happy.html">快速祝她/他生日快乐</a>
-> - <a href="ming/MerryChristmas2.html">Merry Christmas！</a>
-> - <a href="ming/protected.html">加密页面请输入密码</a>
+> - 前端有趣网页
+>   - <a href="ming/computer-if.html">“造”了一台电脑实例动画</a>
+>   - <a href="ming/OptimusPrime.html">擎天柱变形</a>
+>   - <a href="ming/ToFontRains.html">可修改字符雨</a>
+>   - <a href="ming/SmallPoliceCars.html">小警车模型</a>
+>   - <a href="ming/StaticPhoneLikeLy.html">静态手机模型</a>
+> - 祝福舔狗
+>   - <a href="ming/HappyNewYears.html">新年祝福词</a>
+>   - <a href="ming/NewYearsCountDown.html">新年倒计时</a>
+>   - <a href="ming/HappyBirthday.html">生日快乐！</a>
+>   - <a href="ming/MerryChristmas.html">圣诞节快乐！</a>
+> - 实验品
+>   - <a href="ming/protected.html">加密页面请输入密码</a>
 
 
 
