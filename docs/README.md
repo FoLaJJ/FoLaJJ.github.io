@@ -172,6 +172,7 @@
 > - [搭建在线oj](工作/搭建在线oj)
 > - [nginx](工作/nginx)
 > - [安全测试](工作/安全测试)
+> - [区块链](工作/区块链)
 
 
 
@@ -199,14 +200,29 @@
 >     - [RAM访问控制](课程/信息安全工程/RAM访问控制)
 >     - [挖矿算法模拟](课程/信息安全工程/挖矿算法模拟)
 >     - [模拟PGP协议收发数据](课程/信息安全工程/模拟PGP协议收发数据)
+>   - 有需要线下来拿
 >     - ~~生物特征识别(人脸识别)（不展示）~~
+>     - ~~基于模糊金库算法的人脸隐私特征保护系统（不展示）~~
 > - 光纤通信系统与网络
->   - [随堂习题](课程/光纤通信系统与网络/随堂习题1)
->   - [HomeWork1](课程/光纤通信系统与网络/HomeWork1)
->   - [HomeWork2](课程/光纤通信系统与网络/HomeWork2)
->   - [HomeWork3（待更新）](课程/光纤通信系统与网络/HomeWork3)
+>   - 平时作业
+>     - [随堂习题](课程/光纤通信系统与网络/随堂习题1)
+>     - [HomeWork1](课程/光纤通信系统与网络/HomeWork1)
+>     - [HomeWork2](课程/光纤通信系统与网络/HomeWork2)
+>     - [HomeWork3](课程/光纤通信系统与网络/HomeWork3)
+>   - 下载
+>     - <a href="pdf/光纤考试专用一张纸.pdf">光纤通信系统与网络考试一张纸.pdf</a>
 > - 数字信号处理Ⅱ
->   - [数字信号处理Ⅱ期末复习](课程/数字信号处理/期末复习)
+>   - 重点题目
+>     - [数字信号处理Ⅱ期末复习](课程/数字信号处理/期末复习)
+>   - 下载
+>     - <a href="pdf/数字信号处理课后习题答案.pdf">数字信号处理课后习题答案.pdf</a>
+> - 凸优化
+>   - 复习资料友链
+>     - [凸优化期末复习友情链接](https://www.cnblogs.com/nickchen121/p/14900036.html)
+>     - [凸优化总体知识点快过](https://www.cnblogs.com/yangxiangdong/category/2264817.html)
+>   - 文件下载
+>     - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
+>     - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
 > - MOOC
 >   - 大学生心理健康教育
 >     - [大学生心理健康SPOC章节测验](课程/MOOC/大学生心理健康SPOC章节测验)
@@ -216,9 +232,7 @@
 >     - [学术道德规范SPOC章节测验](课程/MOOC/学术道德规范SPOC章节测验)
 >     - [学术道德规范SPOC期末考试](课程/MOOC/学术道德规范SPOC期末考试)
 >     - [学术道德规范SPOC期末考试2024](课程/MOOC/学术道德规范SPOC期末考试2024)
-> - 期末复习
->   - [凸优化期末复习友情链接](https://www.cnblogs.com/nickchen121/p/14900036.html)
->   - [凸优化总体知识点快过](https://www.cnblogs.com/yangxiangdong/category/2264817.html)
+>
 
 
 
@@ -232,10 +246,6 @@
 > - 系统学习
 >   - <a href="pdf/图解系统-小林coding-v1.0.pdf">图解系统-小林coding-v1.0.pdf</a>
 >   - <a href="pdf/《深度学习入门：基于Python的理论与实现》高清中文版.pdf">《深度学习入门：基于Python的理论与实现》高清中文版.pdf</a>
-> - 课程
->   - <a href="pdf/Convex-Optimization.pdf">Convex-Optimization.pdf</a>
->   - <a href="pdf/Convex课后习题答案.pdf">Convex课后习题答案.pdf</a>
->   - <a href="pdf/数字信号处理课后习题答案.pdf">数字信号处理课后习题答案.pdf</a>
 > - 网安
 >   - <a href="pdf/PWN.pptx">PWN.pptx(点了就直接下载了)</a>
 
