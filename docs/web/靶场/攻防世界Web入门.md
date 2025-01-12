@@ -4,7 +4,7 @@
 
 [攻防世界 (xctf.org.cn)](https://adworld.xctf.org.cn/)
 
-[![5Ml9Hg.png](../_media/5Ml9Hg.png)](https://imgtu.com/i/5Ml9Hg)
+[![5Ml9Hg.png](../../_media/5Ml9Hg.png)](https://imgtu.com/i/5Ml9Hg)
 
 攻防世界，一大CTFers的网站，上面有在线靶场以及竞赛等资源，推荐初学者上去学习。
 
@@ -12,7 +12,7 @@
 
 ## 1.view_source
 
-[![5MlubF.png](../_media/5MlubF.png)](https://imgtu.com/i/5MlubF)
+[![5MlubF.png](../../_media/5MlubF.png)](https://imgtu.com/i/5MlubF)
 
 基础的第一关，却是后面无数关的基础。
 
@@ -20,13 +20,13 @@
 
 点进网页一看：
 
-[![5Mls2t.png](../_media/5Mls2t.png)](https://imgtu.com/i/5Mls2t)
+[![5Mls2t.png](../../_media/5Mls2t.png)](https://imgtu.com/i/5Mls2t)
 
 1. flag不在这里，那应该在源代码里。
 
 2. 你可以鼠标右键点击选中查看源代码或是直接按住`F12`查看源代码！
 
-[![5M1SR1.png](../_media/5M1SR1.png)](https://imgtu.com/i/5M1SR1)
+[![5M1SR1.png](../../_media/5M1SR1.png)](https://imgtu.com/i/5M1SR1)
 
 ```txt
 cyberpeace{ac663108a3ddfa45faa8fac4ed963ece} 
@@ -38,7 +38,7 @@ cyberpeace{ac663108a3ddfa45faa8fac4ed963ece}
 
 ## 2.robots
 
-[![5M3AXV.png](../_media/5M3AXV.png)](https://imgtu.com/i/5M3AXV)
+[![5M3AXV.png](../../_media/5M3AXV.png)](https://imgtu.com/i/5M3AXV)
 
 如果以前有用python写过网络爬虫的话，相信肯定不会对robots.txt陌生。
 
@@ -53,7 +53,7 @@ robots.txt是一个协议，而不是一个命令。
 - Allow：允许爬寻目录
 - Sitemap：网站的地图
 
-[![5M8Su6.png](../_media/5M8Su6.png)](https://imgtu.com/i/5M8Su6)
+[![5M8Su6.png](../../_media/5M8Su6.png)](https://imgtu.com/i/5M8Su6)
 
 1. 看，直接在网址后面加个访问robots.txt。
 
@@ -61,7 +61,7 @@ robots.txt是一个协议，而不是一个命令。
 
 
 
-[![5MG8oD.png](../_media/5MG8oD.png)](https://imgtu.com/i/5MG8oD)
+[![5MG8oD.png](../../_media/5MG8oD.png)](https://imgtu.com/i/5MG8oD)
 
 
 
@@ -73,13 +73,13 @@ cyberpeace{dfd27487cbf007ab6e0b0cb365766360}
 
 ## 3.backup
 
-[![5MGTkF.png](../_media/5MGTkF.png)](https://imgtu.com/i/5MGTkF)
+[![5MGTkF.png](../../_media/5MGTkF.png)](https://imgtu.com/i/5MGTkF)
 
 看到题目描述，x老师忘记删除备份文件了！
 
 并且：
 
-[![5MJCfH.png](../_media/5MJCfH.png)](https://imgtu.com/i/5MJCfH)
+[![5MJCfH.png](../../_media/5MJCfH.png)](https://imgtu.com/i/5MJCfH)
 
 这么一大坨文字摆在这里了！！
 
@@ -107,13 +107,13 @@ cyberpeace{dfd27487cbf007ab6e0b0cb365766360}
 
 所以我们就直接把.bak加到地址末尾，会弹出下载文件；
 
-[![5MU3PU.png](../_media/5MU3PU.png)](https://imgtu.com/i/5MU3PU)
+[![5MU3PU.png](../../_media/5MU3PU.png)](https://imgtu.com/i/5MU3PU)
 
 
 
 下载保存文件，打开查看，就得到flag了！！！
 
-[![5MUgsA.png](../_media/5MUgsA.png)](https://imgtu.com/i/5MUgsA)
+[![5MUgsA.png](../../_media/5MUgsA.png)](https://imgtu.com/i/5MUgsA)
 
 
 
@@ -125,23 +125,23 @@ Cyberpeace{855A1C4B3401294CB6604CCC98BDE334}
 
 ## 4.cookie
 
-[![5MacfU.png](../_media/5MacfU.png)](https://imgtu.com/i/5MacfU)
+[![5MacfU.png](../../_media/5MacfU.png)](https://imgtu.com/i/5MacfU)
 
 cookie原译为曲奇饼，实则为一个保存载客户机中的简单文本文件，它就相当于一张身份证一样，里面存储着你在某个网页中的隐私数据，拥有cookie，你就能在Http的世界里被服务端所服务。
 
 二话不说，打开Burp Suite，代理啥的我就不教了，自己去网上折腾一番就可以知道怎么设置代理服务器了！
 
-[![5Mdxv4.png](../_media/5Mdxv4.png)](https://imgtu.com/i/5Mdxv4)
+[![5Mdxv4.png](../../_media/5Mdxv4.png)](https://imgtu.com/i/5Mdxv4)
 
 噢，直接来了个提示，`look-here=cookie.php`那就直接访问试试！
 
 直接在地址后面加上/cookie.php,出现提示！
 
-[![5MwIJK.png](../_media/5MwIJK.png)](https://imgtu.com/i/5MwIJK)
+[![5MwIJK.png](../../_media/5MwIJK.png)](https://imgtu.com/i/5MwIJK)
 
 那我们依旧是查看抓包的记录，果然在报文头处得到了flag
 
-[![5MwoRO.png](../_media/5MwoRO.png)](https://imgtu.com/i/5MwoRO)
+[![5MwoRO.png](../../_media/5MwoRO.png)](https://imgtu.com/i/5MwoRO)
 
 ```txt
 cyberpeace{0938a721aa9dcd294c9a583697836fca}
@@ -149,21 +149,21 @@ cyberpeace{0938a721aa9dcd294c9a583697836fca}
 
 ## 5.disabled_button
 
-[![5QyNnO.png](../_media/5QyNnO.png)](https://imgtu.com/i/5QyNnO)
+[![5QyNnO.png](../../_media/5QyNnO.png)](https://imgtu.com/i/5QyNnO)
 
 这个题目很简单，一个不能按的按钮，那我们直接按`F12`来查看一下源代码吧！
 
-[![5QywAH.png](../_media/5QywAH.png)](https://imgtu.com/i/5QywAH)
+[![5QywAH.png](../../_media/5QywAH.png)](https://imgtu.com/i/5QywAH)
 
 检查元素，挪到按钮处，然后发现disabled
 
-[![5Qy2DS.png](../_media/5Qy2DS.png)](https://imgtu.com/i/5Qy2DS)
+[![5Qy2DS.png](../../_media/5Qy2DS.png)](https://imgtu.com/i/5Qy2DS)
 
 把disabled=""给删除掉就可以了！！
 
 再点击按钮，就出来flag了！！！
 
-[![5QyfEQ.png](../_media/5QyfEQ.png)](https://imgtu.com/i/5QyfEQ)
+[![5QyfEQ.png](../../_media/5QyfEQ.png)](https://imgtu.com/i/5QyfEQ)
 
 ```txt
 cyberpeace{959a633de7840d6f112a00023154e32c}
@@ -173,17 +173,17 @@ cyberpeace{959a633de7840d6f112a00023154e32c}
 
 ## 6.weak_auth
 
-[![5QyjUJ.png](../_media/5QyjUJ.png)](https://imgtu.com/i/5QyjUJ)
+[![5QyjUJ.png](../../_media/5QyjUJ.png)](https://imgtu.com/i/5QyjUJ)
 
 先看一下描述，一个登陆验证页面，随手设置一个密码，猜测可能是sql万能密码，或者是密码爆破之类的！！
 
 点进去瞅一眼：
 
-[![5Q6N2q.png](../_media/5Q6N2q.png)](https://imgtu.com/i/5Q6N2q)
+[![5Q6N2q.png](../../_media/5Q6N2q.png)](https://imgtu.com/i/5Q6N2q)
 
 额，毫无提示，点一下login看看
 
-[![5Q6Ux0.png](../_media/5Q6Ux0.png)](https://imgtu.com/i/5Q6Ux0)
+[![5Q6Ux0.png](../../_media/5Q6Ux0.png)](https://imgtu.com/i/5Q6Ux0)
 
 点一下之后发现提示：please login as admin
 
@@ -191,21 +191,21 @@ cyberpeace{959a633de7840d6f112a00023154e32c}
 
 还是用burp suite进行抓包
 
-[![5Q6sIJ.png](../_media/5Q6sIJ.png)](https://imgtu.com/i/5Q6sIJ)
+[![5Q6sIJ.png](../../_media/5Q6sIJ.png)](https://imgtu.com/i/5Q6sIJ)
 
 进行爆破，
 
-[![5Q6oIH.png](../_media/5Q6oIH.png)](https://imgtu.com/i/5Q6oIH)
+[![5Q6oIH.png](../../_media/5Q6oIH.png)](https://imgtu.com/i/5Q6oIH)
 
 设置好爆破字段，导入字典包；
 
 这里kali自带了一个密码字典，我们也可以去github上找到一些大型的密码字典，这里我就随便设几个密码，来跑一个样例！
 
-[![5Q6WM6.png](../_media/5Q6WM6.png)](https://imgtu.com/i/5Q6WM6)
+[![5Q6WM6.png](../../_media/5Q6WM6.png)](https://imgtu.com/i/5Q6WM6)
 
 就直接选择simple list ，导入字典，进行爆破‘，点击右上角开始stack！
 
-[![5Q6zdg.png](../_media/5Q6zdg.png)](https://imgtu.com/i/5Q6zdg)
+[![5Q6zdg.png](../../_media/5Q6zdg.png)](https://imgtu.com/i/5Q6zdg)
 
 当出现后面值不一样时，我们就可以进行尝试，这里得出的是123456
 
@@ -213,7 +213,7 @@ cyberpeace{959a633de7840d6f112a00023154e32c}
 
 直接登录，得到flag
 
-[![5QckQ0.png](../_media/5QckQ0.png)](https://imgtu.com/i/5QckQ0)
+[![5QckQ0.png](../../_media/5QckQ0.png)](https://imgtu.com/i/5QckQ0)
 
 ```txt
 cyberpeace{24216ecefc7fb4d473b828721667b9cb}
@@ -221,7 +221,7 @@ cyberpeace{24216ecefc7fb4d473b828721667b9cb}
 
 ## 7.simple_php
 
-[![5QcKY9.png](../_media/5QcKY9.png)](https://imgtu.com/i/5QcKY9)
+[![5QcKY9.png](../../_media/5QcKY9.png)](https://imgtu.com/i/5QcKY9)
 
 果然，又出现大梗了！
 
@@ -229,7 +229,7 @@ cyberpeace{24216ecefc7fb4d473b828721667b9cb}
 
 那我们就来看一下吧！
 
-[![5QctTe.png](../_media/5QctTe.png)](https://imgtu.com/i/5QctTe)
+[![5QctTe.png](../../_media/5QctTe.png)](https://imgtu.com/i/5QctTe)
 
 啥话都没说，就摆了段代码在我们的面前emm
 
@@ -255,7 +255,7 @@ is_numeric() 函数会判断如果是数字和数字字符串则返回 TRUE，�
 - ?a='0e&b=12359a
 - 还有很多构造方法，没有过滤的后果，然后随便弄一个就可以得到flag了！！！
 
-[![5QgUBT.png](../_media/5QgUBT.png)](https://imgtu.com/i/5QgUBT)
+[![5QgUBT.png](../../_media/5QgUBT.png)](https://imgtu.com/i/5QgUBT)
 
 
 
@@ -265,23 +265,23 @@ Cyberpeace{647E37C7627CC3E4019EC69324F66C7C}
 
 ## 8.get_post
 
-[![5QgRHO.png](../_media/5QgRHO.png)](https://imgtu.com/i/5QgRHO)
+[![5QgRHO.png](../../_media/5QgRHO.png)](https://imgtu.com/i/5QgRHO)
 
 直接点吧，看到了一句提示！
 
-[![5Qg7vt.png](../_media/5Qg7vt.png)](https://imgtu.com/i/5Qg7vt)
+[![5Qg7vt.png](../../_media/5Qg7vt.png)](https://imgtu.com/i/5Qg7vt)
 
 请用GET方式提交一个a=1
 
 那直接打开HackBar，提交！
 
-[![5Qgv5Q.png](../_media/5Qgv5Q.png)](https://imgtu.com/i/5Qgv5Q)
+[![5Qgv5Q.png](../../_media/5Qgv5Q.png)](https://imgtu.com/i/5Qgv5Q)
 
 提交之后，又出来一句话，用POST方式提交b=2
 
 那依旧用HackBar进行提交
 
-[![5Q2irV.png](../_media/5Q2irV.png)](https://imgtu.com/i/5Q2irV)
+[![5Q2irV.png](../../_media/5Q2irV.png)](https://imgtu.com/i/5Q2irV)
 
 直接就得出flag了！！
 
@@ -291,13 +291,13 @@ cyberpeace{5dbc48d711c4eed763409558c2e6975f}
 
 不过，我们不能为了做题而做题，我们应该还要了解一下题外知识！！
 
-[![5Q2n2R.png](../_media/5Q2n2R.png)](https://imgtu.com/i/5Q2n2R)
+[![5Q2n2R.png](../../_media/5Q2n2R.png)](https://imgtu.com/i/5Q2n2R)
 
 Http的方法有很多种，甚至于，你先与服务器协调一致，可以采用自定义方法进行请求与相应！！
 
 ## 9.xff_referer
 
-[![5Q2rdS.png](../_media/5Q2rdS.png)](https://imgtu.com/i/5Q2rdS)
+[![5Q2rdS.png](../../_media/5Q2rdS.png)](https://imgtu.com/i/5Q2rdS)
 
 看到xff以及referer应该是要伪造报文之类的，然后点进去瞅瞅！
 
@@ -308,25 +308,25 @@ Http的方法有很多种，甚至于，你先与服务器协调一致，可以�
 - **HTTP Referer**是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器该网页是从哪个页面链接过来的，服务器因此可以获得一些信息用于处理。
 - 上述解释采自百度百科
 
-[![5Q2sIg.png](../_media/5Q2sIg.png)](https://imgtu.com/i/5Q2sIg)
+[![5Q2sIg.png](../../_media/5Q2sIg.png)](https://imgtu.com/i/5Q2sIg)
 
 看提示就是要伪造XFF：
 
 依旧抓包：
 
-[![5Q2bW9.png](../_media/5Q2bW9.png)](https://imgtu.com/i/5Q2bW9)
+[![5Q2bW9.png](../../_media/5Q2bW9.png)](https://imgtu.com/i/5Q2bW9)
 
 转发，得出另一个提示！
 
-[![5Q2OQ1.png](../_media/5Q2OQ1.png)](https://imgtu.com/i/5Q2OQ1)
+[![5Q2OQ1.png](../../_media/5Q2OQ1.png)](https://imgtu.com/i/5Q2OQ1)
 
 这是伪造referer，然后抓包和上一个XFF一起伪造：
 
-[![5QRSoD.png](../_media/5QRSoD.png)](https://imgtu.com/i/5QRSoD)
+[![5QRSoD.png](../../_media/5QRSoD.png)](https://imgtu.com/i/5QRSoD)
 
 转发，得到flag！！
 
-[![5QR9Fe.png](../_media/5QR9Fe.png)](https://imgtu.com/i/5QR9Fe)
+[![5QR9Fe.png](../../_media/5QR9Fe.png)](https://imgtu.com/i/5QR9Fe)
 
 复制粘贴提交就可以了！！！
 
@@ -336,7 +336,7 @@ cyberpeace{8782ddf3a1086b66ce36aefd1ef9a218}
 
 ## 10.webshell
 
-[![5QRmTS.png](../_media/5QRmTS.png)](https://imgtu.com/i/5QRmTS)
+[![5QRmTS.png](../../_media/5QRmTS.png)](https://imgtu.com/i/5QRmTS)
 
 webshell，来到好玩的一关了！
 
@@ -344,7 +344,7 @@ webshell，来到好玩的一关了！
 
 这里我们就直接用HackBar来进行简单的webshell操作！！
 
-[![5QR8O0.png](../_media/5QR8O0.png)](https://imgtu.com/i/5QR8O0)
+[![5QR8O0.png](../../_media/5QR8O0.png)](https://imgtu.com/i/5QR8O0)
 
 我们先来搜索一番，PHP语言中的eval的作用！
 
@@ -358,7 +358,7 @@ webshell，来到好玩的一关了！
 
 那我们直接POST构造传值！
 
-[![5QRcTO.png](../_media/5QRcTO.png)](https://imgtu.com/i/5QRcTO)
+[![5QRcTO.png](../../_media/5QRcTO.png)](https://imgtu.com/i/5QRcTO)
 
 ```php
 shell=system("ls");
@@ -368,13 +368,13 @@ shell=system("ls");
 
 然后就出来提示了！
 
-[![5Q4T2Q.png](../_media/5Q4T2Q.png)](https://imgtu.com/i/5Q4T2Q)
+[![5Q4T2Q.png](../../_media/5Q4T2Q.png)](https://imgtu.com/i/5Q4T2Q)
 
 - ls是Linux系统中查看当前目录下文件的命令
 
 直接就看到了当前目录下有一个flag.txt，接着用cat来访问该文件，得到flag！
 
-[![5Q4Lbq.png](../_media/5Q4Lbq.png)](https://imgtu.com/i/5Q4Lbq)
+[![5Q4Lbq.png](../../_media/5Q4Lbq.png)](https://imgtu.com/i/5Q4Lbq)
 
 ```txt
 cyberpeace{0327593210c5d1606a43f61ab7791ed2}
@@ -388,11 +388,11 @@ cyberpeace{0327593210c5d1606a43f61ab7791ed2}
 
 欸，又是这个常见的ping功能，rce准备
 
-[![5Q4zPU.png](../_media/5Q4zPU.png)](https://imgtu.com/i/5Q4zPU)
+[![5Q4zPU.png](../../_media/5Q4zPU.png)](https://imgtu.com/i/5Q4zPU)
 
 老规矩，先试个本地回环进行测试，很好地完成了功能！！
 
-[![5Q5p24.png](../_media/5Q5p24.png)](https://imgtu.com/i/5Q5p24)
+[![5Q5p24.png](../../_media/5Q5p24.png)](https://imgtu.com/i/5Q5p24)
 
 Linux内命令拼接可以用；或者 管道符 | 或者&符 来进行拼接
 
@@ -400,7 +400,7 @@ Linux内命令拼接可以用；或者 管道符 | 或者&符 来进行拼接
 127.0.0.1|ls
 ```
 
-[![5Qo6v4.png](../_media/5Qo6v4.png)](https://imgtu.com/i/5Qo6v4)
+[![5Qo6v4.png](../../_media/5Qo6v4.png)](https://imgtu.com/i/5Qo6v4)
 
 很好什么都没有发现
 
@@ -410,7 +410,7 @@ Linux内命令拼接可以用；或者 管道符 | 或者&符 来进行拼接
 127.0.0.1|find / -name flag.*
 ```
 
-[![5Qo2r9.png](../_media/5Qo2r9.png)](https://imgtu.com/i/5Qo2r9)
+[![5Qo2r9.png](../../_media/5Qo2r9.png)](https://imgtu.com/i/5Qo2r9)
 
 得到在/home/flag.txt下
 
@@ -420,7 +420,7 @@ Linux内命令拼接可以用；或者 管道符 | 或者&符 来进行拼接
 127.0.0.1|cat flag.txt
 ```
 
-[![5QofV1.png](../_media/5QofV1.png)](https://imgtu.com/i/5QofV1)
+[![5QofV1.png](../../_media/5QofV1.png)](https://imgtu.com/i/5QofV1)
 
 得到flag！！！
 
@@ -432,7 +432,7 @@ cyberpeace{c3c70bbb893a6ea850881c22a97ea1fa}
 
 这道题目，单纯就是先设置个障碍，玩一下心态，然后后面把答案赤裸裸地摆了出来！！
 
-[![5Qoo8O.png](../_media/5Qoo8O.png)](https://imgtu.com/i/5Qoo8O)
+[![5Qoo8O.png](../../_media/5Qoo8O.png)](https://imgtu.com/i/5Qoo8O)
 
 然后有个密码框，一直填一直错，就查看源代码，发现JS代码：
 
@@ -487,19 +487,19 @@ cyberpeace{c3c70bbb893a6ea850881c22a97ea1fa}
 //截取下来放pycharm里！
 ```
 
-[![5QovIP.png](../_media/5QovIP.png)](https://imgtu.com/i/5QovIP)
+[![5QovIP.png](../../_media/5QovIP.png)](https://imgtu.com/i/5QovIP)
 
 输出：
 
-[![5QTirj.png](../_media/5QTirj.png)](https://imgtu.com/i/5QTirj)
+[![5QTirj.png](../../_media/5QTirj.png)](https://imgtu.com/i/5QTirj)
 
 然后遍历输出ascii转字符：
 
-[![5QTFqs.png](../_media/5QTFqs.png)](https://imgtu.com/i/5QTFqs)
+[![5QTFqs.png](../../_media/5QTFqs.png)](https://imgtu.com/i/5QTFqs)
 
 得到答案：
 
-[![5QTeiV.png](../_media/5QTeiV.png)](https://imgtu.com/i/5QTeiV)
+[![5QTeiV.png](../../_media/5QTeiV.png)](https://imgtu.com/i/5QTeiV)
 
 然后用flag格式进行构造：
 
@@ -516,5 +516,3 @@ Cyberpeace{786OsErtk12}
 
 
 
-
-####
