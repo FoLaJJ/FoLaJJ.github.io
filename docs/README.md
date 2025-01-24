@@ -85,11 +85,12 @@
 >   - [XXE外部实体注入](web/XXE外部实体注入)
 >   - [文件上传](web/文件上传)
 >   - [信息泄露](web/信息泄露)
->   
+>
 >   ?>本人的做题简陋WP，可能有错，聊胜于无。
 >   - 靶场
 >     - [攻防世界Web入门](web/靶场/攻防世界Web入门)
 >     - [DVWA靶场全解](web/靶场/DVWA靶场全解)
+>     - [pikachu靶场全解](web/靶场/pikachu靶场全解)
 >     - [xss-chanllenge-tour靶场全解](web/靶场/xss-chanllenge-tour靶场全解)
 
 > - **Crypto**
