@@ -91,7 +91,7 @@
 >     - [攻防世界Web入门](web/靶场/攻防世界Web入门)
 >     - [DVWA靶场全解](web/靶场/DVWA靶场全解)
 >     - [pikachu靶场全解](web/靶场/pikachu靶场全解)
->     - [xss-chanllenge-tour靶场全解](web/靶场/xss-chanllenge-tour靶场全解)
+>     - [xss-challenge-tour靶场全解](web/靶场/xss-challenge-tour靶场全解)
 
 > - **Crypto**
 >   - [Crypto](Crypto/Crypto)
