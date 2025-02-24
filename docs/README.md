@@ -92,6 +92,8 @@
 >     - [DVWA靶场全解](web/靶场/DVWA靶场全解)
 >     - [pikachu靶场全解](web/靶场/pikachu靶场全解)
 >     - [xss-challenge-tour靶场全解](web/靶场/xss-challenge-tour靶场全解)
+>     - [PortSwiggerLab全解](web/靶场/PortSwiggerLab全解)
+>     - [vulinbox-yakit靶场全解](web/靶场/vulinbox-yakit靶场全解)
 
 > - **Crypto**
 >   - [Crypto](Crypto/Crypto)
@@ -192,6 +194,7 @@
 >   - [计网八股文](工作/计网八股文)
 > - 大模型
 >   - [大模型漏洞](大模型/大模型漏洞)
+>   - [大模型开发](大模型/大模型开发)
 >   - [burpsuiteLLM](大模型/burpsuiteLLM)
 > - [搭建在线oj](工作/搭建在线oj)
 > - [nginx](工作/nginx)

@@ -30,6 +30,7 @@
   - [**低端影视**](https://ddys.pro//)
   - [**爱奇艺**](https://www.iqiyi.com/)
   - [**DeepSeek**](https://chat.deepseek.com/)
+  - [**浙大先生**](https://chat.zju.edu.cn/)
   - [**MarsCode**](https://www.marscode.cn/)
   - [**深度学习**](https://zh.d2l.ai/index.html)
   - [**图寻**](https://tuxun.fun/)

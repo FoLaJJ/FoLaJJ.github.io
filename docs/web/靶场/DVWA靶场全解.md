@@ -53,7 +53,7 @@ admin' or '1'='1
 
 
 
-然后就是设置payload2选择递归提取，然后复制首次的token进去
+然后就是设置payload2选择递归提取，然后复制首次的token进去，注意，复制的首次token指的是获取响应包中的token
 
 ![image-20250111143101656](../../_media/image-20250111143101656.png)
 
@@ -473,13 +473,11 @@ if( ( $uploaded_type == "image/jpeg" || $uploaded_type == "image/png" ) &&
 
 这时候可以想到图片马，先将一个照片和shell.php创建好
 
-然后使用命令行进行拼接
+然后使用命令行进行拼接，一句话木马插到图片文件的末端，因为做了文件头的限制
 
 ```
-copy shell.php/a + xxx.png/b shell.png
+copy  xxx.png/b + shell.php/a shell.png
 ```
-
-
 
 可以看到已经上传成功了
 
