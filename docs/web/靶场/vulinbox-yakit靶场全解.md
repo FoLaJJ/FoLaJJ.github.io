@@ -381,7 +381,7 @@ eyJuYW1lIjoiYCthbGVydCgxKStgIn0=
 
 ## Fastjson 案例
 
-fastjson是阿里巴巴开发的json库
+fastjson是阿里巴巴开发的json解析库，可以将 Java 对象转换为 JSON 格式，当然它也可以将 JSON 字符串转换为 Java 对象。
 
 ### GET 传参案例案例
 
@@ -808,4 +808,262 @@ copy xxx.png/b + shell.php/a shell.png
 成功上传
 
 ![image-20250228105922188](../../_media/image-20250228105922188.png)
+
+
+
+
+
+## 高级前端加解密与验签实战
+
+
+
+
+
+## 一些精心构造的畸形/异常/测试响应
+
+
+
+### 100-Continue
+
+写一个脚本发送101次，发现没有什么用，所以还是bp抓包研究一下
+
+怀疑跟http状态码有关
+
+发送一个请求，包含`Expect:100-continue`,询问Server使用愿意接受数据
+
+然后接收到Server返回的`100-continue`应答以后, 才把数据`POST`给`Server`
+
+```
+POST /misc/response/expect100 HTTP/1.1
+Host: 127.0.0.1:8787
+Cache-Control: max-age=0
+sec-ch-ua: "Chromium";v="133", "Not(A:Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Language: zh-CN,zh;q=0.9
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: http://127.0.0.1:8787/
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Expect: 100-continue
+Content-Length: 26
+
+{
+	"Message":"iwant1t"
+}
+```
+
+
+
+可以看到它的响应包发生了变化：
+
+![image-20250228162100193](../../_media/image-20250228162100193.png)
+
+
+
+
+
+
+
+### redirect-test
+
+可以抓包拦截看到最初的url
+
+```
+/misc/response/redirect?times=5
+```
+
+![image-20250228162620123](../../_media/image-20250228162620123.png)
+
+然后一直按照这种方式重定向到times=0的时候
+
+
+
+如果将其设置为times=10000，也会递减重定向到0
+
+![image-20250228162757930](../../_media/image-20250228162757930.png)
+
+
+
+### 通过(cl-int)定义响应体长度
+
+
+
+没啥好说的，get传参过去定义响应体长度
+
+![image-20250228162909602](../../_media/image-20250228162909602.png)
+
+
+
+### 测试普通爬虫的Webpack处理能力
+
+
+
+### 测试普通爬虫的基础JS处理能力
+
+
+
+
+
+
+
+## 购物商城综合场景
+
+
+
+### 登录页面的免密码登录
+
+```
+http://127.0.0.1/mall/user/login
+```
+
+
+
+```
+账号：admin' or '1'='1--
+密码：admin' or '1'='1--
+```
+
+
+
+
+
+### 购物车页面的访问控制失效
+
+更改路由中get参数可以访问不同用户的购物车
+
+
+
+```
+admin：http://127.0.0.1/mall/user/cart?id=1
+root：http://127.0.0.1/mall/user/cart?id=2
+user1：http://127.0.0.1/mall/user/cart?id=3
+user111：http://127.0.0.1/mall/user/cart?id=4
+user_2：http://127.0.0.1/mall/user/cart?id=5
+user_8：http://127.0.0.1/mall/user/cart?id=6
+jKkazSSt：http://127.0.0.1/mall/user/cart?id=7
+mVwqXdkQ：http://127.0.0.1/mall/user/cart?id=8
+uMT6CHRh：http://127.0.0.1/mall/user/cart?id=9
+OPLxNaVt：http://127.0.0.1/mall/user/cart?id=10
+```
+
+
+
+
+
+### 退货页面访问控制失效
+
+![image-20250228163947069](../../_media/image-20250228163947069.png)
+
+抓包点击退货按钮
+
+![image-20250228164019987](../../_media/image-20250228164019987.png)
+
+
+
+将数据包进行修改
+
+```
+{"UserID":2,"ProductName":"商品2"}
+```
+
+
+
+然后可以看到用户一，也就是admin的购物订单是没有进行退货的
+
+而root用户的购物订单空空如也：
+
+![image-20250228164251637](../../_media/image-20250228164251637.png)
+
+
+
+### 注册用户页面可以将老用户注销
+
+已知已经存在`user1`用户了
+
+```
+http://127.0.0.1/mall/user/register
+```
+
+![image-20250228164602572](../../_media/image-20250228164602572.png)
+
+```
+用户名：user1
+密码：123456
+年龄：4
+备注：这是一个新的号
+```
+
+
+
+点击注册，可以发现`Register successful`
+
+返回登录页面也可以发现可以登录成功
+
+```
+user1
+123456
+```
+
+
+
+并且新用户有优惠措施，可以反复薅羊毛
+
+![image-20250228164805117](../../_media/image-20250228164805117.png)
+
+
+
+### 加入购物车的访问控制失效
+
+也是跟退货页面一样，可以帮别人的购物车中加入商品
+
+抓包修改`userID`即可
+
+```
+http://127.0.0.1/mall/cart/check
+```
+
+![image-20250228164926528](../../_media/image-20250228164926528.png)
+
+
+
+可以发现已经添加成功：
+
+![image-20250228165041234](../../_media/image-20250228165041234.png)
+
+
+
+### 提交订单存在篡改订单价格漏洞
+
+还是一样，除了最基本的用户访问控制失效之外
+
+还可以抓包直接0元购
+
+![image-20250228165642045](../../_media/image-20250228165642045.png)
+
+
+
+可以看到购物订单界面的变化，显示已经成功修改了：
+
+![image-20250228165722925](../../_media/image-20250228165722925.png)
+
+
+
+### 超库存发货漏洞
+
+还是那个购物车的页面，提交抓包修改
+
+![image-20250228165945165](../../_media/image-20250228165945165.png)
+
+
+
+
+
+## 逻辑场景
 
