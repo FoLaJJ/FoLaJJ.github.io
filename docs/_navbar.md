@@ -1,5 +1,6 @@
 - 论坛&靶场
   - [**看雪**](https://bbs.kanxue.com/)
+  - [**牛客**](https://www.nowcoder.com/)
   - [**i春秋**](https://www.ichunqiu.com/)
   - [**吾爱破解**](https://www.52pojie.cn/forum.php)
   - [**安全客**](https://www.anquanke.com/)
@@ -16,6 +17,7 @@
   - [**BUUCTF**](https://buuoj.cn/challenges)
   - [**ctfshow**](https://ctf.show/)
   - [**CTFHub**](https://www.ctfhub.com/#/index)
+  - [**玄机靶场**](https://xj.edisec.net/)
   - [**BugKu**](https://ctf.bugku.com/)
   - [**电子数据取证练习平台**](https://forensics.didctf.com/)
   - [**攻防世界**](https://adworld.xctf.org.cn/home/index)
@@ -66,7 +68,7 @@
   - [**高精度IP地址搜索**](https://chaipip.com/)
   - [**清华开源镜像站**](https://mirrors.tuna.tsinghua.edu.cn/)
   - [**考研网盘**](https://www.wanxuege.com/forum-93-1.html)
-  - <a href="SRK_Toolbox/SRK_Toolbox.html"><strong>CyberChef汉化</strong></a>
+  - <a href="SRK_Toolbox/SRK_Toolbox.html" target="_blank"><strong>CyberChef汉化</strong></a>
 - 漏洞库
   - [**国家信息安全漏洞库**](https://www.cnnvd.org.cn/home/childHome)
   - [**CVE库**](https://www.cve.org/)
