@@ -338,7 +338,7 @@ git config --global --unset https.proxy
 然后cmd执行：
 
 ```
-ipconfig/flushdns
+ipconfig /flushdns
 ```
 
 
