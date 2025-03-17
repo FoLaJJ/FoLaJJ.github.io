@@ -25,3 +25,8 @@ JSON.parse
 JSON.parseObject()
 ```
 
+
+
+参考资料：
+
+https://zonghaishang.gitbooks.io/fastjson-source-code-analysis/content/
