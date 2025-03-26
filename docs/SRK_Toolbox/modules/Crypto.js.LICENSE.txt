@@ -5,10 +5,6 @@
  * @license  MIT
  */
 
-/*! cptable.js (C) 2013-present SheetJS -- http://sheetjs.com */
-
-/*! cputils.js (C) 2013-present SheetJS -- http://sheetjs.com */
-
 /*! https://mths.be/punycode v1.3.2 by @mathias */
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
@@ -16,6 +12,14 @@
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/**
+ * @author Tan Zhen Yong [tzy@beyondthesprawl.com]
+ * @copyright Crown Copyright 2019
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
 
 /**
  * @author brun0ne [brunonblok@gmail.com]
@@ -42,6 +46,22 @@
 /**
  * @author h345983745
  * @copyright Crown Copyright 2019
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
+ * @author mikecat
+ * @copyright Crown Copyright 2022
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
+ * @author mikecat
+ * @copyright Crown Copyright 2023
  * @license Apache-2.0
  *
  * Modified by Raka-loah@github for zh-CN i18n
@@ -182,6 +202,14 @@
  */
 
 /**
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
  * Base64 functions.
  *
  * @author n1474335 [n1474335@gmail.com]
@@ -212,10 +240,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016
+ * @copyright Crown Copyright 2016-2025
  * @license Apache-2.0
  *
- *   Copyright 2016 Crown Copyright
+ *   Copyright 2016-2025 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -267,6 +295,19 @@
  */
 
 /**
+ * JA4 resources.
+ *
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ *
+ * JA4 Copyright 2023 FoxIO, LLC.
+ * @license BSD-3-Clause
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
  * JWT resources
  *
  * @author mt3571 [mt3571@protonmail.com]
@@ -282,6 +323,16 @@
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
  *
+ */
+
+/**
+ * TLS resources.
+ *
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 /**
@@ -307,8 +358,8 @@
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
- * @version 0.8.0
+ * @version 0.9.3
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
- * @copyright Chen, Yi-Cyuan 2015-2018
+ * @copyright Chen, Yi-Cyuan 2015-2023
  * @license MIT
  */

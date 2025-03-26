@@ -1,8 +1,24 @@
 /*!
  * The buffer module from node.js, for the browser.
  *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
  * @author   Feross Aboukhadijeh <https://feross.org>
  * @license  MIT
+ */
+
+/*! (c) Stefan Thomas | https://github.com/bitcoinjs/bitcoinjs-lib
+ */
+
+/*! (c) Tom Wu | http://www-cs-students.stanford.edu/~tjw/jsbn/
+ */
+
+/*! Mike Samuel (c) 2009 | code.google.com/p/json-sans-eval
  */
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
@@ -106,9 +122,27 @@
  */
 
 /**
+ * @author cplussharp
+ * @copyright Crown Copyright 2021
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
  * @author d98762625 [d98762625@gmail.com]
  * @copyright Crown Copyright 2019
  * @license Apache-2.0
+ */
+
+/**
+ * @author devcydo [devcydo@gmail.com]
+ * @author Ma Bingyao [mabingyao@gmail.com]
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 /**
@@ -117,6 +151,36 @@
  * @license Apache-2.0
  *
  * Modified by Raka-loah@github for zh-CN i18n with towel in hand
+ */
+
+/**
+ * @author joostrijneveld [joost@joostrijneveld.nl]
+ * @copyright Crown Copyright 2022
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
+ * @author joostrijneveld [joost@joostrijneveld.nl]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
+ * @author joostrijneveld [joost@joostrijneveld.nl]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ */
+
+/**
+ * @author mikecat
+ * @copyright Crown Copyright 2022
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 /**
@@ -146,6 +210,14 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2016
  * @license Apache-2.0
+ */
+
+/**
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2023
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 /**
@@ -179,6 +251,7 @@
  *
  * @author Matt C [matt@artemisbot.uk]
  * @author n1474335 [n1474335@gmail.com]
+ * @author Evie H [evie@evie.sh]
  *
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
@@ -202,6 +275,16 @@
  */
 
 /**
+ * Crypt resources.
+ *
+ * @author n1474335 [n1474335@gmail.com]
+ * @copyright Crown Copyright 2021
+ * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
  * Custom error type for handling Dish type errors.
  * i.e. where the Dish cannot be successfully translated between types
  *
@@ -222,10 +305,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016
+ * @copyright Crown Copyright 2016-2025
  * @license Apache-2.0
  *
- *   Copyright 2016 Crown Copyright
+ *   Copyright 2016-2025 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -303,6 +386,18 @@
  * @license Apache-2.0
  *
  * Modified by Raka-loah@github for zh-CN i18n
+ */
+
+/**
+ * XXTEA library
+ *
+ * Encryption Algorithm Authors:
+ *     David J. Wheeler
+ *     Roger M. Needham
+ *
+ * @author Ma Bingyao [mabingyao@gmail.com]
+ * @author n1474335 [n1474335@gmail.com]
+ * @license MIT
  */
 
 /** @preserve
