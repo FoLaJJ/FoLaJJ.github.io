@@ -29,6 +29,7 @@
   - [**CTF-Wiki**](https://ctf-wiki.org/)
   - [**云服务器宝塔**](https://117.27.231.170:38282/)
 - 划水必备
+  - [**每日资讯快查**](https://hot.ailake.cn/)
   - [**A站**](https://www.acfun.cn/)
   - [**b站**](https://www.bilibili.com/)
   - [**低端影视**](https://ddys.pro//)
@@ -52,6 +53,7 @@
   - [**CSGO风云社**](https://fyscs.com/)
   - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
 - 工具链
+  - [**逐行解读机器学习代码**](https://nn.labml.ai/zh/)
   - [**系统调用号查询**](https://syscall.sh/)
   - [**libc版本查询**](https://libc.rip/)
   - [**ShellCode大全**](http://shell-storm.org/shellcode/index.html)
@@ -81,3 +83,6 @@
   - [**阿里云漏洞库**](https://avd.aliyun.com/)
   - [**CVE官网库**](https://github.com/CVEProject/cvelistV5)
   - [**全能啥都有**](https://www.exploit-db.com/)
+  
+- 迷因
+    - [**中文互联网迷因**](https://icebergcharts.com/i/Chinese_Oddities)

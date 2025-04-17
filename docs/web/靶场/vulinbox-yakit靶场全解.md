@@ -815,6 +815,214 @@ copy xxx.png/b + shell.php/a shell.png
 
 ## 高级前端加解密与验签实战
 
+### 前端验证签名（验签）表单：HMAC-SHA256
+
+前端加密代码：
+
+```js
+function generateKey() {
+        return  CryptoJS.enc.Utf8.parse("1234123412341234")  // 十六位十六进制数作为密钥
+    }
+
+    const key = generateKey()
+
+    // 解密方法
+    function Decrypt(word) {
+        return  ""; 
+    }
+
+    // 加密方法
+    function Encrypt(word) {
+        console.info(word);
+        return  CryptoJS.HmacSHA256(word, key.toString(CryptoJS.enc.Utf8)).toString(); 
+    }
+
+    function getData() {
+        return {
+            "username": document.getElementById("username").value,
+            "password": document.getElementById("password").value,
+        }
+    }
+
+    function outputObj(jsonData) {
+        const word = `username=${jsonData.username}&password=${jsonData.password}`;;
+        return {
+            "signature": Encrypt(word),
+            "key": key.toString(),
+            username: jsonData.username, password: jsonData.password,
+        }
+    }
+
+    function submitJSON(event) {
+        event.preventDefault();
+
+        const url = "/crypto/sign/hmac/sha256/verify";
+        let jsonData = getData();
+        let submitResult = JSON.stringify(outputObj(jsonData), null, 2)
+        console.log("key", key)
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: submitResult,
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Success:", data);
+                document.body.innerHTML = data;
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+
+    document.getElementById("json-form").addEventListener("change", () => {
+        let jsonData = {
+            "username": document.getElementById("username").value,
+            "password": document.getElementById("password").value,
+        };
+        document.getElementById("encrypt").innerHTML = JSON.stringify(outputObj(jsonData), null, 2)
+        document.getElementById("input").innerHTML = JSON.stringify(jsonData, null, 2)
+    })
+    document.getElementById("json-form").addEventListener("submit", submitJSON)
+```
+
+
+
+
+
+
+
+### SQL 注入（从登陆到 Dump 数据库
+
+```
+admin' or '1'='1 --
+admin' or '1'='1 --
+```
+
+
+
+加密密码：
+
+```js
+
+        // 加密请求数据函数
+        function encryptRequest(data) {
+            const generateRandomHex = (length) => {
+                const bytes = new Uint8Array(length);
+                crypto.getRandomValues(bytes);
+                return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+            };
+
+            const key = generateRandomHex(16);
+            const iv = generateRandomHex(16);
+
+            const message = CryptoJS.AES.encrypt(
+                JSON.stringify(data),
+                CryptoJS.enc.Hex.parse(key),
+                {
+                    iv: CryptoJS.enc.Hex.parse(iv),
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                }
+            ).toString();
+
+            return {
+                key: key,
+                iv: iv,
+                message: message
+            };
+        }
+
+        // 解密响应数据函数
+        function decryptResponse(data) {
+            const decrypted = CryptoJS.AES.decrypt(
+                data.message,
+                CryptoJS.enc.Hex.parse(data.key),
+                {
+                    iv: CryptoJS.enc.Hex.parse(data.iv),
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                }
+            );
+            
+            return JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+        }
+
+
+        // 加载用户数据
+        function loadUsers(searchTerm = '') {
+            const requestData = {
+                search: searchTerm
+            };
+
+            const encryptedData = encryptRequest(requestData);
+
+            // 创建并显示提示气泡
+            const showToast = (message, isError = false) => {
+                const toast = document.createElement('div');
+                toast.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 25px;
+                    background: ${isError ? '#ff4444' : '#44b544'};
+                    color: white;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 1000;
+                    transition: opacity 0.3s;
+                `;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+
+                // 3秒后淡出消失
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            };
+
+            fetch('./query/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(encryptedData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const decryptedData = decryptResponse(data);
+                if (decryptedData.error) {
+                    throw new Error(decryptedData.error);
+                }
+                
+                const tableBody = document.getElementById('userTableBody');
+                tableBody.innerHTML = '';
+                
+                decryptedData.users.forEach(user => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.age}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                showToast('数据加载成功');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('加载用户数据失败: ' + error.message, true);
+            });
+        }
+
+
+    
+```
+
 
 
 
