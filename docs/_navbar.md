@@ -27,7 +27,7 @@
   - [**HelloCTF** ](https://hello-ctf.com/)
   - [**免费靶场**](https://www.bachang.org/)
   - [**CTF-Wiki**](https://ctf-wiki.org/)
-  - [**云服务器宝塔**](https://117.27.231.170:38282/)
+  - [**linux.do论坛社区**](https://linux.do/)
 - 划水必备
   - [**每日资讯快查**](https://hot.ailake.cn/)
   - [**A站**](https://www.acfun.cn/)
