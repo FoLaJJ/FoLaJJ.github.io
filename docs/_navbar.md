@@ -35,6 +35,7 @@
   - [**低端影视**](https://ddys.pro//)
   - [**爱奇艺**](https://www.iqiyi.com/)
   - [**DeepSeek**](https://chat.deepseek.com/)
+  - [**腾讯元宝**](https://yuanbao.tencent.com/)
   - [**浙大先生**](https://chat.zju.edu.cn/)
   - [**MarsCode**](https://www.marscode.cn/)
   - [**深度学习**](https://zh.d2l.ai/index.html)
@@ -53,7 +54,10 @@
   - [**CSGO风云社**](https://fyscs.com/)
   - [**网站加密ykliu**](https://yk-liu.github.io/secret/)
 - 工具链
+  - [**DnsLog网站**](https://dnslog.uk/template)
   - [**逐行解读机器学习代码**](https://nn.labml.ai/zh/)
+  - [**大语言微调数据集创建工具Easy-DataSet**](https://github.com/ConardLi/easy-dataset/blob/main/README.zh-CN.md)
+  - [**Typora通行证管理**](https://store.typora.io/my)
   - [**系统调用号查询**](https://syscall.sh/)
   - [**libc版本查询**](https://libc.rip/)
   - [**ShellCode大全**](http://shell-storm.org/shellcode/index.html)

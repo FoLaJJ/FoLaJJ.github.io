@@ -4,6 +4,38 @@
 
 取证工具
 
+Volatility 是一款开源的**内存取证分析工具**，常用于分析内存转储文件（如`.raw`、`.dmp`），检测恶意进程、Rootkit、网络连接痕迹等。
+
+以下是常见使用场景和参数示例：
+
+- 查看进程列表
+
+```
+volatility -f memory.dump --profile=Win10x64 pslist  
+```
+
+- 提取网络连接
+
+```
+volatility -f memory.dump --profile=Win10x64 netscan  
+```
+
+- 检测隐藏进程，如Rootkit
+
+```
+volatility -f memory.dump --profile=Win10x64 malfind  
+```
+
+- 提取注册表信息
+
+```
+volatility -f memory.dump --profile=Win10x64 hivelist  
+```
+
+在CTF比赛中，通过分析内存镜像发现异常进程（如`notepad.exe`注入恶意代码），提取恶意载荷或密钥文件。
+
+
+
 
 
 ## 分析内存文件
