@@ -18,4 +18,4 @@ let string = function () {
      \__\/       \__\/                       \__\/                          */
 }
 console.log(makeMulti(string));
-console.log(/* 其他信息 */);
+console.log("恭喜你找到一个flag：flag{48495505-f4ec-4942-941b-4aac5783b2dc}");

@@ -36,3 +36,5 @@
 			requestAnimationFrame(e)
 		}()
 }(window, document);
+
+document.cookie = "flag=flag{C00k13s_4r3_Fun}; path=/";
