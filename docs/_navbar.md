@@ -38,6 +38,7 @@
   - [**DeepSeek**](https://chat.deepseek.com/)
   - [**腾讯元宝**](https://yuanbao.tencent.com/)
   - [**浙大先生**](https://chat.zju.edu.cn/)
+  - [**SaDuck考公网站**](https://saduck.top/)
   - [**MarsCode**](https://www.marscode.cn/)
   - [**深度学习**](https://zh.d2l.ai/index.html)
   - [**图寻**](https://tuxun.fun/)
