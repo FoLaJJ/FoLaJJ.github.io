@@ -29,6 +29,7 @@
   - [**免费靶场**](https://www.bachang.org/)
   - [**CTF-Wiki**](https://ctf-wiki.org/)
   - [**linux.do论坛社区**](https://linux.do/)
+  - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
 - 划水必备
   - [**每日资讯快查**](https://hot.ailake.cn/)
   - [**A站**](https://www.acfun.cn/)
@@ -38,6 +39,7 @@
   - [**DeepSeek**](https://chat.deepseek.com/)
   - [**腾讯元宝**](https://yuanbao.tencent.com/)
   - [**浙大先生**](https://chat.zju.edu.cn/)
+  - [**豆包**](https://www.doubao.com/chat/)
   - [**SaDuck考公网站**](https://saduck.top/)
   - [**MarsCode**](https://www.marscode.cn/)
   - [**深度学习**](https://zh.d2l.ai/index.html)
