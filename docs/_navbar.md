@@ -38,6 +38,7 @@
   - [**爱奇艺**](https://www.iqiyi.com/)
   - [**DeepSeek**](https://chat.deepseek.com/)
   - [**腾讯元宝**](https://yuanbao.tencent.com/)
+  - [**ACM模式的Hot100**](https://codefun2000.com/)
   - [**浙大先生**](https://chat.zju.edu.cn/)
   - [**豆包**](https://www.doubao.com/chat/)
   - [**SaDuck考公网站**](https://saduck.top/)
