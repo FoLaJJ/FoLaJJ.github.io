@@ -29,7 +29,6 @@
   - [**免费靶场**](https://www.bachang.org/)
   - [**CTF-Wiki**](https://ctf-wiki.org/)
   - [**linux.do论坛社区**](https://linux.do/)
-  - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
   - [**ATT&CK**](https://www.ddosi.org/att/index.html#)
 - 划水必备
   - [**每日资讯快查**](https://hot.ailake.cn/)
@@ -62,8 +61,6 @@
 - 工具链
   - [**DnsLog网站**](https://dnslog.uk/template)
   - [**逐行解读机器学习代码**](https://nn.labml.ai/zh/)
-  - [**大语言微调数据集创建工具Easy-DataSet**](https://github.com/ConardLi/easy-dataset/blob/main/README.zh-CN.md)
-  - [**Typora通行证管理**](https://store.typora.io/my)
   - [**系统调用号查询**](https://syscall.sh/)
   - [**libc版本查询**](https://libc.rip/)
   - [**ShellCode大全**](http://shell-storm.org/shellcode/index.html)
@@ -85,7 +82,6 @@
   - [**硬件协议时序图生成**](https://wavedrom.com/editor.html)
   - [**高精度IP地址搜索**](https://chaipip.com/)
   - [**清华开源镜像站**](https://mirrors.tuna.tsinghua.edu.cn/)
-  - [**考研网盘**](https://www.wanxuege.com/forum-93-1.html)
   - <a href="SRK_Toolbox/SRK_Toolbox.html" target="_blank"><strong>CyberChef汉化</strong></a>
 - 漏洞库
   - [**国家信息安全漏洞库**](https://www.cnnvd.org.cn/home/childHome)
@@ -93,6 +89,11 @@
   - [**阿里云漏洞库**](https://avd.aliyun.com/)
   - [**CVE官网库**](https://github.com/CVEProject/cvelistV5)
   - [**全能啥都有**](https://www.exploit-db.com/)
-  
 - 迷因
     - [**中文互联网迷因**](https://icebergcharts.com/i/Chinese_Oddities)
+    - [**Typora通行证管理**](https://store.typora.io/my)
+    - [**考研网盘**](https://www.wanxuege.com/forum-93-1.html)
+- AI方面
+    - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
+    - [**LLaMA-Factory**](https://github.com/hiyouga/LLaMA-Factory)
+    - [**大语言微调数据集创建工具Easy-DataSet**](https://github.com/ConardLi/easy-dataset/blob/main/README.zh-CN.md)
