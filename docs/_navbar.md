@@ -37,6 +37,7 @@
   - [**低端影视**](https://ddys.pro//)
   - [**爱奇艺**](https://www.iqiyi.com/)
   - [**DeepSeek**](https://chat.deepseek.com/)
+  - [**ChatGPT**](https://chat.chatbot.app/?model=4o-mini)
   - [**腾讯元宝**](https://yuanbao.tencent.com/)
   - [**ACM模式的Hot100**](https://codefun2000.com/)
   - [**浙大先生**](https://chat.zju.edu.cn/)
@@ -97,3 +98,5 @@
     - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
     - [**LLaMA-Factory**](https://github.com/hiyouga/LLaMA-Factory)
     - [**大语言微调数据集创建工具Easy-DataSet**](https://github.com/ConardLi/easy-dataset/blob/main/README.zh-CN.md)
+    - [**提示词工程指南**](https://www.promptingguide.ai/zh)
+    - [**AI优化提示词项目**](https://github.com/linshenkx/prompt-optimizer)

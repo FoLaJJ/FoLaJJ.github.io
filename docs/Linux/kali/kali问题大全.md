@@ -75,6 +75,19 @@ sudo apt update
 
 
 
+清华大学镜像源：
+
+```
+deb https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main non-free contrib non-free-firmware
+deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main non-free contrib non-free-firmware
+```
+
+```
+sed -i "s@http://http.kali.org/kali@https://mirrors.tuna.tsinghua.edu.cn/kali@g" /etc/apt/sources.list
+```
+
+
+
 慎重选择更新软件：
 
 ```
@@ -105,13 +118,69 @@ deb http://old-releases.ubuntu.com/ubuntu groovy-backports main restricted unive
 
 
 
+## NAT模式没有分配ip（网卡显示DOWN）
+
+这个是虚拟机配置问题，可以看一下你之前有没有更改什么
+
+
+
+现在是解决方案：
+
+显示网卡DOWN
+
+```
+┌──(root㉿kali)-[/etc]
+└─# ip a                            
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+3: eth0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN group default qlen 1000
+    link/ether 00:0c:29:40:f6:5f brd ff:ff:ff:ff:ff:ff
+```
 
 
 
 
 
+输入下面的暂时可用
+
+```
+dhclient eth0
+```
 
 
+
+直接虚拟机点击`编辑`->`更改设置`->`还原默认设置`
+
+
+
+然后点击具体虚拟机，右键打开虚拟机设置，选中网络适配器，勾选已连接和启动时连接即可。
+
+
+
+此时再输入`ip a`
+
+```
+┌──(kali㉿kali)-[~/Desktop]
+└─$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:40:f6:5f brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::a8d5:57c5:86ac:b626/64 scope link tentative noprefixroute 
+       valid_lft forever preferred_lft forever
+```
+
+
+
+解决该错误。
 
 
 
@@ -336,6 +405,76 @@ Error: 错误，pkgProblemResolver::Resolve 发生故障，这可能是有软件
 `gnome-session-common` : 破坏: eog (< 3.36.0) 但是 3.26.1-1 正要被安装
 
 `apt install eog `
+
+
+
+## 安装AppImage后缀的应用
+
+这里用cherrystudio作为演示
+
+
+
+最简单的方式就是直接添加可执行的权限
+
+```
+chmod 777 Cherry-Studio-1.4.3-x86_64.AppImage
+```
+
+然后直接运行
+
+```
+./Cherry-Studio-1.4.3-x86_64.AppImage
+```
+
+但是这种方法不会有图标
+
+你直接放在桌面上就可以双击启动了！！
+
+------------------------------
+
+不这么简单的如下：
+
+创建应用文件
+
+```
+mkdir /opt/CherryStudio
+```
+
+
+
+移动文件
+
+```
+mv Cherry-Studio-1.4.3-x86_64.AppImage /opt/CherryStudio
+```
+
+
+
+设置权限
+
+```
+chmod -R a+x /opt/CherryStudio
+```
+
+
+
+在系统菜单中创建应用图标
+
+```
+cd /usr/share/applications
+ 
+vim CherryStudio.desktop
+ 
+# 编辑内容
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=CherryStudio // 应用程序名称
+Comment=A sample application
+Exec=/opt/CherryStudio # 应用程序启动文件的路径
+Icon=/opt/{application icon} # 应用程序图标文件路径
+Terminal=false
+```
 
 
 
