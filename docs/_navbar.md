@@ -107,8 +107,12 @@
     - [**豆包**](https://www.doubao.com/chat/)
     - [**MCP-CN**](https://www.mcp-cn.com/)
     - [**Dify**](https://cloud.dify.ai/apps)
+    - [**Hugging Face**](https://huggingface.co/)
+    - [**魔塔社区ModelScope**](https://www.modelscope.cn/home)
 - 服务器
     - [**AutoDL**](https://www.autodl.com/console/homepage/personal)
     - [**腾讯云**](https://cloud.tencent.com/)
     - [**火山引擎**](https://www.volcengine.com/product/gpu)
     - [**阿里云**](https://cn.aliyun.com/)
+    - [**GPT4o-api资源**](https://www.gpt4oapi.com/)
+    - [**gpt资源**](https://www.gptapi.us/)
