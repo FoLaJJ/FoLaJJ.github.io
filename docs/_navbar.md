@@ -7,6 +7,7 @@
   - [**面试鸭**](https://www.mianshiya.com/)
   - [**安全客**](https://www.anquanke.com/)
   - [**安全牛课堂**](https://www.aqniukt.com/)
+  - [**CN-SEC**](https://cn-sec.com/)
   - [**LeetCode**](https://leetcode.cn/)
   - [**LabEx**](https://labex.io/zh/learn)
   - [**安全419**](http://www.anquan419.com/)
@@ -22,6 +23,9 @@
   - [**CTFHub**](https://www.ctfhub.com/#/index)
   - [**玄机靶场**](https://xj.edisec.net/)
   - [**BugKu**](https://ctf.bugku.com/)
+  - [**棉花糖**](https://vip.bdziyi.com/)
+  - [**Seebug**](https://www.seebug.org/)
+  - [**隼目安全**](https://www.cn-fnst.top/)
   - [**电子数据取证练习平台**](https://forensics.didctf.com/)
   - [**攻防世界**](https://adworld.xctf.org.cn/home/index)
   - [**攻防战争**](https://ctfwar.org.cn/)
@@ -36,6 +40,7 @@
   - [**b站**](https://www.bilibili.com/)
   - [**低端影视**](https://ddys.pro//)
   - [**爱奇艺**](https://www.iqiyi.com/)
+  - [**优酷视频**](https://www.youku.com/ku/webhome)
   - [**ACM模式的Hot100**](https://codefun2000.com/)
   - [**SaDuck考公网站**](https://saduck.top/)
   - [**MarsCode**](https://www.marscode.cn/)
@@ -64,6 +69,7 @@
   - [**Hacker Dork Generator**](https://iamunixtz.github.io/LazyDork/)
   - [**DNSDumpster.com巨好用**](https://dnsdumpster.com/)
   - [**微步威胁分析**](https://x.threatbook.com/)
+  - [**微步云沙箱**](https://s.threatbook.com/)
   - [**SQLMAP命令生成工具**](https://www.ddosi.org/scg/)
   - [**安全库**](https://www.aqku.com/)
   - [**反弹shell**](https://www.ddosi.org/shell/)
@@ -75,6 +81,7 @@
   - [**硬件协议时序图生成**](https://wavedrom.com/editor.html)
   - [**高精度IP地址搜索**](https://chaipip.com/)
   - [**清华开源镜像站**](https://mirrors.tuna.tsinghua.edu.cn/)
+  - [**国际刑警组织反勒索病毒网站**](https://www.nomoreransom.org/zh/index.html)
   - <a href="SRK_Toolbox/SRK_Toolbox.html" target="_blank"><strong>CyberChef汉化</strong></a>
 - 漏洞库
   - [**国家信息安全漏洞库**](https://www.cnnvd.org.cn/home/childHome)
@@ -91,6 +98,7 @@
     - [**tizi001.com**](https://tizi001.com/)
     - [**小火箭加速**](https://xhj.info/)
     - [**小旋风加速**](https://ca01.xxfvipaff.pro/#/login)
+    - [**IEEE论文模板下载**](https://template-selector.ieee.org/secure/templateSelector/publicationType)
 - AI方面
     - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
     - [**LLaMA-Factory**](https://github.com/hiyouga/LLaMA-Factory)
@@ -116,3 +124,7 @@
     - [**阿里云**](https://cn.aliyun.com/)
     - [**GPT4o-api资源**](https://www.gpt4oapi.com/)
     - [**gpt资源**](https://www.gptapi.us/)
+- 校内福利
+    - [**未来简历**](https://futurecv.cn/)
+    - [**就业星**](https://portal.jiuyexing.com/#/home/home-page)
+    - [**有时面试**](https://growup.aminer.cn/student/login)
