@@ -47,8 +47,6 @@
   - [**深度学习**](https://zh.d2l.ai/index.html)
   - [**图寻**](https://tuxun.fun/)
   - [**摸鱼小游戏**](https://haiyong.site/moyu/)
-  - [**Mermaid**](https://www.min2k.com/tools/mermaid/)
-  - [**样式比较好看的外网Mermaid**](https://mermaid.live/)
   - [**Emoji表情包生成**](https://emoji6.com/)
   - [**磁力神器DDDD**](https://cilishenqi.cc/favorites/cilisousuo)
   - [**Bug保佑**](https://www.ddosi.org/bug.html)
@@ -71,6 +69,7 @@
   - [**微步威胁分析**](https://x.threatbook.com/)
   - [**微步云沙箱**](https://s.threatbook.com/)
   - [**SQLMAP命令生成工具**](https://www.ddosi.org/scg/)
+  - [**镜像源**](https://docker.aityp.com/)
   - [**安全库**](https://www.aqku.com/)
   - [**反弹shell**](https://www.ddosi.org/shell/)
   - [**dork一键生成**](https://www.ddosi.org/dork/)
@@ -81,6 +80,7 @@
   - [**硬件协议时序图生成**](https://wavedrom.com/editor.html)
   - [**高精度IP地址搜索**](https://chaipip.com/)
   - [**清华开源镜像站**](https://mirrors.tuna.tsinghua.edu.cn/)
+  - [**busybox**](https://busybox.net/)
   - [**国际刑警组织反勒索病毒网站**](https://www.nomoreransom.org/zh/index.html)
   - <a href="SRK_Toolbox/SRK_Toolbox.html" target="_blank"><strong>CyberChef汉化</strong></a>
 - 漏洞库
@@ -98,7 +98,7 @@
     - [**tizi001.com**](https://tizi001.com/)
     - [**小火箭加速**](https://xhj.info/)
     - [**小旋风加速**](https://ca01.xxfvipaff.pro/#/login)
-    - [**IEEE论文模板下载**](https://template-selector.ieee.org/secure/templateSelector/publicationType)
+    - [**Windy风力图**](https://www.windy.com/)
 - AI方面
     - [**Happy-LLM**](https://datawhalechina.github.io/happy-llm/#/)
     - [**LLaMA-Factory**](https://github.com/hiyouga/LLaMA-Factory)
@@ -128,3 +128,13 @@
     - [**未来简历**](https://futurecv.cn/)
     - [**就业星**](https://portal.jiuyexing.com/#/home/home-page)
     - [**有时面试**](https://growup.aminer.cn/student/login)
+
+- 论文
+  - [**SOTA**](https://paperswithcode.com/sota)
+  - [**overleaf**](https://www.overleaf.com/)
+  - [**网络与信息安全推荐期刊**](https://www.ccf.org.cn/Academic_Evaluation/NIS/)
+  - [**IEEE论文模板下载**](https://template-selector.ieee.org/secure/templateSelector/publicationType)
+  - [**学术之家**](https://www.xueshu.com/)
+  - [**研发家**](https://www.yanfajia.com/)
+  - [**Mermaid**](https://www.min2k.com/tools/mermaid/)
+  - [**样式比较好看的外网Mermaid**](https://mermaid.live/)

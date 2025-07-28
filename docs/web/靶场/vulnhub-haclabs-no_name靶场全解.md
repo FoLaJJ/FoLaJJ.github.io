@@ -471,6 +471,13 @@ sudo -l
 sudo -u root find . -exec /bin/bash \; -quit
 ```
 
+命令含义：
+
+- `sudo -u root`，以 root 用户身份执行后续命令（前提是当前用户有 `sudo`权限）。
+- `find .` ，从当前目录（`.`）开始递归搜索文件和目录。
+- `-exec /bin/bash \;`，对 `find`找到的每个文件或目录，执行 `/bin/bash`（启动一个交互式 shell）。`\;`表示 `-exec`参数的结束。
+- `-quit`，让 `find`在执行完第一次匹配后立即退出（避免对多个文件重复执行）。
+
 ![image-20250717105303239](./../../_media/image-20250717105303239.png)
 
 find提权本质上是suid提权的原理
