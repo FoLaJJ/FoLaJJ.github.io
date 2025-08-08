@@ -131,7 +131,8 @@
 
 - 论文
   - [**SOTA**](https://paperswithcode.com/sota)
-  - [**overleaf**](https://www.overleaf.com/)
+  - [**Overleaf**](https://www.overleaf.com/)
+  - [**SENABTIC SCHOLAR**](https://www.semanticscholar.org/)
   - [**网络与信息安全推荐期刊**](https://www.ccf.org.cn/Academic_Evaluation/NIS/)
   - [**IEEE论文模板下载**](https://template-selector.ieee.org/secure/templateSelector/publicationType)
   - [**学术之家**](https://www.xueshu.com/)

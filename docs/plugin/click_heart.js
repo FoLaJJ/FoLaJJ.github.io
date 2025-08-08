@@ -37,4 +37,4 @@
 		}()
 }(window, document);
 
-document.cookie = "flag=flag{C00k13s_4r3_Fun}; path=/";
+document.cookie = "flag=flag{Y0u_f0und_th3_th1rd_f1a9}; path=/";
