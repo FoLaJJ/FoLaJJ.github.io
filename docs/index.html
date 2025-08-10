@@ -8,8 +8,13 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-  <!-- 下面四个选择主题，但是还是感觉vue的好看一点 -->
+  <!-- 下面五个选择主题，但是还是感觉vue的好看一点 -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
   <link rel="stylesheet" href="plugin/css/themes-vue.css">
 
   <!-- 暗黑模式，和字数统计冲突 -->
@@ -17,23 +22,18 @@
   <script src="plugin/myself/disableCtrlP.js" defer></script>
   <script src="plugin/myself/cute-console.js" defer></script>
 
-  <style>
-    nav a {
+<!-- 右上角多标签的时候可以启用这段代码 -->
+<!--   <style>
+   nav a {
       display: inline-block; /* a 标签变为块级元素 */
       text-align: center;    /* a 标签内文本居中 */
       width: 100%;           /* 使 a 标签占满父容器宽度 */
     }
-
     nav strong {
       display: block;        /* strong 标签变为块级元素 */
       text-align: center;    /* strong 标签内文本居中 */
     }
-    .markmap {
-    width: 100%;
-    height: 300px;
-  }
-
-  </style>
+  </style> -->
 </head>
 <body>
   <div id="app">Please wait...</div>
@@ -84,7 +84,7 @@
       countable:true, 
       fontsize:'0.9em', 
       color:'rgb(90,90,90)', 
-      language:'English'  // 可以选择chinese 
+      language:'english'  // 可以选择english、chinese 
     },
 
 
@@ -107,6 +107,12 @@
       displayMath  : [['$$', '$$']],               // default
     },
 
+    // 阅读进度条显示,和footer冲突
+    // progress: {
+    //     position: "top",
+    //     color: "var(--theme-color,#42b983)",
+    //     height: "3px",
+    // }
 
     //暗黑模式,和字数统计冲突
     // themeColor: "#42b983",
@@ -148,21 +154,6 @@
   //     namespace: 'Blog',
   // },
 
-    // 不知道docsify渲染机制，这个尚无法运行
-    // afterEach: function() {
-    //   // 等待页面完全渲染
-    //   setTimeout(function() {
-    //     const footers = document.querySelectorAll('footer');
-    //     if (footers.length > 1) {
-    //       // 隐藏多余的footer
-    //       for (let i = 1; i < footers.length; i++) {
-    //         footers[i].style.display = 'none';
-    //       }
-    //     }
-    //   }, 0);
-    // },
-
-
   };
 
 </script>
@@ -177,6 +168,16 @@
 
 <!--  搜索 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script> -->
+
+
+<!-- 两列布局 -->
+<!-- 需要注意的是,md文件里面需要下面元素进行标识: slide:break和slide:break-#-->
+<!-- <script src="//unpkg.com/docsify-slides/dist/docsify-slides.min.js"></script> -->
+<script src="plugin/docsify-slides.min.js"></script>
+
+<!-- 阅读进度条,和原有的footer冲突 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script> -->
+<!-- <script src="plugin/progress.min.js"></script> -->
 
 <!--  文档内容目录 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script> -->
@@ -198,7 +199,7 @@
 
 <!-- 字数统计选一个启用，显示在右上角 -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script> -->
-<script src="plugin/countable.min.js"></script>
+<!-- <script src="plugin/countable.min.js"></script> -->
 
 <!-- 外链脚本 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script> -->
@@ -237,9 +238,6 @@
 <script src="plugin/components/prism-java.min.js"></script>
 <script src="plugin/components/prism-http.min.js"></script>
 <script src="plugin/components/prism-shell-session.min.js"></script>
-
-
-
 
 
 <!-- 暗黑模式，和字数统计冲突 -->
@@ -300,7 +298,6 @@
         window.addEventListener('load', siteTime);
     }
 </script>
-
 </body>
 <!-- 恭喜你找到了一个flag: flag{7h1s_1s_th3_fir3t_f1a9} -->
 
