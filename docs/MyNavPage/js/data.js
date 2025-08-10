@@ -56,9 +56,130 @@ const siteDataConfig = {
       "name": "论文",
       "icon": "fa-solid fa-book"
     },
+    {
+      "id": "gowork",
+      "name": "笔面试找工作",
+      "icon": "fa-solid fa-person-praying"
+    },
 
   ],
   "sites": [
+    /*
+    ===================================================================================
+    ================================gowork=============================================
+    */
+    {
+      "id": "nowcoder",
+      "name": "牛客",
+      "url": "https://www.nowcoder.com/",
+      "description": "一款挺杂的面经分享网站，杂了招聘、做题、做项目、背八股",
+      "category": "gowork",
+      "icon": "icon/nowcoder.ico"
+    },
+    {
+      "id": "mianshiya",
+      "name": "面试鸭",
+      "url": "https://www.mianshiya.com/",
+      "description": "一款AI生成资料的八股背诵工具",
+      "category": "gowork",
+      "icon": "icon/mianshiya.ico"
+    },
+    {
+      "id": "leetcode",
+      "name": "LeetCode",
+      "url": "https://leetcode.cn/",
+      "description": "你们什么时候周赛才能打败AI",
+      "category": "gowork",
+      "icon": "icon/leetcode.webp"
+    },
+    {
+      "id": "wondercv",
+      "name": "超级简历",
+      "url": "https://www.wondercv.com/",
+      "description": "比较好用的一个简历制作网站",
+      "category": "gowork",
+      "icon": "icon/wondercv.ico"
+    },
+    {
+      "id": "bosszhipin",
+      "name": "Boss直聘",
+      "url": "https://www.zhipin.com/",
+      "description": "什么都有",
+      "category": "gowork",
+      "icon": "icon/bosszhipin.ico"
+    },
+    {
+      "id": "lintcode",
+      "name": "Lintcode炼码",
+      "url": "https://www.lintcode.com/",
+      "description": "体验不如leetcode",
+      "category": "gowork",
+      "icon": "icon/lintcode.ico"
+    },
+    {
+      "id": "acmcoder",
+      "name": "acmcoder赛码",
+      "url": "https://www.acmcoder.com/",
+      "description": "有些公司会使用这个平台进行笔试",
+      "category": "gowork",
+      "icon": "icon/acmcoder.ico"
+    },
+    {
+      "id": "shixiseng",
+      "name": "实习僧",
+      "url": "https://www.shixiseng.com/",
+      "description": "一般",
+      "category": "gowork",
+      "icon": "icon/shixiseng.ico"
+    },
+    {
+      "id": "zhilianzhaopin",
+      "name": "智联招聘",
+      "url": "https://www.zhaopin.com/",
+      "description": "智联招聘",
+      "category": "gowork",
+      "icon": "icon/zhilianzhaopin.png"
+    },
+    {
+      "id": "ciweishixi",
+      "name": "刺猬实习",
+      "url": "https://www.ciwei.net/",
+      "description": "刺猬实习",
+      "category": "gowork",
+      "icon": "icon/ciweishixi.ico"
+    },
+    {
+      "id": "haitouzhaopin",
+      "name": "鱼泡直聘校招",
+      "url": "https://www.haitou.cc/",
+      "description": "原网站是海投网",
+      "category": "gowork",
+      "icon": "icon/haitouzhaopin.ico"
+    },
+    {
+      "id": "yingjiesheng",
+      "name": "应届生求职网",
+      "url": "https://www.yingjiesheng.com/",
+      "description": "应届生求职网",
+      "category": "gowork",
+      "icon": "icon/yingjiesheng.png"
+    },
+    {
+      "id": "maimai",
+      "name": "脉脉",
+      "url": "https://maimai.cn/",
+      "description": "momo",
+      "category": "gowork",
+      "icon": "icon/maimai.ico"
+    },
+    {
+      "id": "offershow",
+      "name": "offershow",
+      "url": "https://www.offershow.cn/",
+      "description": "马内马内",
+      "category": "gowork",
+      "icon": "icon/offershow.ico"
+    },
     /*
     ===================================================================================
     ================================papers=============================================
@@ -172,6 +293,23 @@ const siteDataConfig = {
       "category": "CampusWelfare",
       "icon": "icon/aminer.jpg"
     },
+    {
+      "id": "szunas",
+      "name": "网安Alist网盘",
+      "url": "http://nas.szu.moe/",
+      "description": "仅限校内网络访问，里面很多东西思密达，经常性崩",
+      "category": "CampusWelfare",
+      "icon": "icon/szunas.svg"
+    },
+    {
+      "id": "szums",
+      "name": "校内正版软件下载",
+      "url": "http://ms.szu.edu.cn/",
+      "description": "仅限校内网络访问，matlab、wps",
+      "category": "CampusWelfare",
+      "icon": "icon/szums.ico"
+    },
+
     
     /*
     ===================================================================================
@@ -383,6 +521,14 @@ const siteDataConfig = {
       "icon": "icon/trae.png"
     },
     {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/cn",
+      "description": "双汇火腿肠，王中王",
+      "category": "AI",
+      "icon": "icon/cursor.ico"
+    },
+    {
       "id": "d2lai",
       "name": "深度学习",
       "url": "https://zh.d2l.ai/index.html",
@@ -530,6 +676,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "cowtransfer",
+      "name": "奶牛快传",
+      "url": "https://cowtransfer.com/",
+      "description": "一个非常简洁好用的文件分享工具",
+      "category": "ToolChain",
+      "icon": "icon/cowtransfer.png"
+    },
     {
       "id": "dnslog",
       "name": "DNSLog",
@@ -738,10 +892,34 @@ const siteDataConfig = {
       "category": "ToolChain",
       "icon": "icon/ddosiscg.png"
     },
+    {
+      "id": "drawnix",
+      "name": "Drawnix",
+      "url": "https://drawnix.com/",
+      "description": "一款开源的白板工具，https://github.com/plait-board/drawnix",
+      "category": "ToolChain",
+      "icon": "icon/drawnix.ico"
+    },
     /*
     ===================================================================================
     ======================================SlackOff=====================================
     */
+    {
+      "id": "youtube",
+      "name": "youtube",
+      "url": "https://www.youtube.com/",
+      "description": "油管！",
+      "category": "SlackOff",
+      "icon": "icon/youtube.png"
+    },
+    {
+      "id": "netflix",
+      "name": "netflix",
+      "url": "https://www.netflix.com/",
+      "description": "网飞！",
+      "category": "SlackOff",
+      "icon": "icon/netflix.ico"
+    },
     {
       "id": "acfun",
       "name": "A站",
@@ -757,6 +935,22 @@ const siteDataConfig = {
       "description": "都快变成p站了",
       "category": "SlackOff",
       "icon": "icon/bilibili.ico"
+    },
+    {
+      "id": "cctv",
+      "name": "CCTV",
+      "url": "https://tv.cctv.com/",
+      "description": "这是C站，谁赞成，谁反对",
+      "category": "SlackOff",
+      "icon": "icon/cctv.ico"
+    },
+    {
+      "id": "missevan",
+      "name": "M站",
+      "url": "https://www.missevan.com/",
+      "description": "missevan，猫耳FM弹幕音图站",
+      "category": "SlackOff",
+      "icon": "icon/missevan.ico"
     },
     {
       "id": "ddys",
@@ -977,20 +1171,20 @@ const siteDataConfig = {
       "icon": "icon/linuxdo.png"
     },
     {
+      "id": "v2ex",
+      "name": "V2EX社区",
+      "url": "https://www.v2ex.com/",
+      "description": "V2EX社区",
+      "category": "Forum",
+      "icon": "icon/v2ex.ico"
+    },
+    {
       "id": "kanxue",
       "name": "看雪",
       "url": "https://bbs.kanxue.com/",
       "description": "看雪",
       "category": "Forum",
       "icon": "icon/kanxue.ico"
-    },
-    {
-      "id": "nowcoder",
-      "name": "牛客",
-      "url": "https://www.nowcoder.com/",
-      "description": "一款挺杂的面经分享网站，杂了招聘、做题、做项目、背八股",
-      "category": "Forum",
-      "icon": "icon/nowcoder.ico"
     },
     {
       "id": "ichunqiu",
@@ -1009,14 +1203,6 @@ const siteDataConfig = {
       "icon": "icon/52pojie.svg"
     },
     {
-      "id": "mianshiya",
-      "name": "面试鸭",
-      "url": "https://www.mianshiya.com/",
-      "description": "一款AI生成资料的八股背诵工具",
-      "category": "Forum",
-      "icon": "icon/mianshiya.ico"
-    },
-    {
       "id": "anquanke",
       "name": "安全客",
       "url": "https://www.anquanke.com/",
@@ -1031,14 +1217,6 @@ const siteDataConfig = {
       "description": "不做评价",
       "category": "Forum",
       "icon": "icon/aqniukt.png"
-    },
-    {
-      "id": "leetcode",
-      "name": "LeetCode",
-      "url": "https://leetcode.cn/",
-      "description": "你们什么时候周赛才能打败AI",
-      "category": "Forum",
-      "icon": "icon/leetcode.webp"
     },
     {
       "id": "freebuf",
@@ -1094,7 +1272,7 @@ const siteDataConfig = {
       "url": "http://www.anquan419.com/",
       "description": "网安信息汇总，主要是比赛",
       "category": "Forum",
-      "icon": "icon/behance.png"
+      "icon": "icon/anquan419.ico"
     },
     {
       "id": "yijinglab",
