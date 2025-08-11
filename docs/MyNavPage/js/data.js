@@ -677,6 +677,14 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "googleanalytics",
+      "name": "GoogleAnalytics",
+      "url": "https://analytics.google.com/analytics/web/provision/#/provision",
+      "description": "GoogleAnalytics",
+      "category": "ToolChain",
+      "icon": "icon/GoogleAnalytics.png"
+    },
+    {
       "id": "cloudflareanalytics",
       "name": "CloudflareAnalytics",
       "url": "https://www.cloudflare.com/zh-tw/application-services/products/analytics/",
