@@ -677,6 +677,22 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "cloudflareanalytics",
+      "name": "CloudflareAnalytics",
+      "url": "https://www.cloudflare.com/zh-tw/application-services/products/analytics/",
+      "description": "cloudflare网站访问量统计平台",
+      "category": "ToolChain",
+      "icon": "icon/CloudflareAnalytics.png"
+    },
+    {
+      "id": "counterapi",
+      "name": "CounterAPI",
+      "url": "https://app.counterapi.dev/",
+      "description": "一款免费限量的网站访问量统计平台",
+      "category": "ToolChain",
+      "icon": "icon/counterapi.png"
+    },
+    {
       "id": "cowtransfer",
       "name": "奶牛快传",
       "url": "https://cowtransfer.com/",

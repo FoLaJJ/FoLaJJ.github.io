@@ -34,6 +34,8 @@
       text-align: center;    /* strong 标签内文本居中 */
     }
   </style> -->
+
+
 </head>
 <body>
   <div id="app">Please wait...</div>
@@ -80,12 +82,12 @@
 
 
     // 字数统计
-    count:{ 
-      countable:true, 
-      fontsize:'0.9em', 
-      color:'rgb(90,90,90)', 
-      language:'english'  // 可以选择english、chinese 
-    },
+    // count:{ 
+    //   countable:true, 
+    //   fontsize:'0.9em', 
+    //   color:'rgb(90,90,90)', 
+    //   language:'english'  // 可以选择english、chinese 
+    // },
 
 
     // 分享插件
@@ -100,6 +102,9 @@
         color: '#42b983'
       },
     },
+
+    // 开启busuanzi，统计访问网站量
+    // busuanzi: true,
 
     // 公式渲染
     latex: {
@@ -239,6 +244,9 @@
 <script src="plugin/components/prism-http.min.js"></script>
 <script src="plugin/components/prism-shell-session.min.js"></script>
 
+<!-- busuanzi统计访问网站量，好像不可用了 -->
+<!-- <script src="https://unpkg.com/docsify-busuanzi@1.0.1/dist/docsify-busuanzi.min.js"></script> -->
+
 
 <!-- 暗黑模式，和字数统计冲突 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script> -->
@@ -298,6 +306,40 @@
         window.addEventListener('load', siteTime);
     }
 </script>
+
+<!-- 不知道哪个插件重复渲染footer了，直接加这个代码确保footer只展示一个 -->
+  <script>
+    (function() {
+      // 监听 DOM 变化，防止动态渲染导致 footer 重复
+      const observer = new MutationObserver(function(mutations) {
+        const footers = document.querySelectorAll("footer");
+        if (footers.length > 1) {
+          // 只保留最后一个 footer，删除前面的
+          for (let i = 0; i < footers.length - 1; i++) {
+            footers[i].remove();
+          }
+        }
+      });
+
+      // 开始监听整个 body 的变化
+      observer.observe(document.body, {
+        childList: true,  // 监听子节点变化
+        subtree: true     // 监听所有后代节点
+      });
+
+      // 初始检查（防止首次加载时就有多个 footer）
+      const initialFooters = document.querySelectorAll("footer");
+      if (initialFooters.length > 1) {
+        for (let i = 0; i < initialFooters.length - 1; i++) {
+          initialFooters[i].remove();
+        }
+      }
+    })();
+  </script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "777b9fbec40946dd987042c64d504d61"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 <!-- 恭喜你找到了一个flag: flag{7h1s_1s_th3_fir3t_f1a9} -->
 
