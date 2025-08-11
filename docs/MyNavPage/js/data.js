@@ -677,6 +677,14 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "busuanzi",
+      "name": "busuanzi",
+      "url": "https://busuanzi.ibruce.info/",
+      "description": "永久免费使用，好人站长。你的站点要在公网，它才会去记录",
+      "category": "ToolChain",
+      "icon": "icon/busuanzi.png"
+    },
+    {
       "id": "googleanalytics",
       "name": "GoogleAnalytics",
       "url": "https://analytics.google.com/analytics/web/provision/#/provision",
