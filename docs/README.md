@@ -50,8 +50,9 @@
 
 
 
-
-<div style="text-align: center;"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span></div>
+<div style="text-align: center;">Total <span id="busuanzi_value_site_pv" style="color:#42b983;"><i style="color:#42b983;">刷新显示</i></span> views.
+    您是FoLaJJ的第<span id="busuanzi_value_site_uv" style="color:#42b983;"><i style="color:#42b983;">刷新显示</i></span>个小伙伴
+<span id="busuanzi_value_page_pv" style="color:#42b983;"><i style="color:#42b983;">刷新显示</i></span> Hits</div>
 
 
 
