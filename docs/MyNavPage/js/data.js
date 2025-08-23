@@ -185,6 +185,14 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "zlib",
+      "name": "Z-Library",
+      "url": "https://z-lib.id/",
+      "description": "Z-Library",
+      "category": "papers",
+      "icon": "icon/zlib.ico"
+    },
+    {
       "id": "arxiv",
       "name": "arXiv",
       "url": "https://arxiv.org/",
@@ -352,6 +360,14 @@ const siteDataConfig = {
     ===================================================================================
     ========================================AI=========================================
     */
+    {
+      "id": "kaggle",
+      "name": "kaggle",
+      "url": "https://www.kaggle.com/",
+      "description": "kaggle",
+      "category": "AI",
+      "icon": "icon/kaggle.ico"
+    },
     {
       "id": "HappyLLM",
       "name": "HappyLLM",
