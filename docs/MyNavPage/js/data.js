@@ -77,12 +77,36 @@ const siteDataConfig = {
       "icon": "icon/nowcoder.ico"
     },
     {
+      "id": "programmercarl",
+      "name": "代码随想录",
+      "url": "https://programmercarl.com/",
+      "description": "代码随想录",
+      "category": "gowork",
+      "icon": "icon/programmercarl.png"
+    },
+    {
       "id": "mianshiya",
       "name": "面试鸭",
       "url": "https://www.mianshiya.com/",
       "description": "一款AI生成资料的八股背诵工具",
       "category": "gowork",
       "icon": "icon/mianshiya.ico"
+    },
+    {
+      "id": "xiaolincoding",
+      "name": "小林Coding",
+      "url": "https://www.xiaolincoding.com/",
+      "description": "系统和网络部分很经典",
+      "category": "gowork",
+      "icon": "icon/xiaolincoding.webp"
+    },
+    {
+      "id": "csguidecn",
+      "name": "编程指北",
+      "url": "https://csguide.cn/",
+      "description": "cpp挺全的",
+      "category": "gowork",
+      "icon": "icon/csguidecn.ico"
     },
     {
       "id": "leetcode",

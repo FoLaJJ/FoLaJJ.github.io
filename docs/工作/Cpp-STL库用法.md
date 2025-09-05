@@ -1,5 +1,9 @@
 # STL库用法
 
+参考：
+
+https://blog.csdn.net/qq_50285142/article/details/114026148
+
 ## vector
 
 vector为可变长数组（动态数组），定义的vector的数组可以随时添加数值和删除元素。
@@ -46,19 +50,21 @@ int main(){
 
 方法函数：
 
-| 代码                  | 含义                                                 |
-| --------------------- | ---------------------------------------------------- |
-| v.front()             | 返回第一个数据O(1)                                   |
-| v.pop_back()          | 删除最后一个数据O(1)                                 |
-| v.push_back(*element) | 在尾部加入一个数据O(1)                               |
-| v.size()              | 返回实际数据个数（unsigned类型）O(1)                 |
-| v.clear()             | 清楚元素个数O(N)，N为元素个数                        |
-| v.resize(n,num)       | 改变数组大小为n，n个空间赋值为num，没有就默认赋值为0 |
-| v.insert(it,x)        | 向任意迭代器it插入一个元素x，O(N)                    |
-| v.erase(first,last)   | 删除【first，last)的所有元素，O(N)  左闭右开         |
-| v.begin()             | 返回首元素的迭代器O(1)                               |
-| v.end()               | 返回最后一个元素后一个位置的迭代器O(1)               |
-| v.empty()             | 判断是否为空，为空返回true，反之返回false O(1)       |
+| 代码                     | 含义                                                 |
+| ------------------------ | ---------------------------------------------------- |
+| v.front()                | 返回第一个数据O(1)                                   |
+| v.pop_back()             | 删除最后一个数据O(1)                                 |
+| v.push_back(*element)    | 在尾部加入一个数据O(1)                               |
+| v.size()                 | 返回实际数据个数（unsigned类型）O(1)                 |
+| v.clear()                | 清楚元素个数O(N)，N为元素个数                        |
+| v.resize(n,num)          | 改变数组大小为n，n个空间赋值为num，没有就默认赋值为0 |
+| v.insert(it,x)           | 向任意迭代器it插入一个元素x，O(N)                    |
+| v.erase(first,last)      | 删除(first，last)的所有元素，O(N)  左闭右开          |
+| v.begin()                | 返回首元素的迭代器O(1)                               |
+| v.end()                  | 返回最后一个元素后一个位置的迭代器O(1)               |
+| v.empty()                | 判断是否为空，为空返回true，反之返回false O(1)       |
+| v.emplace_back(*element) | 在数组中加入一个数据，和pushback类似，但是更高效     |
+|                          |                                                      |
 
 用法：
 
@@ -88,6 +94,14 @@ int main(){
 
 
 
+注意：
+
+- end指针通常是最后一个元素后一个位置的地址，而不是最后一个元素的地址，stl库中的所有容器都是这样设定的
+- vector中当长度大于容量时，会重新开辟新的内存空间，一般是初始设定的容量的两倍，并将原来空间内容先copy到新的地址空间，然后再销毁原来的地址空间
+- 减少内存拷贝的思路就是提前分配固定的空间大小
+
+
+
 ## stack
 
 先进后出，后进先出的容器
@@ -110,9 +124,9 @@ int main(){
 | ----------------- | --------------------------------- |
 | stk.push(element) | 元素element入栈，增加元素O(1)     |
 | stk.pop()         | 移除栈顶元素O(1)                  |
-| s.top()           | 取得栈顶元素，但不删除O(1)        |
-| s.empty()         | 检测栈内是否为空，空返回true O(1) |
-| s.size()          | 返回栈内元素的个数O(1)            |
+| stk.top()         | 取得栈顶元素，但不删除O(1)        |
+| stk.empty()       | 检测栈内是否为空，空返回true O(1) |
+| stk.size()        | 返回栈内元素的个数O(1)            |
 
 
 
@@ -130,14 +144,14 @@ int main(){
 
 方法函数：
 
-| 代码            | 含义                                            |
-| --------------- | ----------------------------------------------- |
-| q.front()       | 返回队首元素O(1)                                |
-| q.back()        | 返回队尾元素O(1)                                |
-| q.push(element) | 尾部添加一个元素element 进队O(1)                |
-| q.pop()         | 删除第一个元素 出队O(1)                         |
-| q.size()        | 返回队列中元素个数，返回值类型unsigned int O(1) |
-| q.empty()       | 判断是否为空，为空返回true O(1)                 |
+| 代码              | 含义                                            |
+| ----------------- | ----------------------------------------------- |
+| `q.front()`       | 返回队首元素O(1)                                |
+| `q.back()`        | 返回队尾元素O(1)                                |
+| `q.push(element)` | 尾部添加一个元素element 进队O(1)                |
+| `q.pop()`         | 删除第一个元素 出队O(1)                         |
+| `q.size()`        | 返回队列中元素个数，返回值类型unsigned int O(1) |
+| `q.empty()`       | 判断是否为空，为空返回true O(1)                 |
 
 
 
@@ -489,6 +503,61 @@ int main(){
 
 
 
+## 重写sort函数lambda表达式
+
+经常需要自定义排序函数，有些情况也会涉及到pair的排序，根据其中某个元素进行排序
+
+在现代C++中一般使用lambda表达式，但是也可以自定义函数等
+
+
+
+**自定义比较函数**
+
+```c++
+bool myCompare(int a, int b) {
+    return abs(a) < abs(b);
+}
+
+sort(nums.begin(), nums.end(), myCompare);
+```
+
+
+
+**lambda表达式**
+
+const& 避免拷贝，提高效率
+
+```c++
+sort(nums.begin(), nums.end(), [](const auto& a, const auto& b) {
+    return a>b;
+});
+```
+
+
+
+对pair等这种容器比较时如下：
+
+**lambda表达式**
+
+```c++
+sort(pairs.begin(), pairs.end(), [](const auto& a, const auto& b) {
+    return a.first < b.first;
+});
+```
+
+假设要更细化一点，就是第一个元素都相等，那就比较第二个
+
+```c++
+sort(pairs.begin(), pairs.end(),[](const auto& a, const auto& b) {
+    if (a.first != b.first) {
+        return a.first < b.first;  
+    }
+    return a.second < b.second;    
+});
+```
+
+
+
 ## string
 
 string是一个字符串类，和char型字符串类似。
@@ -610,6 +679,32 @@ sort(s.begin(),s.end());
 
 
 
+其中需要注意的就是输入输出，一般acm模式的笔试中就会遇到：
+
+- 遇到空格，回车结束
+
+```
+cin >> s;
+```
+
+- 读入一行字符串，包括空格，回车结束。getline会获取前一个输入的换行符
+
+```
+getline(cin,s);
+```
+
+如果有两个输入的话，正确的做法应该如下：
+
+```
+int num;
+string ss;
+cin >> num;
+getchar();
+getline(cin,ss);
+```
+
+
+
 ## 一些STL常用函数
 
 atoi：将字符串转为int类型，只能转换char型数组
@@ -631,6 +726,14 @@ for(auto i : a)
     cout << i << " ";
 // 0 1 2 3 4 5 6 7 8 9
 ```
+
+
+
+stoi：将字符串s转化为int类型
+
+其他同理
+
+
 
 
 
