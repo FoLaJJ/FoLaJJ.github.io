@@ -286,7 +286,7 @@ git pull <远程主机名> <远程分支名>:<本地分支名>
 
 
 
-## git-gui
+## **git-gui**
 
 
 
@@ -310,7 +310,7 @@ git pull <远程主机名> <远程分支名>:<本地分支名>
 
 
 
-## 上传出问题
+## **上传出问题**
 
 一般就是开梯子导致的：
 
@@ -333,8 +333,6 @@ git config --global --unset https.proxy
 
 
 
-
-
 然后cmd执行：
 
 ```
@@ -344,3 +342,21 @@ ipconfig /flushdns
 
 
 重新push即可。
+
+
+
+或者就设置git从固定端口出去，不被梯子代理吧，后面端口看你的
+
+```cmd
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+```
+
+
+
+查看具体配置
+
+```
+git config --global -l
+```
+

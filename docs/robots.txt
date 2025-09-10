@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Flag：flag{Y0u_h6ve_f0und_th3_717th_f1a9}

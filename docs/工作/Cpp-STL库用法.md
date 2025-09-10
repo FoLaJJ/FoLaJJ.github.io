@@ -282,7 +282,7 @@ int main()
 
 
 
-## map(红黑树)
+## map（红黑树）
 
 一个键对应一个值，和python的字典有点类似
 
@@ -500,6 +500,79 @@ int main(){
     mp.insert(p);
 }
 ```
+
+
+
+## list（双向链表）
+
+list为双向链表容器，支持在任意位置快速插入和删除元素，但不支持随机访问。
+
+```cpp
+#include <list>
+
+int main(){
+    // 1.初始化
+    list<int> a;
+    list<char> b{1, 2, 3};
+    list<int> c(b); // 拷贝初始化
+    
+    // 2.二维初始化
+    list<list<int>> d;
+}
+```
+
+方法函数：
+
+| 代码                   | 含义                         |
+| :--------------------- | :--------------------------- |
+| front()                | 返回第一个元素O(1)           |
+| back()                 | 返回最后一个元素O(1)         |
+| push_back(element)     | 在尾部插入元素O(1)           |
+| push_front(element)    | 在头部插入元素O(1)           |
+| pop_back()             | 删除尾部元素O(1)             |
+| pop_front()            | 删除头部元素O(1)             |
+| size()                 | 返回元素个数O(1)             |
+| clear()                | 清空链表O(N)                 |
+| insert(it, element)    | 在迭代器it位置插入元素O(1)   |
+| erase(it)              | 删除迭代器it位置的元素O(1)   |
+| begin()                | 返回指向首元素的迭代器O(1)   |
+| end()                  | 返回尾后迭代器O(1)           |
+| empty()                | 判断是否为空O(1)             |
+| splice(it, other_list) | 将other_list拼接到it位置O(1) |
+
+用法：
+
+```cpp
+int main(){
+    list<int> l{1, 2, 3};
+    
+    // 1.插入删除
+    l.push_back(4);
+    l.push_front(0);
+    l.pop_back();
+    
+    // 2.迭代器遍历
+    for(auto it = l.begin(); it != l.end(); ++it) {
+        cout << *it << " ";
+    }
+    
+    // 3.智能指针遍历
+    for(auto val : l) {
+        cout << val << " ";
+    }
+    
+    // 4.插入元素
+    auto it = l.begin();
+    advance(it, 2); // 移动迭代器
+    l.insert(it, 5);
+}
+```
+
+注意：
+
+- list不支持随机访问，不能使用[]或at()访问元素
+- 插入和删除操作不会使迭代器失效（除非指向被删除元素）
+- splice操作是list特有的高效操作，可以在常数时间内完成链表拼接
 
 
 

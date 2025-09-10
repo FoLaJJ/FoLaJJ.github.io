@@ -26,7 +26,7 @@
 > :world_map:新进组可以稍微了解一下大概的计划表：[新成员固定任务](跳转/新成员固定任务)；以及各种课程的注意事项：[课程学习](跳转/课程学习)。
 >
 
-:smiling_imp: 目前自认为的不那么精华的精华帖：[DVWA靶场全解](web/靶场/DVWA靶场全解)、[pikachu靶场全解](web/靶场/pikachu靶场全解)、[xss-challenge-tour靶场全解](web/靶场/xss-challenge-tour靶场全解)、[vulnhub-haclabs-no_name靶场全解](web/靶场/vulnhub-haclabs-no_name靶场全解)、[主机网络防火墙](Linux/主机网络防火墙)、[链表学习路线](工作/链表学习路线(1w6长文))、[python脚本编写能力](专区/python脚本编写能力)、[ensp使用指北](工作/ensp使用指北)、[Git使用指北](工作/Git使用指北)、[网管系统管理与性能优化](Linux/网管系统管理与性能优化)、[挖矿病毒应急响应](Linux/挖矿病毒应急响应)、[edu信息收集](hvv/edu信息收集)、[kali问题大全](Linux/kali/kali问题大全)
+:smiling_imp: 目前自认为的不那么精华的精华帖：[DVWA靶场全解](web/靶场/DVWA靶场全解)、[pikachu靶场全解](web/靶场/pikachu靶场全解)、[xss-challenge-tour靶场全解](web/靶场/xss-challenge-tour靶场全解)、[vulnhub-haclabs-no_name靶场全解](web/靶场/vulnhub-haclabs-no_name靶场全解)、[主机网络防火墙](Linux/主机网络防火墙)、[链表学习路线](工作/链表学习路线(1w6长文))、[买卖股票的最佳时机系列问题](工作/买卖股票的最佳时机系列问题)、[python脚本编写能力](专区/python脚本编写能力)、[ensp使用指北](工作/ensp使用指北)、[Git使用指北](工作/Git使用指北)、[网管系统管理与性能优化](Linux/网管系统管理与性能优化)、[挖矿病毒应急响应](Linux/挖矿病毒应急响应)、[edu信息收集](hvv/edu信息收集)、[kali问题大全](Linux/kali/kali问题大全)
 
 -------------
 
@@ -42,7 +42,7 @@
 # 持续更新中...
 小小的无聊游记也很可爱：[游记](跳转/游记)
 
-> :hatching_chick: 彩蛋：这里个网站藏有4个flag，找齐它请你喝杯奶茶叭（仅限新成员）:milk_glass:
+> :hatching_chick: 彩蛋：这里个网站藏有5个flag，找齐它请你喝杯奶茶叭（仅限新成员）:milk_glass:
 
 `sudo -u root find . -exec /bin/bash \; -quit`
 
