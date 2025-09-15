@@ -69,6 +69,14 @@ const siteDataConfig = {
     ================================gowork=============================================
     */
     {
+      "id": "learngitbranching",
+      "name": "LearnGitBranching",
+      "url": "https://learngitbranching.js.org/?locale=zh_CN",
+      "description": "一个在线练习git操作的网站",
+      "category": "gowork",
+      "icon": "icon/learngitbranching.ico"
+    },
+    {
       "id": "nowcoder",
       "name": "牛客",
       "url": "https://www.nowcoder.com/",

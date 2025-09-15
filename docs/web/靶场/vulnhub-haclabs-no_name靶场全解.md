@@ -92,6 +92,10 @@ sudo netdiscover -i eth0 -r 192.168.186.0/24
 
 但后续还是使用转格式的方式进行测试
 
+```
+sudo netdiscover -i eth0 -r 192.168.79.0/24
+```
+
 ![image-20250717095407927](./../../_media/image-20250717095407927.png)
 
 ```
