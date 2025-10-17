@@ -725,6 +725,14 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "SerpApi",
+      "name": "SerpApi",
+      "url": "https://serpapi.com/",
+      "description": "SerpApi综合的搜索引擎平台，有免费额度",
+      "category": "ToolChain",
+      "icon": "icon/SerpApi.png"
+    },
+    {
       "id": "busuanzi",
       "name": "busuanzi",
       "url": "https://busuanzi.ibruce.info/",
