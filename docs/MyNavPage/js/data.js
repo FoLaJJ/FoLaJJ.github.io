@@ -589,6 +589,14 @@ const siteDataConfig = {
     =====================================meme==========================================
     */
     {
+      "id": "nof1ai",
+      "name": "中文互联网迷因",
+      "url": "https://nof1.ai/",
+      "description": "LLM塞博斗蛐蛐",
+      "category": "meme",
+      "icon": "icon/nof1ai.png"
+    },
+    {
       "id": "icebergcharts",
       "name": "中文互联网迷因",
       "url": "https://icebergcharts.com/i/Chinese_Oddities",
@@ -724,6 +732,22 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "shodan",
+      "name": "shodan",
+      "url": "https://www.shodan.io/",
+      "description": "shodan信息搜集",
+      "category": "ToolChain",
+      "icon": "icon/shodan.png"
+    },
+    {
+      "id": "lingfengyun",
+      "name": "lingfengyun",
+      "url": "https://www.lingfengyun.com/",
+      "description": "凌风云，一个可以搜索很多网盘关键字的平台，信息搜集",
+      "category": "ToolChain",
+      "icon": "icon/lingfengyun.ico"
+    },
     {
       "id": "SerpApi",
       "name": "SerpApi",
