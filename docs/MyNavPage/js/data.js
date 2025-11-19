@@ -217,6 +217,14 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "mycolorSpace",
+      "name": "mycolor-space",
+      "url": "https://mycolor.space/",
+      "description": "科研绘图配色推荐！",
+      "category": "papers",
+      "icon": "icon/MycolorSpace.png"
+    },
+    {
       "id": "zlib",
       "name": "Z-Library",
       "url": "https://z-lib.id/",
@@ -359,7 +367,7 @@ const siteDataConfig = {
       "id": "autodl",
       "name": "AutoDL",
       "url": "https://www.autodl.com/console/homepage/personal",
-      "description": "经典",
+      "description": "经典GPU算力，主要是可以走报销，有账单说明啥的",
       "category": "Server",
       "icon": "icon/autodl.png"
     },
@@ -370,6 +378,30 @@ const siteDataConfig = {
       "description": "有保证",
       "category": "Server",
       "icon": "icon/tencentCloud.ico"
+    },
+    {
+      "id": "huaweiCloud",
+      "name": "华为云",
+      "url": "https://www.huaweicloud.com/",
+      "description": "华为云",
+      "category": "Server",
+      "icon": "icon/huaweiCloud.ico"
+    },
+    {
+      "id": "tianyiCloud",
+      "name": "天翼云",
+      "url": "https://www.ctyun.cn/",
+      "description": "呃呃呃",
+      "category": "Server",
+      "icon": "icon/tianyiCloud.ico"
+    },
+    {
+      "id": "jdCloud",
+      "name": "京东云",
+      "url": "https://www.jdcloud.com/",
+      "description": "嗯嗯嗯",
+      "category": "Server",
+      "icon": "icon/jdCloud.ico"
     },
     {
       "id": "volcengine",
@@ -471,6 +503,14 @@ const siteDataConfig = {
       "description": "不要念成DickSeek了",
       "category": "AI",
       "icon": "icon/deepseek.svg"
+    },
+    {
+      "id": "qwenai",
+      "name": "Qwen",
+      "url": "https://chat.qwen.ai/",
+      "description": "从学术界迈向ToC",
+      "category": "AI",
+      "icon": "icon/qwenai.png"
     },
     {
       "id": "chatgpt",
@@ -673,6 +713,14 @@ const siteDataConfig = {
     ================================VulnerabilityDatabase==============================
     */
     {
+      "id": "Vulnerability-lookup",
+      "name": "Vulnerability-lookup",
+      "url": "https://cve.circl.lu/",
+      "description": "Vulnerability-lookup漏洞查找",
+      "category": "VulnerabilityDatabase",
+      "icon": "icon/Vulnerability-lookup.ico"
+    },
+    {
       "id": "cnnvd",
       "name": "国家信息安全漏洞库",
       "url": "https://www.cnnvd.org.cn/home/childHome",
@@ -732,6 +780,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "linuxmirrorscn",
+      "name": "Linuxmirrors",
+      "url": "https://linuxmirrors.cn/",
+      "description": "一键脚本换源，巨好用！适配多种系统，别再自己配啦！",
+      "category": "ToolChain",
+      "icon": "icon/linuxmirrorscn.svg"
+    },
     {
       "id": "shodan",
       "name": "shodan",
@@ -1068,7 +1124,7 @@ const siteDataConfig = {
       "id": "ddys",
       "name": "低端影视",
       "url": "https://ddys.pro//",
-      "description": "挺高清的",
+      "description": "时代的眼泪，不可抗力停站了！",
       "category": "SlackOff",
       "icon": "icon/ddys.webp"
     },
@@ -1278,7 +1334,7 @@ const siteDataConfig = {
       "id": "linuxdo",
       "name": "Linuxdo社区",
       "url": "https://linux.do/",
-      "description": "Linuxdo社区",
+      "description": "L站",
       "category": "Forum",
       "icon": "icon/linuxdo.png"
     },
