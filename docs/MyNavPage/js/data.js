@@ -117,6 +117,14 @@ const siteDataConfig = {
       "icon": "icon/csguidecn.ico"
     },
     {
+      "id": "csview",
+      "name": "csview",
+      "url": "https://www.csview.cn/",
+      "description": "CSView一个面试和八股文的网站",
+      "category": "gowork",
+      "icon": "icon/csview.png"
+    },
+    {
       "id": "leetcode",
       "name": "LeetCode",
       "url": "https://leetcode.cn/",
@@ -630,7 +638,7 @@ const siteDataConfig = {
     */
     {
       "id": "nof1ai",
-      "name": "中文互联网迷因",
+      "name": "LLM-solo炒股战",
       "url": "https://nof1.ai/",
       "description": "LLM塞博斗蛐蛐",
       "category": "meme",
@@ -788,6 +796,22 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "qianduangebilidanmu",
+      "name": "bili_danmu",
+      "url": "https://tool.qianduange.cn/bili_danmu",
+      "description": "一个查B站弹幕发送者的网站",
+      "category": "ToolChain",
+      "icon": "icon/qianduangebilidanmu.png"
+    },
+    {
+      "id": "ctftoolsio",
+      "name": "ctftools-io",
+      "url": "https://ctftools.github.io/",
+      "description": "一个在线的CTFtools收集网站",
+      "category": "ToolChain",
+      "icon": "icon/ctftoolsio.ico"
+    },
     {
       "id": "InternxtCom",
       "name": "InternxtCom",

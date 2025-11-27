@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoLaJJ-wiki</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
     <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -20,10 +20,26 @@
                 <span>FoLaJJ的导航页</span>
             </div>
         </div>
+        <div class="header-center">
+            <div class="search-container">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input 
+                    type="text" 
+                    class="search-box" 
+                    placeholder="搜索网站..."
+                    id="headerSearchBox"
+                >
+                <button class="search-clear" id="headerSearchClear">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
         <div class="header-right">
             <a href="https://folajj.github.io/" target="_blank" class="blog-link">
                 <i class="fas fa-blog"></i>
-                个人博客
+                MyBlog
             </a>
             <a href="https://github.com/FoLaJJ" target="_blank" class="github-link">
                 <i class="fab fa-github"></i>
@@ -48,4 +64,4 @@
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
 </body>
-</html> 
+</html>
