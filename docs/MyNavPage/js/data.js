@@ -713,6 +713,14 @@ const siteDataConfig = {
     ================================VulnerabilityDatabase==============================
     */
     {
+      "id": "huntrCom",
+      "name": "Huntr",
+      "url": "https://huntr.com/",
+      "description": "全球首个针对人工智能的漏洞赏金平台",
+      "category": "VulnerabilityDatabase",
+      "icon": "icon/huntrCom.ico"
+    },
+    {
       "id": "Vulnerability-lookup",
       "name": "Vulnerability-lookup",
       "url": "https://cve.circl.lu/",
@@ -781,6 +789,30 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "InternxtCom",
+      "name": "InternxtCom",
+      "url": "https://internxt.com/zh/temporary-email",
+      "description": "一个在线的免费临时邮箱",
+      "category": "ToolChain",
+      "icon": "icon/InternxtCom.png"
+    },
+    {
+      "id": "viewdnsinfo",
+      "name": "viewdnsinfo",
+      "url": "https://viewdns.info/",
+      "description": "viewdns.info一个有较多关于dns查询、ip查询的在线网站",
+      "category": "ToolChain",
+      "icon": "icon/viewdnsinfo.ico"
+    },
+    {
+      "id": "de4js",
+      "name": "de4js",
+      "url": "https://lelinhtinh.github.io/de4js/",
+      "description": "de4js，一款js反混淆工具",
+      "category": "ToolChain",
+      "icon": "icon/de4js.ico"
+    },
+    {
       "id": "linuxmirrorscn",
       "name": "Linuxmirrors",
       "url": "https://linuxmirrors.cn/",
@@ -848,7 +880,7 @@ const siteDataConfig = {
       "id": "cowtransfer",
       "name": "奶牛快传",
       "url": "https://cowtransfer.com/",
-      "description": "一个非常简洁好用的文件分享工具",
+      "description": "一个非常简洁好用的文件分享工具，时代的眼泪，25年12月寄了",
       "category": "ToolChain",
       "icon": "icon/cowtransfer.png"
     },
@@ -856,7 +888,7 @@ const siteDataConfig = {
       "id": "dnslog",
       "name": "DNSLog",
       "url": "https://dnslog.uk/template",
-      "description": "dnslog反代检查之类的必备",
+      "description": "dnslog反代检查之类的必备，已经寄了",
       "category": "ToolChain",
       "icon": "icon/dnslog.png"
     },
@@ -1330,6 +1362,14 @@ const siteDataConfig = {
     ===================================================================================
     ====================================Forum==========================================
     */
+    {
+      "id": "DailyDarkWeb",
+      "name": "DailyDarkWeb",
+      "url": "https://dailydarkweb.net/",
+      "description": "DailyDarkWeb每日暗网，可能不全",
+      "category": "Forum",
+      "icon": "icon/DailyDarkWeb.png"
+    },
     {
       "id": "linuxdo",
       "name": "Linuxdo社区",
