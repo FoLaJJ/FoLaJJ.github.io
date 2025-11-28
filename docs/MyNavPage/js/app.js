@@ -104,7 +104,7 @@ class NavigationApp {
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => this.handleResize(), 150);
+            resizeTimer = setTimeout(() => this.handleResize(), 5);
         });
         
         // 键盘快捷键
