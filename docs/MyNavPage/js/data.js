@@ -61,6 +61,11 @@ const siteDataConfig = {
       "name": "笔面试找工作",
       "icon": "fa-solid fa-person-praying"
     },
+    {
+      "id": "Information",
+      "name": "信息搜集",
+      "icon": "fa-solid fa-hat-cowboy"
+    },
 
   ],
   "sites": [
@@ -845,22 +850,6 @@ const siteDataConfig = {
       "icon": "icon/linuxmirrorscn.svg"
     },
     {
-      "id": "shodan",
-      "name": "shodan",
-      "url": "https://www.shodan.io/",
-      "description": "shodan信息搜集",
-      "category": "ToolChain",
-      "icon": "icon/shodan.png"
-    },
-    {
-      "id": "lingfengyun",
-      "name": "lingfengyun",
-      "url": "https://www.lingfengyun.com/",
-      "description": "凌风云，一个可以搜索很多网盘关键字的平台，信息搜集",
-      "category": "ToolChain",
-      "icon": "icon/lingfengyun.ico"
-    },
-    {
       "id": "SerpApi",
       "name": "SerpApi",
       "url": "https://serpapi.com/",
@@ -902,7 +891,7 @@ const siteDataConfig = {
     },
     {
       "id": "cowtransfer",
-      "name": "奶牛快传",
+      "name": "奶牛快传（悲）",
       "url": "https://cowtransfer.com/",
       "description": "一个非常简洁好用的文件分享工具，时代的眼泪，25年12月寄了",
       "category": "ToolChain",
@@ -949,52 +938,12 @@ const siteDataConfig = {
       "icon": "icon/1o1oxyz.jpg"
     },
     {
-      "id": "beianx",
-      "name": "ICP备案查询",
-      "url": "https://www.beianx.cn/",
-      "description": "ICP备案查询",
-      "category": "ToolChain",
-      "icon": "icon/beianx.ico"
-    },
-    {
-      "id": "fofa",
-      "name": "FoFa",
-      "url": "https://fofa.info/",
-      "description": "fofa，好用，可以去咸鱼找找便宜的资源",
-      "category": "ToolChain",
-      "icon": "icon/fofa.ico"
-    },
-    {
-      "id": "hunter",
-      "name": "Hunter",
-      "url": "https://hunter.how/",
-      "description": "我勒个Hunter啊",
-      "category": "ToolChain",
-      "icon": "icon/hunter.ico"
-    },
-    {
       "id": "lazydork",
       "name": "LazyDork",
       "url": "https://iamunixtz.github.io/LazyDork/",
       "description": "有各种写好配置的谷歌搜索，方便偷懒",
       "category": "ToolChain",
       "icon": "icon/lazydork.ico"
-    },
-    {
-      "id": "dnsdumpster",
-      "name": "dnsdumpster",
-      "url": "https://dnsdumpster.com/",
-      "description": "信息收集必备，找旁站或者内网之类的",
-      "category": "ToolChain",
-      "icon": "icon/dnsdumpster.ico"
-    },
-    {
-      "id": "xthreatbook",
-      "name": "微步威胁分析",
-      "url": "https://x.threatbook.com/",
-      "description": "微步威胁分析，信息收集吧",
-      "category": "ToolChain",
-      "icon": "icon/xthreatbook.ico"
     },
     {
       "id": "sthreatbook",
@@ -1178,7 +1127,7 @@ const siteDataConfig = {
     },
     {
       "id": "ddys",
-      "name": "低端影视",
+      "name": "低端影视（悲）",
       "url": "https://ddys.pro//",
       "description": "时代的眼泪，不可抗力停站了！",
       "category": "SlackOff",
@@ -1521,6 +1470,146 @@ const siteDataConfig = {
       "description": "网安学习平台",
       "category": "Forum",
       "icon": "icon/cnfnst.png"
+    },
+    /*
+    ===================================================================================
+    ================================Information========================================
+    */
+    {
+      "id": "xamgt",
+      "name": "环宇网络社工库",
+      "url": "https://xamgt.com/",
+      "description": "一个付费的社工库",
+      "category": "Information",
+      "icon": "icon/xamgt.ico"
+    },
+    {
+      "id": "privacyaiuys",
+      "name": "个人数据泄露检测",
+      "url": "https://privacy.aiuys.com/?ref=@#google_vignette",
+      "description": "通过QQ/手机号/身份证等来查连带",
+      "category": "Information",
+      "icon": "icon/privacyaiuys.ico"
+    },
+    {
+      "id": "fofa",
+      "name": "FoFa",
+      "url": "https://fofa.info/",
+      "description": "fofa，好用，可以去咸鱼找找便宜的资源",
+      "category": "Information",
+      "icon": "icon/fofa.ico"
+    },
+    {
+      "id": "hunter",
+      "name": "Hunter",
+      "url": "https://hunter.how/",
+      "description": "我勒个Hunter啊",
+      "category": "Information",
+      "icon": "icon/hunter.ico"
+    },
+    {
+      "id": "shodan",
+      "name": "shodan",
+      "url": "https://www.shodan.io/",
+      "description": "shodan信息搜集",
+      "category": "Information",
+      "icon": "icon/shodan.png"
+    },
+    {
+      "id": "Quake360",
+      "name": "Quake360",
+      "url": "https://quake.360.net/quake/#/index",
+      "description": "360网络空间测绘",
+      "category": "Information",
+      "icon": "icon/Quake360.png"
+    },
+    {
+      "id": "zoomeye",
+      "name": "zoomeye",
+      "url": "https://www.zoomeye.org/",
+      "description": "钟馗之眼，感觉IoT得行",
+      "category": "Information",
+      "icon": "icon/zoomeye.ico"
+    },
+    {
+      "id": "CenSys",
+      "name": "CenSys",
+      "url": "https://search.censys.io/",
+      "description": "也相当于资产测绘了",
+      "category": "Information",
+      "icon": "icon/CenSys.png"
+    },
+    {
+      "id": "crtsh",
+      "name": "CrtSh",
+      "url": "https://crt.sh/",
+      "description": "搜索子域名，免费又全！还能搜历史缓存。",
+      "category": "Information",
+      "icon": "icon/CrtSh.png"
+    },
+    {
+      "id": "weixinsogou",
+      "name": "weixinsogou",
+      "url": "https://weixin.sogou.com/",
+      "description": "搜狗查找微信公众号等内容",
+      "category": "Information",
+      "icon": "icon/weixinsogou.ico"
+    },
+    {
+      "id": "ti360",
+      "name": "Ti360",
+      "url": "https://ti.360.net/",
+      "description": "360安全大脑，不自信的网站就开Anti-Debug了",
+      "category": "Information",
+      "icon": "icon/ti360.png"
+    },
+    {
+      "id": "tiqianxin",
+      "name": "TiQiAnXin",
+      "url": "https://ti.qianxin.com/",
+      "description": "奇安信威胁情报中心，这哥们真没icon啊，随便截了个",
+      "category": "Information",
+      "icon": "icon/tiqianxin.png"
+    },
+    {
+      "id": "tisangfor",
+      "name": "TiSangfor",
+      "url": "https://ti.sangfor.com.cn/analysis-platform?lang=ZH-CN",
+      "description": "深信服威胁情报中心",
+      "category": "Information",
+      "icon": "icon/tisangfor.ico"
+    },
+    {
+      "id": "beianx",
+      "name": "ICP备案查询",
+      "url": "https://www.beianx.cn/",
+      "description": "ICP备案查询",
+      "category": "Information",
+      "icon": "icon/beianx.ico"
+    },
+    {
+      "id": "dnsdumpster",
+      "name": "dnsdumpster",
+      "url": "https://dnsdumpster.com/",
+      "description": "信息收集必备，找旁站或者内网之类的",
+      "category": "Information",
+      "icon": "icon/dnsdumpster.ico"
+    },
+    {
+      "id": "xthreatbook",
+      "name": "微步在线威胁分析",
+      "url": "https://x.threatbook.com/",
+      "description": "微步在线威胁分析",
+      "category": "Information",
+      "icon": "icon/xthreatbook.ico"
+    },
+    {
+      "id": "lingfengyun",
+      "name": "lingfengyun",
+      "url": "https://www.lingfengyun.com/",
+      "description": "凌风云，一个可以搜索很多网盘关键字的平台，信息搜集",
+      "category": "Information",
+      "icon": "icon/lingfengyun.ico"
     },
   ]
 }; 
