@@ -722,6 +722,14 @@ const siteDataConfig = {
       "icon": "icon/tizi001.ico"
     },
     {
+      "id": "meimeiyun",
+      "name": "MeiMeiYun",
+      "url": "https://www.meimeiyun.top/",
+      "description": "DDDD，签到免费型",
+      "category": "meme",
+      "icon": "icon/meimeiyun.ico"
+    },
+    {
       "id": "xhj",
       "name": "小火箭",
       "url": "https://xhj.info/",
@@ -1261,6 +1269,14 @@ const siteDataConfig = {
       "category": "SlackOff",
       "icon": "icon/codefun2000.png"
     },
+    {
+      "id": "ChaostartPiano",
+      "name": "ChaostartPiano",
+      "url": "https://www.chaostart.xyz/piano#/",
+      "description": "别人建的一个在线钢琴演奏，感觉对初学者挺好的",
+      "category": "SlackOff",
+      "icon": "icon/ChaostartPiano.png"
+    },
     /*
     ===================================================================================
     =====================================TargetDrones==================================
@@ -1515,6 +1531,14 @@ const siteDataConfig = {
     ===================================================================================
     ================================Information========================================
     */
+    {
+      "id": "monitormozilla",
+      "name": "MonitorMozilla",
+      "url": "https://monitor.mozilla.org/",
+      "description": "Mozilla的邮箱监控泄露的网站，还可以定时发邮件提醒",
+      "category": "Information",
+      "icon": "icon/monitormozilla.ico"
+    },
     {
       "id": "uidejfkdev",
       "name": "UidEjfkdev",

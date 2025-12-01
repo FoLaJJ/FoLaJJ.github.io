@@ -41,6 +41,7 @@
     // name: "<span style='font-weight:bold;color:#00AA00;'>FoLaJJ</span>",
     name: "<span style='font-weight:bold;color:#42b983;'>FoLaJJ</span>",
 
+
     // 右上角小链接
     repo: 'https://github.com/FoLaJJ',
 
@@ -48,7 +49,7 @@
     // logo: "/favicon_logosc/icon.jpg",
 
 
-    loadSidebar: false,
+    loadSidebar: false,  // 不加载_sidebar.md，使用自动生成的侧边栏
     subMaxLevel: 3,
 
     // 切换页面后自动跳到最顶部
@@ -101,11 +102,32 @@
     // 开启busuanzi，统计访问网站量
     // busuanzi: true,
 
-    // 公式渲染
     latex: {
       inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
       displayMath  : [['$$', '$$']],               // default
     },
+
+    plugins: [
+      function (hook, vm) {
+        function updateHomeClass() {
+          var path = vm.route && vm.route.path ? vm.route.path : '/';
+          var isHome = path === '/' || path === '/README' || path === '/README.md';
+          var body = document.body;
+          if (!body) return;
+          if (isHome) {
+            body.classList.add('home-page');
+            body.classList.add('close');
+          } else {
+            body.classList.remove('home-page');
+            body.classList.remove('close');
+          }
+        }
+
+        hook.doneEach(function () {
+          updateHomeClass();
+        });
+      }
+    ],
 
     // 阅读进度条显示,和footer冲突
     // progress: {

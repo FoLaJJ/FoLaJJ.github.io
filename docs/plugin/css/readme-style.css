@@ -1,0 +1,391 @@
+/* README.md 美化样式 - 极简版 */
+
+
+/* 首页 README 布局优化 - 仅在首页生效 */
+body.home-page .content .markdown-section {
+  max-width: 1300px !important;
+  margin: 0 auto !important;
+  padding: 40px 20px !important;
+  line-height: 1.7 !important;
+}
+
+/* 头部区域 - 左右布局 */
+.header-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 120px;
+  margin: 50px 0 20px 0;
+}
+
+.header-left {
+  flex-shrink: 0;
+}
+
+.header-logo {
+  margin-bottom: 15px;
+}
+
+.header-logo img {
+  border-radius: 50%;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo img:hover {
+  opacity: 0.8;
+}
+
+/* 徽章区域 - 水平排列 */
+.badges-container {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  flex-wrap: nowrap;
+  width: 320px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.badges-container a {
+  display: block;
+  flex-shrink: 0;
+}
+
+.badges-container img {
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  height: 20px;
+  width: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badges-container img:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-right {
+  flex: 1;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+
+/* 网站介绍区域 - 右侧布局 */
+.site-intro h3 {
+  margin: 0 0 16px 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.site-intro .checklist {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.site-intro .checklist li {
+  display: inline-block;
+  margin: 0 20px 8px 0;
+  font-size: 15px;
+}
+
+.site-intro .checklist input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+}
+
+.site-intro .guide-text {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 16px 0 0 0;
+}
+
+/* 旅游流水账区域 */
+.travel-section {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #42b983;
+}
+
+.travel-section p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.travel-section a {
+  color: #42b983;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.travel-section a:hover {
+  color: #369870;
+}
+
+/* 彩蛋提示区域 */
+.easter-egg-section {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff5f5, #fef7f0);
+  border-radius: 8px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.easter-egg-section p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.easter-egg-section strong {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* 统计信息区域 */
+.stats-section {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #f0f9ff, #f0f4ff);
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+.stats-section p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.stats-section strong {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.stats-section span {
+  color: #666;
+  font-weight: normal;
+}
+
+/* 分区文章 - 左标题 + 右按钮，偏中性色简洁风 */
+.section-links {
+  margin: 24px 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-links .section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2933;
+  white-space: nowrap;
+}
+
+.section-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.section-grid a {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid #d0d7de;
+  background: #ffffff;
+  color: #34495e;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.section-grid a:hover {
+  background: #f3f4f6;
+  color: #111827;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+/* 精华帖链接 - 静态网格排版 */
+.highlight-posts {
+  margin: 15px 0;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e8e8e8;
+}
+
+.highlight-posts strong {
+  color: #2c3e50;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 12px;
+  line-height: 1.5;
+}
+
+.posts-grid a {
+  display: block;
+  color: #4fc08d;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.posts-grid a:hover {
+  color: #369870;
+  border-color: #4fc08d;
+}
+
+
+/* 链接美化 */
+a {
+  color: #42b983;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #369870;
+}
+
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .content .markdown-section {
+    padding: 15px;
+    max-width: 100% !important;
+  }
+  
+  .header-section {
+    flex-direction: column;
+    gap: 25px;
+    margin: 30px 0 40px 0;
+  }
+  
+  .header-left {
+    align-self: center;
+  }
+  
+  .header-right {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  
+  .badges-container {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 6px;
+    width: 240px;
+  }
+  
+  .badges-container img {
+    height: 18px;
+    width: auto;
+  }
+  
+  .header-logo img {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .travel-section {
+    margin-top: 20px;
+    padding: 12px;
+  }
+  
+  .travel-section p {
+    font-size: 13px;
+  }
+  
+  .easter-egg-section {
+    margin-top: 16px;
+    padding: 10px 12px;
+  }
+  
+  .easter-egg-section p {
+    font-size: 13px;
+  }
+  
+  .stats-section {
+    margin-top: 16px;
+    padding: 10px 12px;
+  }
+  
+  .stats-section p {
+    font-size: 13px;
+  }
+  
+  .section-links {
+    margin: 20px 0 15px 0;
+    padding: 16px;
+  }
+  
+  .section-links h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .section-grid {
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .section-grid a {
+    font-size: 15px;
+    padding: 12px 24px;
+    min-width: 120px;
+  }
+  
+  .site-intro h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .site-intro .checklist li {
+    display: inline-block;
+    margin: 0 15px 8px 0;
+  }
+  
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .content .markdown-section {
+    padding: 12px;
+  }
+  
+}
+
