@@ -377,6 +377,30 @@ const siteDataConfig = {
     ========================================Server=====================================
     */
     {
+      "id": "vpsboy",
+      "name": "vpsboy",
+      "url": "https://vpsboy.top/",
+      "description": "多的不说了",
+      "category": "Server",
+      "icon": "icon/vpsboy.png"
+    },
+    {
+      "id": "cloudcone",
+      "name": "cloudcone",
+      "url": "https://app.cloudcone.com/",
+      "description": "多的不说了",
+      "category": "Server",
+      "icon": "icon/cloudcone.png"
+    },
+    {
+      "id": "whdmw",
+      "name": "whdmw",
+      "url": "https://www.whdmw.com/",
+      "description": "大麦云主机",
+      "category": "Server",
+      "icon": "icon/whdmw.ico"
+    },
+    {
       "id": "autodl",
       "name": "AutoDL",
       "url": "https://www.autodl.com/console/homepage/personal",
@@ -801,6 +825,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "namesilo",
+      "name": "NameSilo",
+      "url": "https://www.namesilo.com/account/",
+      "description": "一个免备案的域名站",
+      "category": "ToolChain",
+      "icon": "icon/NameSilo.ico"
+    },
     {
       "id": "qianduangebilidanmu",
       "name": "bili_danmu",
@@ -1376,6 +1408,14 @@ const siteDataConfig = {
       "icon": "icon/ichunqiu.ico"
     },
     {
+      "id": "longyusec",
+      "name": "泷羽Sec安全团队",
+      "url": "https://longyusec.com/",
+      "description": "泷羽Sec安全团队",
+      "category": "Forum",
+      "icon": "icon/longyusec.png"
+    },
+    {
       "id": "52pojie",
       "name": "吾爱破解",
       "url": "https://www.52pojie.cn/forum.php",
@@ -1476,6 +1516,14 @@ const siteDataConfig = {
     ================================Information========================================
     */
     {
+      "id": "uidejfkdev",
+      "name": "UidEjfkdev",
+      "url": "https://uid.ejfkdev.com/",
+      "description": "一个检测分享链接泄露隐私的在线网站",
+      "category": "Information",
+      "icon": "icon/uidejfkdev.ico"
+    },
+    {
       "id": "xamgt",
       "name": "环宇网络社工库",
       "url": "https://xamgt.com/",
@@ -1537,7 +1585,7 @@ const siteDataConfig = {
       "url": "https://search.censys.io/",
       "description": "也相当于资产测绘了",
       "category": "Information",
-      "icon": "icon/CenSys.png"
+      "icon": "icon/CenSys.ico"
     },
     {
       "id": "crtsh",
