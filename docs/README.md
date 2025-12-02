@@ -24,7 +24,7 @@
       </ul>
       <p class="guide-text">新进组可以稍微了解一下大概的计划表：<a href="/#/跳转/新成员固定任务">新成员固定任务</a>；以及各种课程的注意事项：<a href="/#/跳转/课程学习">课程学习</a>。</p>
       <div class="travel-section">
-        <p>旅游流水账：<a href="/#/游记/西安">西安</a>、<a href="/#/游记/云南">云南</a>、<a href="/#/游记/长沙">长沙</a>。全部都是未被压缩的直拍图，而且这docsify好像也没有好用的缩略图插件，所以在使用流量的情况下慎点。随缘更新，最主要不想找照片。别盒我！:sob: :sob: :sob:</p>
+        <p>🧳 旅游流水账：<a href="/#/游记/西安">西安</a>、<a href="/#/游记/云南">云南</a>、<a href="/#/游记/长沙">长沙</a>。全部都是未被压缩的直拍图，而且这docsify好像也没有好用的缩略图插件，所以在使用流量的情况下慎点。随缘更新，最主要不想找照片。别盒我！:sob: :sob: :sob:</p>
       </div>
       <div class="easter-egg-section">
         <p><strong>🎯 彩蛋提示：</strong>这个网站藏有5个flag，都是经典的位置，找找看吧。</p>
@@ -36,17 +36,23 @@
   </div>
 </div>
 
------------------
+
 
 <div class="section-links">
   <div class="section-title">📂 分区文章</div>
   <div class="section-grid">
-    <a href="/#/跳转/网安专项">网安专项</a>
-    <a href="/#/跳转/懒得分类">懒得分类</a>
+    <a href="/#/跳转/网安专项">
+      <span class="section-main">🛡️ 网安专项</span>
+      <span class="section-sub">网安笔记 · 刷题与专项练习</span>
+    </a>
+    <a href="/#/跳转/懒得分类">
+      <span class="section-main">📦 懒得分类</span>
+      <span class="section-sub">杂项内容 · 临时想法与随手记录</span>
+    </a>
   </div>
 </div>
 
------------------
+
 <div class="highlight-posts">
 <strong>🔥 不那么精华的精华文章推荐</strong>
 <div class="posts-grid">
