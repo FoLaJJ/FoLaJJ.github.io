@@ -64,10 +64,6 @@
     // notFoundPage: true,
     notFoundPage: "404.md",
 
-
-
-
-
     latex: {
       inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
       displayMath  : [['$$', '$$']],               // default
@@ -181,7 +177,9 @@
         location.reload()
       }
     }
+    gitalk.render('gitalk-container')
   </script>
+
 
 <!-- 不知道哪个插件重复渲染footer了，直接加这个代码确保footer只展示一个 -->
   <script>
