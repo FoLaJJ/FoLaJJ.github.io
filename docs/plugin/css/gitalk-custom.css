@@ -1,0 +1,18 @@
+/* Gitalk 容器布局：与主内容同宽、居中，并留出与上、下方元素的间距 */
+#gitalk-container {
+  max-width: 1300px !important;
+  /* 上下保持一点空隙，避免贴头/贴底 */
+  margin: 0 auto 80px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  position: relative;
+  clear: both;        /* 避免与上方浮动布局产生重叠 */
+  z-index: 1;         /* 防止被其他层级覆盖或穿插 */
+  display: none;      /* 默认隐藏，由 JS 在 README 页面显示 */
+}
+
+/* 避免 Gitalk 内部内容贴底，让评论卡片与容器底部有缓冲 */
+#gitalk-container .gt-container {
+  margin-bottom: 16px;
+}
+

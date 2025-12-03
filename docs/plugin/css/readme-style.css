@@ -5,8 +5,13 @@
 body.home-page .content .markdown-section {
   max-width: 1300px !important;
   margin: 0 auto !important;
-  padding: 40px 20px !important;
+  padding: 40px 0 10px 0 !important;
   line-height: 1.7 !important;
+}
+
+/* 首页单独隐藏 docsify 的 sidebar 折叠按钮，其它页面正常显示 */
+body.home-page .sidebar-toggle {
+  display: none !important;
 }
 
 /* 头部区域 - 左右布局 */

@@ -13,6 +13,7 @@
   <!-- 评论 -->
   <!-- 添加 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <link rel="stylesheet" href="plugin/css/gitalk-custom.css">
 
   <!-- 暗黑模式，和字数统计冲突 -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/> -->
@@ -87,6 +88,9 @@
 
         hook.doneEach(function () {
           updateHomeClass();
+          if (window.renderGitalkForReadme) {
+            window.renderGitalkForReadme(vm);
+          }
         });
       }
     ],
@@ -142,42 +146,62 @@
 <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
 
-<!-- 生成gittalk插件 -->
-<script>
-    title = location.hash.match(/#(.*?)([?]|$)/)
-    if (title != null) {
-      title = location.hash.match(/#(.*?)([?]|$)/)[1]
-    }
-    
-    // 限制 50 个字符
-    if (title != null) {
-      title = decodeURI(title.substring(1, title.length))
-      if (title.length >= 50) {
-        title = title.substring(title.length - 50, title.length)
-      }
-    } else {
-      title = 'home page'
-    }
+<!-- 生成 gittalk 插件（仅在 README 页面渲染） -->
+  <script>
+    window.renderGitalkForReadme = function(vm) {
+      var container = document.getElementById('gitalk-container');
+      var contentEl = document.querySelector('.content');
 
-    const gitalk = new Gitalk({
-      clientID: 'Ov23li29QbSJE1lhrlNm',
-      clientSecret: '03cb076b091d695858e819d98409b9313d4f3560',
-      repo: 'FoLaJJ.github.io',
-      owner: 'FoLaJJ',
-      admin: ['FoLaJJ'],
-      // facebook-like distraction free mode
-      distractionFreeMode: true,
-      title: title,
-      id: title,
-      //id: location.pathname
-    })
-    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
-    window.onhashchange = function(event){
-      if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
-        location.reload()
+      // 如果找不到 Gitalk 容器或内容区域，直接退出
+      if (!container || !contentEl) return;
+
+      // 确保 Gitalk 容器挂在 docsify 的内容区域内部，参与正常文档流
+      if (container.parentNode !== contentEl) {
+        contentEl.appendChild(container);
       }
-    }
-    gitalk.render('gitalk-container')
+
+      var path = vm && vm.route && vm.route.path ? vm.route.path : '/';
+      var isReadme = path === '/README' || path === '/README.md';
+
+      if (!isReadme) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+        return;
+      }
+
+      // 只在 README 页面显示评论容器
+      container.style.display = 'block';
+
+      var title = location.hash.match(/#(.*?)([?]|$)/);
+      if (title != null) {
+        title = location.hash.match(/#(.*?)([?]|$)/)[1];
+      }
+
+      // 保持你原来的标题和 id 处理逻辑
+      if (title != null) {
+        title = decodeURI(title.substring(1, title.length));
+        if (title.length >= 50) {
+          title = title.substring(title.length - 50, title.length);
+        }
+      } else {
+        title = 'home page';
+      }
+
+      // 每次切换到 README 都重新渲染一次，避免复用旧的 issues
+      container.innerHTML = '';
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23li29QbSJE1lhrlNm',
+        clientSecret: '03cb076b091d695858e819d98409b9313d4f3560',
+        repo: 'FoLaJJ.github.io',
+        owner: 'FoLaJJ',
+        admin: ['FoLaJJ'],
+        distractionFreeMode: true,
+        title: title,
+        id: title
+      });
+      gitalk.render('gitalk-container');
+    };
   </script>
 
 
