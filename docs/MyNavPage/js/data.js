@@ -1118,6 +1118,14 @@ const siteDataConfig = {
     ======================================SlackOff=====================================
     */
     {
+      "id": "icebreakergames",
+      "name": "icebreakergames",
+      "url": "https://icebreakergames.club/zh/",
+      "description": "破冰游戏，当你被推上去做活动组织者的时候就有点子了。",
+      "category": "SlackOff",
+      "icon": "icon/icebreakergames.png"
+    },
+    {
       "id": "youtube",
       "name": "youtube",
       "url": "https://www.youtube.com/",
@@ -1682,6 +1690,14 @@ const siteDataConfig = {
       "description": "凌风云，一个可以搜索很多网盘关键字的平台，信息搜集",
       "category": "Information",
       "icon": "icon/lingfengyun.ico"
+    },
+    {
+      "id": "pansoo",
+      "name": "97盘搜",
+      "url": "https://pansoo.cn/",
+      "description": "97盘搜，搜索一些网盘资源",
+      "category": "Information",
+      "icon": "icon/pansoo.ico"
     },
   ]
 }; 

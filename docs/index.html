@@ -8,15 +8,12 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-  <!-- 下面五个选择主题，但是还是感觉vue的好看一点 -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css"> -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
   <link rel="stylesheet" href="plugin/css/themes-vue.css">
   
+  <!-- 评论 -->
+  <!-- 添加 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
   <!-- 暗黑模式，和字数统计冲突 -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/> -->
   <script src="plugin/myself/disableCtrlP.js" defer></script>
@@ -34,22 +31,19 @@
 
 <body>
   <div id="app">稍等片刻...</div>
+  <!-- 添加 -->
+  <div id="gitalk-container"></div>
   <script>
   window.$docsify = {
 
     // 左上角名字，可以使用css元素
-    // name: "<span style='font-weight:bold;color:#00AA00;'>FoLaJJ</span>",
     name: "<span style='font-weight:bold;color:#42b983;'>FoLaJJ</span>",
-
 
     // 右上角小链接
     repo: 'https://github.com/FoLaJJ',
 
-    // logo出现侧边导航栏顶部，可以通过css来进行调整
-    // logo: "/favicon_logosc/icon.jpg",
-
-
-    loadSidebar: false,  // 不加载_sidebar.md，使用自动生成的侧边栏
+    // 不加载_sidebar.md，使用自动生成的侧边栏
+    loadSidebar: false,  
     subMaxLevel: 3,
 
     // 切换页面后自动跳到最顶部
@@ -57,10 +51,6 @@
 
     // 开启导航栏,加载_navbar.md
     loadNavbar: true,
-    // loadNavbar: '_navbar.md',
-
-    // 小屏设备下合并导航栏到侧边栏
-    // mergeNavbar: true,
 
     // loadFooter: '_footer.md',
     loadFooter: true, 
@@ -69,38 +59,14 @@
     coverpage: true,
     onlyCover: true,
 
-    // 禁止表情
-    // noEmoji: true,
 
     // 404页面，第一个是默认，第二个可以自定义
     // notFoundPage: true,
     notFoundPage: "404.md",
 
 
-    // 字数统计
-    // count:{ 
-    //   countable:true, 
-    //   fontsize:'0.9em', 
-    //   color:'rgb(90,90,90)', 
-    //   language:'english'  // 可以选择english、chinese 
-    // },
 
 
-    // 分享插件
-    // share: {
-    //   reddit: true,
-    //   linkedin: true,
-    //   facebook: true,
-    //   twitter: true,
-    //   whatsapp: true,
-    //   telegram: true,
-    //   options: {
-    //     color: '#42b983'
-    //   },
-    // },
-
-    // 开启busuanzi，统计访问网站量
-    // busuanzi: true,
 
     latex: {
       inlineMath   : [['$', '$'], ['\\(', '\\)']], // default
@@ -128,130 +94,39 @@
         });
       }
     ],
-
-    // 阅读进度条显示,和footer冲突
-    // progress: {
-    //     position: "top",
-    //     color: "var(--theme-color,#42b983)",
-    //     height: "3px",
-    // }
-
-    //暗黑模式,和字数统计冲突
-    // themeColor: "#42b983",
-    // darkMode: {
-    //   dark: {
-    //     background: "#1c2022",
-    //     toggleBtnBg: "#34495e",
-    //     textColor: "#b4b4b4"
-    //   },
-    //   light: {
-    //     background: "white",
-    //     toggleBtnBg: "var(--theme-color)",
-    //     textColor: "var(--theme-color)"
-    //   }
-    // },
-
-    //    YYYY-年 yy-短年 MM-月 DD-日 HH-时 mm-分 ss-秒 fff-微秒
-    // formatUpdated: "更新于{YYYY}({YY})/{MM}/{DD} {HH}:{mm}:{ss}:{fff}",
-    // formatUpdated: function(time) {
-    // // ...
-    //   return time;
-    // },
-
-
-    // 评论
-    // disqus: 'shortname',
-
-    // alias: {
-    //   '/.*/_sidebar.md': '/_sidebar.md'
-    // },
-
-    // 搜索功能
-  //   search: 'auto',
-  //     search: {
-  //     maxAge: 86400000,
-  //     paths: '/',
-  //     placeholder: '搜索...',
-  //     noData: '未找到结果，换个搜索词试试？',
-  //     namespace: 'Blog',
-  // },
-
   };
 
 </script>
 
 
 <!-- Docsify v4 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify@4"></script> -->
 <script src="plugin/docsify@4.js"></script>
 
- <!-- 评论 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script> -->
-
-<!--  搜索 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script> -->
+<!-- 评论 -->
+<!-- 添加 -->
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 
-<!-- 两列布局 -->
-<!-- 需要注意的是,md文件里面需要下面元素进行标识: slide:break和slide:break-#-->
-<!-- <script src="//unpkg.com/docsify-slides/dist/docsify-slides.min.js"></script> -->
+<!-- 两列布局，需要注意的是,md文件里面需要下面元素进行标识: slide:break和slide:break-#-->
 <script src="plugin/docsify-slides.min.js"></script>
 
-<!-- 阅读进度条,和原有的footer冲突 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script> -->
-<!-- <script src="plugin/progress.min.js"></script> -->
 
 <!--  文档内容目录 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script> -->
 <script src="plugin/docsify.min.js"></script>
 
 <!-- 翻页插件 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script> -->
-
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/docsify/4.11.2/docsify.min.js"></script> -->
 <script src="plugin/docsify-4-11-2-docsify.min.js"></script>
 
-<!-- <script src="//unpkg.com/docsify/lib/docsify.min.js"></script> -->
-
-<!-- emoji包 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script> -->
-
-
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script> -->
-
-<!-- 字数统计选一个启用，显示在右上角 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script> -->
-<!-- <script src="plugin/countable.min.js"></script> -->
-
 <!-- 外链脚本 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script> -->
 <script src="plugin/external-script.min.js"></script>
 
 <!-- 页脚 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script> -->
 <script src="plugin/docsify-footer.min.js"></script>
 
-<!-- share分享插件 -->
-<!-- <script src="//unpkg.com/docsify-share/build/index.min.js"></script> -->
-<!-- <script src="plugin/docsify-share-build-index.min.js"></script> -->
-
 <!-- 代码复制到剪贴板 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script> -->
 <script src="plugin/docsify-copy-code.js"></script>
 
-<!-- 嵌入pdf文件，这里渲染可能会变慢，所以直接用a标签进行写了 -->
-<!-- <script src="//unpkg.com/docsify-pdf-embed-plugin/src/docsify-pdf-embed.js"></script> -->
-
 <!-- 代码高亮，需要什么语言就上什么语言 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-shell-session.min.js"></script> -->
-
 <script src="plugin/components/prism-bash.min.js"></script>
 <script src="plugin/components/prism-python.min.js"></script>
 <script src="plugin/components/prism-cpp.min.js"></script>
@@ -263,27 +138,50 @@
 
 <!-- busuanzi统计访问网站量 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> -->
-
-
-<!-- 暗黑模式，和字数统计冲突 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script> -->
 
 <!-- mouse click，鼠标点击样式-->
 <script src="plugin/click_heart.js"></script>
 
-<!-- 站点地图 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
-<script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>-->
-<!-- <script src="plugin/markmap-autoloader@0.15.2.js"></script> -->
-<!-- <script src="plugin/docsify-markmap.min.js"></script> -->
-
 <!-- 公式渲染，本地样式不太好看-->
 <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
-<!-- <script src="plugin/tex-mml-chtml.js"></script>
-<script src="plugin/docsify-latex@0.js"></script> -->
 
+<!-- 生成gittalk插件 -->
+<script>
+    title = location.hash.match(/#(.*?)([?]|$)/)
+    if (title != null) {
+      title = location.hash.match(/#(.*?)([?]|$)/)[1]
+    }
+    
+    // 限制 50 个字符
+    if (title != null) {
+      title = decodeURI(title.substring(1, title.length))
+      if (title.length >= 50) {
+        title = title.substring(title.length - 50, title.length)
+      }
+    } else {
+      title = 'home page'
+    }
+
+    const gitalk = new Gitalk({
+      clientID: 'Ov23li29QbSJE1lhrlNm',
+      clientSecret: '03cb076b091d695858e819d98409b9313d4f3560',
+      repo: 'FoLaJJ.github.io',
+      owner: 'FoLaJJ',
+      admin: ['FoLaJJ'],
+      // facebook-like distraction free mode
+      distractionFreeMode: true,
+      title: title,
+      id: title,
+      //id: location.pathname
+    })
+    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
+    window.onhashchange = function(event){
+      if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
+        location.reload()
+      }
+    }
+  </script>
 
 <!-- 不知道哪个插件重复渲染footer了，直接加这个代码确保footer只展示一个 -->
   <script>
