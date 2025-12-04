@@ -1,0 +1,7 @@
+/* 悬浮和按下 a 标签时，切换为 feifeiji.cur */
+a:hover,
+a:active,
+a:hover *,
+a:active * {
+  cursor: url("../../favicon_logosc/feifeiji.cur"), pointer !important;
+}

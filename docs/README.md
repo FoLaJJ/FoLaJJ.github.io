@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="plugin/css/readme-style.css">
+<link rel="stylesheet" href="plugin/css/readmeStyle.css">
 
 <div class="header-section">
   <div class="header-left">

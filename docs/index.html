@@ -7,18 +7,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="plugin/css/themesVue.css">
 
-  <link rel="stylesheet" href="plugin/css/themes-vue.css">
+  <!-- 鼠标样式 -->
+  <link rel="stylesheet" href="plugin/css/customCursor.css">
   
-  <!-- 评论 -->
-  <!-- 添加 -->
+  <!-- gitalk评论插件的样式，还有自定义的样式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <link rel="stylesheet" href="plugin/css/gitalk-custom.css">
+  <link rel="stylesheet" href="plugin/css/gitalkCustom.css">
 
-  <!-- 暗黑模式，和字数统计冲突 -->
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/> -->
   <script src="plugin/myself/disableCtrlP.js" defer></script>
-  <script src="plugin/myself/cute-console.js" defer></script>
+
+  <!-- 控制台输出Logo -->
+  <script src="plugin/myself/consoleOutput.js" defer></script>
 
 </head>
 <!-- Google tag (gtag.js) -->
@@ -29,10 +30,9 @@
   gtag('js', new Date());
   gtag('config', 'G-J5DSLN8EB8');
 </script>
-
 <body>
   <div id="app">稍等片刻...</div>
-  <!-- 添加 -->
+  <!-- gitalk容器渲染的位置 -->
   <div id="gitalk-container"></div>
   <script>
   window.$docsify = {
@@ -60,9 +60,7 @@
     coverpage: true,
     onlyCover: true,
 
-
-    // 404页面，第一个是默认，第二个可以自定义
-    // notFoundPage: true,
+    // 404页面
     notFoundPage: "404.md",
 
     latex: {
@@ -98,18 +96,15 @@
 
 </script>
 
-
 <!-- Docsify v4 -->
 <script src="plugin/docsify@4.js"></script>
 
-<!-- 评论 -->
-<!-- 添加 -->
+<!-- gitalk评论 -->
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
+<script src="plugin/myself/renderGitalkForReadme.js"></script>
 
 <!-- 两列布局，需要注意的是,md文件里面需要下面元素进行标识: slide:break和slide:break-#-->
 <script src="plugin/docsify-slides.min.js"></script>
-
 
 <!--  文档内容目录 -->
 <script src="plugin/docsify.min.js"></script>
@@ -117,7 +112,7 @@
 <!-- 翻页插件 -->
 <script src="plugin/docsify-4-11-2-docsify.min.js"></script>
 
-<!-- 外链脚本 -->
+<!-- 外链脚本，必须 -->
 <script src="plugin/external-script.min.js"></script>
 
 <!-- 页脚 -->
@@ -140,102 +135,15 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!-- mouse click，鼠标点击样式-->
-<script src="plugin/click_heart.js"></script>
+<script src="plugin/myself/clickMessages.js"></script>
 
 <!-- 公式渲染，本地样式不太好看-->
 <script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-latex@0"></script>
 
-<!-- 生成 gittalk 插件（仅在 README 页面渲染） -->
-  <script>
-    window.renderGitalkForReadme = function(vm) {
-      var container = document.getElementById('gitalk-container');
-      var contentEl = document.querySelector('.content');
-
-      // 如果找不到 Gitalk 容器或内容区域，直接退出
-      if (!container || !contentEl) return;
-
-      // 确保 Gitalk 容器挂在 docsify 的内容区域内部，参与正常文档流
-      if (container.parentNode !== contentEl) {
-        contentEl.appendChild(container);
-      }
-
-      var path = vm && vm.route && vm.route.path ? vm.route.path : '/';
-      var isReadme = path === '/README' || path === '/README.md';
-
-      if (!isReadme) {
-        container.innerHTML = '';
-        container.style.display = 'none';
-        return;
-      }
-
-      // 只在 README 页面显示评论容器
-      container.style.display = 'block';
-
-      var title = location.hash.match(/#(.*?)([?]|$)/);
-      if (title != null) {
-        title = location.hash.match(/#(.*?)([?]|$)/)[1];
-      }
-
-      // 保持你原来的标题和 id 处理逻辑
-      if (title != null) {
-        title = decodeURI(title.substring(1, title.length));
-        if (title.length >= 50) {
-          title = title.substring(title.length - 50, title.length);
-        }
-      } else {
-        title = 'home page';
-      }
-
-      // 每次切换到 README 都重新渲染一次，避免复用旧的 issues
-      container.innerHTML = '';
-
-      var gitalk = new Gitalk({
-        clientID: 'Ov23li29QbSJE1lhrlNm',
-        clientSecret: '03cb076b091d695858e819d98409b9313d4f3560',
-        repo: 'FoLaJJ.github.io',
-        owner: 'FoLaJJ',
-        admin: ['FoLaJJ'],
-        distractionFreeMode: true,
-        title: title,
-        id: title
-      });
-      gitalk.render('gitalk-container');
-    };
-  </script>
-
-
 <!-- 不知道哪个插件重复渲染footer了，直接加这个代码确保footer只展示一个 -->
-  <script>
-    (function() {
-      // 监听 DOM 变化，防止动态渲染导致 footer 重复
-      const observer = new MutationObserver(function(mutations) {
-        const footers = document.querySelectorAll("footer");
-        if (footers.length > 1) {
-          // 只保留最后一个 footer，删除前面的
-          for (let i = 0; i < footers.length - 1; i++) {
-            footers[i].remove();
-          }
-        }
-      });
-
-      // 开始监听整个 body 的变化
-      observer.observe(document.body, {
-        childList: true,  // 监听子节点变化
-        subtree: true     // 监听所有后代节点
-      });
-
-      // 初始检查（防止首次加载时就有多个 footer）
-      const initialFooters = document.querySelectorAll("footer");
-      if (initialFooters.length > 1) {
-        for (let i = 0; i < initialFooters.length - 1; i++) {
-          initialFooters[i].remove();
-        }
-      }
-    })();
-  </script>
+<script src="plugin/myself/singleFooterObserver.js"></script>
 
 </body>
 <!-- 恭喜你找到了一个flag: flag{7h1s_1s_th3_fir3t_f1a9} -->
-
 </html>

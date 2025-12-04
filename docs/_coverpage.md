@@ -1,13 +1,3 @@
-<!-- 背景 -->
-
-<!--![](favicon_logosc/bg.jpg)-->
-
-<!-- 背景颜色 -->
-
-<!-- ![color](#deded) -->
-
-
-
 ![logo](favicon_logosc/icon.jpg)
 
 ## FoLaJJ
@@ -26,7 +16,4 @@
 " alt="">
 <img src="https://img.shields.io/github/license/wugenqiang/NoteBook" data-origin="https://img.shields.io/github/license/wugenqiang/NoteBook" alt="">
 
-
-
 [**FoLaJJ**](https://github.com/FoLaJJ)[**开启阅读**](README.md)
-

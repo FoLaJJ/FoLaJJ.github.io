@@ -14,6 +14,11 @@ body.home-page .sidebar-toggle {
   display: none !important;
 }
 
+/* 仅在首页显示的页脚提示文案 */
+body:not(.home-page) .footer-home-only {
+  display: none !important;
+}
+
 /* 头部区域 - 左右布局 */
 .header-section {
   display: flex;
