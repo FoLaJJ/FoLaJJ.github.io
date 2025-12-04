@@ -50,8 +50,11 @@
     // 切换页面后自动跳到最顶部
     auto2top: true,
 
-    // 开启导航栏,加载_navbar.md
-    loadNavbar: true,
+    // 开启导航栏,加载_navbar.md，让他不去寻找每一级目录的navbar文件
+    loadNavbar: '_navbar.md',
+    alias: {
+    '/.*/_navbar.md': '/_navbar.md'
+    },
 
     // loadFooter: '_footer.md',
     loadFooter: true, 
@@ -124,7 +127,7 @@
 <!-- 代码高亮，需要什么语言就上什么语言 -->
 <script src="plugin/components/prism-bash.min.js"></script>
 <script src="plugin/components/prism-python.min.js"></script>
-<script src="plugin/components/prism-cpp.min.js"></script>
+<!-- <script src="plugin/components/prism-cpp.min.js"></script> -->
 <script src="plugin/components/prism-c.min.js"></script>
 <script src="plugin/components/prism-json.min.js"></script>
 <script src="plugin/components/prism-java.min.js"></script>
