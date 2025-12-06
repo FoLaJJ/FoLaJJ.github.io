@@ -230,6 +230,22 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "zotero",
+      "name": "zotero",
+      "url": "https://www.zotero.org/",
+      "description": "永远的神，建议你把chrome插件也下了",
+      "category": "papers",
+      "icon": "icon/zotero.ico"
+    },
+    {
+      "id": "bohrium",
+      "name": "bohrium",
+      "url": "https://www.bohrium.com/",
+      "description": "波尔AI，全球科学家的AI for Science",
+      "category": "papers",
+      "icon": "icon/bohrium.png"
+    },
+    {
       "id": "mycolorSpace",
       "name": "mycolor-space",
       "url": "https://mycolor.space/",
@@ -358,9 +374,17 @@ const siteDataConfig = {
       "id": "szunas",
       "name": "网安Alist网盘",
       "url": "http://nas.szu.moe/",
-      "description": "仅限校内网络访问，里面很多东西思密达，经常性崩",
+      "description": "仅限校内网络访问，里面很多东西思密达",
       "category": "CampusWelfare",
       "icon": "icon/szunas.svg"
+    },
+    {
+      "id": "1005Cloudreve",
+      "name": "1005-NAS",
+      "url": "http://1005.shkong.com/home",
+      "description": "仅限校内网络访问，1005-NAS",
+      "category": "CampusWelfare",
+      "icon": "icon/1005Cloudreve.ico"
     },
     {
       "id": "szums",
@@ -369,6 +393,14 @@ const siteDataConfig = {
       "description": "仅限校内网络访问，matlab、wps",
       "category": "CampusWelfare",
       "icon": "icon/szums.ico"
+    },
+    {
+      "id": "aicloudszu",
+      "name": "算力调度平台",
+      "url": "https://console.aicloud.szu.edu.cn/console/task-debug",
+      "description": "仅限校内网络访问，你深的智算资源，还是有点余额的",
+      "category": "CampusWelfare",
+      "icon": "icon/aicloudszu.ico"
     },
 
     
@@ -399,6 +431,14 @@ const siteDataConfig = {
       "description": "大麦云主机",
       "category": "Server",
       "icon": "icon/whdmw.ico"
+    },
+    {
+      "id": "bltcy",
+      "name": "bltcy",
+      "url": "https://api.bltcy.ai/",
+      "description": "柏拉图API中转站",
+      "category": "Server",
+      "icon": "icon/bltcy.png"
     },
     {
       "id": "autodl",
@@ -757,6 +797,14 @@ const siteDataConfig = {
     ===================================================================================
     ================================VulnerabilityDatabase==============================
     */
+    {
+      "id": "wooyun",
+      "name": "wooyun镜像站",
+      "url": "https://wy.zone.ci/",
+      "description": "全球首个针对人工智能的漏洞赏金平台",
+      "category": "VulnerabilityDatabase",
+      "icon": "icon/wyzone.ico"
+    },
     {
       "id": "huntrCom",
       "name": "Huntr",
@@ -1117,6 +1165,15 @@ const siteDataConfig = {
     ===================================================================================
     ======================================SlackOff=====================================
     */
+
+    {
+      "id": "zxzjhd",
+      "name": "zxzjhd",
+      "url": "https://www.zxzjhd.com/",
+      "description": "zxzjhd在线之家，一些影视资源",
+      "category": "SlackOff",
+      "icon": "icon/zxzjhd.ico"
+    },
     {
       "id": "icebreakergames",
       "name": "icebreakergames",
@@ -1228,6 +1285,14 @@ const siteDataConfig = {
       "description": "emoji表情包生成，杂交",
       "category": "SlackOff",
       "icon": "icon/emoji6.png"
+    },
+    {
+      "id": "doodleCursorMaker",
+      "name": "doodle-cursor-maker",
+      "url": "https://doodle-cursor-maker.figma.site/",
+      "description": "一个可以绘制专属于自己的鼠标样式网站",
+      "category": "SlackOff",
+      "icon": "icon/doodleCursorMaker.png"
     },
     {
       "id": "cilisousuo",

@@ -12,6 +12,28 @@ kali的iso镜像就直接官网下载即可，安装的时候选择系统为debi
 
 
 
+## 鼠标本来好好的，突然不见了，但是可以虚空控制
+
+是的，这是一个很吊诡的现象，我当时找了很久都找不到原因。一般都是apt update之后出现的现象。
+
+如果你尝试了网上很多操作之后还是不行，试试下面这个：
+
+
+
+关闭虚拟机之后，点击升级此虚拟机
+
+![image-20251205144856747](./../../_media2/image-20251205144856747.png)
+
+然后将兼容性格式调到17.x
+
+![image-20251205144953497](./../../_media2/image-20251205144953497.png)
+
+保存即可，鼠标就出现了。
+
+
+
+
+
 ## 换源过程中文件尺寸不符
 
 ```
@@ -54,65 +76,27 @@ N: More information about this can be found online at: https://www.kali.org/blog
 
 
 
-## 更换安装源
+## 更换安装源（自动化）
+
+有一个项目可以直接换源，使用那个项目就行了：
 
 ```
-vim /etc/apt/sources.list      #使用vim访问源
+https://linuxmirrors.cn/
 ```
 
-把官方源注释掉
+可以提供换系统镜像源或者docker镜像源，非常方便
 
 ```
-#中科大
-deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-```
-
-```
-sudo apt update
-# 更新索引
+bash <(curl -sSL https://linuxmirrors.cn/main.sh)
 ```
 
 
 
-清华大学镜像源：
+Docker换源：
 
 ```
-deb https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main non-free contrib non-free-firmware
-deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main non-free contrib non-free-firmware
+bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
 ```
-
-```
-sed -i "s@http://http.kali.org/kali@https://mirrors.tuna.tsinghua.edu.cn/kali@g" /etc/apt/sources.list
-```
-
-
-
-慎重选择更新软件：
-
-```
-sudo apt upgrade
-#更新软件
-```
-
-大概需要10分钟
-
-
-
-
-
-如果版本很老，没有库的话，ubuntu
-
-```
-deb http://old-releases.ubuntu.com/ubuntu groovy main restricted universe multiverse
-deb http://old-releases.ubuntu.com/ubuntu groovy-updates main restricted universe multiverse
-deb http://old-releases.ubuntu.com/ubuntu groovy-security main restricted universe multiverse
-deb http://old-releases.ubuntu.com/ubuntu groovy-backports main restricted universe multiverse
-```
-
-
-
-
 
 
 
@@ -512,51 +496,41 @@ pip3 install gevent -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 
-## 概念性
+## searchsploit搜索漏洞
 
-安全测试：一个过程，用于验证信息资产或系统是否受到保护，并且验证保护功能是否按照预期效果进行
+kali里面提供了一个可以直接搜索漏洞的工具，它的数据源是ExploitDB
 
-OSINT，开源情报
+比如说模糊搜索群晖的漏洞
 
-APT，Advanced Persistent Threats 高级持久性威胁
+```
+searchsploit synology
+```
 
-IDS，入侵检测系统
-
-IPS，入侵组织系统
-
-
+![image-20251205145626658](./../../_media2/image-20251205145626658.png)
 
 
 
-## Maltego工具
+然后后面不是有个POC嘛，直接-m再输入他们的数字代号就行了。
 
-Maltego是OSINT框架中最强大的一个
+```
+searchsploit -m 38128
+```
 
-收集个人在互联网上各个公开的信息，枚举域名系统，强力破解普通DNS
-
-
-
-
+然后这些默认下载到当前路径，你就可以查看或者利用了。有一些是改包的具体信息，有一些是可运行的脚本。
 
 
 
-## 信息收集：
+你可以写一个脚本定时更新，做出重要指示：漏洞一定要能利用！
 
-google缓存，网页快照
+```
+searchsploit -u
+```
 
-http://cachedview.com/
-
-http://web.archive.org/web/*/
-
-http://webcache.googleusercontent.com/search?q=cache:xxx.com
-
-一系列的快照网站都可以
+更多操作还是-h进行查看。不过以上三步就够用了。
 
 
 
-
-
-## theHarvester
+## theHarvester报错解决
 
 遇到：
 
@@ -604,66 +578,7 @@ sudo apt-get install --reinstall python3-apt
 
 
 
-## Shodan
-
-比较全的搜索引擎
-
-基本查ip可以分析很多服务器、操作系统、网站服务啥的
-
-
-
-https://www.shodan.io/
-
-可以查询Apache，就会弹出所有使用该服务的网站
-
-也可以直接查询ip
-
-
-
-比如查询szu.edu.cn
-
-可以查询出下面的子域名，以及ip地址，开放端口号
-
-```
-210.39.3.5
-
-szu.edu.cn
-imap.szu.edu.cn
-smtp.szu.edu.cn
-pop.szu.edu.cn
-mail.szu.edu.cn
-pop3.szu.edu.cn
-
-开放端口：25、80、110、443、465、993、995
-```
-
-
-
-继续查询ip，可以看到SSL证书，TCP连接服务
-
-所属地、组织、各种服务
-
-
-
-
-
-
-
-各种黑客组织的漏洞网站信息库
-
-http://zone-h.com/?zh=1
-
-https://haveibeenpwned.com
-
-
-
-漏洞网站：
-
-http://testfire.net/
-
-
-
-## metasploit
+## metasploit使用方法
 
 
 
@@ -699,7 +614,7 @@ use xxxxx/xxxxx/xxxxx/xxxx/xxxx
 
 
 
-进入到模块，查看配置
+进入到模块，查看配置，一般你用模块都是直接show options，你就知道填什么参数了。
 
 ```
 show options
