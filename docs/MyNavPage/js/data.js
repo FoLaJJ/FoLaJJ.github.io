@@ -502,6 +502,46 @@ const siteDataConfig = {
     ========================================AI=========================================
     */
     {
+      "id": "jimeng",
+      "name": "即梦AI",
+      "url": "https://jimeng.jianying.com/",
+      "description": "即梦AI-即刻造梦",
+      "category": "AI",
+      "icon": "icon/jimeng.ico"
+    },
+    {
+      "id": "imini",
+      "name": "imini-AI",
+      "url": "https://imini.com/zh",
+      "description": "imini一站式AI图片和AI视频创作平台",
+      "category": "AI",
+      "icon": "icon/imini.ico"
+    },
+    {
+      "id": "gemini",
+      "name": "gemini",
+      "url": "https://gemini.google.com/",
+      "description": "gemini、NanoBananaPro",
+      "category": "AI",
+      "icon": "icon/gemini.jpg"
+    },
+    {
+      "id": "nanobananaorg",
+      "name": "nanobananaOrg",
+      "url": "https://nanobanana.org/zh",
+      "description": "nanobananaOrg不知道正不正规",
+      "category": "AI",
+      "icon": "icon/nanobananaorg.png"
+    },
+    {
+      "id": "notebooklm",
+      "name": "Google-notebooklm",
+      "url": "https://notebooklm.google/",
+      "description": "notebooklm",
+      "category": "AI",
+      "icon": "icon/notebooklm.svg"
+    },
+    {
       "id": "kaggle",
       "name": "kaggle",
       "url": "https://www.kaggle.com/",
