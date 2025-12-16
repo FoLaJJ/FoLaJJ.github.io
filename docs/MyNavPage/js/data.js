@@ -341,6 +341,14 @@ const siteDataConfig = {
       "category": "papers",
       "icon": "icon/cnmermaid.ico"
     },
+    {
+      "id": "netinfo-security",
+      "name": "信息网络安全期刊",
+      "url": "http://netinfo-security.org/CN/1671-1122/home.shtml",
+      "description": "netinfo-security",
+      "category": "papers",
+      "icon": "icon/netinfo-security.png"
+    },
 
     /*
     ===================================================================================
