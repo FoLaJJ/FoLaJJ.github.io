@@ -930,6 +930,22 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "MaxMind",
+      "name": "MaxMind",
+      "url": "https://www.maxmind.com/en/home",
+      "description": "IP定位数据库，免费账户有限制",
+      "category": "ToolChain",
+      "icon": "icon/MaxMind.ico"
+    },
+    {
+      "id": "officetool",
+      "name": "officetool",
+      "url": "https://www.officetool.plus/zh-cn/",
+      "description": "office实用部署工具",
+      "category": "ToolChain",
+      "icon": "icon/officetool.ico"
+    },
+    {
       "id": "namesilo",
       "name": "NameSilo",
       "url": "https://www.namesilo.com/account/",
