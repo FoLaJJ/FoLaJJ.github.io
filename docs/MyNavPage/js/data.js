@@ -230,6 +230,22 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "zhuqueai",
+      "name": "朱雀AI检测助手",
+      "url": "https://matrix.tencent.com/ai-detect/",
+      "description": "检查文本是否AI味过重，每日五次免费",
+      "category": "papers",
+      "icon": "icon/zhuqueai.ico"
+    },
+    {
+      "id": "pdf24",
+      "name": "pdf24",
+      "url": "https://tools.pdf24.org/zh/svg-to-pdf",
+      "description": "svg转pdf",
+      "category": "papers",
+      "icon": "icon/pdf24_32.png"
+    },
+    {
       "id": "zotero",
       "name": "zotero",
       "url": "https://www.zotero.org/",
