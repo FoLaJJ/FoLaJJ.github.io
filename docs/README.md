@@ -13,7 +13,7 @@
       <a href="https://space.bilibili.com/447194192" target="_blank"><img src="https://img.shields.io/badge/bilibili-哔哩哔哩-critical" alt="Bilibili"></a>
     </div>
   </div>
-  
+
   <div class="header-right">
     <div class="site-intro">
       <h3>FoLaJJ--为什么会有这个网站？</h3>

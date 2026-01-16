@@ -230,6 +230,14 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "cloudconvert",
+      "name": "svg转eps",
+      "url": "https://cloudconvert.com/svg-to-eps",
+      "description": "svg转eps",
+      "category": "papers",
+      "icon": "icon/cloudconvert.png"
+    },
+    {
       "id": "zhuqueai",
       "name": "朱雀AI检测助手",
       "url": "https://matrix.tencent.com/ai-detect/",
@@ -364,6 +372,14 @@ const siteDataConfig = {
       "description": "netinfo-security",
       "category": "papers",
       "icon": "icon/netinfo-security.png"
+    },
+    {
+      "id": "CeaCeajOrg",
+      "name": "计算机工程与应用",
+      "url": "http://cea.ceaj.org/CN/1002-8331/home.shtml",
+      "description": "计算机工程与应用期刊",
+      "category": "papers",
+      "icon": "icon/CeaCeajOrg.ico"
     },
 
     /*
@@ -770,6 +786,14 @@ const siteDataConfig = {
     =====================================meme==========================================
     */
     {
+      "id": "webarchive",
+      "name": "Wayback Machine",
+      "url": "https://web.archive.org/",
+      "description": "网站时光机",
+      "category": "meme",
+      "icon": "icon/webarchive.ico"
+    },
+    {
       "id": "nof1ai",
       "name": "LLM-solo炒股战",
       "url": "https://nof1.ai/",
@@ -861,6 +885,22 @@ const siteDataConfig = {
     ===================================================================================
     ================================VulnerabilityDatabase==============================
     */
+    {
+      "id": "ddpoc",
+      "name": "ddpoc",
+      "url": "https://ddpoc.com/",
+      "description": "DayDayPoc",
+      "category": "VulnerabilityDatabase",
+      "icon": "icon/ddpoc.ico"
+    },
+    {
+      "id": "imfhtPOC",
+      "name": "imfht-POC平台",
+      "url": "https://cve.imfht.com/poc",
+      "description": "检索最新的可用POC，AI大规模爬取分析",
+      "category": "VulnerabilityDatabase",
+      "icon": "icon/imfhtPOC.png"
+    },
     {
       "id": "wooyun",
       "name": "wooyun镜像站",
