@@ -230,6 +230,22 @@ const siteDataConfig = {
     ================================papers=============================================
     */
     {
+      "id": "wispaperaizh",
+      "name": "wispaperaizh",
+      "url": "https://www.wispaper.ai/zh",
+      "description": "WisPaper：AI学术搜索引擎",
+      "category": "papers",
+      "icon": "icon/wispaperaizh.png"
+    },
+    {
+      "id": "4openscience",
+      "name": "4openscience",
+      "url": "https://anonymous.4open.science/",
+      "description": "4openscience，匿名的github项目，发论文需要",
+      "category": "papers",
+      "icon": "icon/4openscience.ico"
+    },
+    {
       "id": "cloudconvert",
       "name": "svg转eps",
       "url": "https://cloudconvert.com/svg-to-eps",
@@ -541,6 +557,14 @@ const siteDataConfig = {
     ===================================================================================
     ========================================AI=========================================
     */
+    {
+      "id": "GLMAI",
+      "name": "GLMAI",
+      "url": "https://www.bigmodel.cn/glm-coding",
+      "description": "智谱AI，BigModel",
+      "category": "AI",
+      "icon": "icon/GLMAI.png"
+    },
     {
       "id": "jimeng",
       "name": "即梦AI",
