@@ -558,6 +558,14 @@ const siteDataConfig = {
     ========================================AI=========================================
     */
     {
+      "id": "skillssh",
+      "name": "skillssh",
+      "url": "https://skills.sh/",
+      "description": "Skills检索发现",
+      "category": "AI",
+      "icon": "icon/skillssh.ico"
+    },
+    {
       "id": "GLMAI",
       "name": "GLMAI",
       "url": "https://www.bigmodel.cn/glm-coding",
