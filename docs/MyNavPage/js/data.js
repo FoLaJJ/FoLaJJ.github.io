@@ -874,6 +874,14 @@ const siteDataConfig = {
       "icon": "icon/mojie.ico"
     },
     {
+      "id": "helloshudong",
+      "name": "HelloShudong",
+      "url": "https://hello-shudong.com/user",
+      "description": "备用地址：https://nihaoshudong.com",
+      "category": "meme",
+      "icon": "icon/helloshudong.ico"
+    },
+    {
       "id": "tizi001",
       "name": "tizi001",
       "url": "https://tizi001.com/",
