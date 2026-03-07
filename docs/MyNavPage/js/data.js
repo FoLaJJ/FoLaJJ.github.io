@@ -758,6 +758,14 @@ const siteDataConfig = {
       "icon": "icon/huggingface.ico"
     },
     {
+      "id": "huggingfacecopy",
+      "name": "HuggingFace镜像站",
+      "url": "https://hf-mirror.com/",
+      "description": "镜像站",
+      "category": "AI",
+      "icon": "icon/huggingface.ico"
+    },
+    {
       "id": "modelscope",
       "name": "魔塔",
       "url": "https://www.modelscope.cn/home",
@@ -1025,6 +1033,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================ToolChain====================================
     */
+    {
+      "id": "ruancang",
+      "name": "软仓",
+      "url": "https://www.ruancang.net/",
+      "description": "挺多专业软件免费下载安装的网站",
+      "category": "ToolChain",
+      "icon": "icon/ruancang.png"
+    },
     {
       "id": "MaxMind",
       "name": "MaxMind",
@@ -1325,7 +1341,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================SlackOff=====================================
     */
-
+    {
+      "id": "qqqyscom",
+      "name": "3Q影视",
+      "url": "https://qqqys.com/",
+      "description": "这个好这个好，齐全高清",
+      "category": "SlackOff",
+      "icon": "icon/qqqyscom.png"
+    },
     {
       "id": "zxzjhd",
       "name": "zxzjhd",
