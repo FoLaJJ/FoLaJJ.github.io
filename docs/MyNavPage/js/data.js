@@ -662,6 +662,14 @@ const siteDataConfig = {
       "icon": "icon/promptoptimizer.ico"
     },
     {
+      "id": "4apitop",
+      "name": "4apitop",
+      "url": "https://4api.top/",
+      "description": "4apitop",
+      "category": "AI",
+      "icon": "icon/4apitop.png"
+    },
+    {
       "id": "henapi",
       "name": "HenAPI",
       "url": "https://www.henapi.top/dash",
