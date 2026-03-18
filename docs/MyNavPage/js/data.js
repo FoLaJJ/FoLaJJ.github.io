@@ -930,6 +930,14 @@ const siteDataConfig = {
       "icon": "icon/xxfvipaff.png"
     },
     {
+      "id": "ggbet",
+      "name": "GGbet",
+      "url": "https://gg.bet/cn/esports",
+      "description": "GG.BET",
+      "category": "meme",
+      "icon": "icon/ggbet.png"
+    },
+    {
       "id": "windy",
       "name": "Windy风力图",
       "url": "https://www.windy.com/",
@@ -1218,14 +1226,6 @@ const siteDataConfig = {
       "icon": "icon/lazydork.ico"
     },
     {
-      "id": "sthreatbook",
-      "name": "微步云沙箱",
-      "url": "https://s.threatbook.com/",
-      "description": "好用，简单分析木马文件之类的",
-      "category": "ToolChain",
-      "icon": "icon/sthreatbook.ico"
-    },
-    {
       "id": "ddosiscg",
       "name": "SqlMap偷懒",
       "url": "https://www.ddosi.org/scg/",
@@ -1349,6 +1349,14 @@ const siteDataConfig = {
     ===================================================================================
     ======================================SlackOff=====================================
     */
+    {
+      "id": "xiaohongshu",
+      "name": "xiaohongshu",
+      "url": "https://www.xiaohongshu.com/",
+      "description": "小红书",
+      "category": "SlackOff",
+      "icon": "icon/xiaohongshu.ico"
+    },
     {
       "id": "qqqyscom",
       "name": "3Q影视",
@@ -1938,6 +1946,22 @@ const siteDataConfig = {
       "description": "微步在线威胁分析",
       "category": "Information",
       "icon": "icon/xthreatbook.ico"
+    },
+    {
+      "id": "sthreatbook",
+      "name": "微步云沙箱",
+      "url": "https://s.threatbook.com/",
+      "description": "好用，简单分析木马文件之类的",
+      "category": "Information",
+      "icon": "icon/sthreatbook.ico"
+    },
+    {
+      "id": "tiqianxin",
+      "name": "奇安信情报沙箱",
+      "url": "https://sandbox.ti.qianxin.com/sandbox/page",
+      "description": "奇安信情报沙箱",
+      "category": "Information",
+      "icon": "icon/tiqianxin.ico"
     },
     {
       "id": "lingfengyun",
