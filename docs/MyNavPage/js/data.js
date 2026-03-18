@@ -558,6 +558,22 @@ const siteDataConfig = {
     ========================================AI=========================================
     */
     {
+      "id": "openclaw",
+      "name": "openclaw",
+      "url": "https://openclaw.ai/",
+      "description": "谁能忍住在预算充足的时候养只虾呢",
+      "category": "AI",
+      "icon": "icon/openclaw.svg"
+    },
+    {
+      "id": "clawhub",
+      "name": "clawhub",
+      "url": "https://clawhub.ai/",
+      "description": "Clawhub官方的skills超商",
+      "category": "AI",
+      "icon": "icon/clawhub.png"
+    },
+    {
       "id": "skillssh",
       "name": "skillssh",
       "url": "https://skills.sh/",
