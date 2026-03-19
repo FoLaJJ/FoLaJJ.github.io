@@ -638,6 +638,14 @@ const siteDataConfig = {
       "icon": "icon/kaggle.ico"
     },
     {
+      "id": "HelloAgents",
+      "name": "HelloAgents",
+      "url": "https://datawhalechina.github.io/hello-agents/#/",
+      "description": "适合中国宝宝体质的Agent入门手册",
+      "category": "AI",
+      "icon": "icon/HelloAgents.png"
+    },
+    {
       "id": "HappyLLM",
       "name": "HappyLLM",
       "url": "https://datawhalechina.github.io/happy-llm/#/",
