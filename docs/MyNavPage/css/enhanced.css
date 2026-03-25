@@ -228,10 +228,16 @@ input {
     box-shadow: 0 14px 30px rgba(37, 99, 235, 0.12);
 }
 
-.quick-link :is(i, svg) {
+.quick-link i {
     font-size: 18px;
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
+}
+
+.quick-link svg {
+    width: 19px;
+    height: 19px;
     flex-shrink: 0;
 }
 
