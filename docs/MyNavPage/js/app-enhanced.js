@@ -295,7 +295,7 @@ class NavigationApp {
         const isImage = icon.includes(".") || icon.startsWith("icon/");
 
         if (isImage) {
-            return `<img src="${this.escapeHTML(icon)}" alt="${this.escapeHTML(site.name || "")}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><i class="fas fa-globe" style="display:none;"></i>`;
+            return `<img src="${this.escapeHTML(icon)}" alt="${this.escapeHTML(site.name || "")}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><i class="fas fa-globe" style="display:none;"></i>`;
         }
 
         return `<i class="${icon}"></i>`;
