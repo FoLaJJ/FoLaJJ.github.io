@@ -558,6 +558,14 @@ const siteDataConfig = {
     ========================================AI=========================================
     */
     {
+      "id": "declawed",
+      "name": "declawed",
+      "url": "https://declawed.io/",
+      "description": "网络空间OpenClaw暴露实例",
+      "category": "AI",
+      "icon": "icon/declawed.png"
+    },
+    {
       "id": "openclaw",
       "name": "openclaw",
       "url": "https://openclaw.ai/",
@@ -858,6 +866,14 @@ const siteDataConfig = {
     =====================================meme==========================================
     */
     {
+      "id": "yandex",
+      "name": "Yandex",
+      "url": "https://yandex.com/",
+      "description": "网站时光机",
+      "category": "meme",
+      "icon": "icon/yandex.png"
+    },
+    {
       "id": "webarchive",
       "name": "Wayback Machine",
       "url": "https://web.archive.org/",
@@ -912,6 +928,14 @@ const siteDataConfig = {
       "description": "DDDD，当量计费型",
       "category": "meme",
       "icon": "icon/mojie.ico"
+    },
+    {
+      "id": "zaoanyun",
+      "name": "早安云",
+      "url": "https://早安云.net/",
+      "description": "早安云",
+      "category": "meme",
+      "icon": "icon/zaoanyun.ico"
     },
     {
       "id": "helloshudong",
