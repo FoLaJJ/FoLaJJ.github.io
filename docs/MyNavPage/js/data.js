@@ -814,22 +814,6 @@ const siteDataConfig = {
       "icon": "icon/modelscope.ico"
     },
     {
-      "id": "gpt4oapi",
-      "name": "GPT4o-api资源",
-      "url": "https://www.gpt4oapi.com/",
-      "description": "某个gpt资源站",
-      "category": "AI",
-      "icon": "icon/gpt4oapi.ico"
-    },
-    {
-      "id": "gptapius",
-      "name": "GPT资源",
-      "url": "https://www.gptapi.us/",
-      "description": "某个gpt资源站",
-      "category": "AI",
-      "icon": "icon/gptapius.ico"
-    },
-    {
       "id": "labml",
       "name": "labml",
       "url": "https://nn.labml.ai/zh/",
