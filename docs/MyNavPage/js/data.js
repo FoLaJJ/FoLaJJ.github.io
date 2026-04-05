@@ -573,7 +573,38 @@ const siteDataConfig = {
     ===================================================================================
     ========================================AI=========================================
     */
-
+    {
+      "id": "minimax",
+      "name": "minimax",
+      "url": "https://www.minimaxi.com/",
+      "description": "minimax",
+      "category": "AI",
+      "icon": "icon/minimax.ico"
+    },
+    {
+      "id": "weelinking",
+      "name": "weelinking",
+      "url": "https://docs.weelinking.com/",
+      "description": "AI-API中转站",
+      "category": "AI",
+      "icon": "icon/weelinking.ico"
+    },
+    {
+      "id": "jeniya",
+      "name": "jeniya",
+      "url": "https://jeniya.cn/",
+      "description": "AI-API中转站",
+      "category": "AI",
+      "icon": "icon/jeniya.png"
+    },
+    {
+      "id": "greatrouter",
+      "name": "greatrouter",
+      "url": "https://www.greatrouter.com/",
+      "description": "AI-API中转站",
+      "category": "AI",
+      "icon": "icon/greatrouter.svg"
+    },
     {
       "id": "declawed",
       "name": "declawed",
