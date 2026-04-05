@@ -465,6 +465,22 @@ const siteDataConfig = {
     ========================================Server=====================================
     */
     {
+      "id": "freevpsedu",
+      "name": "freevpsedu",
+      "url": "https://freevps.edu.pl/",
+      "description": "免费的Windows VPS托管给学生和开发者",
+      "category": "Server",
+      "icon": "icon/freevpsedu.png"
+    },
+    {
+      "id": "compshare",
+      "name": "优云智算",
+      "url": "https://console.compshare.cn/",
+      "description": "优云智算",
+      "category": "Server",
+      "icon": "icon/compshare.ico"
+    },
+    {
       "id": "vpsboy",
       "name": "vpsboy",
       "url": "https://vpsboy.top/",
@@ -557,6 +573,7 @@ const siteDataConfig = {
     ===================================================================================
     ========================================AI=========================================
     */
+
     {
       "id": "declawed",
       "name": "declawed",
@@ -596,6 +613,14 @@ const siteDataConfig = {
       "description": "智谱AI，BigModel",
       "category": "AI",
       "icon": "icon/GLMAI.png"
+    },
+    {
+      "id": "longcat",
+      "name": "Longcat AI",
+      "url": "https://longcat.chat/",
+      "description": "longcat 每日免费额度",
+      "category": "AI",
+      "icon": "icon/longcat.png"
     },
     {
       "id": "jimeng",
@@ -1391,8 +1416,8 @@ const siteDataConfig = {
     },
     {
       "id": "qqqyscom",
-      "name": "3Q影视",
-      "url": "https://qqqys.com/",
+      "name": "布布影视 原3Q影视",
+      "url": "https://bbys.app/",
       "description": "这个好这个好，齐全高清",
       "category": "SlackOff",
       "icon": "icon/qqqyscom.png"
