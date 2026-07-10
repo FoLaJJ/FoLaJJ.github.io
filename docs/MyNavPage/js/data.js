@@ -1138,6 +1138,14 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "OpenAlex",
+      "name": "OpenAlex",
+      "url": "https://openalex.org",
+      "description": "OpenAlex",
+      "category": "ToolChain",
+      "icon": "icon/OpenAlex.png"
+    },
+    {
       "id": "ruancang",
       "name": "软仓",
       "url": "https://www.ruancang.net/",
