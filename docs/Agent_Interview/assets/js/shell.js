@@ -1,0 +1,174 @@
+/* 共享外壳：安全存储、主题、字号、进度、轻提示、滚动进度、目录/抽屉 */
+(function (g) {
+  var KEY = 'agent-kb-progress-2026';
+  var THEME = 'agent-kb-theme';
+  var FSKEY = 'agent-kb-fs';
+  var FS_STEPS = [0.9, 0.96, 1, 1.08, 1.18];
+  var mem = {};
+
+  /* localStorage 在 file:// 或隐私模式下可能抛异常，降级到内存存储 */
+  var LS = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return mem[k] || null; } },
+    set: function (k, v) { mem[k] = v; try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
+  };
+
+  var store = {};
+  try { store = JSON.parse(LS.get(KEY) || '{}') || {}; } catch (e) { store = {}; }
+
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return [].slice.call(document.querySelectorAll(s)); };
+
+  var Shell = {
+    KEY: KEY, LS: LS, $: $, $$: $$,
+    store: store,
+    TAG: { base: '基础', adv: '进阶', deep: '深水', hot: '热点' },
+    tagName: function (t) { return Shell.TAG[t] || '进阶'; },
+
+    save: function () { LS.set(KEY, JSON.stringify(store)); },
+    isDone: function (uid) { return !!store[uid]; },
+    setDone: function (uid, v) {
+      if (v) store[uid] = 1; else delete store[uid];
+      Shell.save();
+    },
+    countDone: function (items) {
+      return items.filter(function (i) { return store[i.uid]; }).length;
+    },
+
+    toast: function (msg) {
+      var el = document.getElementById('toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('on');
+      clearTimeout(Shell._tt);
+      Shell._tt = setTimeout(function () { el.classList.remove('on'); }, 1700);
+    },
+
+    /* 主题 */
+    initTheme: function () {
+      var btn = $('#themeBtn');
+      if (LS.get(THEME) === 'dark') { document.documentElement.dataset.theme = 'dark'; }
+      if (btn) {
+        var dark = document.documentElement.dataset.theme === 'dark';
+        btn.innerHTML = dark ? sunIcon() : moonIcon();
+        btn.title = dark ? '切换到浅色' : '切换到深色';
+        btn.addEventListener('click', function () {
+          var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          LS.set(THEME, next);
+          btn.innerHTML = next === 'dark' ? sunIcon() : moonIcon();
+          btn.title = next === 'dark' ? '切换到浅色' : '切换到深色';
+          Shell.toast(next === 'dark' ? '已切换到深色主题' : '已切换到浅色主题');
+        });
+      }
+    },
+
+    /* 字号 */
+    initFont: function () {
+      var up = $('#fsUp'), down = $('#fsDown'), val = $('#fsVal');
+      if (!up) return;
+      var idx = FS_STEPS.indexOf(parseFloat(LS.get(FSKEY)));
+      if (idx < 0) idx = 2;
+      function apply() {
+        var v = FS_STEPS[idx];
+        document.documentElement.style.setProperty('--fs-scale', v);
+        val.textContent = Math.round(v * 100) + '%';
+        val.classList.toggle('on', v === 1);
+        LS.set(FSKEY, String(v));
+      }
+      up.addEventListener('click', function () { if (idx < FS_STEPS.length - 1) { idx++; apply(); } });
+      down.addEventListener('click', function () { if (idx > 0) { idx--; apply(); } });
+      val.addEventListener('click', function () { idx = 2; apply(); });
+      apply();
+    },
+
+    /* 滚动进度条 */
+    initScroll: function () {
+      var bar = document.getElementById('spBar');
+      if (!bar) return;
+      var ticking = false;
+      function upd() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+        bar.style.width = (p * 100).toFixed(2) + '%';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(upd); }
+      }, { passive: true });
+      window.addEventListener('resize', upd);
+      upd();
+    },
+
+    /* 抽屉（窄屏目录） */
+    initDrawer: function () {
+      var t = $('#drawerToggle'), side = $('#sidebar');
+      if (!t || !side) return;
+      var scrim = document.createElement('div');
+      scrim.className = 'scrim';
+      document.body.appendChild(scrim);
+      function close() { side.classList.remove('on'); scrim.classList.remove('on'); }
+      t.addEventListener('click', function () {
+        side.classList.toggle('on');
+        scrim.classList.toggle('on');
+      });
+      scrim.addEventListener('click', close);
+      Shell.closeDrawer = close;
+    },
+
+    /* 键盘：/ 聚焦搜索，Esc 清空 */
+    initKeys: function (input, onClear) {
+      document.addEventListener('keydown', function (e) {
+        if (!input) return;
+        if (e.key === '/' && document.activeElement !== input) { e.preventDefault(); input.focus(); }
+        if (e.key === 'Escape' && document.activeElement === input) {
+          input.value = ''; input.blur();
+          if (onClear) onClear();
+        }
+      });
+    },
+
+    /* 目录滚动高亮 */
+    initSpy: function (secIds, tocSel) {
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          $$(tocSel + ' a').forEach(function (a) {
+            a.classList.toggle('active', a.dataset.target === en.target.id);
+          });
+        });
+      }, { rootMargin: '-14% 0px -72% 0px' });
+      secIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    },
+
+    /* 可选网络字体：加载完再挂载，取不到自动回退系统字形 */
+    loadWebFont: function () {
+      window.addEventListener('load', function () {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap';
+        document.head.appendChild(l);
+      });
+    },
+
+    init: function () {
+      Shell.initTheme();
+      Shell.initFont();
+      Shell.initScroll();
+      Shell.initDrawer();
+      Shell.loadWebFont();
+    }
+  };
+
+  function moonIcon() {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>';
+  }
+  function sunIcon() {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>';
+  }
+
+  g.Shell = Shell;
+})(window);

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 质量评估 · 指标与 Judge · Agent 面试题库</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-part="p09-evalmetric" data-tone="blue">
+
+<div class="scroll-progress"><i id="spBar"></i></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.8 5.6 17.6M12 6.8 18.4 17.6M8.9 14.4h6.2"/><circle cx="12" cy="5.6" r="1.9" fill="currentColor" stroke="none"/><circle cx="5" cy="19" r="1.9" fill="currentColor" stroke="none"/><circle cx="19" cy="19" r="1.9" fill="currentColor" stroke="none"/></svg></span>
+      <span class="brand-txt"><b>Agent 面试题库</b><i>PART 01 / 14</i></span>
+    </a>
+
+    <nav class="crumb">
+      <a class="home-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> 全部分册</a>
+      <span class="cur">09 · 质量评估 · 指标与 Judge</span>
+    </nav>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="search" type="search" placeholder="在本册内搜索…" autocomplete="off" spellcheck="false">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="tb-actions">
+      <button class="drawer-toggle" id="drawerToggle" aria-label="目录"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="fs-group">
+        <button id="fsDown" title="缩小字号">A-</button>
+        <button class="fs-val on" id="fsVal" title="点击恢复 100%">100%</button>
+        <button id="fsUp" title="放大字号">A+</button>
+      </div>
+      <button class="icon-btn" id="themeBtn" title="切换主题"></button>
+    </div>
+  </div>
+</header>
+
+<div class="pwrap">
+
+  <div class="phead">
+    <div class="pt-no">PART 09 · 2 个模块 · 42 题</div>
+    <h1>质量评估 · 指标与 Judge</h1>
+    <p>pass@k 与 pass^k、配对设计与 McNemar、bootstrap 区间、多重比较与功效、LLM-as-Judge 校准与偏差消除</p>
+  </div>
+
+  <div class="pgrid">
+    <aside class="side" id="sidebar">
+      <div class="side-card">
+        <div class="ring-row">
+          <div class="ring">
+            <svg viewBox="0 0 72 72"><circle class="rb" cx="36" cy="36" r="26"/><circle class="rf" id="ringFg" cx="36" cy="36" r="26"/></svg>
+            <span id="ringTxt">0%</span>
+          </div>
+          <div class="ring-info">
+            <strong id="doneTxt">0 / 0 题已掌握</strong>
+            <span id="allTxt">全站已掌握 0 题</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">难度筛选</div>
+        <div class="side-b">
+          <div class="chip-row" id="chipRow">
+            <button class="chip on" data-tag="all">全部</button>
+            <button class="chip c-base" data-tag="base">基础</button>
+            <button class="chip c-adv" data-tag="adv">进阶</button>
+            <button class="chip c-deep" data-tag="deep">深水</button>
+            <button class="chip c-hot" data-tag="hot">热点</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">本册目录</div>
+        <nav class="toc" id="toc"></nav>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">其他分册</div>
+        <div class="plist" id="plist"></div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">操作</div>
+        <div class="side-b">
+          <div class="chip-row"><button class="chip" id="resetBtn">重置进度</button></div>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="toolbar">
+        <div class="tb-count">本册 <b id="tbCount">0</b> 题 · 命中 <b id="tbVis">0</b></div>
+        <div class="tb-right">
+          <button class="mini-btn" id="btnQuiz">背诵模式</button>
+          <button class="mini-btn" id="btnExpand">展开全部</button>
+          <button class="mini-btn" id="btnDoneOnly">只看未掌握</button>
+          <button class="mini-btn" id="topBtn">回到顶部</button>
+        </div>
+      </div>
+
+      <div id="content"></div>
+      <div class="empty" id="empty">没有命中的题目，换个关键词试试</div>
+      <nav class="pnav" id="pnav"></nav>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/js/kb-core.js"></script>
+<script src="../assets/js/parts.js"></script>
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/data/33-eval-metrics.js"></script>
+<script src="../assets/js/data/34-eval-judge.js"></script>
+<script src="../assets/js/page.js"></script>
+</body>
+</html>

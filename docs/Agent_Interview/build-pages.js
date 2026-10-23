@@ -1,0 +1,34 @@
+/* 一次性生成脚本：按 parts.js 生成 pages/pXX-*.html */
+const fs = require('fs'), path = require('path');
+global.window = global;
+require('./assets/js/kb-core.js');
+require('./assets/js/parts.js');
+const dir = 'assets/js/data';
+const files = fs.readdirSync(dir).sort();
+files.forEach(f => eval(fs.readFileSync(path.join(dir, f), 'utf8')));
+const idToFile = {};
+files.forEach(f => { const m = /^\d\d-(.+)\.js$/.exec(f); if (m) idToFile[m[1]] = f; });
+
+const byId = {};
+window.KB.cats.forEach(c => byId[c.id] = c);
+const N = window.PARTS.length;
+
+const tpl = fs.readFileSync('pages/p01-core.html', 'utf8');
+
+window.PARTS.forEach(p => {
+  const mods = p.mods.map(id => byId[id]).filter(Boolean);
+  const count = mods.reduce((a, c) => a + c.items.length, 0);
+  let s = tpl;
+  s = s.replace(/<title>.*?<\/title>/, '<title>' + p.no + ' ' + p.title + ' · Agent 面试题库</title>');
+  s = s.replace(/data-part="p01-core" data-tone="indigo"/, 'data-part="' + p.id + '" data-tone="' + p.tone + '"');
+  s = s.replace(/PART 01 \/ 12/, 'PART ' + p.no + ' / ' + String(N).padStart(2, '0'));
+  s = s.replace(/<span class="cur">.*?<\/span>/, '<span class="cur">' + p.no + ' · ' + p.title + '</span>');
+  s = s.replace(/<div class="pt-no">.*?<\/div>/, '<div class="pt-no">PART ' + p.no + ' · ' + mods.length + ' 个模块 · ' + count + ' 题</div>');
+  s = s.replace(/<h1>.*?<\/h1>/, '<h1>' + p.title + '</h1>');
+  s = s.replace(/(<h1>.*?<\/h1>\n    <p>).*?(<\/p>)/, '$1' + p.sub + '$2');
+  const scripts = mods.map(c => '<script src="../assets/js/data/' + idToFile[c.id] + '"></script>').join('\n');
+  s = s.replace(/<script src="\.\.\/assets\/js\/data\/01-basics\.js"><\/script>\n<script src="\.\.\/assets\/js\/data\/19-llm\.js"><\/script>\n<script src="\.\.\/assets\/js\/data\/20-prompt\.js"><\/script>/, scripts);
+  if (s.indexOf('data/01-basics.js') >= 0 && p.id !== 'p01-core') { console.log('WARN 脚本未替换', p.id); }
+  fs.writeFileSync('pages/' + p.file, s, 'utf8');
+  console.log('generated', p.file, count, '题 /', mods.length, '模块');
+});

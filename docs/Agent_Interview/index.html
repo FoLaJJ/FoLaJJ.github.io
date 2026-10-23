@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent 开发岗 · 深度面试题库 · 744 题 14 分册</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body>
+
+<div class="scroll-progress"><i id="spBar"></i></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <span class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.8 5.6 17.6M12 6.8 18.4 17.6M8.9 14.4h6.2"/><circle cx="12" cy="5.6" r="1.9" fill="currentColor" stroke="none"/><circle cx="5" cy="19" r="1.9" fill="currentColor" stroke="none"/><circle cx="19" cy="19" r="1.9" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="brand-txt"><b>Agent 面试题库</b><i>AGENT ENGINEERING · 2026</i></span>
+    </span>
+
+    <div class="tb-actions">
+      <div class="ring-row" style="padding:0 6px 0 0">
+        <div class="ring" style="width:38px;height:38px">
+          <svg viewBox="0 0 72 72" style="width:38px;height:38px">
+            <circle class="rb" cx="36" cy="36" r="26" stroke-width="9"/>
+            <circle class="rf" id="ringFg" cx="36" cy="36" r="26" stroke-width="9"/>
+          </svg>
+          <span id="ringTxt" style="font-size:10px">0%</span>
+        </div>
+        <div class="ring-info" style="display:none"></div>
+        <strong id="doneTxt" style="font-size:12.5px;white-space:nowrap">0 / 0 题已掌握</strong>
+      </div>
+      <div class="fs-group">
+        <button id="fsDown" title="缩小字号">A-</button>
+        <button class="fs-val on" id="fsVal" title="点击恢复 100%">100%</button>
+        <button id="fsUp" title="放大字号">A+</button>
+      </div>
+      <button class="icon-btn" id="themeBtn" title="切换主题"></button>
+      <button class="icon-btn" id="resetBtn" title="清空掌握进度">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="home-hero">
+    <div class="hero-badge"><i></i>744 QUESTIONS · 46 MODULES · 14 VOLUMES</div>
+    <h1>Agent 开发岗 · 深度面试题库</h1>
+    <p class="lead">
+      从范式与推理引擎，到工具协议、训练、工程运维、安全对齐；再到完整的质量评估体系（流程、数据集、指标统计、Judge、红队）、
+      六大前沿方向（自主科研、多智能体社会、具身与世界模型、软件工程演进、OS 与移动 Agent、Agent 经济），
+      以及记忆系统深度、测试与质量工程、分布式并发、模型选型治理、合规隐私、产品化与开放辩论题。
+      每题按六段展开：<b>情境化题干</b>（带场景、冲突与约束）→ 标准答法 →
+      <b>原理解析</b>（为什么是这样、机制在哪、权衡是什么）→ <b>关键判据</b>（可背诵的阈值与数字）→
+      加分答法 → 常见陷阱与追问预判。不做名词解释，只讲面试官继续追问时你答得出来的那一层。
+    </p>
+    <div class="hero-metrics" id="heroStats"></div>
+
+    <div class="home-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="gsearch" type="search" placeholder="全库搜索：输入 McNemar、沙箱、注入、世界模型…" autocomplete="off" spellcheck="false">
+      <div class="hs-panel" id="hsPanel"></div>
+    </div>
+  </section>
+
+  <div class="sec-title-row">
+    <h2>分册目录</h2>
+    <span>点进任意分册 → 左侧目录跳转模块 → 点题展开答案 · 旗标记录掌握进度（本地保存）</span>
+  </div>
+  <div class="part-grid" id="partGrid"></div>
+
+  <div class="sec-title-row">
+    <h2 id="modTitle">46 个模块速览</h2>
+    <span>点击直达，锚点直接定位到该模块 · 编号格式为「分册号-章节号」，与分册页完全一致</span>
+  </div>
+  <div class="mod-grid" id="modGrid"></div>
+
+  <div class="sec-title-row">
+    <h2>建议复习路线</h2>
+    <span>时间紧就按这个顺序走</span>
+  </div>
+  <div class="roadmap">
+    <div class="rm-card">
+      <span class="step">STEP 01</span>
+      <b>先过热点与深水</b>
+      <p>用首页搜索框直接检索关键词，或进分册后用「难度筛选」切到热点 / 深水。这两类是面试里真正拉开差距的题。</p>
+    </div>
+    <div class="rm-card">
+      <span class="step">STEP 02</span>
+      <b>再补体系与场景</b>
+      <p>质量评估（08 / 09 册）和场景专项（12 册）最能体现工程经验，答的时候先给框架再给细节，最后抛一个反问。</p>
+    </div>
+    <div class="rm-card">
+      <span class="step">STEP 03</span>
+      <b>最后背诵模式自测</b>
+      <p>分册页点「背诵模式」，答案会被隐藏，先口头答一遍再点「显示答案」。开「只看未掌握」做二轮查漏。</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">744</b> 题</span>
+    <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 分册内 <b>← 全部分册</b> 返回首页</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/kb-core.js"></script>
+<script src="assets/js/parts.js"></script>
+<script src="assets/js/shell.js"></script>
+<script src="assets/js/data/01-basics.js"></script>
+<script src="assets/js/data/02-context.js"></script>
+<script src="assets/js/data/03-tools.js"></script>
+<script src="assets/js/data/04-planning.js"></script>
+<script src="assets/js/data/05-memory.js"></script>
+<script src="assets/js/data/06-eval.js"></script>
+<script src="assets/js/data/07-training.js"></script>
+<script src="assets/js/data/08-engineering.js"></script>
+<script src="assets/js/data/09-security.js"></script>
+<script src="assets/js/data/10-multimodal.js"></script>
+<script src="assets/js/data/11-cost.js"></script>
+<script src="assets/js/data/12-design.js"></script>
+<script src="assets/js/data/13-frontier.js"></script>
+<script src="assets/js/data/14-protocols.js"></script>
+<script src="assets/js/data/15-research.js"></script>
+<script src="assets/js/data/16-data.js"></script>
+<script src="assets/js/data/17-enterprise.js"></script>
+<script src="assets/js/data/18-strategy.js"></script>
+<script src="assets/js/data/19-llm.js"></script>
+<script src="assets/js/data/20-prompt.js"></script>
+<script src="assets/js/data/21-runtime.js"></script>
+<script src="assets/js/data/22-ops.js"></script>
+<script src="assets/js/data/23-hci.js"></script>
+<script src="assets/js/data/24-coding.js"></script>
+<script src="assets/js/data/25-frontier-research.js"></script>
+<script src="assets/js/data/26-frontier-society.js"></script>
+<script src="assets/js/data/27-frontier-embodied.js"></script>
+<script src="assets/js/data/28-frontier-swe.js"></script>
+<script src="assets/js/data/29-frontier-os.js"></script>
+<script src="assets/js/data/30-frontier-economy.js"></script>
+<script src="assets/js/data/31-eval-process.js"></script>
+<script src="assets/js/data/32-eval-data.js"></script>
+<script src="assets/js/data/33-eval-metrics.js"></script>
+<script src="assets/js/data/34-eval-judge.js"></script>
+<script src="assets/js/data/35-eval-redteam.js"></script>
+<script src="assets/js/data/36-scene-data.js"></script>
+<script src="assets/js/data/37-scene-service.js"></script>
+<script src="assets/js/data/38-scene-research.js"></script>
+<script src="assets/js/data/39-scenario.js"></script>
+<script src="assets/js/data/40-memory-deep.js"></script>
+<script src="assets/js/data/41-testing.js"></script>
+<script src="assets/js/data/42-distributed.js"></script>
+<script src="assets/js/data/43-modelops.js"></script>
+<script src="assets/js/data/44-compliance.js"></script>
+<script src="assets/js/data/45-product.js"></script>
+<script src="assets/js/data/46-openqa.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
