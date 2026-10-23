@@ -34,11 +34,6 @@
         <div class="ring-info" style="display:none"></div>
         <strong id="doneTxt" style="font-size:12.5px;white-space:nowrap">0 / 0 题已读</strong>
       </div>
-      <div class="fs-group keep-mobile">
-        <button data-fs="down" id="fsDown" title="缩小字号">A-</button>
-        <button class="fs-val on" data-fs="val" id="fsVal" title="点击恢复 100%">100%</button>
-        <button data-fs="up" id="fsUp" title="放大字号">A+</button>
-      </div>
       <button class="icon-btn" id="themeBtn" title="切换主题"></button>
       <button class="icon-btn" id="resetBtn" title="清空已读记录">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg>
@@ -73,7 +68,7 @@
 
   <div class="sec-title-row">
     <h2>分册目录</h2>
-    <span>手机端自动「一题一屏」上下滑动刷，点开答案即自动记入已读；桌面点「一题一屏」也能切到卡片模式</span>
+    <span>手机默认卡片模式：整页只渲染一道题，左右滑翻题；桌面默认列表，按章节 + 每页 24 题渲染，可一键切卡片模式</span>
   </div>
   <div class="part-grid" id="partGrid"></div>
 
@@ -103,65 +98,24 @@
       <b>最后背诵模式自测</b>
       <p>分册页点「背诵模式」，答案会被隐藏，先口头答一遍再点「显示答案」。开「只看未读」做二轮查漏，进度全自动记录，不用手动打勾。</p>
     </div>
+    <div class="rm-card">
+      <span class="step">STEP 04</span>
+      <b>手机上怎么刷</b>
+      <p>默认卡片模式，一次只渲染一道题：题干在上面，点「显示答案」后答案直接接在下面，自动记入已读。左右滑翻题，目录与筛选点右上 ☰ 打开。</p>
+    </div>
   </div>
 
   <div class="foot">
-    <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">744</b> 题</span>
-    <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 卡片模式 <b>←/→</b> 翻题 · <b>空格</b> 展开答案</span>
+    <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">744</b> 题 · 全站按需渲染，手机只装一份索引</span>
+    <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 卡片模式 <b>←/→</b> 或滚轮翻题 · <b>空格</b> 展开答案</span>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script src="assets/js/kb-core.js"></script>
 <script src="assets/js/parts.js"></script>
+<script src="assets/js/idx.js"></script>
 <script src="assets/js/shell.js"></script>
-<script src="assets/js/data/01-basics.js"></script>
-<script src="assets/js/data/02-context.js"></script>
-<script src="assets/js/data/03-tools.js"></script>
-<script src="assets/js/data/04-planning.js"></script>
-<script src="assets/js/data/05-memory.js"></script>
-<script src="assets/js/data/06-eval.js"></script>
-<script src="assets/js/data/07-training.js"></script>
-<script src="assets/js/data/08-engineering.js"></script>
-<script src="assets/js/data/09-security.js"></script>
-<script src="assets/js/data/10-multimodal.js"></script>
-<script src="assets/js/data/11-cost.js"></script>
-<script src="assets/js/data/12-design.js"></script>
-<script src="assets/js/data/13-frontier.js"></script>
-<script src="assets/js/data/14-protocols.js"></script>
-<script src="assets/js/data/15-research.js"></script>
-<script src="assets/js/data/16-data.js"></script>
-<script src="assets/js/data/17-enterprise.js"></script>
-<script src="assets/js/data/18-strategy.js"></script>
-<script src="assets/js/data/19-llm.js"></script>
-<script src="assets/js/data/20-prompt.js"></script>
-<script src="assets/js/data/21-runtime.js"></script>
-<script src="assets/js/data/22-ops.js"></script>
-<script src="assets/js/data/23-hci.js"></script>
-<script src="assets/js/data/24-coding.js"></script>
-<script src="assets/js/data/25-frontier-research.js"></script>
-<script src="assets/js/data/26-frontier-society.js"></script>
-<script src="assets/js/data/27-frontier-embodied.js"></script>
-<script src="assets/js/data/28-frontier-swe.js"></script>
-<script src="assets/js/data/29-frontier-os.js"></script>
-<script src="assets/js/data/30-frontier-economy.js"></script>
-<script src="assets/js/data/31-eval-process.js"></script>
-<script src="assets/js/data/32-eval-data.js"></script>
-<script src="assets/js/data/33-eval-metrics.js"></script>
-<script src="assets/js/data/34-eval-judge.js"></script>
-<script src="assets/js/data/35-eval-redteam.js"></script>
-<script src="assets/js/data/36-scene-data.js"></script>
-<script src="assets/js/data/37-scene-service.js"></script>
-<script src="assets/js/data/38-scene-research.js"></script>
-<script src="assets/js/data/39-scenario.js"></script>
-<script src="assets/js/data/40-memory-deep.js"></script>
-<script src="assets/js/data/41-testing.js"></script>
-<script src="assets/js/data/42-distributed.js"></script>
-<script src="assets/js/data/43-modelops.js"></script>
-<script src="assets/js/data/44-compliance.js"></script>
-<script src="assets/js/data/45-product.js"></script>
-<script src="assets/js/data/46-openqa.js"></script>
 <script src="assets/js/home.js"></script>
 </body>
 </html>

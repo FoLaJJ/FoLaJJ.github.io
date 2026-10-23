@@ -47,10 +47,6 @@
 
   --tone: var(--accent);
   --tone-soft: var(--accent-soft);
-
-  /* 一题一屏：卡片高度由 JS 实测写入，这里给出兜底值 */
-  --deck-h: calc(100vh - 160px);
-  --card-h: calc(100vh - 182px);
 }
 
 [data-theme="dark"] {
@@ -209,11 +205,7 @@ svg { display: block; }
 }
 .icon-btn svg { width: 17px; height: 17px; }
 .icon-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-.fs-group { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
-.fs-group button { padding: 0 8px; height: 32px; font-size: calc(12.5px * var(--fs-scale)); color: var(--ink-2); transition: .15s; }
-.fs-group button:hover { background: var(--surface-3); color: var(--accent); }
-.fs-group .fs-val { font-family: var(--mono); font-size: calc(11.5px * var(--fs-scale)); min-width: 46px; text-align: center; }
-.fs-group .fs-val.on { color: var(--accent); font-weight: 600; }
+/* 字号调节入口已移除（--fs-scale 固定为 1，样式仍按变量书写便于日后恢复） */
 
 /* ---------- 4. 首页 ---------- */
 .wrap { max-width: 1440px; margin: 0 auto; padding: 0 28px 80px; }
@@ -360,19 +352,33 @@ svg { display: block; }
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
   font-size: calc(12.5px * var(--fs-scale)); color: var(--ink-3); }
 
-/* ---------- 5. 分册页布局 ---------- */
-.pwrap { max-width: 1440px; margin: 0 auto; padding: 0 28px 70px; }
-.pgrid { display: grid; grid-template-columns: 266px minmax(0, 1fr); gap: 32px; align-items: start; }
+/* ---------- 5. 分册页布局 ----------
+   单列：目录在任何宽度都走左侧抽屉，内容区永远占满整行，
+   不再出现 grid 空列造成的右侧空白。 */
+.pwrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 70px; }
+.pgrid { display: block; }
 
 .phead { padding: 30px 0 22px; }
 .phead .pt-no { font-family: var(--mono); font-size: calc(12px * var(--fs-scale)); letter-spacing: .16em; color: var(--tone); }
 .phead h1 { margin: 8px 0 10px; font-size: calc(32px * var(--fs-scale)); font-weight: 700; letter-spacing: -.026em; line-height: 1.24; text-wrap: balance; }
 .phead p { margin: 0; max-width: 780px; font-size: calc(14.5px * var(--fs-scale)); color: var(--ink-2); line-height: 1.78; }
 
-/* PC 列表模式：侧栏跟随，内容超高时自身可滚动，底部操作不再被顶出视口 */
-.side { position: sticky; top: 74px; max-height: calc(100vh - 88px); overflow-y: auto;
-  overscroll-behavior: contain; scrollbar-width: thin; padding-right: 3px; }
-.side-head { display: none; }
+/* 目录 = 左侧抽屉，所有宽度一致，不占内容列 */
+.side {
+  position: fixed; inset: 0 auto 0 0; width: 310px; max-width: 88vw; z-index: 80;
+  padding: 0 14px calc(14px + env(safe-area-inset-bottom));
+  background: var(--bg); overflow-y: auto;
+  overscroll-behavior: contain; scrollbar-width: thin;
+  transform: translateX(-102%);
+  transition: transform .28s cubic-bezier(.2, .8, .3, 1);
+}
+.side.on { transform: none; box-shadow: var(--shadow-lg); }
+.side-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: calc(14px + env(safe-area-inset-top)) 4px 12px;
+  position: sticky; top: 0; z-index: 2; background: var(--bg);
+}
+.side-head b { font-size: calc(13px * var(--fs-scale)); letter-spacing: .04em; color: var(--ink-2); }
 .side-close { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
   border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); }
 .side-close svg { width: 16px; height: 16px; }
@@ -460,23 +466,26 @@ svg { display: block; }
   font-size: calc(12px * var(--fs-scale)); color: var(--ink-2); transition: .16s; white-space: nowrap; }
 .mini-btn:hover { border-color: var(--tone); color: var(--tone); }
 
-.q-list { display: flex; flex-direction: column; gap: 8px; }
+/* 题目不再装进「框」：题干平铺在上面，答案直接接在下面，未点开时完全隐藏 */
+.q-list { display: flex; flex-direction: column; }
 .item {
-  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm); overflow: hidden; position: relative;
-  transition: border-color .18s, box-shadow .18s;
+  position: relative; overflow: visible;
+  background: none; border: 0; border-bottom: 1px solid var(--line-soft);
+  border-radius: 0; box-shadow: none;
+  transition: background .16s;
 }
-.item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--c-adv); opacity: .85; }
+.item:last-child { border-bottom: 0; }
+.item::before { content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 3px; background: var(--c-adv); opacity: .85; }
 .item[data-tag="base"]::before { background: var(--c-base); }
 .item[data-tag="adv"]::before { background: var(--c-adv); }
 .item[data-tag="deep"]::before { background: var(--c-deep); }
 .item[data-tag="hot"]::before { background: var(--c-hot); }
-.item:hover { border-color: color-mix(in srgb, var(--ink-3) 42%, var(--line)); box-shadow: var(--shadow); }
-.item.open { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow); }
+.item:hover { background: var(--surface-2); }
+.item.open { background: var(--surface-2); }
 .item.done::before { background: var(--c-done); }
-.item.hit { border-color: color-mix(in srgb, var(--c-hot) 60%, var(--line)); }
+.item.hit { background: var(--accent-soft); }
 
-.q-head { display: flex; align-items: flex-start; gap: 13px; padding: 14px 16px 14px 18px; cursor: pointer; }
+.q-head { display: flex; align-items: flex-start; gap: 13px; padding: 15px 14px 15px 20px; cursor: pointer; }
 .q-num {
   font-family: var(--mono); font-size: calc(12px * var(--fs-scale)); font-weight: 600; color: var(--ink-3);
   background: var(--surface-3); border-radius: 7px; padding: 3px 6px; flex-shrink: 0; margin-top: 2px;
@@ -505,7 +514,8 @@ svg { display: block; }
 .chev svg { width: 16px; height: 16px; }
 .item.open .chev { transform: rotate(180deg); color: var(--accent); }
 
-.q-body { display: none; padding: 0 18px 16px 18px; }
+/* 答案紧跟题干下方，与题号左对齐，中间不再有框线 */
+.q-body { display: none; padding: 0 14px 20px 20px; }
 .item.open .q-body { display: block; animation: fadeIn .22s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 .q-body p { margin: 0 0 9px; max-width: 1020px; font-size: calc(14px * var(--fs-scale)); line-height: 1.86; color: var(--ink-2); text-wrap: pretty; }
@@ -560,86 +570,84 @@ svg { display: block; }
 .pnav a.next { text-align: right; align-items: flex-end; }
 .pnav a.spacer { visibility: hidden; }
 
-/* ---------- 6.5 一题一屏（移动端默认，桌面可切换） ---------- */
-.deck-bar, .deck-act { display: none; }
+/* ---------- 6.5 卡片模式：整页只渲染 1 张题卡（移动端默认，PC 可切换） ----------
+   布局全部交给 flex：body 竖向三段（顶栏 / 题卡 / 底栏），
+   不用 JS 测高、不用 dvh 之外的固定像素，字号怎么变都不会把内容顶出屏幕。 */
+.deck-bar, .deck-act, .stage { display: none; }
 
-html.deck { overscroll-behavior: none; }
-html.deck, html.deck body { height: 100%; overflow: hidden; }
-html.deck .topbar-in { min-height: 52px; padding: calc(8px + env(safe-area-inset-top)) 14px 8px; }
-html.deck .pwrap { padding: 0; max-width: 100%; }
-html.deck .phead, html.deck .toolbar, html.deck .pnav, html.deck .sec-h { display: none !important; }
-/* 目录在卡片模式下统一走抽屉（含 PC），☰ 才能用 */
-html.deck .side:not(.drawer) { display: none; }
-html.deck .pgrid, html.deck main { display: block; }
-html.deck #content {
-  height: var(--deck-h);
-  /* PC 宽屏下限制阅读宽度并居中，避免一行文字拉太长 */
-  max-width: 880px; margin: 0 auto;
-  overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
-  scroll-snap-type: y mandatory; scroll-padding: 0;
-  padding: 11px;
-  scrollbar-width: thin;
+html.one { overscroll-behavior: none; }
+html.one, html.one body { height: 100%; }
+html.one body {
+  height: 100vh;                  /* 老浏览器兜底 */
+  height: 100dvh;                 /* 支持 dvh 的设备用视口动态高度，避开地址栏伸缩 */
+  display: flex; flex-direction: column; overflow: hidden;
 }
-html.deck .sec { margin: 0; scroll-margin: 0; }
-html.deck .q-list { gap: 11px; }
-html.deck .item {
-  height: var(--card-h); max-height: var(--card-h);
+html.one .topbar, html.one .deck-bar, html.one .deck-act { flex: none; }
+html.one .topbar-in { min-height: 52px; padding: calc(8px + env(safe-area-inset-top)) 14px 8px; }
+html.one .pwrap { display: none; }
+
+html.one .stage {
   display: flex; flex-direction: column;
-  scroll-snap-align: start;
-  border-radius: 20px; box-shadow: var(--shadow);
-}
-html.deck .item::before { width: 4px; border-radius: 4px 0 0 4px; }
-/* 未展开时像一张闪卡：题干垂直居中，底部留白不空旷 */
-html.deck .item:not(.open) { justify-content: center; }
-html.deck .item .q-head { flex: none; padding: 20px 18px 18px 22px; cursor: pointer; }
-html.deck .item .q-num { font-size: calc(12.5px * var(--fs-scale)); padding: 4px 7px; }
-html.deck .item .q-text { font-size: calc(18.5px * var(--fs-scale)); line-height: 1.54; letter-spacing: -.01em; }
-html.deck .item .q-meta { margin-top: 10px; }
-html.deck .item .q-body {
-  flex: 1 1 auto; min-height: 0; overflow-y: auto;
-  padding: 4px 20px 24px 20px;
-}
-html.deck .item .quiz-mask { flex: none; }
-html.deck .empty {
-  display: block; position: fixed; left: 24px; right: 24px; top: 50%; transform: translateY(-50%);
-  text-align: center; padding: 22px;
-  background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius);
-}
-html.deck .scroll-progress { display: none; }
-html.deck .toast { bottom: 100px; }
-
-/* 抽屉式目录：卡片模式下 PC / 移动一致可用 */
-.side.drawer {
-  display: block;
-  position: fixed; inset: 0 auto 0 0; width: 320px; max-width: 88vw; z-index: 80;
-  max-height: none; padding: 0 14px 14px; background: var(--bg);
+  flex: 1 1 auto; min-height: 0;
+  width: 100%; max-width: 900px; margin: 0 auto;
+  padding: 8px 16px calc(12px + env(safe-area-inset-bottom));
   overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
-  transform: translateX(-102%);
-  transition: transform .28s cubic-bezier(.2, .8, .3, 1);
 }
-.side.drawer.on { transform: none; box-shadow: var(--shadow-lg); }
-.side.drawer .side-head {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 14px 4px 12px; position: sticky; top: 0; z-index: 2; background: var(--bg);
+/* 关键：grow 1（内容少时铺满成一屏）+ shrink 0（内容多时不压缩，交给 stage 滚动）
+   —— 答案再长也不会被裁掉 */
+html.one .stage .item {
+  flex: 1 0 auto;
+  display: flex; flex-direction: column;
+  background: none; border: 0; border-bottom: 0; box-shadow: none; border-radius: 0;
 }
-.side.drawer .side-head b { font-size: calc(13px * var(--fs-scale)); letter-spacing: .04em; color: var(--ink-2); }
-html.deck .drawer-toggle {
+html.one .stage .item::before { width: 3px; border-radius: 3px; top: 16px; bottom: 16px; }
+/* 未展开时题干垂直居中，像一张闪卡 */
+html.one .stage .item:not(.open) { justify-content: center; }
+html.one .stage .q-head { flex: none; padding: 22px 16px 18px 22px; cursor: pointer; }
+html.one .stage .q-num { font-size: calc(12.5px * var(--fs-scale)); padding: 4px 7px; }
+html.one .stage .q-text { font-size: calc(18.5px * var(--fs-scale)); line-height: 1.56; letter-spacing: -.01em; }
+html.one .stage .q-meta { margin-top: 10px; }
+html.one .stage .q-body { flex: 0 0 auto; padding: 4px 16px 24px 22px; }
+html.one .stage .quiz-mask { flex: none; padding: 0 22px 20px; }
+html.one .scroll-progress { display: none; }
+html.one .toast { bottom: 96px; }
+.one-empty {
+  margin: auto; text-align: center; padding: 26px 22px; color: var(--ink-3);
+  background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius);
+  font-size: calc(14px * var(--fs-scale));
+}
+
+/* 章节切换与分页（列表模式） */
+.segnav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.list-head {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 11px 16px; margin-bottom: 12px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+}
+.list-head b { font-size: calc(14.5px * var(--fs-scale)); font-weight: 640; }
+.list-head span { font-size: calc(12.5px * var(--fs-scale)); color: var(--ink-3); }
+.pager { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 18px; }
+.pager .pg-txt { font-size: calc(12.5px * var(--fs-scale)); color: var(--ink-3); font-family: var(--mono); }
+.pager .mini-btn:disabled { opacity: .4; cursor: default; }
+
+/* ☰ 在所有宽度都常驻（目录已是抽屉，PC / 移动一致） */
+.drawer-toggle {
   display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;
   border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
 }
-html.deck .drawer-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.drawer-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
 .deck-bar {
-  position: sticky; top: 0; z-index: 58;
+  position: relative; z-index: 58;
   align-items: center; gap: 10px; padding: 7px 12px;
   background: color-mix(in srgb, var(--surface) 90%, transparent);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--line-soft);
 }
-html.deck .deck-bar { display: flex; }
+html.one .deck-bar { display: flex; }
 /* 宽屏下顶/底条内容跟着卡片列一起居中，不被拉成超长一条 */
-html.deck .deck-bar, html.deck .deck-act {
+html.one .deck-bar, html.one .deck-act {
   padding-left: max(12px, calc((100% - 880px) / 2));
   padding-right: max(12px, calc((100% - 880px) / 2));
 }
@@ -666,14 +674,14 @@ html.deck .deck-bar, html.deck .deck-act {
 }
 
 .deck-act {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 62;
+  position: relative; z-index: 62;
   gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
   background: color-mix(in srgb, var(--surface) 93%, transparent);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-top: 1px solid var(--line-soft);
 }
-html.deck .deck-act { display: flex; }
+html.one .deck-act { display: flex; }
 .da-btn {
   flex: 1; min-height: 46px; border-radius: 13px; gap: 6px;
   display: flex; align-items: center; justify-content: center;
@@ -695,37 +703,23 @@ html.deck .deck-act { display: flex; }
 
 /* PC：卡片模式改用温和吸附，鼠标滚轮能自由滚动，不被强制跳卡 */
 @media (min-width: 861px) {
-  html.deck #content { scroll-snap-type: y proximity; }
-  html.deck .item .q-text { font-size: calc(19px * var(--fs-scale)); }
+  html.one .stage .q-text { font-size: calc(19px * var(--fs-scale)); }
+  html.one .stage { padding: 16px; }
 }
 
 /* ---------- 7. 响应式 ---------- */
-.drawer-toggle { display: none; }
 .scrim { position: fixed; inset: 0; background: rgba(10, 12, 18, .45); backdrop-filter: blur(2px);
-  opacity: 0; pointer-events: none; transition: .25s; z-index: 66; }
+  opacity: 0; pointer-events: none; transition: .25s; z-index: 78; }
 .scrim.on { opacity: 1; pointer-events: auto; }
 
-@media (max-width: 1180px) {
-  .pgrid { grid-template-columns: 1fr; }
-  .side { position: fixed; inset: 0 auto 0 0; width: 304px; max-height: none; z-index: 70; padding: 14px;
-    background: var(--bg); overflow-y: auto; transform: translateX(-102%); transition: transform .28s cubic-bezier(.2, .8, .3, 1); }
-  .side.on { transform: none; box-shadow: var(--shadow-lg); }
-  .drawer-toggle { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;
-    border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); }
-  .drawer-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-  .side { padding-top: 0; }
-  .side-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    padding: 4px 4px 12px; position: sticky; top: 0; z-index: 2; background: var(--bg);
-  }
-  .side-head b { font-size: calc(13px * var(--fs-scale)); letter-spacing: .04em; color: var(--ink-2); }
-}
 @media (max-width: 860px) {
-  .wrap, .pwrap { padding: 0 16px calc(60px + env(safe-area-inset-bottom)); }
-  .topbar-in { padding: calc(9px + env(safe-area-inset-top)) 16px 9px; gap: 10px; }
+  .wrap, .pwrap { padding: 0 14px calc(60px + env(safe-area-inset-bottom)); }
+  .topbar-in { padding: calc(9px + env(safe-area-inset-top)) 14px 9px; gap: 10px; flex-wrap: nowrap; }
+  /* 手机上顶栏只留 品牌图标 + 搜索 + ☰/主题，其余让位 */
+  .crumb { display: none; }
+  .search { flex: 1 1 auto; min-width: 0; max-width: none; }
+  .tb-actions { flex-shrink: 0; }
   .brand span { display: none; }
-  .fs-group { display: none; }
-  .fs-group.keep-mobile { display: flex; }
   .toolbar { position: static; padding: 10px 12px; display: block; }
   .tb-count { display: block; margin-bottom: 9px; }
   .tb-right {
@@ -787,10 +781,11 @@ html.deck .deck-act { display: flex; }
   :root { --fs-scale: 1; }
   .topbar, .toolbar, .side, .scroll-progress, .toast, .drawer-toggle, .pnav, .quiz-mask, .home-search,
   .deck-bar, .deck-act, .resume { display: none !important; }
-  html.deck, html.deck body { height: auto; overflow: visible; }
-  html.deck #content { height: auto; overflow: visible; scroll-snap-type: none; }
-  html.deck .item { height: auto; max-height: none; display: block; }
-  html.deck .item .q-body { overflow: visible; }
+  html.one, html.one body { height: auto; overflow: visible; display: block; }
+  html.one .pwrap { display: block; }
+  html.one .stage { display: block; height: auto; overflow: visible; max-width: none; }
+  html.one .stage .item { display: block; }
+  html.one .stage .q-body { overflow: visible; }
   body { background: #fff; color: #000; }
   .pgrid { grid-template-columns: 1fr; }
   .item { break-inside: avoid; box-shadow: none; border-color: #ccc; }

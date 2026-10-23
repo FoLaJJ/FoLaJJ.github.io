@@ -2,10 +2,8 @@
 (function (g) {
   var KEY = 'agent-kb-progress-2026';
   var THEME = 'agent-kb-theme';
-  var FSKEY = 'agent-kb-fs';
   var DECKKEY = 'agent-kb-deck';
   var LASTKEY = 'agent-kb-last';
-  var FS_STEPS = [0.9, 0.96, 1, 1.08, 1.18];
   var mem = {};
 
   /* localStorage 在 file:// 或隐私模式下可能抛异常，降级到内存存储 */
@@ -94,28 +92,6 @@
       }
     },
 
-    /* 字号：支持顶栏与抽屉多组控件 */
-    initFont: function () {
-      var ups = $$('[data-fs="up"]'), downs = $$('[data-fs="down"]'), vals = $$('[data-fs="val"]');
-      if (!ups.length && !downs.length) return;
-      var idx = FS_STEPS.indexOf(parseFloat(LS.get(FSKEY)));
-      if (idx < 0) idx = 2;
-      function apply() {
-        var v = FS_STEPS[idx];
-        document.documentElement.style.setProperty('--fs-scale', v);
-        vals.forEach(function (el) {
-          el.textContent = Math.round(v * 100) + '%';
-          el.classList.toggle('on', v === 1);
-        });
-        LS.set(FSKEY, String(v));
-        if (window.Deck && window.Deck.on) window.Deck.measure();
-      }
-      ups.forEach(function (b) { b.addEventListener('click', function () { if (idx < FS_STEPS.length - 1) { idx++; apply(); } }); });
-      downs.forEach(function (b) { b.addEventListener('click', function () { if (idx > 0) { idx--; apply(); } }); });
-      vals.forEach(function (b) { b.addEventListener('click', function () { idx = 2; apply(); }); });
-      apply();
-    },
-
     /* 滚动进度条 */
     initScroll: function () {
       var bar = document.getElementById('spBar');
@@ -150,11 +126,9 @@
       Shell.closeDrawer = close;
       var cb = $('#sideClose');
       if (cb) cb.addEventListener('click', close);
-      /* 抽屉里点目录项也自动收起（卡片模式下 PC 宽屏同样收起） */
+      /* 抽屉里点目录项/分册自动收起（目录在所有宽度都走抽屉） */
       $$('#toc a, #plist a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          if (window.innerWidth <= 1180 || side.classList.contains('drawer')) close();
-        });
+        a.addEventListener('click', close);
       });
     },
 
@@ -199,7 +173,6 @@
 
     init: function () {
       Shell.initTheme();
-      Shell.initFont();
       Shell.initScroll();
       Shell.initDrawer();
       Shell.loadWebFont();
