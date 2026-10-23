@@ -2,7 +2,9 @@
 <html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5b5bd6">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Agent 开发岗 · 深度面试题库 · 744 题 14 分册</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
@@ -30,15 +32,15 @@
           <span id="ringTxt" style="font-size:10px">0%</span>
         </div>
         <div class="ring-info" style="display:none"></div>
-        <strong id="doneTxt" style="font-size:12.5px;white-space:nowrap">0 / 0 题已掌握</strong>
+        <strong id="doneTxt" style="font-size:12.5px;white-space:nowrap">0 / 0 题已读</strong>
       </div>
-      <div class="fs-group">
-        <button id="fsDown" title="缩小字号">A-</button>
-        <button class="fs-val on" id="fsVal" title="点击恢复 100%">100%</button>
-        <button id="fsUp" title="放大字号">A+</button>
+      <div class="fs-group keep-mobile">
+        <button data-fs="down" id="fsDown" title="缩小字号">A-</button>
+        <button class="fs-val on" data-fs="val" id="fsVal" title="点击恢复 100%">100%</button>
+        <button data-fs="up" id="fsUp" title="放大字号">A+</button>
       </div>
       <button class="icon-btn" id="themeBtn" title="切换主题"></button>
-      <button class="icon-btn" id="resetBtn" title="清空掌握进度">
+      <button class="icon-btn" id="resetBtn" title="清空已读记录">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg>
       </button>
     </div>
@@ -65,11 +67,13 @@
       <input id="gsearch" type="search" placeholder="全库搜索：输入 McNemar、沙箱、注入、世界模型…" autocomplete="off" spellcheck="false">
       <div class="hs-panel" id="hsPanel"></div>
     </div>
+
+    <div class="resume" id="resume" style="display:none"></div>
   </section>
 
   <div class="sec-title-row">
     <h2>分册目录</h2>
-    <span>点进任意分册 → 左侧目录跳转模块 → 点题展开答案 · 旗标记录掌握进度（本地保存）</span>
+    <span>手机端自动「一题一屏」上下滑动刷，点开答案即自动记入已读；桌面点「一题一屏」也能切到卡片模式</span>
   </div>
   <div class="part-grid" id="partGrid"></div>
 
@@ -97,13 +101,13 @@
     <div class="rm-card">
       <span class="step">STEP 03</span>
       <b>最后背诵模式自测</b>
-      <p>分册页点「背诵模式」，答案会被隐藏，先口头答一遍再点「显示答案」。开「只看未掌握」做二轮查漏。</p>
+      <p>分册页点「背诵模式」，答案会被隐藏，先口头答一遍再点「显示答案」。开「只看未读」做二轮查漏，进度全自动记录，不用手动打勾。</p>
     </div>
   </div>
 
   <div class="foot">
     <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">744</b> 题</span>
-    <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 分册内 <b>← 全部分册</b> 返回首页</span>
+    <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 卡片模式 <b>←/→</b> 翻题 · <b>空格</b> 展开答案</span>
   </div>
 </div>
 

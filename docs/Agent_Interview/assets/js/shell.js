@@ -3,6 +3,8 @@
   var KEY = 'agent-kb-progress-2026';
   var THEME = 'agent-kb-theme';
   var FSKEY = 'agent-kb-fs';
+  var DECKKEY = 'agent-kb-deck';
+  var LASTKEY = 'agent-kb-last';
   var FS_STEPS = [0.9, 0.96, 1, 1.08, 1.18];
   var mem = {};
 
@@ -25,13 +27,43 @@
     tagName: function (t) { return Shell.TAG[t] || '进阶'; },
 
     save: function () { LS.set(KEY, JSON.stringify(store)); },
+
+    /* —— 阅读状态：只要打开过答案就自动记入已读，无需手动标记 —— */
+    isRead: function (uid) { return !!store[uid]; },
     isDone: function (uid) { return !!store[uid]; },
+    markRead: function (uid) {
+      if (store[uid]) return false;
+      store[uid] = 1;
+      Shell.save();
+      return true;
+    },
     setDone: function (uid, v) {
       if (v) store[uid] = 1; else delete store[uid];
       Shell.save();
     },
-    countDone: function (items) {
+    countRead: function (items) {
       return items.filter(function (i) { return store[i.uid]; }).length;
+    },
+    countDone: function (items) { return Shell.countRead(items); },
+    readTotal: function () { return Object.keys(store).length; },
+
+    /* 上次阅读到的一题，用于首页「继续上次」 */
+    setLast: function (file, uid, no) {
+      LS.set(LASTKEY, JSON.stringify({ f: file, u: uid, n: no, t: Date.now() }));
+    },
+    getLast: function () {
+      try { return JSON.parse(LS.get(LASTKEY) || 'null'); } catch (e) { return null; }
+    },
+    clearLast: function () { LS.set(LASTKEY, ''); },
+
+    /* 一题一屏：窄屏默认开启，用户手动切换后记住偏好 */
+    deckPref: function () {
+      var v = LS.get(DECKKEY);
+      return v === null ? null : v === '1';
+    },
+    setDeckPref: function (v) { LS.set(DECKKEY, v ? '1' : '0'); },
+    isNarrow: function () {
+      return !!(window.matchMedia && window.matchMedia('(max-width: 860px)').matches);
     },
 
     toast: function (msg) {
@@ -62,22 +94,25 @@
       }
     },
 
-    /* 字号 */
+    /* 字号：支持顶栏与抽屉多组控件 */
     initFont: function () {
-      var up = $('#fsUp'), down = $('#fsDown'), val = $('#fsVal');
-      if (!up) return;
+      var ups = $$('[data-fs="up"]'), downs = $$('[data-fs="down"]'), vals = $$('[data-fs="val"]');
+      if (!ups.length && !downs.length) return;
       var idx = FS_STEPS.indexOf(parseFloat(LS.get(FSKEY)));
       if (idx < 0) idx = 2;
       function apply() {
         var v = FS_STEPS[idx];
         document.documentElement.style.setProperty('--fs-scale', v);
-        val.textContent = Math.round(v * 100) + '%';
-        val.classList.toggle('on', v === 1);
+        vals.forEach(function (el) {
+          el.textContent = Math.round(v * 100) + '%';
+          el.classList.toggle('on', v === 1);
+        });
         LS.set(FSKEY, String(v));
+        if (window.Deck && window.Deck.on) window.Deck.measure();
       }
-      up.addEventListener('click', function () { if (idx < FS_STEPS.length - 1) { idx++; apply(); } });
-      down.addEventListener('click', function () { if (idx > 0) { idx--; apply(); } });
-      val.addEventListener('click', function () { idx = 2; apply(); });
+      ups.forEach(function (b) { b.addEventListener('click', function () { if (idx < FS_STEPS.length - 1) { idx++; apply(); } }); });
+      downs.forEach(function (b) { b.addEventListener('click', function () { if (idx > 0) { idx--; apply(); } }); });
+      vals.forEach(function (b) { b.addEventListener('click', function () { idx = 2; apply(); }); });
       apply();
     },
 
@@ -113,6 +148,14 @@
       });
       scrim.addEventListener('click', close);
       Shell.closeDrawer = close;
+      var cb = $('#sideClose');
+      if (cb) cb.addEventListener('click', close);
+      /* 抽屉里点目录项也自动收起（卡片模式下 PC 宽屏同样收起） */
+      $$('#toc a, #plist a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (window.innerWidth <= 1180 || side.classList.contains('drawer')) close();
+        });
+      });
     },
 
     /* 键盘：/ 聚焦搜索，Esc 清空 */

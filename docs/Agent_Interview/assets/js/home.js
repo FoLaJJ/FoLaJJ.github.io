@@ -32,18 +32,18 @@
 
   var CIRC = 2 * Math.PI * 26;
   function renderRing() {
-    var done = Object.keys(S.store).length;
-    var pct = total ? Math.round(done / total * 100) : 0;
+    var read = S.readTotal();
+    var pct = total ? Math.round(read / total * 100) : 0;
     var fg = document.getElementById('ringFg');
     if (fg) { fg.setAttribute('stroke-dasharray', CIRC); fg.style.strokeDashoffset = CIRC - CIRC * pct / 100; }
     $('#ringTxt').textContent = pct + '%';
-    $('#doneTxt').textContent = done + ' / ' + total + ' 题已掌握';
+    $('#doneTxt').textContent = read + ' / ' + total + ' 题已读';
     window.PARTS.forEach(function (p) {
       var el = document.querySelector('[data-pbar="' + p.id + '"]');
       if (!el) return;
       var ids = p.mods;
       var list = all.filter(function (i) { return ids.indexOf(i.catId) >= 0; });
-      var d = S.countDone(list);
+      var d = S.countRead(list);
       el.style.width = (list.length ? d / list.length * 100 : 0) + '%';
       var t = document.querySelector('[data-ppct="' + p.id + '"]');
       if (t) t.textContent = d + '/' + list.length;
@@ -124,11 +124,32 @@
   });
   S.initKeys(input, function () { panel.classList.remove('on'); });
 
+  /* ---------- 继续上次阅读（位置由分册页自动记录） ---------- */
+  function renderResume() {
+    var box = $('#resume');
+    if (!box) return;
+    var last = S.getLast();
+    if (!last || !last.u) { box.style.display = 'none'; return; }
+    var catId = String(last.u).replace(/-\d+$/, '');
+    var p = partOf[catId];
+    var cat = cats.filter(function (c) { return c.id === catId; })[0];
+    var idx = parseInt(String(last.u).match(/-(\d+)$/)[1], 10) + 1;
+    if (!p) { box.style.display = 'none'; return; }
+    box.style.display = '';
+    box.innerHTML = '<a class="resume-card" href="pages/' + p.file + '#uid=' + encodeURIComponent(last.u) + '">' +
+      '<span class="rs-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l13 8-13 8z"/></svg></span>' +
+      '<span class="rs-txt"><b>继续上次阅读</b>' +
+      '<i>' + p.no + ' · ' + p.title + (cat ? ' · ' + cat.title : '') + ' 第 ' + idx + ' 题</i></span>' +
+      '<span class="rs-go">进入<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>';
+  }
+
   $('#resetBtn').addEventListener('click', function () {
-    if (!confirm('清空全部已掌握标记？')) return;
-    S.store = {}; S.save(); renderRing();
+    if (!confirm('清空全部已读记录？')) return;
+    S.store = {}; S.save(); S.clearLast(); renderRing(); renderResume();
+    S.toast('已清空已读记录');
   });
 
   S.init();
   renderRing();
+  renderResume();
 })();
