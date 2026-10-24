@@ -1,4 +1,4 @@
-/* 分册配置：把 46 个模块分流到 14 个独立页面，每页只加载本页数据。
+/* 分册配置：把 51 个模块分流到 16 个独立页面，每页只加载本页数据。
    注意：mods 的顺序即分册内章节顺序（章节号 01、02…按此生成），
    题号是分册内连续编号，因此调整顺序不会影响编号连续性。 */
 (function (g) {
@@ -114,6 +114,22 @@
       tone: 'slate',
       icon: '<path d="M6 3h9l4 4v14H6z"/><path d="M14.5 3v5H19"/><path d="M9.5 12.5h6M9.5 16.5h4"/>',
       mods: ['compliance', 'product', 'openqa']
+    },
+    {
+      no: '15', id: 'p15-codeagent', file: 'p15-codeagent.html',
+      title: '产品解析 · Claude Code 与 Codex',
+      sub: '两大编码 Agent 的架构与工具集、权限与沙箱模型、CLAUDE.md / AGENTS.md 上下文工程、subagents / hooks / headless 工作流对比',
+      tone: 'grape',
+      icon: '<path d="M8 6L3.5 12 8 18M16 6l4.5 6L16 18"/><path d="M13.5 4.5l-3 15"/>',
+      mods: ['claudecode', 'codex']
+    },
+    {
+      no: '16', id: 'p16-models', file: 'p16-models.html',
+      title: '产品解析 · DeepSeek、Hermes 与评测 Harness',
+      sub: 'DeepSeek 模型线与 Agent 能力、MLA / GRPO / DSA 机制、开源 Agent 模型的函数调用与训练、SWE-bench / Terminal-Bench 等评测 harness 与 RL 环境',
+      tone: 'wine',
+      icon: '<path d="M10 3v5.2L4.6 17.6A2.2 2.2 0 0 0 6.6 21h10.8a2.2 2.2 0 0 0 2-3.4L14 8.2V3"/><path d="M8.5 3h7M7.8 14.5h8.4"/>',
+      mods: ['deepseek', 'hermes', 'harness']
     }
   ];
   g.PART_BY_ID = {};

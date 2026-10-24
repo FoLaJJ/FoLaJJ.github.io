@@ -94,6 +94,8 @@
 [data-tone="teal"]    { --tone: #0d9488; --tone-soft: #dcf5f1; }
 [data-tone="lime"]    { --tone: #65a30d; --tone-soft: #eef7dd; }
 [data-tone="slate"]   { --tone: #475569; --tone-soft: #e9edf3; }
+[data-tone="grape"]   { --tone: #9333ea; --tone-soft: #f3e9fd; }
+[data-tone="wine"]    { --tone: #be185d; --tone-soft: #fce7f0; }
 
 [data-theme="dark"][data-tone="indigo"]  { --tone: #8b8bf0; --tone-soft: #1b1e37; }
 [data-theme="dark"][data-tone="violet"]  { --tone: #a78bfa; --tone-soft: #221d3c; }
@@ -109,6 +111,8 @@
 [data-theme="dark"][data-tone="teal"]    { --tone: #2dd4bf; --tone-soft: #0f2b2a; }
 [data-theme="dark"][data-tone="lime"]    { --tone: #a3e635; --tone-soft: #1e2610; }
 [data-theme="dark"][data-tone="slate"]   { --tone: #94a3b8; --tone-soft: #1b2230; }
+[data-theme="dark"][data-tone="grape"]   { --tone: #c084fc; --tone-soft: #2a1a3e; }
+[data-theme="dark"][data-tone="wine"]    { --tone: #f472b6; --tone-soft: #331526; }
 
 /* ---------- 2. 基础排版 ---------- */
 * { box-sizing: border-box; }

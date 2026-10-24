@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5b5bd6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>15 产品解析 · Claude Code 与 Codex · Agent 面试题库</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-part="p15-codeagent" data-tone="grape">
+
+<div class="scroll-progress"><i id="spBar"></i></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.8 5.6 17.6M12 6.8 18.4 17.6M8.9 14.4h6.2"/><circle cx="12" cy="5.6" r="1.9" fill="currentColor" stroke="none"/><circle cx="5" cy="19" r="1.9" fill="currentColor" stroke="none"/><circle cx="19" cy="19" r="1.9" fill="currentColor" stroke="none"/></svg></span>
+      <span class="brand-txt"><b>Agent 面试题库</b><i>PART 01 / 14</i></span>
+    </a>
+
+    <nav class="crumb">
+      <a class="home-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> 全部分册</a>
+      <span class="cur">15 · 产品解析 · Claude Code 与 Codex</span>
+    </nav>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="search" type="search" placeholder="在本册内搜索…" autocomplete="off" spellcheck="false">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="tb-actions">
+      <button class="drawer-toggle" id="drawerToggle" aria-label="目录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="切换主题"></button>
+    </div>
+  </div>
+</header>
+
+<!-- 卡片模式：顶部章节条 -->
+<div class="deck-bar" id="deckBar">
+  <button class="db-btn" id="deckToc" title="目录" aria-label="目录">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <div class="db-mid">
+    <b id="deckChap">—</b>
+    <span id="deckIdx">0 / 0</span>
+  </div>
+  <span class="db-read" id="deckRead">已读 0</span>
+  <button class="db-btn" id="deckExit" title="退出卡片模式，回到列表" aria-label="退出卡片模式">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.6" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="4.6" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="4.6" cy="18" r="1.3" fill="currentColor" stroke="none"/></svg>
+  </button>
+  <i class="db-prog"><b id="deckProg"></b></i>
+</div>
+
+<aside class="side" id="sidebar">
+      <div class="side-head">
+        <b>目录与工具</b>
+        <button class="side-close" id="sideClose" aria-label="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="side-card">
+        <div class="ring-row">
+          <div class="ring">
+            <svg viewBox="0 0 72 72"><circle class="rb" cx="36" cy="36" r="26"/><circle class="rf" id="ringFg" cx="36" cy="36" r="26"/></svg>
+            <span id="ringTxt">0%</span>
+          </div>
+          <div class="ring-info">
+            <strong id="doneTxt">0 / 0 题已读</strong>
+            <span id="allTxt">全站已读 0 题</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">难度筛选</div>
+        <div class="side-b">
+          <div class="chip-row" id="chipRow">
+            <button class="chip on" data-tag="all">全部</button>
+            <button class="chip c-base" data-tag="base">基础</button>
+            <button class="chip c-adv" data-tag="adv">进阶</button>
+            <button class="chip c-deep" data-tag="deep">深水</button>
+            <button class="chip c-hot" data-tag="hot">热点</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">本册目录</div>
+        <nav class="toc" id="toc"></nav>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">其他分册</div>
+        <div class="plist" id="plist"></div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-h">操作</div>
+        <div class="side-b">
+          <div class="chip-row">
+            <button class="chip" id="resetBtn">重置已读</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+<div class="pwrap">
+
+  <div class="phead">
+    <div class="pt-no">PART 15 · 2 个模块 · 120 题</div>
+    <h1>产品解析 · Claude Code 与 Codex</h1>
+    <p>两大编码 Agent 的架构与工具集、权限与沙箱模型、CLAUDE.md / AGENTS.md 上下文工程、subagents / hooks / headless 工作流对比</p>
+  </div>
+
+
+    <main>
+    <div class="toolbar">
+      <div class="tb-count">本册 <b id="tbCount">0</b> 题 · 命中 <b id="tbVis">0</b></div>
+      <div class="tb-right">
+          <button class="mini-btn" id="btnDeck">卡片模式</button>
+          <button class="mini-btn" id="btnQuiz">背诵模式</button>
+          <button class="mini-btn" id="btnExpand">展开本页</button>
+          <button class="mini-btn" id="btnUnread">只看未读</button>
+          <button class="mini-btn" id="topBtn">回到顶部</button>
+        </div>
+      </div>
+
+    <div class="segnav" id="segNav"></div>
+    <div id="content"></div>
+    <div class="pager" id="pager"></div>
+    <div class="empty" id="empty">没有命中的题目，换个关键词试试</div>
+    <nav class="pnav" id="pnav"></nav>
+  </main>
+</div>
+
+<!-- 卡片模式：整页只渲染这一张题卡 -->
+<div class="stage" id="stage"></div>
+
+<!-- 卡片模式：底部操作条 -->
+<div class="deck-act" id="deckAct">
+  <button id="deckPrev" class="da-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+    <span>上一题</span>
+  </button>
+  <button id="deckAns" class="da-btn primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.6-6.5 9.5-6.5S21.5 12 21.5 12s-3.6 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></svg>
+    <span>显示答案</span>
+  </button>
+  <button id="deckNext" class="da-btn">
+    <span>下一题</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/js/kb-core.js"></script>
+<script src="../assets/js/parts.js"></script>
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/data/48-claudecode.js"></script>
+<script src="../assets/js/data/49-codex.js"></script>
+<script src="../assets/js/page.js"></script>
+</body>
+</html>

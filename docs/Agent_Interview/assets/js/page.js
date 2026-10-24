@@ -548,10 +548,10 @@
       if (i >= 0) { oneIdx = i; renderOne(); openCard(it, true); }
       return;
     }
+    if (state.sec !== 'all' && it.catId !== state.sec) { state.sec = 'all'; syncSegNav(); rebuild(); }
     var idx = view.indexOf(it);
     if (idx < 0) return;
     state.page = Math.floor(idx / PAGE) + 1;
-    if (state.sec !== 'all' && it.catId !== state.sec) { state.sec = 'all'; syncSegNav(); rebuild(); }
     renderList();
     var el = content.querySelector('[data-uid="' + uid + '"]');
     if (el) {
