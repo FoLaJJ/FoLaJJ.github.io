@@ -2,7 +2,8 @@
 (function (g) {
   var KEY = 'agent-kb-progress-2026';
   var THEME = 'agent-kb-theme';
-  var DECKKEY = 'agent-kb-deck';
+  /* v2：旧 key 曾被自动模式误写（窄屏访问一次后 PC 永久卡片模式），换 key 让脏数据失效 */
+  var DECKKEY = 'agent-kb-deck2';
   var LASTKEY = 'agent-kb-last';
   var mem = {};
 

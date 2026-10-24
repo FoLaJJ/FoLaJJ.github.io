@@ -257,16 +257,19 @@
     it._el.classList.toggle('open', open);
     if (open) {
       inject(it._el, it);
-      /* 背诵模式下答案默认隐藏，展开时要显式放行，否则点了也看不见 */
-      if (state.quiz) {
-        var b = it._el.querySelector('.q-body');
-        if (b) b.classList.add('reveal');
-        var mk = it._el.querySelector('.quiz-mask');
-        if (mk) mk.style.display = 'none';
-      }
       markRead(it);
     }
     if (state.one) paint();
+  }
+  /* 背诵模式下「显式要看答案」才调 reveal：点题头只展开结构，不透题 */
+  function reveal(it) {
+    if (!it || !it._el) return;
+    inject(it._el, it);
+    var b = it._el.querySelector('.q-body');
+    if (b) b.classList.add('reveal');
+    var mk = it._el.querySelector('.quiz-mask');
+    if (mk) mk.style.display = 'none';
+    markRead(it);
   }
 
   /* ---------- 分册间导航 ---------- */
@@ -318,10 +321,8 @@
     var rv = e.target.closest('[data-act="reveal"]');
     if (rv) {
       var art = rv.closest('.item'), it = byUid[art.dataset.uid];
-      inject(art, it);
-      art.querySelector('.q-body').classList.add('reveal');
-      rv.parentElement.style.display = 'none';
-      markRead(it);
+      art.classList.add('open');
+      reveal(it);
       if (state.one) paint();
       return;
     }
@@ -433,11 +434,15 @@
     if (oneIdx >= view.length - 1) { edge(1); return; }
     go(oneIdx + 1);
   });
-  $('#deckAns').addEventListener('click', function () {
+  /* 「显示答案」主按钮（卡片模式底栏与空格键共用）：背诵模式下等效于显式 reveal */
+  function toggleAnswer() {
     var it = view[oneIdx];
     if (!it || !it._el) return;
-    openCard(it, !it._el.classList.contains('open'));
-  });
+    var willOpen = !it._el.classList.contains('open');
+    openCard(it, willOpen);
+    if (willOpen && state.quiz) reveal(it);
+  }
+  $('#deckAns').addEventListener('click', toggleAnswer);
   $('#deckToc').addEventListener('click', function () {
     var t = $('#drawerToggle');
     if (t) t.click();
@@ -454,8 +459,7 @@
     else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); go(oneIdx - 1); }
     else if (k === ' ' || k === 'Enter') {
       e.preventDefault();
-      var it = view[oneIdx];
-      if (it && it._el) openCard(it, !it._el.classList.contains('open'));
+      toggleAnswer();
     }
   });
 
@@ -580,9 +584,10 @@
   renderSegNav();
   rebuild();
   progress();
+  /* 模式偏好只在用户「主动点击切换」时保存（见 btnDeck / deckExit），
+     自动按屏幕宽度选择的结果绝不落盘 —— 否则窄窗口打开过一次后，PC 宽屏会被永久卡在卡片模式 */
   var pref = S.deckPref();
   setOne(pref === null ? S.isNarrow() : pref);
-  if (pref === null && state.one) S.setDeckPref(true);
   jump();
   window.addEventListener('hashchange', jump);
 })();
