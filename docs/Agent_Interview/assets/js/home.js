@@ -140,7 +140,7 @@
 
   $('#resetBtn').addEventListener('click', function () {
     if (!confirm('清空全部已读记录？')) return;
-    S.store = {}; S.save(); S.clearLast(); renderRing(); renderResume();
+    S.clearProgress(); renderRing(); renderResume();
     S.toast('已清空已读记录');
   });
 

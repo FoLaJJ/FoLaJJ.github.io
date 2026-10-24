@@ -46,6 +46,14 @@
     countDone: function (items) { return Shell.countRead(items); },
     readTotal: function () { return Object.keys(store).length; },
 
+    /* 清空全部已读记录：必须原地清空闭包里的 store，
+       用 S.store = {} 只换属性引用、save() 仍会写回旧数据 */
+    clearProgress: function () {
+      Object.keys(store).forEach(function (k) { delete store[k]; });
+      Shell.save();
+      Shell.clearLast();
+    },
+
     /* 上次阅读到的一题，用于首页「继续上次」 */
     setLast: function (file, uid, no) {
       LS.set(LASTKEY, JSON.stringify({ f: file, u: uid, n: no, t: Date.now() }));

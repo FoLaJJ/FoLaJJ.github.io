@@ -418,7 +418,7 @@
 
   $('#resetBtn').addEventListener('click', function () {
     if (!confirm('清空全部已读记录？（全站记录都会一起清空）')) return;
-    S.store = {}; S.save(); S.clearLast();
+    S.clearProgress();
     items.forEach(function (i) { if (i._el) i._el.classList.remove('done'); });
     state.page = 1; rebuild();
     if (state.one) renderOne(); else renderList();
