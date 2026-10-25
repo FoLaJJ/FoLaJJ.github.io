@@ -265,10 +265,10 @@
       group: '产品与模型',
       no: '28', id: 'p-eco', file: 'p23-eco.html',
       title: '生态与格局 · 工作台与 2026 模型',
-      sub: 'WorkBuddy / Qoder / CodeBuddy 等 Agent 工作台与四层扩展、连接器与技能生态、Flash 化趋势、GLM-5.3-Flash / GPT-6.1 Sol 等新模型线',
+      sub: 'WorkBuddy / Qoder / CodeBuddy 等 Agent 工作台与四层扩展、连接器与技能生态、Flash 化趋势、GLM-5.3-Flash / GPT-6.1 Sol 等新模型线、Jev 决策模型与判断层',
       tone: 'grape',
       icon: '<path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"/><path d="M12 12.2l8-4.3M12 12.2v8.3M12 12.2L4 7.9"/>',
-      mods: ['products', 'models26']
+      mods: ['products', 'models26', 'jev']
     }
   ];
   g.PART_BY_ID = {};
