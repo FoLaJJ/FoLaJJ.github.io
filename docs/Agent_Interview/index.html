@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#5b5bd6">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Agent 开发岗 · 深度面试题库 · 1000+ 题 16 分册</title>
+<title>Agent 开发岗 · 深度面试题库 · 1600+ 题 28 分册</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
@@ -45,16 +45,31 @@
 <div class="wrap">
 
   <section class="home-hero">
-    <div class="hero-badge"><i></i>1000+ QUESTIONS · 51 MODULES · 16 VOLUMES</div>
+    <div class="hero-badge"><i></i>1600+ QUESTIONS · 65 MODULES · 28 VOLUMES · 2026-10 更新</div>
     <h1>Agent 开发岗 · 深度面试题库</h1>
     <p class="lead">
-      从范式与推理引擎，到工具协议、训练、工程运维、安全对齐；再到完整的质量评估体系（流程、数据集、指标统计、Judge、红队）、
-      六大前沿方向（自主科研、多智能体社会、具身与世界模型、软件工程演进、OS 与移动 Agent、Agent 经济），
-      以及记忆系统深度、测试与质量工程、分布式并发、模型选型治理、合规隐私、产品化与开放辩论题。
-      每题按六段展开：<b>情境化题干</b>（带场景、冲突与约束）→ 标准答法 →
-      <b>原理解析</b>（为什么是这样、机制在哪、权衡是什么）→ <b>关键判据</b>（可背诵的阈值与数字）→
-      加分答法 → 常见陷阱与追问预判。不做名词解释，只讲面试官继续追问时你答得出来的那一层。
+      全库按 <b>七大能力域</b> 组织，每题再按 <b>六段</b> 展开。不做名词解释，只讲面试官继续追问时你答得出来的那一层。
     </p>
+
+    <div class="org-map">
+      <div class="om-chain">
+        <div class="om-item"><span class="om-no">01</span><b>内核与基础</b>
+          <div class="om-tags"><i>范式</i><i>上下文</i><i>工具协议</i><i>训练</i></div></div>
+        <div class="om-item"><span class="om-no">02</span><b>工程与方法</b>
+          <div class="om-tags"><i>运行时</i><i>测试并发</i><i>框架与 RAG</i><i>意图路由</i></div></div>
+        <div class="om-item"><span class="om-no">03</span><b>质量评估与优化</b>
+          <div class="om-tags"><i>体系流程</i><i>指标与 Judge</i><i>微调落地</i><i>p95 闭环</i></div></div>
+        <div class="om-item"><span class="om-no">04</span><b>安全与合规</b>
+          <div class="om-tags"><i>注入隔离</i><i>自动挖洞</i><i>Top 10</i><i>合规产品</i></div></div>
+        <div class="om-item"><span class="om-no">05</span><b>场景与体验</b>
+          <div class="om-tags"><i>编码人机</i><i>客服与数据</i><i>垂直领域</i><i>金融医疗</i></div></div>
+        <div class="om-item"><span class="om-no">06</span><b>前沿与协作</b>
+          <div class="om-tags"><i>自主科研</i><i>软件工程</i><i>多 Agent</i><i>多模态幻觉</i></div></div>
+        <div class="om-item"><span class="om-no">07</span><b>产品与模型</b>
+          <div class="om-tags"><i>Claude Code</i><i>Codex</i><i>Harness</i><i>2026 格局</i></div></div>
+      </div>
+    </div>
+
     <div class="hero-metrics" id="heroStats"></div>
 
     <div class="home-search">
@@ -68,12 +83,12 @@
 
   <div class="sec-title-row">
     <h2>分册目录</h2>
-    <span>手机默认卡片模式：整页只渲染一道题，左右滑翻题；桌面默认列表，按章节 + 每页 24 题渲染，可一键切卡片模式</span>
+    <span>七大类中每类固定 4 册，共 28 册；手机默认卡片模式：整页只渲染一道题，左右滑翻题；桌面默认列表，按章节 + 每页 24 题渲染，可一键切卡片模式</span>
   </div>
   <div class="part-grid" id="partGrid"></div>
 
   <div class="sec-title-row">
-    <h2 id="modTitle">51 个模块速览</h2>
+    <h2 id="modTitle">65 个模块速览</h2>
     <span>点击直达，锚点直接定位到该模块 · 编号格式为「分册号-章节号」，与分册页完全一致</span>
   </div>
   <div class="mod-grid" id="modGrid"></div>
@@ -91,7 +106,7 @@
     <div class="rm-card">
       <span class="step">STEP 02</span>
       <b>再补体系与场景</b>
-      <p>质量评估（08 / 09 册）和场景专项（12 册）最能体现工程经验，答的时候先给框架再给细节，最后抛一个反问。</p>
+      <p>质量评估（09 / 10 册）、框架与 RAG（07 册）、安全与攻防（13 / 14 / 15 册）最能体现工程经验，答的时候先给框架再给细节，最后抛一个反问。</p>
     </div>
     <div class="rm-card">
       <span class="step">STEP 03</span>
@@ -106,7 +121,7 @@
   </div>
 
   <div class="foot">
-    <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">1027</b> 题 · 全站按需渲染，手机只装一份索引</span>
+    <span>Agent 开发岗 · 深度面试题库 · <b id="mTotal">1659</b> 题 · 全站按需渲染，手机只装一份索引</span>
     <span>快捷键：<b>/</b> 聚焦搜索 · <b>Esc</b> 清空 · 卡片模式 <b>←/→</b> 或滚轮翻题 · <b>空格</b> 展开答案</span>
   </div>
 </div>

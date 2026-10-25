@@ -35,6 +35,8 @@
     '<div class="metric m-deep"><b>' + g.deep + '</b><span>深水</span></div>' +
     '<div class="metric m-hot"><b>' + g.hot + '</b><span>热点</span></div>';
   $('#mTotal').textContent = IDX.t;
+  var badge = document.querySelector('.hero-badge');
+  if (badge) badge.innerHTML = '<i></i>' + IDX.t + ' QUESTIONS · ' + IDX.c.length + ' MODULES · ' + PARTS.length + ' VOLUMES';
 
   var CIRC = 2 * Math.PI * 26;
   function renderRing() {
@@ -76,7 +78,13 @@
         '<svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>' +
     '</a>';
   }
-  $('#partGrid').innerHTML = PARTS.map(partCard).join('');
+  /* ---------- 分册卡片：按大类分组 ---------- */
+  $('#partGrid').innerHTML = (window.GROUPS && window.GROUPS.length ? window.GROUPS : [{ name: '全部分册', parts: PARTS }])
+    .map(function (gp) {
+      return '<div class="pg-group">' +
+        '<div class="pg-title"><b>' + gp.name + '</b><span>' + gp.parts.length + ' 册</span></div>' +
+        '<div class="pg-row">' + gp.parts.map(partCard).join('') + '</div></div>';
+    }).join('');
 
   /* ---------- 模块速览：编号与分册页一致（分册号-章节号） ---------- */
   $('#modGrid').innerHTML = IDX.c.map(function (c) {

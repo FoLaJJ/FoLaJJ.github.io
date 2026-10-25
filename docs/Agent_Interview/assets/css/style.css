@@ -312,13 +312,56 @@ svg { display: block; }
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .home-hero .lead {
-  max-width: 800px; margin: 0 auto 32px; font-size: calc(15.5px * var(--fs-scale));
+  max-width: 800px; margin: 0 auto 26px; font-size: calc(15.5px * var(--fs-scale));
   color: var(--ink-2); line-height: 1.8; text-wrap: pretty;
 }
 .home-hero .lead b {
   color: var(--ink); font-weight: 650;
   background: linear-gradient(transparent 64%, color-mix(in srgb, var(--accent) 20%, transparent) 64%);
   padding: 0 1px;
+}
+
+/* 首页：七大能力域路径链。下方紧接 .hero-metrics，故留出 30px */
+.org-map { max-width: 1180px; margin: 0 auto 30px; text-align: left; }
+.om-chain { display: flex; align-items: stretch; }
+.om-item {
+  position: relative; flex: 1 1 0; min-width: 0; padding: 12px 13px 13px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm); transition: border-color .18s, transform .18s;
+}
+.om-item:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transform: translateY(-2px); }
+.om-item + .om-item { margin-left: 24px; }
+/* 链上的连接箭头：一段横线 + 一个箭头尖 */
+.om-item + .om-item::before,
+.om-item + .om-item::after { content: ''; position: absolute; top: 27px; }
+.om-item + .om-item::before { left: -20px; width: 13px; height: 1px; background: var(--line); }
+.om-item + .om-item::after {
+  left: -8px; width: 5px; height: 5px;
+  border-top: 1.5px solid var(--ink-3); border-right: 1.5px solid var(--ink-3);
+  transform: rotate(45deg); margin-top: -2px;
+}
+.om-no { display: block; margin-bottom: 4px; font-family: var(--mono);
+  font-size: calc(10.5px * var(--fs-scale)); letter-spacing: .1em; color: var(--ink-3); }
+.om-item b { display: block; margin-bottom: 8px; font-size: calc(13.5px * var(--fs-scale));
+  font-weight: 660; letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
+.om-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.om-tags i { font-style: normal; font-size: calc(11px * var(--fs-scale)); color: var(--ink-2);
+  background: var(--surface-3); border-radius: 6px; padding: 2px 6px; line-height: 1.5; }
+
+/* 横链放不下时改为竖列（只有「横链」和「竖列」两种形态，不会出现末行孤块） */
+@media (max-width: 1080px) {
+  .om-chain { flex-direction: column; gap: 9px; }
+  .om-item + .om-item { margin-left: 0; }
+  .om-item + .om-item::before, .om-item + .om-item::after { display: none; }
+  .om-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; }
+  .om-no { margin-bottom: 0; flex: none; }
+  .om-item b { margin-bottom: 0; flex: none; min-width: 116px; }
+  .om-tags { flex: 1; justify-content: flex-end; }
+}
+@media (max-width: 680px) {
+  .om-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .om-item b { min-width: 0; }
+  .om-tags { justify-content: flex-start; }
 }
 .hero-metrics { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
 .metric {
@@ -376,7 +419,15 @@ svg { display: block; }
 .sec-title-row h2 { margin: 0; font-size: calc(22px * var(--fs-scale)); font-weight: 660; letter-spacing: -.02em; }
 .sec-title-row span { font-size: calc(13px * var(--fs-scale)); color: var(--ink-3); }
 
-.part-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; }
+.part-grid { display: flex; flex-direction: column; gap: 26px; }
+.pg-group { display: block; }
+.pg-title { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; padding-left: 11px;
+  border-left: 3px solid var(--accent); border-radius: 2px; }
+.pg-title b { font-size: calc(14.5px * var(--fs-scale)); font-weight: 660; letter-spacing: -.01em; }
+.pg-title span { font-size: calc(12px * var(--fs-scale)); color: var(--ink-3); }
+/* 固定 4 列：每大类正好 4 册，行宽恒定，不会出现末行只剩一两张卡的视觉断层 */
+.pg-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 1180px) { .pg-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .part-card {
   position: relative; display: block; padding: 22px 22px 18px; border-radius: var(--radius-lg);
   background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
@@ -735,7 +786,8 @@ html.one .deck-act { display: flex; }
   .hero-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .metric { min-width: 0; padding: 11px 14px; }
   .metric b { font-size: calc(21px * var(--fs-scale)); }
-  .part-grid { grid-template-columns: 1fr; gap: 14px; }
+  .part-grid { display: flex; gap: 22px; }
+  .pg-row { grid-template-columns: 1fr; gap: 14px; }
   .part-card p { min-height: 0; }
   .mod-grid { grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); }
   .sec-title-row { flex-direction: column; align-items: flex-start; gap: 3px; margin: 36px 0 14px; }
