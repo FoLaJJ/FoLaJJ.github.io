@@ -17,6 +17,14 @@ const N = window.PARTS.length;
 
 const tpl = fs.readFileSync('pages/p01-core.html', 'utf8');
 
+/* 资源版本戳：HTML 更新了但浏览器/预览服务还在用旧的 CSS 时，
+   新结构会以「裸文本」形式出现（没有卡片、标签挤在一起）。每次构建刷一次。 */
+const STAMP = Date.now().toString(36);
+function stampAssets(html) {
+  return html.replace(/(href|src)="(\.\.\/assets\/(?:css|js)\/[^"]+?)(\?v=[^"]*)?"/g,
+    function (m, attr, url) { return attr + '="' + url + '?v=' + STAMP + '"'; });
+}
+
 window.PARTS.forEach(p => {
   const mods = p.mods.map(id => byId[id]).filter(Boolean);
   const count = mods.reduce((a, c) => a + c.items.length, 0);
@@ -36,6 +44,6 @@ window.PARTS.forEach(p => {
   if (now.length !== want.length || now.some(function (x, i) { return x !== want[i]; })) {
     console.log('WARN 脚本未替换', p.id, now.join(' | '));
   }
-  fs.writeFileSync('pages/' + p.file, s, 'utf8');
+  fs.writeFileSync('pages/' + p.file, stampAssets(s), 'utf8');
   console.log('generated', p.file, count, '题 /', mods.length, '模块');
 });
