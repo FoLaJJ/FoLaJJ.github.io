@@ -66,10 +66,10 @@
       group: '工程与方法',
       no: '07', id: 'p-frameworks', file: 'p17-frameworks.html',
       title: '框架工程 · 编排框架与 RAG',
-      sub: 'LangGraph / CrewAI / AutoGen 与 Harness 微内核、RAG 全流程、切片与检索、检索评测与知识库运营',
+      sub: 'LangGraph / CrewAI / AutoGen 与 Harness 微内核、RAG 全流程与知识库运营、向量库与检索工程、切片与父子索引、图 RAG',
       tone: 'teal',
       icon: '<rect x="3.5" y="3.5" width="7" height="6" rx="1.6"/><rect x="13.5" y="14.5" width="7" height="6" rx="1.6"/><path d="M7 9.5v5a2 2 0 0 0 2 2h4.5"/>',
-      mods: ['frameworks', 'rageng']
+      mods: ['frameworks', 'rageng', 'ragdeep']
     },
     {
       group: '工程与方法',
@@ -200,10 +200,10 @@
       group: '前沿与协作',
       no: '21', id: 'p10-fronresearch', file: 'p10-fronresearch.html',
       title: '前沿 · 科研、多智能体与具身',
-      sub: 'AI Scientist 与自主科研、递归自我改进、多智能体协作拓扑与失效模式、VLA 与世界模型、sim-to-real、科研检索',
+      sub: 'AI Scientist 与自主科研、递归自我改进、多智能体协作拓扑与失效模式、VLA 与世界模型、JEPA 表征预测路线、sim-to-real、科研检索',
       tone: 'fuchsia',
       icon: '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/>',
-      mods: ['research', 'frontier-research', 'frontier-society', 'frontier-embodied']
+      mods: ['research', 'frontier-research', 'frontier-society', 'frontier-embodied', 'jepa']
     },
     {
       group: '前沿与协作',
