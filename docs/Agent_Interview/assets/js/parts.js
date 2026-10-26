@@ -37,30 +37,30 @@
       group: '内核与基础',
       no: '04', id: 'p04-training', file: 'p04-training.html',
       title: '训练 · 成本与系统设计',
-      sub: 'SFT / DPO / RLVR / GRPO、信用分配、成本结构与延迟优化、系统设计大题',
+      sub: 'SFT / DPO / RLVR / GRPO、信用分配、微调落地与 LoRA 超参、成本结构与延迟优化、系统设计大题',
       tone: 'emerald',
       icon: '<path d="M4 9v6M20 9v6M7 6v12M17 6v12M7 12h10"/>',
-      mods: ['training', 'cost', 'design']
+      mods: ['training', 'cost', 'design', 'finetune']
     },
 
     /* ========== 工程与方法 ========== */
     {
       group: '工程与方法',
       no: '05', id: 'p05-infra', file: 'p05-infra.html',
-      title: '工程 · 运行时与运维',
-      sub: '架构分层与断点续跑、沙箱与会话状态、限流背压、可观测性、灰度与回滚',
+      title: '工程 · 运行时、并发与运维',
+      sub: '沙箱与会话状态、超时重试与限流背压、并发与分布式原语、可观测性、灰度与回滚',
       tone: 'amber',
       icon: '<rect x="3" y="4" width="18" height="7" rx="2.2"/><rect x="3" y="13" width="18" height="7" rx="2.2"/><path d="M7 7.5h.01M7 16.5h.01"/>',
-      mods: ['engineering', 'runtime', 'ops']
+      mods: ['runtime', 'ops', 'distributed']
     },
     {
       group: '工程与方法',
       no: '06', id: 'p13-quality', file: 'p13-quality.html',
-      title: '工程 · 测试、并发与模型治理',
-      sub: 'Agent 的测试金字塔与 mock 策略、混沌与回归、并发与分布式原语、模型选型路由与版本治理',
+      title: '工程 · 测试与模型治理',
+      sub: 'Agent 的测试金字塔与 mock 策略、混沌与回归、模型选型路由与版本治理',
       tone: 'lime',
       icon: '<path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.4 9.4l6-.8z"/>',
-      mods: ['testing', 'distributed', 'modelops']
+      mods: ['testing', 'modelops']
     },
     {
       group: '工程与方法',
@@ -103,11 +103,11 @@
     {
       group: '质量评估与优化',
       no: '11', id: 'p-finetune', file: 'p24-finetune.html',
-      title: '优化 · 微调落地与超参',
-      sub: '该不该微调的判据、LoRA / QLoRA 的 rank 与 target_modules、数据与配比、超参搜索预算分配、训练工程排障、模型发展趋势',
+      title: '质量评估 · 评测环境、RL 环境与 Harness',
+      sub: 'SWE-bench / Terminal-Bench 等评测环境与 RL 训练环境、Harness 微内核与 Cordis 插件体系、Model + Harness = Agent 的判据',
       tone: 'amber',
       icon: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>',
-      mods: ['finetune']
+      mods: ['harness']
     },
     {
       group: '质量评估与优化',
@@ -161,29 +161,29 @@
     {
       group: '场景与体验',
       no: '17', id: 'p06-practice', file: 'p06-practice.html',
-      title: '编码 · 人机与企业落地',
-      sub: '实战编码题、人机交互与产品体验、企业落地与组织、面试策略与表达',
+      title: '编码 · 企业落地与面试策略',
+      sub: '实战编码题、企业落地与组织、面试策略与表达，以及高压情景快问快答',
       tone: 'rose',
       icon: '<path d="M8.5 6.5L4 12l4.5 5.5M15.5 6.5L20 12l-4.5 5.5M13.5 4l-3 16"/>',
-      mods: ['coding', 'hci', 'enterprise', 'strategy']
+      mods: ['coding', 'enterprise', 'strategy', 'scenario']
     },
     {
       group: '场景与体验',
       no: '18', id: 'p12-scene', file: 'p12-scene.html',
-      title: '场景专项 · 数据、客服、研究与情景',
-      sub: '数据分析 Agent、客服与业务流程、深度研究，以及 12 道高压情景快问快答',
+      title: '场景专项 · 数据、客服与研究',
+      sub: '数据分析 Agent、客服与业务流程、搜索与深度研究三类场景的落地要点',
       tone: 'teal',
       icon: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3.5v2.6M12 17.9v2.6M3.5 12h2.6M17.9 12h2.6"/>',
-      mods: ['scene-data', 'scene-service', 'scene-research', 'scenario']
+      mods: ['scene-data', 'scene-service', 'scene-research']
     },
     {
       group: '场景与体验',
       no: '19', id: 'p-hci2', file: 'p27-service.html',
-      title: '客服系统 · 体验与隐私边界',
-      sub: '从零设计客服 Agent、转人工与 SLA、渐进式自主与可接管、隐私越界的四条判定判据与脱敏留存',
+      title: '交互与客服 · 体验、隐私与自主度',
+      sub: '从零设计客服 Agent、转人工与 SLA、渐进式自主与可接管、人机交互与产品体验、隐私越界的四条判定判据与脱敏留存',
       tone: 'emerald',
       icon: '<path d="M4 5.5h16v10.5H8.5L4 19.5z"/><path d="M8.5 10.5h7M8.5 13.5h4"/>',
-      mods: ['hci2']
+      mods: ['hci2', 'hci']
     },
     {
       group: '场景与体验',
@@ -199,38 +199,38 @@
     {
       group: '前沿与协作',
       no: '21', id: 'p10-fronresearch', file: 'p10-fronresearch.html',
-      title: '前沿 · 科研、多智能体与具身',
-      sub: 'AI Scientist 与自主科研、递归自我改进、多智能体协作拓扑与失效模式、VLA 与世界模型、JEPA 表征预测路线、sim-to-real、科研检索',
+      title: '前沿 · 科研、具身与世界模型',
+      sub: 'AI Scientist 与自主科研、检索 Agent、递归自我改进、VLA 与具身世界模型、JEPA 表征预测路线、sim-to-real',
       tone: 'fuchsia',
       icon: '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/>',
-      mods: ['research', 'frontier-research', 'frontier-society', 'frontier-embodied', 'jepa']
+      mods: ['frontier-research', 'frontier-embodied', 'jepa']
     },
     {
       group: '前沿与协作',
       no: '22', id: 'p11-froneng', file: 'p11-froneng.html',
       title: '前沿 · 软件工程、OS 与经济',
-      sub: 'SWE-bench 与仓库级 Agent、Computer Use 与 GUI 接地、终端与移动 Agent、Agent 经济与支付、前沿产品观点',
+      sub: 'SWE-bench 与仓库级 Agent、终端与移动 Agent、Agent 经济与支付、前沿产品观点',
       tone: 'orange',
       icon: '<rect x="3" y="4" width="18" height="16" rx="2.4"/><path d="M7.5 9.5l2.8 2.8-2.8 2.8M13.5 15.5h4"/>',
-      mods: ['frontier-swe', 'multimodal', 'frontier-os', 'frontier-economy', 'frontier']
+      mods: ['frontier-swe', 'frontier-os', 'frontier-economy', 'frontier']
     },
     {
       group: '前沿与协作',
       no: '23', id: 'p-multiagent', file: 'p22-multi.html',
-      title: '协作 · 多 Agent 架构',
-      sub: '五种协作拓扑与选型依据、通信机制与上下文边界、15 倍 token 的成本结构、级联失败与熔断、Agent 间通信安全',
+      title: '协作 · 多 Agent 架构与组织',
+      sub: '五种协作拓扑与选型依据、通信机制与上下文边界、15 倍 token 的成本结构、级联失败与熔断、Agent 间信任与通信安全、多智能体组织形态',
       tone: 'violet',
       icon: '<circle cx="6.5" cy="6.5" r="2.6"/><circle cx="17.5" cy="6.5" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.4 8.6l2.4 6.6M15.6 8.6l-2.4 6.6M9.1 6.5h5.8"/>',
-      mods: ['multiagent']
+      mods: ['multiagent', 'frontier-society']
     },
     {
       group: '前沿与协作',
       no: '24', id: 'p-multimodal2', file: 'p28-multimodal.html',
-      title: '多模态 · 图文对齐与幻觉治理',
-      sub: '多模态 Agent 的输入输出契约、截图闭环与视觉 grounding、图文对齐失效、幻觉类型与成因、四层治理与度量',
+      title: '多模态 · Computer Use、图文对齐与幻觉治理',
+      sub: 'Computer Use 与 GUI 接地、多模态 Agent 的输入输出契约、截图闭环与视觉 grounding、图文对齐失效、幻觉类型与成因、四层治理与度量',
       tone: 'fuchsia',
       icon: '<rect x="3" y="4.5" width="18" height="15" rx="2.6"/><circle cx="8.6" cy="9.6" r="1.7"/><path d="M4 17l4.6-4.6 3.4 3.4 3-2.6L20 17"/>',
-      mods: ['multimodal2']
+      mods: ['multimodal2', 'multimodal']
     },
 
     /* ========== 产品与模型 ========== */
@@ -255,20 +255,20 @@
     {
       group: '产品与模型',
       no: '27', id: 'p16-models', file: 'p16-models.html',
-      title: '产品解析 · Hermes 与评测 Harness',
-      sub: '开源 Agent 模型的函数调用与训练、Harness 微内核与 Cordis 插件体系、SWE-bench / Terminal-Bench 等评测环境与 RL 训练环境',
+      title: '产品解析 · 开源 Agent 模型与决策层',
+      sub: '开源 Agent 模型的函数调用与训练、Jev 决策模型与 System One 判断层、原语与 RLCD、决策模型的落点与边界',
       tone: 'indigo',
       icon: '<path d="M4 7h16M4 12h16M4 17h10"/><circle cx="19" cy="17" r="2.2"/>',
-      mods: ['hermes', 'harness']
+      mods: ['hermes', 'jev']
     },
     {
       group: '产品与模型',
       no: '28', id: 'p-eco', file: 'p23-eco.html',
       title: '生态与格局 · 工作台与 2026 模型',
-      sub: 'WorkBuddy / Qoder / CodeBuddy 等 Agent 工作台与四层扩展、连接器与技能生态、Flash 化趋势、GLM-5.3-Flash / GPT-6.1 Sol 等新模型线、Jev 决策模型与判断层',
+      sub: 'WorkBuddy / Qoder / CodeBuddy 等 Agent 工作台与四层扩展、连接器与技能生态、Flash 化趋势、GLM-5.3-Flash / GPT-6.1 Sol 等新模型线',
       tone: 'grape',
       icon: '<path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"/><path d="M12 12.2l8-4.3M12 12.2v8.3M12 12.2L4 7.9"/>',
-      mods: ['products', 'models26', 'jev']
+      mods: ['products', 'models26']
     }
   ];
   g.PART_BY_ID = {};
