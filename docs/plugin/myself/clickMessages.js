@@ -182,4 +182,4 @@
 		}()
 }(window, document);
 
-document.cookie = "flag=flag{Y0u_f0und_th3_th1rd_f1a9}; path=/";
+document.cookie = "f1111lagggg=f1111lagggg{Y0u_f0und_th3_th1rd_f1a9}; path=/";

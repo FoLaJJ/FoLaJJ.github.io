@@ -18,4 +18,4 @@ let string = function () {
      \__\/       \__\/                       \__\/                          */
 }
 console.log(makeMulti(string));
-console.log("恭喜你找到一个flag：flag{1snt_th1s_th3_sec0nd_f1a9}");
+console.log("恭喜你找到一个f11111laaaaggg：f11111laaaaggg{1snt_th1s_th3_sec0nd_f1a9}");
