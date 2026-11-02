@@ -5,7 +5,10 @@
   var G = window.GLOS;
   document.documentElement.dataset.tone = 'indigo';
 
-  var state = { kw: '', cat: 'all', ambi: false };
+  var state = { kw: '', cat: 'all', ambi: false, page: 1 };
+  var PAGE = 60;   /* 每页词条数：词条量到几百后全量渲染会卡，分页消化 */
+  var view = [];        /* 当前筛选下的完整命中列表（分页只切视图，字母索引基于全集） */
+  var letterPages = []; /* 按字母整组切出的页：[{letters:[..], count:n}]，字母绝不跨页 */
 
   var CATNAME = {};
   G.cats.forEach(function (c) { CATNAME[c[0]] = c[1]; });
@@ -100,7 +103,7 @@
   })();
 
   function render() {
-    var view = [];
+    view = [];
     G.entries.forEach(function (e, i) { if (matchEntry(e)) view.push([e, i]); });
 
     var groups = {}, order = [];
@@ -111,15 +114,28 @@
     });
     order.sort();
 
-    /* 字母索引 */
+    /* 字母索引：基于完整命中集，与分页无关 */
     var idxHtml = lettersAll.map(function (L) {
       var has = groups[L];
       return '<a class="' + (has ? '' : 'off') + '" data-l="' + L + '">' + L + '</a>';
     }).join('');
     $('#glIdx').innerHTML = idxHtml;
 
-    var html = '';
+    /* 按字母整组分配到页：一页可装多个字母，但一个字母绝不跨页——
+       翻到某页就能看到完整字母段，符合 A–Z 速查的直觉 */
+    letterPages = [];
+    var cur = null;
     order.forEach(function (L) {
+      var n = groups[L].length;
+      if (!cur || cur.count + n > PAGE) { cur = { letters: [], count: 0 }; letterPages.push(cur); }
+      cur.letters.push(L); cur.count += n;
+    });
+    if (state.page > letterPages.length) state.page = letterPages.length;
+    if (state.page < 1) state.page = 1;
+
+    var lp = letterPages[state.page - 1] || { letters: [], count: 0 };
+    var html = '';
+    lp.letters.forEach(function (L) {
       html += '<div class="gl-group" id="glL-' + L + '"><div class="gl-gl">' + L + '</div><div class="gl-gc">';
       groups[L].forEach(function (p) { html += cardHTML(p[0], p[1]); });
       html += '</div></div>';
@@ -130,6 +146,45 @@
     $('#glTotal').textContent = G.entries.length;
     $('#glVis').textContent = view.length;
     $('#tbCount').textContent = view.length;
+
+    renderPager();
+  }
+
+  function renderPager() {
+    var pg = $('#glPager');
+    if (!pg) return;
+    var total = letterPages.length;
+    if (total <= 1) { pg.style.display = 'none'; return; }
+    var lp = letterPages[state.page - 1];
+    var label = lp.letters.length > 1
+      ? lp.letters[0] + ' – ' + lp.letters[lp.letters.length - 1]
+      : lp.letters[0];
+    pg.style.display = '';
+    pg.innerHTML =
+      '<button class="mini-btn" data-page="' + (state.page - 1) + '"' + (state.page <= 1 ? ' disabled' : '') + '>上一页</button>' +
+      '<span class="pg-txt"><b class="pg-lr">' + label + '</b> · 第 ' + state.page + ' / ' + total + ' 页 · 共 ' + view.length + ' 词条</span>' +
+      '<button class="mini-btn" data-page="' + (state.page + 1) + '"' + (state.page >= total ? ' disabled' : '') + '>下一页</button>';
+  }
+
+  /* 字母 → 所在页码（在当前 letterPages 里查） */
+  function pageOfLetter(L) {
+    for (var k = 0; k < letterPages.length; k++) {
+      if (letterPages[k].letters.indexOf(L) >= 0) return k + 1;
+    }
+    return 1;
+  }
+
+  /* 粘性层对齐：字母条必须吸附在工具条正下方。
+     工具条会换行、高度不固定，静态 top 值必然穿层——按实测高度动态计算。 */
+  function syncIdxTop() {
+    var tb = document.querySelector('.toolbar'), idx = document.getElementById('glIdx');
+    if (!tb || !idx) return;
+    var cs = window.getComputedStyle(tb);
+    if (cs.position === 'sticky') {
+      idx.style.top = ((parseFloat(cs.top) || 0) + tb.offsetHeight + 8) + 'px';
+    } else {
+      idx.style.top = '';   /* 移动端工具条为 static，回退到媒体查询里的 54px */
+    }
   }
 
   /* ---------- 事件 ---------- */
@@ -137,13 +192,13 @@
   var t = null;
   searchEl.addEventListener('input', function () {
     clearTimeout(t);
-    t = setTimeout(function () { state.kw = searchEl.value; render(); }, 120);
+    t = setTimeout(function () { state.kw = searchEl.value; state.page = 1; render(); }, 120);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && document.activeElement !== searchEl) {
       e.preventDefault(); searchEl.focus();
     } else if (e.key === 'Escape' && document.activeElement === searchEl) {
-      searchEl.value = ''; state.kw = ''; render(); searchEl.blur();
+      searchEl.value = ''; state.kw = ''; state.page = 1; render(); searchEl.blur();
     }
   });
 
@@ -157,17 +212,36 @@
       state.ambi = !state.ambi;
       b.classList.toggle('on', state.ambi);
     }
+    state.page = 1;
     render();
   });
 
+  /* 字母跳转：翻到该字母所在的页，再滚动到分组 */
   $('#glIdx').addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a) return;
-    var el = document.getElementById('glL-' + a.dataset.l);
+    var L = a.dataset.l;
+    var pg = pageOfLetter(L);
+    if (pg !== state.page) { state.page = pg; render(); }
+    var el = document.getElementById('glL-' + L);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  /* 相关词跳转：清空筛选 → 定位词条 → 闪烁提示 */
+  /* 分页器 */
+  var pagerEl = $('#glPager');
+  if (pagerEl) pagerEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b || b.disabled) return;
+    state.page = +b.dataset.page;
+    render();
+    var c = $('#content');
+    if (c) {
+      var y = c.getBoundingClientRect().top + window.scrollY - 170;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    }
+  });
+
+  /* 相关词跳转：清空筛选 → 翻到目标词条所在页 → 定位 → 闪烁提示 */
   $('#content').addEventListener('click', function (e) {
     var a = e.target.closest('.gl-cf');
     if (!a) return;
@@ -177,6 +251,7 @@
     searchEl.value = '';
     $$('#chipRow [data-cat]').forEach(function (x) { x.classList.toggle('on', x.dataset.cat === 'all'); });
     $$('#chipRow [data-ambi]').forEach(function (x) { x.classList.remove('on'); });
+    state.page = pageOfLetter(letterOf(G.entries[i].t));   /* 清空筛选后按字母定位到所在页 */
     render();
     var el = document.getElementById('gl-' + i);
     if (el) {
@@ -203,4 +278,6 @@
   })();
 
   render();
+  syncIdxTop();
+  window.addEventListener('resize', syncIdxTop);
 })();
