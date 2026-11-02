@@ -321,9 +321,11 @@ svg { display: block; }
   padding: 0 1px;
 }
 
-/* 首页：七大能力域路径链。下方紧接 .hero-metrics，故留出 30px */
+/* 首页：八大能力域路径链。下方紧接 .hero-metrics，故留出 30px */
 .org-map { max-width: 1180px; margin: 0 auto 30px; text-align: left; }
 .om-chain { display: flex; align-items: stretch; }
+/* 八大能力域分成两排链，每排 4 张；排间距略大于列间距，视觉上仍是一条路径 */
+.om-chain + .om-chain { margin-top: 14px; }
 .om-item {
   position: relative; flex: 1 1 0; min-width: 0; padding: 12px 13px 13px;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
@@ -475,7 +477,7 @@ svg { display: block; }
 .mod-item:hover { border-color: var(--tone); color: var(--tone); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .mod-item:hover b, .mod-item:hover em { color: var(--tone); }
 
-.roadmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.roadmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(212px, 1fr)); gap: 16px; }
 .rm-card { padding: 20px 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
 .rm-card .step { font-family: var(--mono); font-size: calc(11px * var(--fs-scale)); color: var(--accent); letter-spacing: .1em; display: block; margin-bottom: 5px; }
 .rm-card b { display: block; font-size: calc(14.5px * var(--fs-scale)); margin-bottom: 8px; }
@@ -827,4 +829,190 @@ html.one .deck-act { display: flex; }
   .item { break-inside: avoid; box-shadow: none; }
   .item .q-body { display: block !important; }
   .sec-h { background: none; }
+}
+
+/* ---------- 12. 名词速查（glossary） ---------- */
+.gl-chips { margin: 4px 0 14px; }
+.gl-ambi-chip.on { background: var(--c-hot); border-color: var(--c-hot); color: #3a2600; font-weight: 600; }
+
+.gl-idx {
+  position: sticky; top: 62px; z-index: 5;
+  display: flex; flex-wrap: wrap; gap: 3px;
+  padding: 8px 10px; margin-bottom: 16px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.gl-idx a {
+  min-width: 24px; padding: 2px 6px; border-radius: 6px; text-align: center;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  color: var(--ink-2); cursor: pointer; text-decoration: none;
+}
+.gl-idx a:hover { background: var(--accent-soft); color: var(--accent); }
+.gl-idx a.off { opacity: .25; pointer-events: none; }
+
+.gl-group { margin-bottom: 22px; }
+.gl-gl {
+  font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em;
+  color: var(--tone); margin: 0 2px 10px; display: flex; align-items: center; gap: 10px;
+}
+.gl-gl::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.gl-gc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+.gl-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 13px 15px; box-shadow: var(--shadow-sm);
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+  scroll-margin-top: 130px;
+}
+.gl-card:hover { border-color: color-mix(in srgb, var(--tone) 45%, var(--line)); box-shadow: var(--shadow); }
+.gl-card.flash { border-color: var(--tone); box-shadow: 0 0 0 3px var(--tone-soft), var(--shadow); }
+
+.gl-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.gl-term {
+  font-family: var(--mono); font-size: 15.5px; font-weight: 700; color: var(--ink);
+  letter-spacing: -.01em;
+}
+.gl-flag {
+  font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px;
+  background: var(--c-hot-soft); color: #a16207; border: 1px solid #f3ddae;
+  white-space: nowrap;
+}
+.gl-cat {
+  margin-left: auto; font-size: 10.5px; color: var(--ink-3); white-space: nowrap;
+  padding: 2px 8px; border-radius: 999px; background: var(--surface-3);
+}
+.gl-full {
+  margin-top: 3px; font-size: 12px; color: var(--ink-3);
+  font-family: var(--mono); letter-spacing: .01em;
+}
+.gl-def { margin: 8px 0 0; font-size: calc(13px * var(--fs-scale)); line-height: 1.72; color: var(--ink-2); }
+.gl-def b { color: var(--ink); }
+
+.gl-lb {
+  display: inline-block; flex: none; margin-right: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--ink-3);
+  border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px;
+  vertical-align: 1px;
+}
+.gl-note {
+  margin: 8px 0 0; font-size: calc(12.5px * var(--fs-scale)); line-height: 1.68;
+  color: var(--ink-2); background: var(--tone-soft); border-radius: var(--radius-sm);
+  padding: 7px 10px;
+}
+.gl-note .gl-lb { color: var(--tone); border-color: color-mix(in srgb, var(--tone) 35%, var(--line)); background: var(--surface); }
+
+.gl-ambi {
+  margin-top: 8px; border: 1px dashed #e8c98a; background: color-mix(in srgb, var(--c-hot-soft) 55%, var(--surface));
+  border-radius: var(--radius-sm); padding: 7px 10px;
+}
+.gl-ambi .gl-lb { color: #a16207; border-color: #f3ddae; background: var(--surface); }
+.gl-ambi-item { font-size: calc(12.5px * var(--fs-scale)); line-height: 1.65; color: var(--ink-2); }
+.gl-ambi-item b {
+  display: inline-block; margin-right: 6px; font-size: 11px; color: #a16207;
+}
+
+.gl-cfrow { margin-top: 8px; font-size: 12px; line-height: 1.9; }
+.gl-cf {
+  display: inline-block; margin: 0 2px 2px 0; padding: 1px 8px;
+  font-family: var(--mono); font-size: 11.5px; color: var(--tone); text-decoration: none;
+  background: var(--accent-soft); border-radius: 999px;
+}
+.gl-cf:hover { background: var(--tone); color: #fff; }
+
+.gl-card mark { background: #ffe9a8; color: inherit; border-radius: 3px; padding: 0 1px; }
+[data-theme="dark"] .gl-card mark { background: #6b5513; color: #ffe9a8; }
+[data-theme="dark"] .gl-flag { color: #ffd98a; border-color: #6b5513; background: #3a2e10; }
+[data-theme="dark"] .gl-ambi { border-color: #6b5513; background: color-mix(in srgb, #3a2e10 45%, var(--surface)); }
+[data-theme="dark"] .gl-ambi-item b, [data-theme="dark"] .gl-ambi .gl-lb { color: #ffd98a; }
+
+@media (max-width: 860px) {
+  .gl-gc { grid-template-columns: 1fr; }
+  .gl-idx { top: 54px; }
+}
+
+/* 首页：名词速查入口横幅 */
+.glos-banner {
+  display: flex; align-items: center; gap: 14px;
+  margin: 16px 0 6px; padding: 13px 18px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  text-decoration: none; color: var(--ink);
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+.glos-banner:hover { border-color: var(--tone); box-shadow: var(--shadow); transform: translateY(-1px); }
+.gb-ico {
+  flex: none; width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tone-soft); color: var(--tone);
+  font-family: var(--mono); font-size: 17px; font-weight: 700; letter-spacing: -.02em;
+}
+.gb-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gb-txt b { font-size: 13.5px; letter-spacing: .02em; }
+.gb-txt i { font-style: normal; font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+.gb-arrow { margin-left: auto; flex: none; color: var(--ink-3); font-size: 18px; transition: transform .18s, color .18s; }
+.glos-banner:hover .gb-arrow { transform: translateX(3px); color: var(--tone); }
+.lead .glos-link { color: var(--tone); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--tone) 50%, transparent); white-space: nowrap; }
+.lead .glos-link b { font-family: var(--mono); }
+.lead .glos-link i { font-style: normal; font-size: .85em; color: var(--ink-3); margin-left: 4px; }
+.lead .glos-link:hover { border-bottom-style: solid; }
+@media (max-width: 560px) {
+  .glos-banner { padding: 11px 14px; gap: 10px; }
+  .gb-ico { width: 36px; height: 36px; font-size: 15px; }
+  .gb-txt i { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+}
+
+/* ---------- 12b. 名词速查：分类色体系 + chips 计数 ---------- */
+.gl-card { position: relative; overflow: hidden; }
+.gl-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--gl-cat, var(--line));
+}
+.gl-card[data-cat="model"]    { --gl-cat: #6366f1; }
+.gl-card[data-cat="train"]    { --gl-cat: #e11d48; }
+.gl-card[data-cat="agent"]    { --gl-cat: #0d9488; }
+.gl-card[data-cat="paradigm"] { --gl-cat: #d97706; }
+.gl-card[data-cat="pm"]       { --gl-cat: #9333ea; }
+.gl-card[data-cat="metric"]   { --gl-cat: #2563eb; }
+.gl-card[data-cat="biz"]      { --gl-cat: #16a34a; }
+.gl-card[data-cat="risk"]     { --gl-cat: #dc2626; }
+.gl-card .gl-cat {
+  color: var(--gl-cat);
+  background: color-mix(in srgb, var(--gl-cat) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gl-cat) 22%, transparent);
+  font-weight: 600;
+}
+.gl-card:hover { border-color: color-mix(in srgb, var(--gl-cat, var(--line)) 42%, var(--line)); }
+
+/* chips：每类自己的选中色 + 计数徽标 */
+.chip .cnt {
+  display: inline-block; margin-left: 6px; padding: 0 6px;
+  font-family: var(--mono); font-size: 10.5px; line-height: 1.5;
+  border-radius: 999px; background: var(--surface-3); color: var(--ink-3);
+  font-style: normal; font-weight: 600;
+}
+.chip.on .cnt { background: rgba(255,255,255,.22); color: #fff; }
+.chip[data-cat="model"].on    { background: #6366f1; border-color: #6366f1; }
+.chip[data-cat="train"].on    { background: #e11d48; border-color: #e11d48; }
+.chip[data-cat="agent"].on    { background: #0d9488; border-color: #0d9488; }
+.chip[data-cat="paradigm"].on { background: #b45309; border-color: #b45309; }
+.chip[data-cat="pm"].on       { background: #9333ea; border-color: #9333ea; }
+.chip[data-cat="metric"].on   { background: #2563eb; border-color: #2563eb; }
+.chip[data-cat="biz"].on      { background: #16a34a; border-color: #16a34a; }
+.chip[data-cat="risk"].on     { background: #dc2626; border-color: #dc2626; }
+[data-theme="dark"] .chip[data-cat="model"].on,
+[data-theme="dark"] .chip[data-cat="train"].on,
+[data-theme="dark"] .chip[data-cat="agent"].on,
+[data-theme="dark"] .chip[data-cat="paradigm"].on,
+[data-theme="dark"] .chip[data-cat="pm"].on,
+[data-theme="dark"] .chip[data-cat="metric"].on,
+[data-theme="dark"] .chip[data-cat="biz"].on,
+[data-theme="dark"] .chip[data-cat="risk"].on { color: #fff; }
+
+/* 词条 hover 时分类色放大一点呼吸感 */
+.gl-card { padding-left: 17px; }
+.gl-card:hover { transform: translateY(-1px); }
+
+@media (max-width: 560px) {
+  .chip .cnt { margin-left: 4px; padding: 0 5px; font-size: 10px; }
 }

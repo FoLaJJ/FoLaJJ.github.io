@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-tone="indigo">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5b5bd6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>名词速查 · AI / 大模型 / AI 产品 · Agent 面试题库</title>
+<link rel="stylesheet" href="../assets/css/style.css?v=mvz1zg82">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+</head>
+<body data-page="glossary">
+
+<div class="scroll-progress"><i id="spBar"></i></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.8 5.6 17.6M12 6.8 18.4 17.6M8.9 14.4h6.2"/><circle cx="12" cy="5.6" r="1.9" fill="currentColor" stroke="none"/><circle cx="5" cy="19" r="1.9" fill="currentColor" stroke="none"/><circle cx="19" cy="19" r="1.9" fill="currentColor" stroke="none"/></svg></span>
+      <span class="brand-txt"><b>Agent 面试题库</b><i>GLOSSARY · 名词速查</i></span>
+    </a>
+
+    <nav class="crumb">
+      <a class="home-link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> 全部分册</a>
+      <span class="cur">名词速查 · 术语与缩写</span>
+    </nav>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="search" type="search" placeholder="搜缩写 / 全称 / 中文 / 定义…" autocomplete="off" spellcheck="false">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="tb-actions">
+      <button class="icon-btn" id="themeBtn" title="切换主题"></button>
+    </div>
+  </div>
+</header>
+
+<div class="pwrap">
+
+  <div class="phead">
+    <div class="pt-no">GLOSSARY · 8 大分类 · <span id="glTotal">0</span> 词条 · <span id="glAmbi">0</span> 个易混缩写</div>
+    <h1>名词速查 · 术语与缩写</h1>
+    <p>从模型架构、<b>训练与后训练</b>，到 <b>Agent 范式</b>、AI 产品形态、数据指标、商业增长与合规安全。同一个缩写在不同领域含义不同时，词条里用「⚠ 同名不同义」标出——开会对齐频道专用。</p>
+  </div>
+
+  <main>
+    <div class="toolbar">
+      <div class="tb-count">词条 <b id="tbCount">0</b> · 命中 <b id="glVis">0</b></div>
+      <div class="tb-right">
+        <button class="mini-btn" id="topBtn">回到顶部</button>
+      </div>
+    </div>
+
+    <div class="chip-row gl-chips" id="chipRow">
+      <button class="chip on" data-cat="all">全部</button>
+      <button class="chip" data-cat="model">模型与架构</button>
+      <button class="chip" data-cat="train">训练与后训练</button>
+      <button class="chip" data-cat="agent">Agent 与工程</button>
+      <button class="chip" data-cat="paradigm">Agent 范式与自主性</button>
+      <button class="chip" data-cat="pm">产品与 AI 产品形态</button>
+      <button class="chip" data-cat="metric">数据与指标</button>
+      <button class="chip" data-cat="biz">商业与增长</button>
+      <button class="chip" data-cat="risk">合规与安全</button>
+      <button class="chip gl-ambi-chip" data-ambi="1">⚠ 只看易混</button>
+    </div>
+
+    <div class="gl-idx" id="glIdx"></div>
+
+    <div id="content"></div>
+    <div class="empty" id="empty">没有命中的词条，换个关键词试试</div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/js/shell.js?v=mvz1zg82"></script>
+<script src="../assets/js/glossary-data.js?v=mvz1zg82"></script>
+<script src="../assets/js/glossary.js?v=mvz1zg82"></script>
+</body>
+</html>

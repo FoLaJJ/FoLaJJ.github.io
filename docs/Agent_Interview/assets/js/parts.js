@@ -150,11 +150,11 @@
     {
       group: '安全与合规',
       no: '16', id: 'p14-biz', file: 'p14-biz.html',
-      title: '合规 · 产品与开放议题',
-      sub: '隐私与合规、日志留存与审计、版权与责任划分、产品化与增长度量，以及 16 道开放辩论题',
+      title: '合规 · 隐私、审计与开放议题',
+      sub: '隐私与合规、日志留存与审计、版权与责任划分，以及开放辩论题',
       tone: 'slate',
       icon: '<path d="M6 3h9l4 4v14H6z"/><path d="M14.5 3v5H19"/><path d="M9.5 12.5h6M9.5 16.5h4"/>',
-      mods: ['compliance', 'product', 'openqa']
+      mods: ['compliance', 'openqa']
     },
 
     /* ========== 场景与体验 ========== */
@@ -269,6 +269,44 @@
       tone: 'grape',
       icon: '<path d="M12 3.5l8 4.2v8.6l-8 4.2-8-4.2V7.7z"/><path d="M12 12.2l8-4.3M12 12.2v8.3M12 12.2L4 7.9"/>',
       mods: ['products', 'models26']
+    },
+
+    /* ========== AI 产品经理 ========== */
+    {
+      group: 'AI 产品经理',
+      no: '29', id: 'p-pmmethod', file: 'pm-method.html',
+      title: '产品方法论 · 需求、方案与推进',
+      sub: '需求洞察与用户研究、PRD 与方案设计、优先级与资源博弈、案例题与估算、上线灰度与迭代',
+      tone: 'rose',
+      icon: '<path d="M4 6h6l2 3h8v9H4z"/><path d="M8 14h8M8 11h5"/>',
+      mods: ['pm-need', 'pm-prd', 'pm-prio', 'pm-case', 'pm-launch']
+    },
+    {
+      group: 'AI 产品经理',
+      no: '30', id: 'p-pmtech', file: 'pm-tech.html',
+      title: '技术认知 · 模型、Agent 与知识库',
+      sub: '模型能力与边界、知识库与检索产品化、Agent 形态与交互、幻觉与信任、成本延迟与工程约束',
+      tone: 'indigo',
+      icon: '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4M5.2 5.2l2.8 2.8M16 16l2.8 2.8M18.8 5.2L16 8M8 16l-2.8 2.8"/>',
+      mods: ['pm-model', 'pm-rag', 'pm-agent', 'pm-hallu', 'pm-cost']
+    },
+    {
+      group: 'AI 产品经理',
+      no: '31', id: 'p-pmdata', file: 'pm-data.html',
+      title: '数据与评估 · 指标、实验与飞轮',
+      sub: '北极星与指标体系、实验与因果推断、定性研究与反馈闭环、数据飞轮与标注运营、AI 产品评测体系',
+      tone: 'cyan',
+      icon: '<path d="M4 19V9M9.3 19V5M14.6 19v-6.5M20 19v-9"/><path d="M3 19h18"/>',
+      mods: ['pm-northstar', 'pm-ab', 'pm-qual', 'pm-flywheel', 'pm-evalpm']
+    },
+    {
+      group: 'AI 产品经理',
+      no: '32', id: 'p-pmbiz', file: 'pm-biz.html',
+      title: '商业与增长 · 定价、毛利与落地',
+      sub: '定价与商业模式、单位经济与毛利、增长留存与渠道、B 端落地与组织采纳、竞争格局与行业判断',
+      tone: 'emerald',
+      icon: '<path d="M4 18l5-6 3.4 3.4L20 6"/><path d="M20 10.5V6h-4.6"/>',
+      mods: ['pm-price', 'pm-unit', 'pm-grow', 'pm-b2b', 'pm-market']
     }
   ];
   g.PART_BY_ID = {};
