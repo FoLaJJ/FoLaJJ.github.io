@@ -10,4 +10,4 @@ comments: false
 
 站外：[GitHub](https://github.com/FoLaJJ) · [Gitee](https://gitee.com/autojiangxiao) · [哔哩哔哩](https://space.bilibili.com/447194192)
 
-站内仍藏有彩蛋。
+站内藏有五个flag，都在很经典的位置，试试吧。

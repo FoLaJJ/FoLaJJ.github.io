@@ -55,7 +55,7 @@ aside:
   position: right
   mobile: false
   card_author:
-    description: 安全、代码和路上的随手记
+    description: 一夜东风开小院，且待来日尽清欢。
     button:
       enable: true
       icon: fab fa-github
@@ -79,7 +79,7 @@ busuanzi:
 
 search:
   use: local_search
-  placeholder: 搜索标题或正文
+  placeholder: 搜索一些神奇的玩意吧
   local_search:
     unescape: true
     preload: false
@@ -107,8 +107,8 @@ footer:
     version: false
   custom_text: |
     <div class="site-stats" aria-label="站点访问统计">
-      <span>访客 <b id="busuanzi_value_site_uv">—</b> 人</span>
-      <span>访问 <b id="busuanzi_value_site_pv">—</b> 次</span>
+      <span>已有 <b id="busuanzi_value_site_uv">—</b> 个好朋友来到这里</span>
+      <span>嗯~大概访问了 <b id="busuanzi_value_site_pv">—</b> 这么多次</span>
     </div>
     Powered by <a href="https://hexo.io/">Hexo</a>
 

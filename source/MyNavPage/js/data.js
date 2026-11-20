@@ -443,6 +443,14 @@ const siteDataConfig = {
       "icon": "icon/1005Cloudreve.ico"
     },
     {
+      "id": "cchpshkong",
+      "name": "cchp",
+      "url": "https://cchp.shkong.com/",
+      "description": "1",
+      "category": "CampusWelfare",
+      "icon": "icon/cchpshkong.png"
+    },
+    {
       "id": "szums",
       "name": "校内正版软件下载",
       "url": "http://ms.szu.edu.cn/",
@@ -1138,6 +1146,14 @@ const siteDataConfig = {
     ======================================ToolChain====================================
     */
     {
+      "id": "ippure",
+      "name": "IpPure",
+      "url": "https://ippure.com/",
+      "description": "各种检测工具，包括泄露检测",
+      "category": "ToolChain",
+      "icon": "icon/ippure.png"
+    },
+    {
       "id": "OpenAlex",
       "name": "OpenAlex",
       "url": "https://openalex.org",
@@ -1168,6 +1184,14 @@ const siteDataConfig = {
       "description": "office实用部署工具",
       "category": "ToolChain",
       "icon": "icon/officetool.ico"
+    },
+    {
+      "id": "kmscx",
+      "name": "kms激活",
+      "url": "https://kms.cx/#google_vignette",
+      "description": "kmscx",
+      "category": "ToolChain",
+      "icon": "icon/kmscs.svg"
     },
     {
       "id": "namesilo",
@@ -1454,12 +1478,12 @@ const siteDataConfig = {
       "icon": "icon/xiaohongshu.ico"
     },
     {
-      "id": "qqqyscom",
-      "name": "布布影视 原3Q影视",
-      "url": "https://bbys.app/",
+      "id": "duoduozhuiju",
+      "name": "多多追剧",
+      "url": "https://duoduozhuiju.com/",
       "description": "这个好这个好，齐全高清",
       "category": "SlackOff",
-      "icon": "icon/qqqyscom.png"
+      "icon": "icon/duoduozhuiju.ico"
     },
     {
       "id": "zxzjhd",
@@ -1767,6 +1791,23 @@ const siteDataConfig = {
       "category": "Forum",
       "icon": "icon/linuxdo.png"
     },
+    {
+      "id": "kafanbbs",
+      "name": "卡饭论坛",
+      "url": "https://bbs.kafan.cn/",
+      "description": "卡饭论坛",
+      "category": "Forum",
+      "icon": "icon/kafanbbs.ico"
+    },
+    {
+      "id": "bahamut",
+      "name": "巴哈姆特",
+      "url": "https://www.gamer.com.tw/",
+      "description": "巴哈姆特",
+      "category": "Forum",
+      "icon": "icon/bahamut.svg"
+    },
+
     {
       "id": "v2ex",
       "name": "V2EX社区",
