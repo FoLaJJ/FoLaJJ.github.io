@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">FoLaJJ 技术手记</title>
+  <desc id="desc">米色纸张上的打开的笔记本，左页是代码，右页是连接的节点。</desc>
+  <rect width="640" height="400" fill="#f3f1e8"/>
+  <circle cx="501" cy="105" r="43" fill="#ecdfbd"/>
+  <path d="M63 284c13-56 55-89 113-91M473 275c49 7 74-10 91-44" fill="none" stroke="#d3dfd4" stroke-width="17" stroke-linecap="round"/>
+  <g fill="#456358" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2">
+    <text x="45" y="49">FoLaJJ / NOTES</text>
+    <text x="45" y="362" font-size="11">LEARN · BUILD · REPEAT</text>
+  </g>
+  <g stroke="#456b5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M151 113c55-12 113-7 169 13 56-20 114-25 169-13l-3 182c-59-10-116-5-166 12-50-17-107-22-166-12Z" fill="#d6e2d5" stroke="none"/>
+    <path d="M144 105c56-11 118-3 176 19v176c-59-23-119-31-175-20Z" fill="#fffdf6"/>
+    <path d="M320 124c58-22 120-30 176-19l-1 175c-56-11-116-3-175 20Z" fill="#fffdf6"/>
+    <path d="M321 133v155M155 289c54-7 107 0 153 17M332 306c46-17 99-24 153-17" fill="none"/>
+    <path d="m213 157-17 14 17 16m43-31 17 14-17 16m-17-32-11 37" fill="none" stroke="#38745f" stroke-width="4"/>
+    <path d="m184 212 75 5m-75 13 95 7m-95 11 51 4" fill="none" stroke="#b1c3b4"/>
+    <rect x="392" y="148" width="35" height="29" rx="5" fill="#e8c69c"/>
+    <rect x="357" y="220" width="35" height="29" rx="5" fill="#d6e2d5"/>
+    <rect x="434" y="207" width="35" height="29" rx="5" fill="#e4ecdF"/>
+    <path d="M410 177v19h-36v24m36-24h42v11" fill="none"/>
+    <path d="m109 116-9-5m18-12-3-10m12 30-7 7M523 183l7 8m-5-26 10-2" fill="none" stroke="#ba8562" stroke-width="2.5"/>
+  </g>
+  <circle cx="538" cy="338" r="4" fill="#ba8562"/>
+  <path d="M551 338h43" stroke="#bacbbb" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,8 @@
+/node_modules/
+/public/
+/db.json
+/.hexo/
+/.preview/
+*.log
+.DS_Store
+.claude

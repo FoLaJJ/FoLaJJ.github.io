@@ -1,0 +1,308 @@
+:root {
+  /* 顶栏字号：菜单文字、菜单图标、左侧站名。 */
+  --nav-text-size: 18px;
+  --nav-icon-size: 19px;
+  --nav-brand-size: 23px;
+  /* 布局：页面最大宽度，以及文章栏占主体区域的比例。 */
+  --page-max-width: 1200px;
+  --article-width: 74%;
+  --index-accent: #096950;
+  --index-line: #dce5e2;
+  --index-muted: #526663;
+  --index-hover: #ecf6f2;
+  --site-link: #0a5a9c;
+  --site-link-hover: #083f65;
+  --site-panel: rgb(255 255 255 / 94%);
+  --site-surface: rgb(247 251 251 / 86%);
+}
+
+[data-theme="dark"] {
+  --index-accent: #7fdbbc;
+  --index-line: #344843;
+  --index-muted: #a8bfb9;
+  --index-hover: #233b36;
+  --site-link: #8bc9ff;
+  --site-link-hover: #b5deff;
+  --site-panel: rgb(25 30 33 / 95%);
+  --site-surface: rgb(25 30 33 / 90%);
+}
+
+#nav a.nav-site-title {
+  font-size: var(--nav-brand-size);
+}
+
+#nav .site-page,
+#sidebar #sidebar-menus .menus_items a.site-page,
+#sidebar #sidebar-menus .menus_items .site-page.group {
+  font-size: var(--nav-text-size);
+  font-weight: 600;
+}
+
+#nav .site-page i,
+#sidebar #sidebar-menus .menus_items .site-page i {
+  font-size: var(--nav-icon-size);
+}
+
+#nav #toggle-menu .site-page,
+#nav #search-button .site-page {
+  display: inline-flex;
+  min-width: 40px;
+  min-height: 40px;
+  align-items: center;
+  gap: 4px;
+}
+
+#nav #toggle-menu .site-page i,
+#nav #search-button .site-page i {
+  font-size: 20px;
+}
+
+#web_bg {
+  background-position: center;
+}
+
+#page-header::before {
+  background: rgb(15 25 32 / 46%);
+}
+
+#footer {
+  background: var(--site-panel);
+}
+
+#footer .footer-other,
+#footer .footer-other a {
+  color: var(--font-color);
+}
+
+#page-header.full_page {
+  min-height: 300px;
+  background-position: center 45%;
+}
+
+#page-header.full_page #site-info {
+  padding-inline: 1rem;
+}
+
+#page-header.full_page #site-title::after {
+  content: "安全、代码和路上的随手记";
+  display: block;
+  margin-top: .4rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#content-inner.layout {
+  max-width: var(--page-max-width);
+}
+
+@media (min-width: 901px) {
+  #body-wrap.post #content-inner.layout:not(.hide-aside) > #post {
+    width: var(--article-width);
+  }
+
+  #body-wrap.post #content-inner.layout:not(.hide-aside) > #aside-content {
+    width: calc(100% - var(--article-width));
+  }
+}
+
+#article-container {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+#article-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+#article-container :is(p, li, td, th, dd, blockquote) a[href]:not(.headerlink):not(:has(img)) {
+  color: var(--site-link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .18em;
+}
+
+#article-container :is(p, li, td, th, dd, blockquote) a[href]:not(.headerlink):hover {
+  color: var(--site-link-hover);
+}
+
+#article-container :is(p, li, td, th, dd) a[href^="http"]:not(:has(img))::after {
+  content: " ↗";
+  font-size: .72em;
+}
+
+#article-container strong { font-weight: 750; }
+
+@media (pointer: fine) {
+  a:hover, a:active, a:hover *, a:active * {
+    cursor: url("/favicon_logosc/feifeiji.cur"), pointer;
+  }
+}
+
+.quick-index {
+  padding: .75rem 1rem .65rem;
+  background: var(--site-surface);
+  border-radius: 8px;
+}
+
+.quick-index-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.quick-index-heading h2 {
+  font-size: 1.18rem;
+  margin: 0;
+}
+
+.quick-index-heading a {
+  color: var(--index-accent);
+  font-size: .88rem;
+}
+
+.quick-index-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--index-line);
+}
+
+.quick-index-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: .9rem .85rem;
+  border-inline-start: 1px solid var(--index-line);
+  color: inherit;
+}
+
+.quick-index-grid a:first-child {
+  border-inline-start: 0;
+}
+
+.quick-index-grid a:hover,
+.quick-index-grid a:focus-visible {
+  background: var(--index-hover);
+}
+
+.quick-index-grid span {
+  color: var(--index-accent);
+  font: 600 .75rem ui-monospace, monospace;
+}
+
+.quick-index-grid small {
+  color: var(--index-muted);
+}
+
+.study-guide-link {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: .7rem .85rem;
+  color: var(--index-accent);
+  background: var(--index-hover);
+  border: 1px solid var(--index-line);
+  border-radius: 6px;
+}
+
+.study-guide-link strong {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.study-guide-link > span {
+  color: var(--index-muted);
+  font-size: .85rem;
+}
+
+.study-guide-course {
+  display: inline-block;
+  margin-top: .75rem;
+  color: var(--site-link);
+  text-decoration: underline;
+}
+
+.recent-heading {
+  margin-top: 1.5rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--index-line);
+}
+
+.site-stats span + span { margin-inline-start: 1rem; }
+
+.site-jump {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(160px + env(safe-area-inset-bottom));
+  z-index: 95;
+  line-height: 1.35;
+  display: grid;
+  padding: .25rem;
+  border: 1px solid var(--index-line);
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 12%);
+}
+
+.site-jump a {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 44px;
+  padding: .35rem .5rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--font-color, #26332e);
+  border-radius: 4px;
+}
+.site-jump a:hover { background: var(--index-hover); }
+.site-jump a:focus-visible { outline: 2px solid var(--site-link); }
+.site-jump i { width: 1.25em; text-align: center; }
+
+.site-404-note {
+  padding: .5rem;
+  overflow-wrap: anywhere;
+}
+
+.site-click-text {
+  position: fixed;
+  z-index: 110;
+  max-width: calc(100vw - 24px);
+  width: max-content;
+  padding: .15rem .4rem;
+  background: var(--card-bg, #fff);
+  color: var(--index-accent);
+  border-radius: 4px;
+  font-weight: 650;
+  pointer-events: none;
+  animation: site-click-float 1.2s ease-out both;
+}
+
+@keyframes site-click-float {
+  0% { opacity: 1; transform: translate(-50%, 0); }
+  60% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -52px); }
+}
+
+#article-container .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 1460px) {
+  .site-jump a { justify-content: center; width: 44px; }
+  .site-jump a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+
+@media (max-width: 767px) {
+  #content-inner.layout { padding-inline: 16px; }
+  .quick-index-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick-index-grid a:nth-child(odd) { border-inline-start: 0; }
+  .quick-index-grid a:nth-child(n + 3) { border-top: 1px solid var(--index-line); }
+  .site-jump { right: 8px; bottom: calc(160px + env(safe-area-inset-bottom)); }
+}

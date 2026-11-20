@@ -1,0 +1,143 @@
+nav:
+  fixed: true
+  display_post_title: false
+
+menu:
+  首页: / || fas fa-house
+  分类: /categories/ || fas fa-folder-open
+  归档: /archives/ || fas fa-box-archive
+  标签: /tags/ || fas fa-tags
+  新成员: /guide/onboarding/ || fas fa-seedling
+  关于: /about/ || fas fa-user
+
+favicon: /favicon_logosc/favicon.ico
+avatar:
+  img: /favicon_logosc/icon.jpg
+  effect: false
+
+index_img: /site/background.webp
+default_top_img: /site/background.webp
+background: /site/background.webp
+index_top_img_height: 44vh
+index_site_info_top: 35%
+index_layout: 1
+cover:
+  default_cover: /site/notes-cover.svg
+error_img:
+  post_page: /site/notes-cover.svg
+
+social:
+  fab fa-github: https://github.com/FoLaJJ || GitHub
+  fab fa-bilibili: https://space.bilibili.com/447194192 || 哔哩哔哩
+
+code_blocks:
+  theme: light
+  copy: true
+  language: true
+  height_limit: 520
+
+toc:
+  post: true
+  page: true
+  number: false
+  expand: false
+  scroll_percent: true
+anchor:
+  auto_update: false
+  click_to_scroll: true
+post_copyright:
+  enable: false
+post_meta:
+  post:
+    date_type: created
+
+aside:
+  position: right
+  mobile: false
+  card_author:
+    description: 安全、代码和路上的随手记
+    button:
+      enable: true
+      icon: fab fa-github
+      text: FoLaJJ on GitHub
+      link: https://github.com/FoLaJJ
+  card_announcement:
+    enable: false
+  card_recent_post:
+    enable: false
+  card_archives:
+    enable: false
+  card_tags:
+    enable: false
+  card_webinfo:
+    enable: false
+
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+search:
+  use: local_search
+  placeholder: 搜索标题或正文
+  local_search:
+    unescape: true
+    preload: false
+    top_n_per_article: 2
+
+pjax:
+  enable: false
+lazyload:
+  enable: false
+lightbox: false
+comments:
+  use: false
+
+error_404:
+  enable: true
+  subtitle: 你想找什么呢？
+  background: /favicon_logosc/404PowerByDouBao.png
+
+footer:
+  owner:
+    enable: true
+    since: 2024
+  copyright:
+    enable: false
+    version: false
+  custom_text: |
+    <div class="site-stats" aria-label="站点访问统计">
+      <span>访客 <b id="busuanzi_value_site_uv">—</b> 人</span>
+      <span>访问 <b id="busuanzi_value_site_pv">—</b> 次</span>
+    </div>
+    Powered by <a href="https://hexo.io/">Hexo</a>
+
+inject:
+  head:
+    - '<link rel="stylesheet" href="/site/blog.css">'
+    - '<link rel="stylesheet" href="/site/math/katex.min.css">'
+    - '<link rel="stylesheet" href="/site/math/texmath.css">'
+    - '<script src="/site/legacy.js" defer></script>'
+  bottom:
+    - |
+      <nav class="site-jump" aria-label="快捷导航">
+        <a href="/" title="博客首页"><i class="fas fa-house" aria-hidden="true"></i><span>博客首页</span></a>
+        <a href="/MyNavPage/index.html" title="导航门户"><i class="fas fa-compass" aria-hidden="true"></i><span>导航门户</span></a>
+        <a href="/SRK_Toolbox/SRK_Toolbox.html" title="CyberChef 汉化"><i class="fas fa-flask" aria-hidden="true"></i><span>CyberChef 汉化</span></a>
+        <a href="/Agent_Interview/index.html" title="Agent 面试手册"><i class="fas fa-book-open" aria-hidden="true"></i><span>Agent 面试手册</span></a>
+      </nav>
+    - |
+      <template id="folajj-index">
+        <section class="quick-index" aria-labelledby="quick-index-title">
+          <div class="quick-index-heading"><h2 id="quick-index-title">主题索引</h2><a href="/categories/">全部分类 →</a></div>
+          <div class="quick-index-grid">
+            <a href="/guide/security/"><span>01</span><strong>网络安全</strong><small>Web、Pwn、取证与竞赛</small></a>
+            <a href="/guide/misc/"><span>02</span><strong>技术笔记</strong><small>系统、编程与大模型</small></a>
+            <a href="/guide/courses/"><span>03</span><strong>课程学习</strong><small>课程索引、作业与资料</small></a>
+            <a href="/guide/travel/"><span>04</span><strong>路上随记</strong><small>长沙、西安、云南</small></a>
+          </div>
+          <div class="quick-index-heading recent-heading"><h2>最近文章</h2><a href="/archives/">浏览归档 →</a></div>
+        </section>
+      </template>
+    - '<script src="/site/console-output.js" defer></script>'
+    - '<script src="/site/interactions.js" defer></script>'

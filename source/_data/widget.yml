@@ -1,0 +1,11 @@
+top:
+  - name: 学习指南
+    icon: fas fa-seedling
+    class_name: study-guide
+    id_name: study-guide
+    html: |
+      <a class="study-guide-link" href="/guide/onboarding/">
+        <strong>新成员任务 <span aria-hidden="true">→</span></strong>
+        <span>从基础补全到研究计划</span>
+      </a>
+      <a class="study-guide-course" href="/guide/courses/">课程学习与资料 →</a>
