@@ -8,9 +8,13 @@
   },
   "scripts": {
     "dev": "hexo server",
+    "dev:drafts": "hexo server --draft",
     "build": "hexo clean && hexo generate --bail",
     "check": "node tools/check-site.mjs",
-    "new": "hexo new"
+    "new": "hexo new",
+    "draft": "hexo new draft",
+    "publish": "hexo publish",
+    "clean": "hexo clean"
   },
   "dependencies": {
     "@mdit/plugin-cjk-friendly": "1.0.0",
