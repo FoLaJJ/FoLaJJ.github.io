@@ -473,6 +473,14 @@ const siteDataConfig = {
     ========================================Server=====================================
     */
     {
+      "id": "TCBcloudTencent",
+      "name": "TCBcloudTencent",
+      "url": "https://tcb.cloud.tencent.com/",
+      "description": "腾讯云开发",
+      "category": "Server",
+      "icon": "icon/TCBcloudTencent.png"
+    },
+    {
       "id": "freevpsedu",
       "name": "freevpsedu",
       "url": "https://freevps.edu.pl/",
@@ -581,6 +589,30 @@ const siteDataConfig = {
     ===================================================================================
     ========================================AI=========================================
     */
+    {
+      "id": "adeindex",
+      "name": "adeindex",
+      "url": "https://adeindex.com/",
+      "description": "Agent Workspaces",
+      "category": "AI",
+      "icon": "icon/adeindex.ico"
+    },
+    {
+      "id": "a6api",
+      "name": "a6api",
+      "url": "https://a6api.vip/#/market",
+      "description": "AI号池，假一赔十",
+      "category": "AI",
+      "icon": "icon/a6api.png"
+    },
+    {
+      "id": "aipricememo",
+      "name": "aipricememo",
+      "url": "https://ai.pricememo.cn/",
+      "description": "AI订阅低价比价",
+      "category": "AI",
+      "icon": "icon/aipricememo.ico"
+    },
     {
       "id": "minimax",
       "name": "minimax",
@@ -913,6 +945,7 @@ const siteDataConfig = {
     ===================================================================================
     =====================================meme==========================================
     */
+
     {
       "id": "yandex",
       "name": "Yandex",
@@ -1040,6 +1073,14 @@ const siteDataConfig = {
       "description": "十分好用的气象网站",
       "category": "meme",
       "icon": "icon/windy.png"
+    },
+    {
+      "id": "tradingview",
+      "name": "TradingView",
+      "url": "https://cn.tradingview.com/symbols/XAUUSD/",
+      "description": "TradingView",
+      "category": "meme",
+      "icon": "icon/tradingview.ico"
     },
     /*
     ===================================================================================
