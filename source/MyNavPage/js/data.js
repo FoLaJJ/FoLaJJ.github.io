@@ -590,6 +590,30 @@ const siteDataConfig = {
     ========================================AI=========================================
     */
     {
+      "id": "scnetcn",
+      "name": "超算互联网",
+      "url": "https://www.scnet.cn/ui/mall/",
+      "description": "超算互联网",
+      "category": "AI",
+      "icon": "icon/scnetcn.png"
+    },
+    {
+      "id": "aipromonow",
+      "name": "aipromonow",
+      "url": "https://www.aipromonow.com/",
+      "description": "AI优惠雷达",
+      "category": "AI",
+      "icon": "icon/aipromonow.webp"
+    },
+    {
+      "id": "aihotnews",
+      "name": "aihotnews",
+      "url": "https://aihot.news/free-tokens",
+      "description": "AI羊毛统计站AIHOT",
+      "category": "AI",
+      "icon": "icon/aihotnews.png"
+    },
+    {
       "id": "adeindex",
       "name": "adeindex",
       "url": "https://adeindex.com/",
